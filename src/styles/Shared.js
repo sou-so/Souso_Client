@@ -7,3 +7,13 @@ export const button = ({ theme }) => css`
   padding: 10px 20px;
   width: 100%;
 `;
+
+export const input = ({ theme }) => css`
+  padding: 8px 15px;
+  font-size: ${theme.font.sm};
+  background: ${theme.color.gray_1};
+  width: 100%;
+  &::placeholder {
+    color: #aaa;
+  }
+`;
