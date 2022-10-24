@@ -1,4 +1,4 @@
-import { JoinPage, LoginPage, MainPage } from 'pages';
+import { IntroPage, JoinPage, LoginPage, MainPage } from 'pages';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from 'styles/GlobalStyles';
@@ -10,9 +10,10 @@ function App() {
       <div className="container">
         <GlobalStyles />
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route index element={<IntroPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="join" element={<JoinPage />} />
+          {/* <Route index element={<MainPage />} /> */}
         </Routes>
       </div>
     </ThemeProvider>

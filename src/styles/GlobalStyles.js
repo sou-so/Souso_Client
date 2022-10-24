@@ -42,6 +42,7 @@ button {
   background-color: transparent;
   line-height: inherit;
   border: none;
+  cursor: pointer;
 }
 input,
 label,
