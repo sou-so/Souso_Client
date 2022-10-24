@@ -21,7 +21,7 @@ export const Input = styled.input`
 export const ButtonWrap = styled.div`
   width: 100%;
   text-align: center;
-  margin-top: 70px;
+  margin-top: 45px;
 `;
 
 export const LoginButton = styled.button`

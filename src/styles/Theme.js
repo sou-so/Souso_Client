@@ -8,7 +8,8 @@ const color = {
 const style = {
   border_dark: '1px solid #9A9A9A',
   border_light: '1px solid #EAEAEA',
-  edge_padding: '15px'
+  edge_padding: '15px',
+  header_height: '50px'
 };
 
 const font = {
