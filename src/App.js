@@ -4,12 +4,12 @@ import GlobalStyles from 'styles/GlobalStyles';
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <GlobalStyles />
       <Routes>
-        <Route path='/' element={<MainPage/>} />
-        <Route path='login' element={<LoginPage/>} />
-        <Route path='join' element={<JoinPage/>} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="join" element={<JoinPage />} />
       </Routes>
     </div>
   );
