@@ -8,13 +8,14 @@ const color = {
 const style = {
   border_dark: '1px solid #9A9A9A',
   border_light: '1px solid #EAEAEA',
-  edge_padding: '12px'
+  edge_padding: '15px',
+  header_height: '50px'
 };
 
 const font = {
-  xs: '0.5rem',
-  sm: '0.75rem',
-  md: '1.25rem',
+  xs: '0.8rem',
+  sm: '0.92rem',
+  md: '1.2rem',
   lg: '1.5rem'
 };
 
