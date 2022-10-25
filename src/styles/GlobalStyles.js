@@ -6,11 +6,18 @@ const GlobalStyles = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
 }
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, sans-serif;
+html, body, #root {
+  font-size: 14px;
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  background: #f1f1f1;
+  height: 100%;
+}
+.container{
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  height: 100%;
+  background: #fff;
 }
 h1,
 h2,
