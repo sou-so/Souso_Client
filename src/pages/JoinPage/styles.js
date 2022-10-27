@@ -15,4 +15,4 @@ export const Description = styled.div`
   P:last-child {
     font-weight: bold;
   }
-`
+`;

@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
-import * as S from './styles'
+import * as S from './styles';
 
 export const JoinForm = () => {
-
   const [termsChecked, setTermsChecked] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     // 아직 미구현 상태입니다.
     e.preventDefault();
-  }
+  };
 
-  const handleCheck = (e) => {
+  const handleCheck = e => {
     // 아직 미구현 상태입니다.
     e.preventDefault();
-  }
+  };
 
-  const termsBtnEvent = () =>{
-    if(termsChecked === false) {
-      setTermsChecked(true)
-    }else {
-      setTermsChecked(false)
+  const termsBtnEvent = () => {
+    if (termsChecked === false) {
+      setTermsChecked(true);
+    } else {
+      setTermsChecked(false);
     }
   };
 
@@ -53,7 +52,11 @@ export const JoinForm = () => {
       </S.InputWrap>
 
       <S.TermsWarp>
-        <S.TermsInput type="checkbox" checked={termsChecked} onChange={termsBtnEvent} />
+        <S.TermsInput
+          type="checkbox"
+          checked={termsChecked}
+          onChange={termsBtnEvent}
+        />
         <span>서비스 이용약관에 모두 동의합니다.</span>
       </S.TermsWarp>
 

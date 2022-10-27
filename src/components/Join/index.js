@@ -1,1 +1,1 @@
-export {JoinForm} from './JoinForm/JoinForm'
+export { JoinForm } from './JoinForm/JoinForm';
