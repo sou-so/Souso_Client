@@ -24,4 +24,13 @@ export const ModalContainer = styled.div`
     position: absolute;
     cursor: pointer;
   }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    & > * {
+      color: #888;
+    }
+  }
 `;

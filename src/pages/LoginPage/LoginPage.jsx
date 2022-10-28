@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { LoginForm } from 'components/Login';
+import logoImage from 'assets/images/logo.png';
 import * as S from './styles';
 
 export const LoginPage = () => {
@@ -9,10 +10,7 @@ export const LoginPage = () => {
       <S.AppLogo>
         <p>이웃과의 소통</p>
         <h1>넘블 커뮤니티</h1>
-        <img
-          src="https://assets.stickpng.com/images/6010865599eef2000443c321.png"
-          alt="logo"
-        />
+        <img src={logoImage} alt="logo" />
       </S.AppLogo>
 
       <LoginForm />
@@ -24,7 +22,7 @@ export const LoginPage = () => {
         </li>
         <li>
           계정이 없으신가요?
-          <Link to="/join">가입하기</Link>
+          <Link to="/mytown">가입하기</Link>
         </li>
       </S.LinkTo>
     </S.PageContainer>
