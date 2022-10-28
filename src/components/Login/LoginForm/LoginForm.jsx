@@ -31,7 +31,7 @@ export const LoginForm = () => {
         />
       </S.InputWrap>
       <S.ButtonWrap>
-        <Link to="/">
+        <Link to="#">
           <S.LoginButton
             type="submit"
             className={email && password ? '' : 'disabled'}
