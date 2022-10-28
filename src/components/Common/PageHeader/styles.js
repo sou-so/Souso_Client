@@ -13,6 +13,7 @@ export const PageHeaderContainer = styled.div`
 
 export const BackIcon = styled(Link)`
   position: absolute;
+  display: flex;
   left: ${({ theme }) => theme.style.edge_padding};
   img {
     display: block;
