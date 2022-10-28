@@ -6,14 +6,18 @@ export const button = ({ theme }) => css`
   color: ${theme.color.white_1};
   padding: 10px 20px;
   width: 100%;
+  &.disabled {
+    background: ${theme.color.gray_2};
+  }
 `;
 
 export const input = ({ theme }) => css`
   padding: 8px 15px;
   font-size: ${theme.font.sm};
-  background: ${theme.color.gray_1};
+  border: 1px solid ${theme.color.gray_2};
+  border-radius: 6px;
   width: 100%;
   &::placeholder {
-    color: #aaa;
+    color: ${theme.color.gray_3};
   }
 `;

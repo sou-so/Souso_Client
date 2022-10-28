@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
 html, body, #root {
   font-size: 14px;
   font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  color: #343434;
   background: #f1f1f1;
   height: 100%;
 }

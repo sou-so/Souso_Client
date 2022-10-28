@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './styles';
 
 export const LoginForm = () => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
   const handleSubmit = e => {
     e.preventDefault();
   };
@@ -10,18 +13,32 @@ export const LoginForm = () => {
   return (
     <S.FormContainer onSubmit={handleSubmit}>
       <S.InputWrap>
-        <h3>이메일</h3>
-        <S.Input placeholder="email" />
+        <S.Input
+          type="text"
+          name="email"
+          value={email}
+          placeholder="이메일"
+          onChange={e => setEmail(e.target.value)}
+        />
       </S.InputWrap>
       <S.InputWrap>
-        <h3>비밀번호</h3>
-        <S.Input placeholder="password" />
+        <S.Input
+          type="password"
+          name="password"
+          value={password}
+          placeholder="비밀번호"
+          onChange={e => setPassword(e.target.value)}
+        />
       </S.InputWrap>
       <S.ButtonWrap>
         <Link to="/">
-          <S.LoginButton>로그인</S.LoginButton>
+          <S.LoginButton
+            type="submit"
+            className={email && password ? '' : 'disabled'}
+          >
+            로그인
+          </S.LoginButton>
         </Link>
-        <Link to="/join">회원가입</Link>
       </S.ButtonWrap>
     </S.FormContainer>
   );
