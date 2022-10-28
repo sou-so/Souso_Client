@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PageHeader } from 'components/Common';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import * as S from './styles';
+import { SearchModal } from 'components/TownAuth';
 
 export const TownAuthPage = () => {
   const [geo, setGeo] = useState({ lat: 33.450701, lng: 126.570667 });
@@ -25,6 +26,7 @@ export const TownAuthPage = () => {
         <Map center={{ lat: geo.lat, lng: geo.lng }} className="kakao_map">
           <MapMarker position={{ lat: geo.lat, lng: geo.lng }} />
         </Map>
+        <SearchModal />
       </S.PageContainer>
     </>
   );
