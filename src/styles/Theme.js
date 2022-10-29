@@ -1,13 +1,20 @@
 const color = {
-  main: '#178A5F',
-  black_1: '#333',
+  main: '#FFA31A',
+
+  black_1: '#343434',
+
   white_1: '#FFF',
-  gray_1: '#EEE'
+
+  gray_1: '#EEE',
+  gray_2: '#D9D9D9',
+  gray_3: '#CCC'
 };
 
 const style = {
   border_dark: '1px solid #9A9A9A',
   border_light: '1px solid #EAEAEA',
+  border_main: `1px solid ${color.main}`,
+
   edge_padding: '15px',
   header_height: '50px'
 };
