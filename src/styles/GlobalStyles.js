@@ -11,6 +11,7 @@ html, body, #root {
   font-family: 'Noto Sans KR', -apple-system, sans-serif;
   color: #343434;
   background: #f1f1f1;
+  letter-spacing: -0.3px;
   height: 100%;
 }
 .container{
@@ -19,6 +20,7 @@ html, body, #root {
   margin: 0 auto;
   height: 100%;
   background: #fff;
+  position: relative;
 }
 h1,
 h2,
