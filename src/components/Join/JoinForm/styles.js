@@ -7,7 +7,7 @@ export const FormContainer = styled.form`
 
 export const InputWrap = styled.div`
   & + & {
-    margin-top: 20px;
+    margin-top: 10px;
   }
   position: relative;
 `;
@@ -22,6 +22,7 @@ export const InputButton = styled.button`
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
+  color: #48b0d0;
 `;
 
 export const ButtonWarp = styled.div`
@@ -37,8 +38,21 @@ export const JoinButton = styled.button`
 export const TermsWarp = styled.div`
   display: flex;
   margin: 80px 5px 0;
+  justify-content: space-between;
 `;
 
 export const TermsInput = styled.input`
   margin-right: 8px;
+`;
+
+export const TermsView = styled.span`
+  color: #999;
+  border-bottom: 1px solid #999;
+  cursor: pointer;
+  font-size: 0.85rem;
+`;
+
+export const FieldWrap = styled.fieldset`
+  border: none;
+  margin-bottom: 30px;
 `;
