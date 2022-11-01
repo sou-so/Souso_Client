@@ -26,6 +26,8 @@ export const TermsView = styled.div`
   align-items: center;
 
   h2 {
+    font-weight: bold;
+    font-size: 16px;
     padding: 15px;
   }
   div {
@@ -35,6 +37,7 @@ export const TermsView = styled.div`
   }
   P {
     padding: 15px;
+    font-weight: bold;
     cursor: pointer;
   }
 `;

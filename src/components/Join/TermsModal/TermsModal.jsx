@@ -13,7 +13,7 @@ export const TermsModal = ({ closeModal }) => {
             accusamus dignissimos veniam. Unde tempora, eligendi adipisci autem
             ipsum modi eum vero amet. Reiciendis?
           </div>
-          <p onClick={closeModal}>X</p>
+          <p onClick={closeModal}>닫기</p>
         </S.TermsView>
       </S.PageContainer>
     </>
