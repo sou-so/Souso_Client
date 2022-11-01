@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as S from './styles';
-import './fadeStyles.css';
+import { TermsModal } from '..';
 
 export const JoinForm = () => {
   const [account, setAccount] = useState({
@@ -11,6 +11,7 @@ export const JoinForm = () => {
     password: ''
   });
   const [termsChecked, setTermsChecked] = useState(false);
+  const [termsModalOpen, setTermsModalOpen] = useState(false);
 
   const handleSubmit = e => {
     // 아직 미구현 상태입니다.
@@ -22,11 +23,18 @@ export const JoinForm = () => {
     e.preventDefault();
   };
 
-  const termsBtnEvent = () => {
+  const termsCheckEvent = () => {
     if (termsChecked === false) {
       setTermsChecked(true);
     } else {
       setTermsChecked(false);
+    }
+  };
+  const termsViewEvent = () => {
+    if (termsModalOpen === false) {
+      setTermsModalOpen(true);
+    } else {
+      setTermsModalOpen(false);
     }
   };
 
@@ -80,20 +88,21 @@ export const JoinForm = () => {
         </S.InputWrap>
         <S.InputWrap>
           <S.Input placeholder="인증번호" />
-          <S.InputButton onClick={handleCheck}>인증확인</S.InputButton>
+          <S.InputButton>인증확인</S.InputButton>
         </S.InputWrap>
       </S.FieldWrap>
 
       <S.FieldWrap className={`stepStyle ${account.email && 'showStep'}`}>
         <S.InputWrap>
           <S.Input
+            type="password"
             name="password"
             placeholder="비밀번호"
             onChange={onChangeAccount}
           />
         </S.InputWrap>
         <S.InputWrap>
-          <S.Input placeholder="비밀번호 확인" />
+          <S.Input type="password" placeholder="비밀번호 확인" />
         </S.InputWrap>
       </S.FieldWrap>
 
@@ -102,12 +111,14 @@ export const JoinForm = () => {
           <S.TermsInput
             type="checkbox"
             checked={termsChecked}
-            onChange={termsBtnEvent}
+            onChange={termsCheckEvent}
           />
           <span>앱이름 가입약관에 모두 동의합니다.</span>
         </div>
-        <S.TermsView>확인하기</S.TermsView>
+        <S.TermsBtn onClick={termsViewEvent}>확인하기</S.TermsBtn>
       </S.TermsWarp>
+
+      {termsModalOpen && <TermsModal closeModal={termsViewEvent} />}
 
       <S.ButtonWarp>
         <S.JoinButton>가입하기</S.JoinButton>

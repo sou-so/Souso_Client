@@ -2,7 +2,16 @@ import styled from 'styled-components';
 import { button, input } from 'styles/Shared';
 
 export const FormContainer = styled.form`
-  flex: 1;
+  .stepStyle {
+    opacity: 0;
+    position: relative;
+    top: -20px;
+    transition: all 1s;
+  }
+  .showStep {
+    opacity: 1;
+    top: 0;
+  }
 `;
 
 export const InputWrap = styled.div`
@@ -45,7 +54,7 @@ export const TermsInput = styled.input`
   margin-right: 8px;
 `;
 
-export const TermsView = styled.span`
+export const TermsBtn = styled.span`
   color: #999;
   border-bottom: 1px solid #999;
   cursor: pointer;
