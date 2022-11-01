@@ -4,12 +4,14 @@ import { button, input } from 'styles/Shared';
 export const FormContainer = styled.form`
   .stepStyle {
     opacity: 0;
+    z-index: -1;
     position: relative;
     top: -20px;
     transition: all 1s;
   }
   .showStep {
     opacity: 1;
+    z-index: 1;
     top: 0;
   }
 `;
