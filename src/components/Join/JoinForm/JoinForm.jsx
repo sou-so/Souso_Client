@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import * as S from './styles';
+import { TermsModal } from '..';
 
 export const JoinForm = () => {
+  const [account, setAccount] = useState({
+    userName: '',
+    nickname: '',
+    phone: '',
+    email: '',
+    password: ''
+  });
   const [termsChecked, setTermsChecked] = useState(false);
+  const [termsModalOpen, setTermsModalOpen] = useState(false);
 
   const handleSubmit = e => {
     // 아직 미구현 상태입니다.
@@ -14,51 +23,102 @@ export const JoinForm = () => {
     e.preventDefault();
   };
 
-  const termsBtnEvent = () => {
+  const termsCheckEvent = () => {
     if (termsChecked === false) {
       setTermsChecked(true);
     } else {
       setTermsChecked(false);
     }
   };
+  const termsViewEvent = () => {
+    if (termsModalOpen === false) {
+      setTermsModalOpen(true);
+    } else {
+      setTermsModalOpen(false);
+    }
+  };
+
+  const onChangeAccount = e => {
+    setAccount({
+      ...account,
+      [e.target.name]: e.target.value
+    });
+  };
+  console.log('account', account); // 확인용
 
   return (
     <S.FormContainer onSubmit={handleSubmit}>
-      <S.InputWrap>
-        <S.Input placeholder="이름" />
-      </S.InputWrap>
-      <S.InputWrap>
-        <S.Input placeholder="닉네임" />
-        <S.InputButton onClick={handleCheck}>중복확인</S.InputButton>
-      </S.InputWrap>
-      <S.InputWrap>
-        <S.Input placeholder="010-1234-5678" />
-      </S.InputWrap>
+      <S.FieldWrap>
+        <S.InputWrap>
+          <S.Input
+            name="userName"
+            placeholder="이름"
+            onChange={onChangeAccount}
+          />
+        </S.InputWrap>
+        <S.InputWrap>
+          <S.Input
+            name="nickname"
+            placeholder="닉네임"
+            onChange={onChangeAccount}
+          />
+          <S.InputButton onClick={handleCheck}>중복 확인</S.InputButton>
+        </S.InputWrap>
+        <S.InputWrap>
+          <S.Input
+            name="phone"
+            placeholder="핸드폰 번호"
+            onChange={onChangeAccount}
+          />
+        </S.InputWrap>
+      </S.FieldWrap>
 
-      <S.InputWrap>
-        <S.Input placeholder="numble@example.com" />
-        <S.InputButton onClick={handleCheck}>인증번호 발송</S.InputButton>
-      </S.InputWrap>
-      <S.InputWrap>
-        <S.Input placeholder="인증번호" />
-        <S.InputButton onClick={handleCheck}>인증확인</S.InputButton>
-      </S.InputWrap>
+      <S.FieldWrap
+        className={`stepStyle ${
+          account.userName && account.nickname && account.phone && 'showStep'
+        }`}
+      >
+        <S.InputWrap>
+          <S.Input
+            name="email"
+            placeholder="numble@example.com"
+            onChange={onChangeAccount}
+          />
+          <S.InputButton onClick={handleCheck}>인증번호 발송</S.InputButton>
+        </S.InputWrap>
+        <S.InputWrap>
+          <S.Input placeholder="인증번호" />
+          <S.InputButton>인증확인</S.InputButton>
+        </S.InputWrap>
+      </S.FieldWrap>
 
-      <S.InputWrap>
-        <S.Input placeholder="비밀번호" />
-      </S.InputWrap>
-      <S.InputWrap>
-        <S.Input placeholder="비밀번호 확인" />
-      </S.InputWrap>
+      <S.FieldWrap className={`stepStyle ${account.email && 'showStep'}`}>
+        <S.InputWrap>
+          <S.Input
+            type="password"
+            name="password"
+            placeholder="비밀번호"
+            onChange={onChangeAccount}
+          />
+        </S.InputWrap>
+        <S.InputWrap>
+          <S.Input type="password" placeholder="비밀번호 확인" />
+        </S.InputWrap>
+      </S.FieldWrap>
 
       <S.TermsWarp>
-        <S.TermsInput
-          type="checkbox"
-          checked={termsChecked}
-          onChange={termsBtnEvent}
-        />
-        <span>서비스 이용약관에 모두 동의합니다.</span>
+        <div>
+          <S.TermsInput
+            type="checkbox"
+            checked={termsChecked}
+            onChange={termsCheckEvent}
+          />
+          <span>앱이름 가입약관에 모두 동의합니다.</span>
+        </div>
+        <S.TermsBtn onClick={termsViewEvent}>확인하기</S.TermsBtn>
       </S.TermsWarp>
+
+      {termsModalOpen && <TermsModal closeModal={termsViewEvent} />}
 
       <S.ButtonWarp>
         <S.JoinButton>가입하기</S.JoinButton>

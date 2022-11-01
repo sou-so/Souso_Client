@@ -2,12 +2,23 @@ import styled from 'styled-components';
 import { button, input } from 'styles/Shared';
 
 export const FormContainer = styled.form`
-  flex: 1;
+  .stepStyle {
+    opacity: 0;
+    z-index: -1;
+    position: relative;
+    top: -20px;
+    transition: all 1s;
+  }
+  .showStep {
+    opacity: 1;
+    z-index: 1;
+    top: 0;
+  }
 `;
 
 export const InputWrap = styled.div`
   & + & {
-    margin-top: 20px;
+    margin-top: 10px;
   }
   position: relative;
 `;
@@ -22,6 +33,7 @@ export const InputButton = styled.button`
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
+  color: #48b0d0;
 `;
 
 export const ButtonWarp = styled.div`
@@ -37,8 +49,21 @@ export const JoinButton = styled.button`
 export const TermsWarp = styled.div`
   display: flex;
   margin: 80px 5px 0;
+  justify-content: space-between;
 `;
 
 export const TermsInput = styled.input`
   margin-right: 8px;
+`;
+
+export const TermsBtn = styled.span`
+  color: #999;
+  border-bottom: 1px solid #999;
+  cursor: pointer;
+  font-size: 0.85rem;
+`;
+
+export const FieldWrap = styled.fieldset`
+  border: none;
+  margin-bottom: 30px;
 `;
