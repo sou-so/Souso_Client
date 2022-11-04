@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as S from './styles';
-import { TermsModal } from '..';
+import { TermsModal } from '../TermsModal/TermsModal';
 
 export const JoinForm = () => {
   const [account, setAccount] = useState({
