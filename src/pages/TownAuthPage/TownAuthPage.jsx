@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { PageHeader } from 'components/Common';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
-import * as S from './styles';
+import { PageHeader } from 'components/Common';
 import { SearchModal, SubmitModal } from 'components/TownAuth';
+import * as S from './styles';
 
 export const TownAuthPage = () => {
   const [openModal, setOpenModal] = useState(false);
