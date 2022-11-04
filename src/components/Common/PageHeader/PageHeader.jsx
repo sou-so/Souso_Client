@@ -1,5 +1,5 @@
 import { Icon } from 'components/Common';
-import { ReactComponent as BackIcon } from 'assets/icons/left-arrow.svg';
+import { ReactComponent as BackIcon } from 'assets/icons/arrow_l.svg';
 import * as S from './styles';
 
 export const PageHeader = ({ title, backTo }) => {
