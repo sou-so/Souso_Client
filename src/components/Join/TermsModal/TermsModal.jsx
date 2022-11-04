@@ -3,8 +3,8 @@ import * as S from './styles';
 
 export const TermsModal = ({ closeModal }) => {
   return (
-    <S.PageContainer>
-      <S.TermsView>
+    <S.PageContainer onClick={closeModal}>
+      <S.TermsView onClick={e => e.stopPropagation()}>
         <h2>가입약관</h2>
         <div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa odit
