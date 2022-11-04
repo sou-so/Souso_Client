@@ -16,6 +16,11 @@ export const FormContainer = styled.form`
   }
 `;
 
+export const FieldWrap = styled.fieldset`
+  border: none;
+  margin-bottom: 30px;
+`;
+
 export const InputWrap = styled.div`
   & + & {
     margin-top: 10px;
@@ -26,6 +31,7 @@ export const InputWrap = styled.div`
 export const Input = styled.input`
   ${input}
 `;
+
 export const InputButton = styled.button`
   font-size: 10px;
   padding: 3px;
@@ -34,16 +40,6 @@ export const InputButton = styled.button`
   right: 10px;
   transform: translateY(-50%);
   color: #48b0d0;
-`;
-
-export const ButtonWarp = styled.div`
-  width: 100%;
-  text-align: center;
-  margin-top: 15px;
-`;
-
-export const JoinButton = styled.button`
-  ${button}
 `;
 
 export const TermsWarp = styled.div`
@@ -63,7 +59,12 @@ export const TermsBtn = styled.span`
   font-size: 0.85rem;
 `;
 
-export const FieldWrap = styled.fieldset`
-  border: none;
-  margin-bottom: 30px;
+export const ButtonWarp = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+`;
+
+export const JoinButton = styled.button`
+  ${button}
 `;
