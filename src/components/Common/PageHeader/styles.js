@@ -15,10 +15,6 @@ export const BackIcon = styled(Link)`
   position: absolute;
   display: flex;
   left: ${({ theme }) => theme.style.edge_padding};
-  img {
-    display: block;
-    width: 30px;
-  }
 `;
 
 export const PageTitle = styled.h2`

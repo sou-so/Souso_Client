@@ -21,6 +21,7 @@ html, body, #root {
   height: 100%;
   background: #fff;
   position: relative;
+  overflow-y: scroll;
 }
 h1,
 h2,
@@ -59,6 +60,24 @@ textarea {
   background: none;
   line-height: 1;
   font: inherit;
+}
+
+/* scroll style */
+::-webkit-scrollbar {
+  display: block;
+  width: 4px;
+  margin-top: 30px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #fff;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: #cacaca;
 }
 `;
 
