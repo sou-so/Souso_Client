@@ -20,4 +20,8 @@ export const input = ({ theme }) => css`
   &::placeholder {
     color: ${theme.color.gray_3};
   }
+  &.bg {
+    border: none;
+    background-color: ${theme.color.gray_1};
+  }
 `;

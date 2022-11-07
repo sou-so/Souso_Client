@@ -10,6 +10,10 @@ export const Banner = styled.div`
   }
 `;
 
+export const SectionWrap = styled.section`
+  padding: 0 ${({ theme }) => theme.style.edge_padding};
+`;
+
 export const TempLinks = styled.div`
   display: flex;
   bottom: 10px;
