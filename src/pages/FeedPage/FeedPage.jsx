@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FeedBanner, FeedHeader } from 'components/Feed';
 import * as S from './styles';
 
 const user = 'joy';
@@ -15,6 +16,8 @@ export const FeedPage = () => {
 
   return (
     <S.PageContainer>
+      <FeedHeader />
+      <FeedBanner user={user} />
       <S.TempLinks>
         <Link to={'/login'}>
           <div>Login</div>

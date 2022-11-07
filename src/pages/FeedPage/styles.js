@@ -4,6 +4,12 @@ export const PageContainer = styled.div`
   position: relative;
 `;
 
+export const Banner = styled.div`
+  p {
+    font-size: ${({ theme }) => theme.font.lg};
+  }
+`;
+
 export const TempLinks = styled.div`
   display: flex;
   bottom: 10px;
