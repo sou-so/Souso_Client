@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const BannerContainer = styled.div`
   position: relative;
-  margin: 15px 0 30px 5px;
+  margin-top: 15px;
+  margin-left: 5px;
   p {
     font-size: 24px;
     line-height: 1.3;

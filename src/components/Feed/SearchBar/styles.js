@@ -4,8 +4,8 @@ import { input } from 'styles/Shared';
 export const SearchBarContainer = styled.div`
   display: flex;
   align-items: center;
-  flex: 1;
   position: relative;
+  margin: 30px 0 15px;
 
   input {
     ${input}

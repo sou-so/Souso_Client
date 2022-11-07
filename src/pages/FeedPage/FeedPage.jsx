@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FeedBanner, FeedHeader, SearchBar } from 'components/Feed';
+import { FeedBanner, FeedHeader, HashTags, SearchBar } from 'components/Feed';
 import * as S from './styles';
+import { Category } from 'components/Common';
 
 const user = 'joy';
 
@@ -20,7 +21,12 @@ export const FeedPage = () => {
       <S.SectionWrap>
         <FeedBanner user={user} />
         <SearchBar />
+        <HashTags />
       </S.SectionWrap>
+      <S.CategoryWrap>
+        <h3>어떤 이야기가 듣고 싶으세요?</h3>
+        <Category more />
+      </S.CategoryWrap>
       <S.TempLinks>
         <Link to={'/login'}>
           <div>Login</div>
