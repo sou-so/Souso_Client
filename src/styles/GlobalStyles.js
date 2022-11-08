@@ -64,20 +64,7 @@ textarea {
 
 /* scroll style */
 ::-webkit-scrollbar {
-  display: block;
-  width: 4px;
-  margin-top: 30px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #fff;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-}
-::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-  background: #cacaca;
+  display: none;
 }
 `;
 
