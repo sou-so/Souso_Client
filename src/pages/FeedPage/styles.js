@@ -2,9 +2,6 @@ import styled from 'styled-components';
 
 export const PageContainer = styled.div`
   position: relative;
-  /* & > div {
-    height: calc(100% - ${({ theme }) => theme.style.header_height});
-  } */
 `;
 
 export const Banner = styled.div`
@@ -19,7 +16,7 @@ export const SectionWrap = styled.section`
 `;
 
 export const CategoryWrap = styled.section`
-  margin: 40px ${({ theme }) => theme.style.edge_padding} 0;
+  margin: 40px 15px 50px;
   padding-top: 25px;
   border-top: ${({ theme }) => theme.style.border_light};
   h3 {

@@ -24,10 +24,12 @@ export const FeedPage = () => {
           <C.SearchBar />
           <C.HashTags />
         </S.SectionWrap>
+
         <S.CategoryWrap>
           <h3>어떤 이야기가 듣고 싶으세요?</h3>
           <Category more />
         </S.CategoryWrap>
+
         <C.PostList />
       </ScrollContainer>
       <S.TempLinks>

@@ -26,7 +26,7 @@ export const MoreButton = styled.button`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 23px 0;
+  margin-top: 23px;
   .icon {
     margin-left: 4px;
   }
