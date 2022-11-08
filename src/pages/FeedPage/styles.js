@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const PageContainer = styled.div`
   position: relative;
+  /* & > div {
+    height: calc(100% - ${({ theme }) => theme.style.header_height});
+  } */
 `;
 
 export const Banner = styled.div`
@@ -28,8 +31,14 @@ export const CategoryWrap = styled.section`
 
 export const TempLinks = styled.div`
   display: flex;
-  bottom: 10px;
-  left: 25%;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  bottom: 0;
+  width: 100%;
+  background: #f5f5f5;
+  opacity: 0.7;
+  z-index: 100;
   position: absolute;
   a {
     margin-left: 10px;
