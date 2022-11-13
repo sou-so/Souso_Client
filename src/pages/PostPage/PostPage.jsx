@@ -1,18 +1,23 @@
 import React from 'react';
-import { PageHeader } from 'components/Common';
+import { PageHeader, ScrollContainer } from 'components/Common';
 import * as S from './styles';
 import * as C from 'components/Post';
 import postData from 'data/posts';
 
 export const PostPage = () => {
+  const data = postData.latest[1];
+  // console.log(data);
+
   return (
     <S.PageContainer>
-      <PageHeader backTo="/" title="카테고리" />
-      <S.ViewContainer postData={postData}>
-        <C.WriterBanner />
-        <C.PostContents />
-        <C.PostButton />
-      </S.ViewContainer>
+      <PageHeader backTo="/" title={data.category} />
+      <ScrollContainer>
+        <S.ViewContainer>
+          <C.WriterBanner user={data.user} />
+          <C.PostContents data={data} />
+          <C.PostFooterBtn />
+        </S.ViewContainer>
+      </ScrollContainer>
     </S.PageContainer>
   );
 };

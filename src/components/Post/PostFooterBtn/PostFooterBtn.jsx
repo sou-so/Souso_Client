@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const PostButton = () => {
+export const PostFooterBtn = () => {
   return <div>PostButton</div>;
 };
