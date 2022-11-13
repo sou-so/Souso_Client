@@ -15,7 +15,7 @@ export const PostPage = () => {
         <S.ViewContainer>
           <C.WriterBanner user={data.user} />
           <C.PostContents data={data} />
-          <C.PostFooterBtn />
+          <C.PostFooterBtn data={data} />
         </S.ViewContainer>
       </ScrollContainer>
     </S.PageContainer>

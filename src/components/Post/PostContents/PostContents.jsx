@@ -1,17 +1,40 @@
 import React from 'react';
 import * as S from './styles';
 
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 export const PostContents = ({ data }) => {
   return (
     <S.ContentsContainer>
       <S.PostText>
         <p>{data.text}</p>
       </S.PostText>
-      <S.ThumbnailWrap>
+
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        pagination={{ clickable: false }}
+        spaceBetween={8}
+        slidesPerView={1}
+        width={292}
+        height={292}
+      >
         {data.thumbnail.map(url => (
-          <img src={url} alt="thumbnail" />
+          <SwiperSlide>
+            <S.ThumbnailWrap>
+              <img src={url} alt="thumbnail" />
+            </S.ThumbnailWrap>
+          </SwiperSlide>
         ))}
-      </S.ThumbnailWrap>
+      </Swiper>
     </S.ContentsContainer>
   );
 };
