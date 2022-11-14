@@ -14,14 +14,23 @@
     {
       "id": 1,
       "category": "소소질문 ",
-      "text": "근처 운동하기 좋은 공원이나 산책로 추천해주세요",
+      "text": "근처 운동하기 좋은 공원이나 산책로 있나요? 저녁마다 만나서 같이 걷거나 배드민턴 치실 분 댓글 주세요. 배드민턴 채는 없으면 빌려드려요",
       "likes": 60,
       "comments": 13,
       "scraps": 56,
       "thumbnail": [
-        "https://mblogthumb-phinf.pstatic.net/20151222_12/9292totoro_1450758908896Tsldu_JPEG/IMG_20150706_153742.jpg?type=w800",
-        "https://mblogthumb-phinf.pstatic.net/20151222_12/9292totoro_1450758908896Tsldu_JPEG/IMG_20150706_153742.jpg?type=w800"
+        "https://walk.chosun.com/data/board/6/1653300209.jpg",
+        "http://ccimg.hellomarket.com/images/2021/item/01/18/16/5714490_168562_1.jpg?size=s6"
       ]
+    },
+    {
+      "id": 5,
+      "category": "소소질문 ",
+      "text": "근처 운동하기 좋은 공원이나 산책로 있나요? 저녁마다 만나서 같이 걷거나 배드민턴 치실 분 댓글 주세요 근처 운동하기 좋은 공원이나 산책로 있나요? 저녁마다 만나서 같이 걷거나 배드민턴 치실 분 댓글 주세요",
+      "likes": 60,
+      "comments": 13,
+      "scraps": 56,
+      "thumbnail": []
     }
   ],
   "latest": [
@@ -47,11 +56,11 @@
         "profile_img": ""
       },
       "category": "소소질문",
-      "text": "근처 운동하기 좋은 공원이나 산책로 추천해주세요",
+      "text": "근처 운동하기 좋은 공원이나 산책로 있나요? 저녁마다 만나서 같이 걷거나 배드민턴 치실 분 댓글 주세요. 배드민턴 채는 없으면 빌려드려요. 평일 주말 상관없이 운동할 수 있어요",
       "comments": 2,
       "thumbnail": [
-        "https://mblogthumb-phinf.pstatic.net/20151222_12/9292totoro_1450758908896Tsldu_JPEG/IMG_20150706_153742.jpg?type=w800",
-        "https://mblogthumb-phinf.pstatic.net/20151222_12/9292totoro_1450758908896Tsldu_JPEG/IMG_20150706_153742.jpg?type=w800"
+        "https://walk.chosun.com/data/board/6/1653300209.jpg",
+        "http://ccimg.hellomarket.com/images/2021/item/01/18/16/5714490_168562_1.jpg?size=s6"
       ]
     }
   ]
