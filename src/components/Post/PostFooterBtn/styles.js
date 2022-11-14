@@ -3,10 +3,8 @@ import styled from 'styled-components';
 export const FooterContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0px 5px;
-  padding: 8px 0 12px;
-  border-top: 1px solid rgba(217, 217, 217, 0.4);
-  border-bottom: 1px solid rgba(217, 217, 217, 0.4);
+  padding: ${({ comments }) => (comments ? '14px' : '8px')} 5px 0;
+  border-top: ${({ comments }) => (comments ? 'none' : '1px solid #eee')};
 `;
 
 export const BtnContainer = styled.div`
@@ -21,10 +19,17 @@ export const BtnWrap = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: ${({ theme }) => theme.color.black_2};
     span {
       font-size: 13px;
       line-height: 19.5px;
       padding-left: 4px;
+    }
+    &:not(.comment) path {
+      fill: ${({ theme }) => theme.color.black_2};
+    }
+    &.comment path {
+      stroke: ${({ theme }) => theme.color.black_2};
     }
   }
   & + & {
@@ -38,5 +43,6 @@ export const DetailWrap = styled.div`
   line-height: 28px;
   span {
     padding: 0 4px;
+    color: ${({ theme }) => theme.color.black_2};
   }
 `;
