@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { PageHeader, ScrollContainer } from 'components/Common';
 import { PostBodyUser, PostFooterBtn } from 'components/Post';
 import { ImageSlider } from 'components/FeedView';
@@ -6,8 +7,8 @@ import postData from 'data/posts';
 import * as S from './styles';
 
 export const FeedViewPage = () => {
-  const data = postData.latest[1];
-  // console.log(data);
+  const { id } = useParams();
+  const data = postData.latest.filter(data => data.id === Number(id))[0];
 
   return (
     <S.PageContainer>

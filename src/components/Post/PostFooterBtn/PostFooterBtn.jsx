@@ -8,7 +8,7 @@ import * as S from './styles';
 export const PostFooterBtn = ({ comments }) => {
   return (
     <S.FooterContainer comments={comments}>
-      <S.BtnContainer>
+      <S.BtnContainer onClick={e => e.stopPropagation()}>
         <S.BtnWrap>
           <button>
             <Icon Icon={Heart} size={17} />
