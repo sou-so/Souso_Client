@@ -21,7 +21,7 @@ function App() {
             <Route path="mypage" element={<P.MyPage />} />
 
             {/* 임시 Route */}
-            <Route path="view" element={<P.PostPage />} />
+            <Route path="view" element={<P.FeedViewPage />} />
           </Route>
         </Routes>
       </div>

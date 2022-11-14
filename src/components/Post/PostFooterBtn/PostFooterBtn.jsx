@@ -11,15 +11,15 @@ export const PostFooterBtn = ({ data }) => {
         <S.BtnWrap>
           <button>
             <Icon Icon={Heart} size={17} />
+            <span>공감하기</span>
           </button>
-          <span>공감하기</span>
         </S.BtnWrap>
 
         <S.BtnWrap>
           <button>
             <Icon Icon={scrap} size={12} />
+            <span>보관하기</span>
           </button>
-          <span>보관하기</span>
         </S.BtnWrap>
       </S.BtnContainer>
 

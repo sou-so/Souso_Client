@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ContentsContainer = styled.div`
-  padding: 0 5px 0;
   .swiper-silde {
     width: 292px;
   }
@@ -17,11 +16,6 @@ export const ContentsContainer = styled.div`
   .swiper-pagination-bullet-active {
     background-color: #343434;
   }
-`;
-
-export const PostText = styled.div`
-  font-size: 16px;
-  padding: 11px 0 10px;
 `;
 
 export const ThumbnailWrap = styled.div`

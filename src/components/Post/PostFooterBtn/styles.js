@@ -17,10 +17,15 @@ export const BtnWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  span {
-    font-size: 13px;
-    line-height: 19.5px;
-    padding-left: 4px;
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      font-size: 13px;
+      line-height: 19.5px;
+      padding-left: 4px;
+    }
   }
   & + & {
     margin-left: 11px;

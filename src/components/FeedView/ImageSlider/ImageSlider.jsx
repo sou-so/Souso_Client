@@ -12,13 +12,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-export const PostContents = ({ data }) => {
+export const ImageSlider = ({ data }) => {
   return (
     <S.ContentsContainer>
-      <S.PostText>
-        <p>{data.text}</p>
-      </S.PostText>
-
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         pagination={{ clickable: false }}

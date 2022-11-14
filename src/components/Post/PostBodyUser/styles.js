@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const WriterContainer = styled.div`
   display: flex;
-  padding: 20px 5px 0;
+  padding-top: 20px;
 `;
 
 export const UserInfo = styled.div`
@@ -23,4 +23,9 @@ export const UserInfo = styled.div`
       padding-left: 5px;
     }
   }
+`;
+
+export const PostText = styled.div`
+  font-size: 16px;
+  padding: 11px 0 10px;
 `;

@@ -6,7 +6,7 @@ export { TownAuthPage } from './TownAuthPage/TownAuthPage';
 export { FeedPage } from './FeedPage/FeedPage';
 
 // view
-export { PostPage } from './PostPage/PostPage';
+export { FeedViewPage } from './FeedViewPage/FeedViewPage';
 
 // meet tab
 export { MeetPage } from './MeetPage/MeetPage';
