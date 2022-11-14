@@ -2,7 +2,7 @@ import React from 'react';
 import { PageHeader, ScrollContainer } from 'components/Common';
 import * as S from './styles';
 import * as C from 'components/Post';
-import { ImageSlider } from 'components/FeedView';
+import { CommentBody, CommentForm, ImageSlider } from 'components/FeedView';
 import postData from 'data/posts';
 
 export const FeedViewPage = () => {
@@ -17,8 +17,10 @@ export const FeedViewPage = () => {
           <C.PostBodyUser data={data} />
           <ImageSlider data={data} />
           <C.PostFooterBtn data={data} />
+          <CommentBody data={data} />
         </S.ViewContainer>
       </ScrollContainer>
+      <CommentForm data={data} />
     </S.PageContainer>
   );
 };
