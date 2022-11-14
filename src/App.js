@@ -19,6 +19,9 @@ function App() {
             <Route path="meetup" element={<P.MeetPage />} />
             <Route path="chats" element={<P.ChatPage />} />
             <Route path="mypage" element={<P.MyPage />} />
+
+            {/* 임시 Route */}
+            <Route path="view" element={<P.FeedViewPage />} />
           </Route>
         </Routes>
       </div>
