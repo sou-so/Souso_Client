@@ -2,7 +2,7 @@ import React from 'react';
 import { PageHeader, ScrollContainer } from 'components/Common';
 import * as S from './styles';
 import * as C from 'components/Post';
-import * as V from 'components/FeedView';
+import { ImageSlider } from 'components/FeedView';
 import postData from 'data/posts';
 
 export const FeedViewPage = () => {
@@ -12,10 +12,10 @@ export const FeedViewPage = () => {
   return (
     <S.PageContainer>
       <PageHeader backTo="/" title={data.category} />
-      <ScrollContainer padding={5}>
+      <ScrollContainer padding={20}>
         <S.ViewContainer>
           <C.PostBodyUser data={data} />
-          <V.ImageSlider data={data} />
+          <ImageSlider data={data} />
           <C.PostFooterBtn data={data} />
         </S.ViewContainer>
       </ScrollContainer>

@@ -6,7 +6,6 @@ export const FooterContainer = styled.div`
   margin: 0px 5px;
   padding: 8px 0 12px;
   border-top: 1px solid rgba(217, 217, 217, 0.4);
-  border-bottom: 1px solid rgba(217, 217, 217, 0.4);
 `;
 
 export const BtnContainer = styled.div`

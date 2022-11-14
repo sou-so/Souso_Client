@@ -23,8 +23,8 @@ export const ImageSlider = ({ data }) => {
         width={292}
         height={292}
       >
-        {data.thumbnail.map(url => (
-          <SwiperSlide>
+        {data.thumbnail.map((url, i) => (
+          <SwiperSlide key={i}>
             <S.ThumbnailWrap>
               <img src={url} alt="thumbnail" />
             </S.ThumbnailWrap>
