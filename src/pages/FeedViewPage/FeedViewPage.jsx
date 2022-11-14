@@ -12,7 +12,7 @@ export const FeedViewPage = () => {
   return (
     <S.PageContainer>
       <PageHeader backTo="/" title={data.category} />
-      <ScrollContainer>
+      <ScrollContainer padding={5}>
         <S.ViewContainer>
           <C.PostBodyUser data={data} />
           <V.ImageSlider data={data} />
