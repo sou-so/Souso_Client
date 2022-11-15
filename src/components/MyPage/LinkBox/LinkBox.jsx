@@ -13,7 +13,7 @@ export const LinkBox = ({ icon, name, myposts, scraps, meets, linkTo }) => {
 
       {myposts && (
         <S.Count>
-          {myposts.post} <span>게시글</span>
+          {myposts.post} <span>글</span>
           {myposts.comment} <span>댓글</span>
         </S.Count>
       )}

@@ -20,7 +20,7 @@ export const ThumbTop = ({ postData, myPost }) => {
           </S.ButtonWrap>
         )}
         <PostBody data={postData} />
-        <PostFooterIcon data={postData} />
+        <PostFooterIcon data={postData} hasDate />
       </S.ContentWrap>
     </S.PostContainer>
   );
