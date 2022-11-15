@@ -1,12 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PostBody, PostFooterIcon } from 'components/Post';
 import * as S from './styles';
 
-export const ThumbRight = ({ postData, redirect }) => {
+export const ThumbRight = ({ postData }) => {
+  const navigate = useNavigate();
   const { id, thumbnail } = postData;
 
   return (
-    <S.PostContainer onClick={() => redirect(id)}>
+    <S.PostContainer onClick={() => navigate(`/feed/${id}`)}>
       <S.Contents>
         <PostBody data={postData} />
         <PostFooterIcon data={postData} />

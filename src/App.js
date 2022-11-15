@@ -11,9 +11,7 @@ function App() {
       <GlobalStyles />
       <div className="container">
         <Routes>
-          <Route path="login" element={<P.LoginPage />} />
-          <Route path="join" element={<P.JoinPage />} />
-          <Route path="mytown" element={<P.TownAuthPage />} />
+          {/* Navbar included */}
           <Route path="/" element={<AppLayout />}>
             <Route index element={<P.FeedPage />} />
             <Route path="meetup" element={<P.MeetPage />} />
@@ -21,7 +19,14 @@ function App() {
             <Route path="mypage" element={<P.MyPage />} />
           </Route>
 
+          {/* Navbar not included */}
+          <Route path="login" element={<P.LoginPage />} />
+          <Route path="join" element={<P.JoinPage />} />
+          <Route path="mytown" element={<P.TownAuthPage />} />
+
           <Route path="feed/:id" element={<P.FeedViewPage />} />
+          <Route path="mypage/posts" element={<P.MyPostPage />} />
+          <Route path="mypage/scraps" element={<P.MyScrapPage />} />
         </Routes>
       </div>
     </ThemeProvider>
