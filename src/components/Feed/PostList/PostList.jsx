@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PostLatest, PostPopular } from 'components/Feed';
+import { ThumbBottom, ThumbRight } from 'components/Post';
 import posts from 'data/posts';
 import * as S from './styles';
 
@@ -8,8 +8,9 @@ export const PostList = () => {
   const [current, setCurrent] = useState('최신글');
   const navigate = useNavigate();
 
-  const activeTab = e => setCurrent(e.target.id);
-  const viewPost = id => navigate(`/feed/${id}`);
+  const redirect = id => {
+    navigate(`/feed/${id}`);
+  };
 
   return (
     <S.PostListContainer>
@@ -18,7 +19,7 @@ export const PostList = () => {
           <button
             key={i}
             id={name}
-            onClick={activeTab}
+            onClick={e => setCurrent(e.target.id)}
             className={name === current ? 'active' : ''}
           >
             {name}
@@ -28,10 +29,10 @@ export const PostList = () => {
       <S.PostLists>
         {current === '인기글'
           ? posts.popular.map(post => (
-              <PostPopular key={post.id} postData={post} viewPost={viewPost} />
+              <ThumbRight key={post.id} postData={post} redirect={redirect} />
             ))
           : posts.latest.map(post => (
-              <PostLatest key={post.id} postData={post} viewPost={viewPost} />
+              <ThumbBottom key={post.id} postData={post} redirect={redirect} />
             ))}
       </S.PostLists>
     </S.PostListContainer>

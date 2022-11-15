@@ -1,23 +1,28 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { PageHeader, ScrollContainer } from 'components/Common';
-import * as S from './styles';
-import * as C from 'components/Post';
-import * as V from 'components/FeedView';
+import { PostBodyUser, PostFooterBtn } from 'components/Post';
+import { ImageSlider } from 'components/FeedView';
 import postData from 'data/posts';
+import * as S from './styles';
 
 export const FeedViewPage = () => {
-  const data = postData.latest[1];
-  // console.log(data);
+  const { id } = useParams();
+  const data = postData.latest.filter(data => data.id === Number(id))[0];
 
   return (
     <S.PageContainer>
       <PageHeader backTo="/" title={data.category} />
-      <ScrollContainer padding={5}>
-        <S.ViewContainer>
-          <C.PostBodyUser data={data} />
-          <V.ImageSlider data={data} />
-          <C.PostFooterBtn data={data} />
-        </S.ViewContainer>
+      <ScrollContainer>
+        <S.ContentSection>
+          <PostBodyUser data={data} view />
+          <ImageSlider data={data} />
+          <PostFooterBtn data={data} />
+        </S.ContentSection>
+
+        <S.CommentSection>
+          <div>댓글</div>
+        </S.CommentSection>
       </ScrollContainer>
     </S.PageContainer>
   );

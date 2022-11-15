@@ -39,10 +39,7 @@ export const FeedPage = () => {
         <Link to={'/join'}>
           <div>Join</div>
         </Link>
-        <Link to={'/view'}>
-          <div>피드 보기</div>
-        </Link>
-        <Link to={'/add'}>
+        <Link to={'/feed/add'}>
           <div>피드 추가</div>
         </Link>
       </S.TempLinks>

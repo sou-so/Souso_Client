@@ -14,11 +14,11 @@ html, body, #root {
   letter-spacing: -0.3px;
   height: 100%;
 }
-.container{
+#root > .container{
   width: 100%;
   max-width: 390px;
+  height: 100vh;
   margin: 0 auto;
-  height: 100%;
   background: #fff;
   position: relative;
   overflow-y: scroll;

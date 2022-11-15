@@ -16,12 +16,10 @@ function App() {
           <Route path="mytown" element={<P.TownAuthPage />} />
           <Route path="/" element={<AppLayout />}>
             <Route index element={<P.FeedPage />} />
+            <Route path="feed/:id" element={<P.FeedViewPage />} />
             <Route path="meetup" element={<P.MeetPage />} />
             <Route path="chats" element={<P.ChatPage />} />
             <Route path="mypage" element={<P.MyPage />} />
-
-            {/* 임시 Route */}
-            <Route path="view" element={<P.FeedViewPage />} />
           </Route>
         </Routes>
       </div>

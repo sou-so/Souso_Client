@@ -1,31 +1,44 @@
 import styled from 'styled-components';
 
-export const WriterContainer = styled.div`
+export const BodyContainer = styled.div``;
+
+export const PostUser = styled.div`
   display: flex;
-  padding-top: 20px;
+  align-items: center;
+  span {
+    margin-left: auto;
+  }
 `;
 
 export const UserInfo = styled.div`
   display: flex;
-  > p {
+  align-items: center;
+  .name {
     font-size: 16px;
-    line-height: 28px;
-    padding: 0 6px 0 11px;
+    padding: 0 8px 0 11px;
+    margin-bottom: 2px;
   }
-  > div {
-    display: flex;
+  span {
     font-size: 11px;
-    line-height: 28px;
-    p:first-child {
-      padding-right: 5px;
-    }
-    p:last-child {
-      padding-left: 5px;
+    color: ${({ theme }) => theme.color.black_2};
+    &.town {
+      position: relative;
+      padding-left: 7px;
+      margin-left: 7px;
+      &:before {
+        content: '';
+        width: 1px;
+        height: 10px;
+        left: 0;
+        top: 4px;
+        background: #bcbcbc;
+        position: absolute;
+      }
     }
   }
 `;
 
 export const PostText = styled.div`
-  font-size: 16px;
-  padding: 11px 0 10px;
+  font-size: 15px;
+  padding: 12px 0;
 `;

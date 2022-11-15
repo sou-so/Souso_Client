@@ -14,19 +14,28 @@
     {
       "id": 1,
       "category": "소소질문 ",
-      "text": "근처 운동하기 좋은 공원이나 산책로 추천해주세요",
+      "text": "근처 운동하기 좋은 공원이나 산책로 있나요? 저녁마다 만나서 같이 걷거나 배드민턴 치실 분 댓글 주세요. 배드민턴 채는 없으면 빌려드려요",
       "likes": 60,
       "comments": 13,
       "scraps": 56,
       "thumbnail": [
-        "https://mblogthumb-phinf.pstatic.net/20151222_12/9292totoro_1450758908896Tsldu_JPEG/IMG_20150706_153742.jpg?type=w800",
-        "https://mblogthumb-phinf.pstatic.net/20151222_12/9292totoro_1450758908896Tsldu_JPEG/IMG_20150706_153742.jpg?type=w800"
+        "https://walk.chosun.com/data/board/6/1653300209.jpg",
+        "http://ccimg.hellomarket.com/images/2021/item/01/18/16/5714490_168562_1.jpg?size=s6"
       ]
+    },
+    {
+      "id": 2,
+      "category": "동네소식",
+      "text": "오늘 교보문고에서 7시에 북토크 콘서트하네요. 유명한 작가님들 많이 온다하니 구경하러 가야겠어요",
+      "likes": 60,
+      "comments": 13,
+      "scraps": 56,
+      "thumbnail": []
     }
   ],
   "latest": [
     {
-      "id": 2,
+      "id": 0,
       "user": {
         "name": "다람",
         "age": "4학년",
@@ -40,19 +49,31 @@
       ]
     },
     {
-      "id": 3,
+      "id": 1,
       "user": {
         "name": "조이",
         "age": "5학년",
         "profile_img": ""
       },
       "category": "소소질문",
-      "text": "근처 운동하기 좋은 공원이나 산책로 추천해주세요",
+      "text": "근처 운동하기 좋은 공원이나 산책로 있나요? 저녁마다 만나서 같이 걷거나 배드민턴 치실 분 댓글 주세요. 배드민턴 채는 없으면 빌려드릴게요요. 평일 주말 상관없이 운동하실 분이면 좋겠습니다",
       "comments": 2,
       "thumbnail": [
-        "https://mblogthumb-phinf.pstatic.net/20151222_12/9292totoro_1450758908896Tsldu_JPEG/IMG_20150706_153742.jpg?type=w800",
-        "https://mblogthumb-phinf.pstatic.net/20151222_12/9292totoro_1450758908896Tsldu_JPEG/IMG_20150706_153742.jpg?type=w800"
+        "https://walk.chosun.com/data/board/6/1653300209.jpg",
+        "http://ccimg.hellomarket.com/images/2021/item/01/18/16/5714490_168562_1.jpg?size=s6"
       ]
+    },
+    {
+      "id": 2,
+      "user": {
+        "name": "들국화",
+        "age": "5학년",
+        "profile_img": "https://www.incheonin.com/news/photo/202109/82742_112092_3716.jpg"
+      },
+      "category": "동네소식",
+      "text": "오늘 교보문고에서 7시에 북토크 콘서트하네요. 유명한 작가님들 많이 온다하니 구경하러 가야겠어요",
+      "comments": 13,
+      "thumbnail": []
     }
   ]
 }
