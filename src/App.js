@@ -21,8 +21,7 @@ function App() {
             <Route path="mypage" element={<P.MyPage />} />
           </Route>
 
-          {/* 임시 Route */}
-          <Route path="view" element={<P.FeedViewPage />} />
+          <Route path="feed/:id" element={<P.FeedViewPage />} />
         </Routes>
       </div>
     </ThemeProvider>
