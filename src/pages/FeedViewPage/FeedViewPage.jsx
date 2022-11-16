@@ -4,11 +4,13 @@ import { PageHeader, ScrollContainer } from 'components/Common';
 import { CommentBody, CommentForm, ImageSlider } from 'components/FeedView';
 import { PostBodyUser, PostFooterBtn } from 'components/Post';
 import postData from 'data/posts';
+import commentData from 'data/comments';
 import * as S from './styles';
 
 export const FeedViewPage = () => {
   const { id } = useParams();
   const data = postData.latest.filter(data => data.id === Number(id))[0];
+  const comments = commentData.post_1;
 
   return (
     <S.PageContainer>
@@ -21,7 +23,7 @@ export const FeedViewPage = () => {
         </S.ContentSection>
 
         <S.CommentSection>
-          <CommentBody data={data} />
+          <CommentBody data={data} comments={comments} />
         </S.CommentSection>
       </ScrollContainer>
 

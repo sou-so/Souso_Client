@@ -4,12 +4,14 @@ export const CommentContainer = styled.div``;
 
 export const CommentCount = styled.div`
   font-size: 15px;
-  padding: 0 0 12px 10px;
+  padding: 0 10px;
 `;
 
 export const CommentWrap = styled.div``;
 
 export const OriginComment = styled.div`
+  padding-top: 14px;
+  border-bottom: 1px solid #d9d9d9;
   .comment_user {
     display: flex;
     align-items: center;
@@ -28,7 +30,7 @@ export const OriginComment = styled.div`
   .comment_footer {
     display: flex;
     justify-content: space-between;
-    padding: 0 10px 0 12px;
+    padding: 0 10px 18px 12px;
     button {
       display: flex;
       align-items: center;
