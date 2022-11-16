@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Icon, ProfileImage } from 'components/Common';
 import { ReactComponent as comment } from 'assets/icons/comment.svg';
 import * as S from './styles';
