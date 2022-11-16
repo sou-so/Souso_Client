@@ -1,5 +1,6 @@
 import React from 'react';
-import { ProfileImage } from 'components/Common';
+import { Icon, ProfileImage } from 'components/Common';
+import { ReactComponent as Plane } from 'assets/icons/airplane.svg';
 import * as S from './styles';
 
 export const CommentForm = ({ data }) => {
@@ -7,11 +8,16 @@ export const CommentForm = ({ data }) => {
 
   return (
     <S.InputContainer>
-      <ProfileImage size={31} url={user.profile_img} />
       <S.FormContainer>
-        <S.CommentInput placeholder="댓글을 입력해주세요" />
-        <S.InputBtn>버튼</S.InputBtn>
+        <ProfileImage size={40} url={user.profile_img} />
+
+        <S.Input placeholder="댓글을 입력해주세요" />
+        <S.SendBtn>
+          <Icon Icon={Plane} size={22} />
+        </S.SendBtn>
       </S.FormContainer>
+
+      <S.DragBar />
     </S.InputContainer>
   );
 };
