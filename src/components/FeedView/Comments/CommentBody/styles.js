@@ -12,6 +12,9 @@ export const CommentWrap = styled.div``;
 export const OriginComment = styled.div`
   padding-top: 14px;
   border-bottom: 1px solid #d9d9d9;
+  &:last-child {
+    padding-bottom: 10px;
+  }
   .comment_user {
     display: flex;
     align-items: center;
@@ -30,7 +33,7 @@ export const OriginComment = styled.div`
   .comment_footer {
     display: flex;
     justify-content: space-between;
-    padding: 0 10px 18px 12px;
+    padding: 2px 10px 18px 12px;
     button {
       display: flex;
       align-items: center;
@@ -52,4 +55,12 @@ export const OriginComment = styled.div`
   }
 `;
 
-export const Recomment = styled.div``;
+export const RecommentWrap = styled.div`
+  margin-left: 33px;
+  padding-top: 14px;
+  border-top: 1px solid #d9d9d9;
+`;
+
+export const Recomment = styled.div`
+  margin-left: 15px;
+`;
