@@ -3,14 +3,16 @@ import { Icon, ProfileImage } from 'components/Common';
 import { ReactComponent as comment } from 'assets/icons/comment.svg';
 import * as S from './styles';
 
-export const CommentBody = ({ data, comments }) => {
+export const CommentBody = ({ data }) => {
+  const { comments } = data;
+
   return (
     <S.CommentContainer>
-      <S.CommentCount>댓글 ({data.comments})</S.CommentCount>
+      <S.CommentCount>댓글 ({comments.count})</S.CommentCount>
       <S.CommentWrap>
-        {comments.length > 0 &&
-          comments.map(data => (
-            <S.OriginComment key={data.id}>
+        {comments.contents.length > 0 &&
+          comments.contents.map((data, i) => (
+            <S.OriginComment key={i}>
               <div className="comment_user">
                 <ProfileImage size={40} url={data.user.profile_img} />
                 <p className="nickname">{data.user.name}</p>

@@ -43,7 +43,60 @@
       },
       "category": "소소맛집",
       "text": "동네에 모임하기 좋은 카페 추천해요. OO카페 디저트도 맛있고, 음료도 좋네요~ 큰 테이블도 있어서 학부모 여러 명이 모임하기 좋았어요.",
-      "comments": 2,
+      "comments": {
+        "count": 5,
+        "contents": [
+          {
+            "id": 0,
+            "user": {
+              "name": "토끼세마리",
+              "profile_img": ""
+            },
+            "text": "카페 찾고있었는데 좋네요! 조만간 한 번 가봐야겠어요~ 추천 디저트 있나요?",
+            "time": 12,
+            "re_comment": [
+              {
+                "id": 0,
+                "user": {
+                  "name": "다람",
+                  "profile_img": ""
+                },
+                "text": "스콘 맛있게 먹었어요!",
+                "time": 7
+              },
+              {
+                "id": 1,
+                "user": {
+                  "name": "토끼세마리",
+                  "profile_img": ""
+                },
+                "text": "감사합니다!",
+                "time": 5
+              }
+            ]
+          },
+          {
+            "id": 1,
+            "user": {
+              "name": "넘블",
+              "profile_img": ""
+            },
+            "text": "정말 좋아보여요~! 음료는 뭐가 맛있나요?",
+            "time": 8,
+            "re_comment": [
+              {
+                "id": 0,
+                "user": {
+                  "name": "다람",
+                  "profile_img": ""
+                },
+                "text": "저는 그냥 아메리카노 마셨는데 괜찮았어요^^",
+                "time": 3
+              }
+            ]
+          }
+        ]
+      },
       "thumbnail": [
         "https://mblogthumb-phinf.pstatic.net/20151222_12/9292totoro_1450758908896Tsldu_JPEG/IMG_20150706_153742.jpg?type=w800"
       ]
@@ -57,7 +110,31 @@
       },
       "category": "소소질문",
       "text": "근처 운동하기 좋은 공원이나 산책로 있나요? 저녁마다 만나서 같이 걷거나 배드민턴 치실 분 댓글 주세요. 배드민턴 채는 없으면 빌려드릴게요요. 평일 주말 상관없이 운동하실 분이면 좋겠습니다",
-      "comments": 2,
+      "comments": {
+        "count": 2,
+        "contents": [
+          {
+            "id": 0,
+            "user": {
+              "name": "프로다이어터",
+              "profile_img": ""
+            },
+            "text": "저도 같이 운동할 사람 찾는데 같이 해요! 역 근처에 공원 있어요.",
+            "time": 9,
+            "re_comment": [
+              {
+                "id": 0,
+                "user": {
+                  "name": "조이",
+                  "profile_img": ""
+                },
+                "text": "오 정말요? 그러면 채팅으로 연락드릴게요 ^^",
+                "time": 1
+              }
+            ]
+          }
+        ]
+      },
       "thumbnail": [
         "https://walk.chosun.com/data/board/6/1653300209.jpg",
         "http://ccimg.hellomarket.com/images/2021/item/01/18/16/5714490_168562_1.jpg?size=s6"
@@ -72,7 +149,41 @@
       },
       "category": "동네소식",
       "text": "오늘 교보문고에서 7시에 북토크 콘서트하네요. 유명한 작가님들 많이 온다하니 구경하러 가야겠어요",
-      "comments": 13,
+      "comments": {
+        "count": 3,
+        "contents": [
+          {
+            "id": 0,
+            "user": {
+              "name": "토끼세마리",
+              "profile_img": ""
+            },
+            "text": "혹시 작가님 정보는 어디서 얻을 수 있나요?",
+            "time": 12,
+            "re_comment": [
+              {
+                "id": 0,
+                "user": {
+                  "name": "들국화",
+                  "profile_img": "https://www.incheonin.com/news/photo/202109/82742_112092_3716.jpg"
+                },
+                "text": "교보문고 홈페이지에 나와있어요 :-)",
+                "time": 7
+              }
+            ]
+          },
+          {
+            "id": 1,
+            "user": {
+              "name": "토끼세마리",
+              "profile_img": ""
+            },
+            "text": "좋은 정보 감사합니다!",
+            "time": 12,
+            "re_comment": []
+          }
+        ]
+      },
       "thumbnail": []
     }
   ]
