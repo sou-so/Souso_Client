@@ -21,6 +21,8 @@ function App() {
             <Route path="chats" element={<P.ChatPage />} />
             <Route path="mypage" element={<P.MyPage />} />
           </Route>
+
+          <Route path="feed/:id" element={<P.FeedViewPage />} />
         </Routes>
       </div>
     </ThemeProvider>

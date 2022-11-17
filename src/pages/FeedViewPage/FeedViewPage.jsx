@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { PageHeader, ScrollContainer } from 'components/Common';
+import { CommentBody, CommentForm, ImageSlider } from 'components/FeedView';
 import { PostBodyUser, PostFooterBtn } from 'components/Post';
-import { ImageSlider } from 'components/FeedView';
 import postData from 'data/posts';
 import * as S from './styles';
 
@@ -21,9 +21,11 @@ export const FeedViewPage = () => {
         </S.ContentSection>
 
         <S.CommentSection>
-          <div>댓글</div>
+          <CommentBody data={data} />
         </S.CommentSection>
       </ScrollContainer>
+
+      <CommentForm data={data} />
     </S.PageContainer>
   );
 };

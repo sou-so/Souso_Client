@@ -1,2 +1,3 @@
 export { ImageSlider } from './ImageSlider/ImageSlider';
-export { Comments } from './Comments/Comments';
+export { CommentBody } from './Comments/CommentBody/CommentBody';
+export { CommentForm } from './Comments/CommentForm/CommentForm';
