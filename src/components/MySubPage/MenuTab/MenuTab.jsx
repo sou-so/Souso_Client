@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './styles';
 
-export const MenuTab = ({ list }) => {
-  const [current, setCurrent] = useState(list[0]);
+export const MenuTab = ({ list, active, setActive }) => {
   const isFull = list.length === 2;
 
   return (
@@ -11,8 +10,8 @@ export const MenuTab = ({ list }) => {
         <li
           key={i}
           id={name}
-          onClick={e => setCurrent(e.target.id)}
-          className={name === current ? 'active' : ''}
+          onClick={e => setActive(e.target.id)}
+          className={name === active ? 'active' : ''}
         >
           {name}
         </li>

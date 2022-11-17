@@ -1,10 +1,19 @@
 import styled from 'styled-components';
 
-export const ButtonContainer = styled.ul`
+export const ButtonContainer = styled.div`
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+`;
+
+export const Button = styled.ul`
   display: inline-block;
   border-radius: 4px;
   width: 80px;
   background: ${({ theme }) => theme.color.main};
+  position: absolute;
+  right: -5px;
+  z-index: 10;
 
   li {
     display: flex;

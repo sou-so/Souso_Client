@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PageHeader, ScrollContainer } from 'components/Common';
-import { MenuTab, SearchButton } from 'components/MySubPage';
-import { ThumbTop } from 'components/Post';
-import posts from 'data/posts';
+import {
+  MyComments,
+  MenuTab,
+  SearchButton,
+  MyPosts
+} from 'components/MySubPage';
 import * as S from './styles';
 
 export const MyPostPage = () => {
   const list = ['게시글', '댓글'];
+  const [active, setActive] = useState(list[0]);
 
   return (
     <S.PageContainer>
       <PageHeader title="나의 글" backTo="/mypage" />
       <SearchButton />
-      <MenuTab list={list} />
+      <MenuTab list={list} active={active} setActive={setActive} />
       <ScrollContainer>
-        {posts.popular.map(post => (
-          <ThumbTop key={post.id} postData={post} myPost />
-        ))}
+        {active === '게시글' ? <MyPosts /> : <MyComments />}
       </ScrollContainer>
     </S.PageContainer>
   );

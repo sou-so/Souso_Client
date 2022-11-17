@@ -1,16 +1,12 @@
 import styled from 'styled-components';
 
-export const PostContainer = styled.div`
+export const PostContainer = styled.li`
   border-radius: 12px;
-  margin: 0 15px;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   cursor: pointer;
   & + & {
     margin-top: 15px;
-  }
-  &:last-child {
-    margin-bottom: 50px;
   }
 `;
 
@@ -25,17 +21,4 @@ export const Thumbnail = styled.img`
 export const ContentWrap = styled.div`
   position: relative;
   margin: 15px;
-`;
-
-export const ButtonWrap = styled.div`
-  & > .icon {
-    position: absolute;
-    right: 5px;
-    top: 0;
-  }
-  ul {
-    position: absolute;
-    right: 0;
-    top: 20px;
-  }
 `;

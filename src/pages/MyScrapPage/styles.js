@@ -8,3 +8,7 @@ export const PageContainer = styled.div`
     height: calc(100% - 105px);
   }
 `;
+
+export const ScrapList = styled.div`
+  padding: 0 15px 30px;
+`;
