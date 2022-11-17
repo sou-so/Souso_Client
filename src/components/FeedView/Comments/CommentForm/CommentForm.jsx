@@ -13,7 +13,7 @@ export const CommentForm = ({ data }) => {
 
         <S.Input placeholder="댓글을 입력해주세요" />
         <S.SendBtn>
-          <Icon Icon={Plane} size={22} />
+          <Icon Icon={Plane} size={22} color={'#f4f4f4'} />
         </S.SendBtn>
       </S.FormContainer>
 
