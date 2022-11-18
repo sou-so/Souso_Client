@@ -1,0 +1,39 @@
+{
+  "meetups": [
+    {
+      "date": "Wed Nov 09 2022 17:20:33 GMT+0900",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png",
+      "name": "소모임1",
+      "keywords": ["키워드1", "키워드2"],
+      "isJoined": true
+    },
+    {
+      "date": "Fri Nov 11 2022 17:20:33 GMT+0900",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png",
+      "name": "소모임2",
+      "keywords": ["키워드1", "키워드2"],
+      "isJoined": false
+    },
+    {
+      "date": "Fri Nov 11 2022 17:20:33 GMT+0900",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png",
+      "name": "소모임3",
+      "keywords": ["키워드1", "키워드2"],
+      "isJoined": true
+    },
+    {
+      "date": "Sun Nov 13 2022 17:20:33 GMT+0900",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png",
+      "name": "소모임4",
+      "keywords": ["키워드1", "키워드2"],
+      "isJoined": true
+    },
+    {
+      "date": "Mon Nov 14 2022 17:20:33 GMT+0900",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png",
+      "name": "소모임5",
+      "keywords": ["키워드1", "키워드2"],
+      "isJoined": true
+    }
+  ]
+}

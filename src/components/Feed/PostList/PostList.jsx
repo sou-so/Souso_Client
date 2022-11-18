@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ThumbBottom, ThumbRight } from 'components/Post';
 import posts from 'data/posts';
 import * as S from './styles';
 
 export const PostList = () => {
   const [current, setCurrent] = useState('최신글');
-  const navigate = useNavigate();
-
-  const redirect = id => {
-    navigate(`/feed/${id}`);
-  };
 
   return (
     <S.PostListContainer>
@@ -29,10 +23,10 @@ export const PostList = () => {
       <S.PostLists>
         {current === '인기글'
           ? posts.popular.map(post => (
-              <ThumbRight key={post.id} postData={post} redirect={redirect} />
+              <ThumbRight key={post.id} postData={post} />
             ))
           : posts.latest.map(post => (
-              <ThumbBottom key={post.id} postData={post} redirect={redirect} />
+              <ThumbBottom key={post.id} postData={post} />
             ))}
       </S.PostLists>
     </S.PostListContainer>

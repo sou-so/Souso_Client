@@ -21,7 +21,7 @@ html, body, #root {
   margin: 0 auto;
   background: #fff;
   position: relative;
-  overflow-y: scroll;
+  overflow: hidden;
 }
 h1,
 h2,

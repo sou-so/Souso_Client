@@ -18,8 +18,8 @@ export const Thumbnail = styled.div`
   }
 
   &.multi img {
-    width: 180px;
-    height: 180px;
+    width: 50%;
+    height: 170px;
     &:first-child {
       margin-right: 5px;
     }
