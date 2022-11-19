@@ -25,6 +25,7 @@ function App() {
           <Route path="mytown" element={<P.TownAuthPage />} />
 
           <Route path="feed/:id" element={<P.FeedViewPage />} />
+          <Route path="feed/add" element={<P.FeedAddPage />} />
           <Route path="mypage/posts" element={<P.MyPostPage />} />
           <Route path="mypage/scraps" element={<P.MyScrapPage />} />
         </Routes>

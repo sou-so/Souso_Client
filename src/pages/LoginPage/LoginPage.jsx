@@ -9,7 +9,7 @@ export const LoginPage = () => {
     <S.PageContainer>
       <S.AppLogo>
         <p>이웃과의 소통</p>
-        <h1>넘블 커뮤니티</h1>
+        <h1>소소</h1>
         <img src={logoImage} alt="logo" />
       </S.AppLogo>
 

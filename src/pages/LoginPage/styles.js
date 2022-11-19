@@ -22,7 +22,7 @@ export const AppLogo = styled.div`
     font-weight: 900;
   }
   img {
-    width: 60px;
+    width: 90px;
   }
 `;
 

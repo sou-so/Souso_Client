@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import banner from 'assets/images/banner_img.png';
+import banner from 'assets/images/logo.png';
 import * as S from './styles';
 
 export const FeedBanner = ({ user }) => {

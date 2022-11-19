@@ -9,7 +9,9 @@ export const JoinPage = () => {
       <PageHeader backTo="/" title="회원가입" />
       <S.PageContainer>
         <S.Description>
-          <p>앱이름 가입하고</p>
+          <p>
+            <span>소소</span>에 가입하고
+          </p>
           <p>동네 이웃과 소통해요</p>
         </S.Description>
         <JoinForm />
