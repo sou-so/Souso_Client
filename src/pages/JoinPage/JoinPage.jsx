@@ -7,7 +7,7 @@ export const JoinPage = () => {
   return (
     <>
       <PageHeader backTo="/" title="회원가입" />
-      <S.PageContainer>
+      <S.BodyContainer>
         <S.Description>
           <p>
             <span>소소</span>에 가입하고
@@ -15,7 +15,7 @@ export const JoinPage = () => {
           <p>동네 이웃과 소통해요</p>
         </S.Description>
         <JoinForm />
-      </S.PageContainer>
+      </S.BodyContainer>
     </>
   );
 };

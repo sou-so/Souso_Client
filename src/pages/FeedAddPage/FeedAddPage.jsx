@@ -1,11 +1,16 @@
 import React from 'react';
 import { PageHeader } from 'components/Common';
+import { ContentsBox, SelectedCategory } from 'components/FeedAdd';
 import * as S from './styles';
 
 export const FeedAddPage = () => {
   return (
-    <S.PageContainer>
+    <>
       <PageHeader backTo="/" title={'게시글 작성'} />
-    </S.PageContainer>
+      <S.BodyContainer>
+        <SelectedCategory />
+        <ContentsBox />
+      </S.BodyContainer>
+    </>
   );
 };

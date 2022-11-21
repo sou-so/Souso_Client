@@ -44,7 +44,6 @@ export const JoinForm = () => {
       [e.target.name]: e.target.value
     });
   };
-  console.log('account', account); // 확인용
 
   return (
     <S.FormContainer onSubmit={handleSubmit}>
