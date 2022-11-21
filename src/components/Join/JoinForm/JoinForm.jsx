@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
+import { TermsModal } from 'components/Join';
+import { useForm } from 'hooks/useForm';
 import * as S from './styles';
-import { TermsModal } from '../TermsModal/TermsModal';
 
 export const JoinForm = () => {
-  const [account, setAccount] = useState({
-    userName: '',
+  const { values, handleChange } = useForm({
+    name: '',
     nickname: '',
-    phone: '',
+    phone_number: '',
     email: '',
-    password: ''
+    password: '',
+    password2: ''
   });
+
+  const { name, nickname, phone_number, email, password, password2 } = values;
+
   const [termsChecked, setTermsChecked] = useState(false);
   const [termsModalOpen, setTermsModalOpen] = useState(false);
 
   const handleSubmit = e => {
-    // 아직 미구현 상태입니다.
     e.preventDefault();
   };
 
@@ -38,51 +42,51 @@ export const JoinForm = () => {
     }
   };
 
-  const onChangeAccount = e => {
-    setAccount({
-      ...account,
-      [e.target.name]: e.target.value
-    });
-  };
-  console.log('account', account); // 확인용
-
   return (
     <S.FormContainer onSubmit={handleSubmit}>
       <S.FieldWrap>
         <S.InputWrap>
           <S.Input
-            name="userName"
+            type="text"
+            name="name"
+            value={name}
             placeholder="이름"
-            onChange={onChangeAccount}
+            onChange={handleChange}
           />
         </S.InputWrap>
         <S.InputWrap>
           <S.Input
+            type="text"
             name="nickname"
+            value={nickname}
             placeholder="닉네임"
-            onChange={onChangeAccount}
+            onChange={handleChange}
           />
           <S.InputButton onClick={handleCheck}>중복 확인</S.InputButton>
         </S.InputWrap>
         <S.InputWrap>
           <S.Input
-            name="phone"
+            type="text"
+            name="phone_number"
+            value={phone_number}
             placeholder="핸드폰 번호"
-            onChange={onChangeAccount}
+            onChange={handleChange}
           />
         </S.InputWrap>
       </S.FieldWrap>
 
       <S.FieldWrap
         className={`stepStyle ${
-          account.userName && account.nickname && account.phone && 'showStep'
+          name && nickname && phone_number && 'showStep'
         }`}
       >
         <S.InputWrap>
           <S.Input
+            type="email"
             name="email"
+            value={email}
             placeholder="numble@example.com"
-            onChange={onChangeAccount}
+            onChange={handleChange}
           />
           <S.InputButton onClick={handleCheck}>인증번호 발송</S.InputButton>
         </S.InputWrap>
@@ -92,17 +96,24 @@ export const JoinForm = () => {
         </S.InputWrap>
       </S.FieldWrap>
 
-      <S.FieldWrap className={`stepStyle ${account.email && 'showStep'}`}>
+      <S.FieldWrap className={`stepStyle ${email && 'showStep'}`}>
         <S.InputWrap>
           <S.Input
             type="password"
             name="password"
+            value={password}
             placeholder="비밀번호"
-            onChange={onChangeAccount}
+            onChange={handleChange}
           />
         </S.InputWrap>
         <S.InputWrap>
-          <S.Input type="password" placeholder="비밀번호 확인" />
+          <S.Input
+            type="password"
+            name="password2"
+            value={password2}
+            placeholder="비밀번호 확인"
+            onChange={handleChange}
+          />
         </S.InputWrap>
       </S.FieldWrap>
 
