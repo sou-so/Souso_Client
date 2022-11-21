@@ -36,16 +36,21 @@ export const Input = styled.input`
   ${input}
 `;
 
+export const Error = styled.span`
+  font-size: 12px;
+  margin-left: 5px;
+  color: ${({ theme }) => theme.color.red};
+`;
+
 export const InputButton = styled.button`
   font-size: 10px;
   padding: 3px;
   position: absolute;
-  top: 50%;
+  top: 7px;
   right: 10px;
-  transform: translateY(-50%);
   color: #48b0d0;
   &.done {
-    color: red;
+    color: ${({ theme }) => theme.color.red};
   }
 `;
 
