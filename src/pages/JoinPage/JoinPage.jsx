@@ -5,9 +5,9 @@ import * as S from './styles';
 
 export const JoinPage = () => {
   return (
-    <>
+    <S.PageContainer>
       <PageHeader backTo="/" title="회원가입" />
-      <S.PageContainer>
+      <section>
         <S.Description>
           <p>
             <span>소소</span>에 가입하고
@@ -15,7 +15,7 @@ export const JoinPage = () => {
           <p>동네 이웃과 소통해요</p>
         </S.Description>
         <JoinForm />
-      </S.PageContainer>
-    </>
+      </section>
+    </S.PageContainer>
   );
 };

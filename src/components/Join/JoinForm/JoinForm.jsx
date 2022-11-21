@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { TermsModal } from 'components/Join';
+import { TermsButton } from 'components/Join';
 import { useForm } from 'hooks/useForm';
 import * as S from './styles';
 
 export const JoinForm = () => {
+  const [isUnique, setIsUnique] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+  const [isAgreed, setIsAgreed] = useState(false);
+
   const { values, handleChange } = useForm({
     name: '',
     nickname: '',
@@ -15,31 +19,18 @@ export const JoinForm = () => {
 
   const { name, nickname, phone_number, email, password, password2 } = values;
 
-  const [termsChecked, setTermsChecked] = useState(false);
-  const [termsModalOpen, setTermsModalOpen] = useState(false);
-
   const handleSubmit = e => {
     e.preventDefault();
   };
 
-  const handleCheck = e => {
-    // 아직 미구현 상태입니다.
-    e.preventDefault();
+  const checkDuplicate = () => {
+    // 중복 확인 완료 시
+    setIsUnique(true);
   };
 
-  const termsCheckEvent = () => {
-    if (termsChecked === false) {
-      setTermsChecked(true);
-    } else {
-      setTermsChecked(false);
-    }
-  };
-  const termsViewEvent = () => {
-    if (termsModalOpen === false) {
-      setTermsModalOpen(true);
-    } else {
-      setTermsModalOpen(false);
-    }
+  const sendVerification = () => {
+    // 휴대폰 인증 완료 시
+    setIsVerified(true);
   };
 
   return (
@@ -62,7 +53,12 @@ export const JoinForm = () => {
             placeholder="닉네임"
             onChange={handleChange}
           />
-          <S.InputButton onClick={handleCheck}>중복 확인</S.InputButton>
+          <S.InputButton
+            onClick={checkDuplicate}
+            className={isUnique ? 'done' : ''}
+          >
+            {isUnique ? '사용 가능' : '중복 확인'}
+          </S.InputButton>
         </S.InputWrap>
         <S.InputWrap>
           <S.Input
@@ -72,13 +68,17 @@ export const JoinForm = () => {
             placeholder="핸드폰 번호"
             onChange={handleChange}
           />
+          <S.InputButton
+            onClick={sendVerification}
+            className={isVerified ? 'done' : ''}
+          >
+            {isVerified ? '인증 성공' : '인증번호 발송'}
+          </S.InputButton>
         </S.InputWrap>
       </S.FieldWrap>
 
       <S.FieldWrap
-        className={`stepStyle ${
-          name && nickname && phone_number && 'showStep'
-        }`}
+        className={`stepStyle ${name && isUnique && isVerified && 'showStep'}`}
       >
         <S.InputWrap>
           <S.Input
@@ -88,15 +88,7 @@ export const JoinForm = () => {
             placeholder="numble@example.com"
             onChange={handleChange}
           />
-          <S.InputButton onClick={handleCheck}>인증번호 발송</S.InputButton>
         </S.InputWrap>
-        <S.InputWrap>
-          <S.Input placeholder="인증번호" />
-          <S.InputButton>인증확인</S.InputButton>
-        </S.InputWrap>
-      </S.FieldWrap>
-
-      <S.FieldWrap className={`stepStyle ${email && 'showStep'}`}>
         <S.InputWrap>
           <S.Input
             type="password"
@@ -117,23 +109,12 @@ export const JoinForm = () => {
         </S.InputWrap>
       </S.FieldWrap>
 
-      <S.TermsWarp>
-        <div>
-          <S.TermsInput
-            type="checkbox"
-            checked={termsChecked}
-            onChange={termsCheckEvent}
-          />
-          <span>앱이름 가입약관에 모두 동의합니다.</span>
-        </div>
-        <S.TermsBtn onClick={termsViewEvent}>확인하기</S.TermsBtn>
-      </S.TermsWarp>
-
-      {termsModalOpen && <TermsModal closeModal={termsViewEvent} />}
-
-      <S.ButtonWarp>
-        <S.JoinButton>가입하기</S.JoinButton>
-      </S.ButtonWarp>
+      <S.Submit>
+        <TermsButton isAgreed={isAgreed} setIsAgreed={setIsAgreed} />
+        <S.JoinButton type="submit" className={!isAgreed ? 'disabled' : ''}>
+          가입하기
+        </S.JoinButton>
+      </S.Submit>
     </S.FormContainer>
   );
 };

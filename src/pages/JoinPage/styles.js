@@ -3,8 +3,14 @@ import styled from 'styled-components';
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 ${({ theme }) => theme.style.edge_padding};
-  height: calc(100% - ${({ theme }) => theme.style.header_height});
+  height: 100%;
+  section {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    flex: 1;
+    overflow-y: scroll;
+  }
 `;
 
 export const Description = styled.div`
