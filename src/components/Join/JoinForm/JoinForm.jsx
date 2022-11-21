@@ -3,7 +3,7 @@ import { TermsButton } from 'components/Join';
 import { useForm } from 'hooks/useForm';
 import * as S from './styles';
 
-export const JoinForm = () => {
+export const JoinForm = ({ mutate }) => {
   const [isUnique, setIsUnique] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [isAgreed, setIsAgreed] = useState(false);
@@ -11,6 +11,7 @@ export const JoinForm = () => {
   const { values, handleChange } = useForm({
     name: '',
     nickname: '',
+    birth: '19991114',
     phone_number: '',
     email: '',
     password: '',
@@ -21,6 +22,8 @@ export const JoinForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    // 모든 조건 완료 시
+    mutate(values);
   };
 
   const checkDuplicate = () => {
@@ -111,7 +114,11 @@ export const JoinForm = () => {
 
       <S.Submit>
         <TermsButton isAgreed={isAgreed} setIsAgreed={setIsAgreed} />
-        <S.JoinButton type="submit" className={!isAgreed ? 'disabled' : ''}>
+        <S.JoinButton
+          type="submit"
+          disabled={!isAgreed}
+          className={!isAgreed ? 'disabled' : ''}
+        >
           가입하기
         </S.JoinButton>
       </S.Submit>
