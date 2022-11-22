@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Category, ScrollContainer } from 'components/Common';
 import * as C from 'components/Feed';
 import * as S from './styles';
@@ -7,14 +7,6 @@ import * as S from './styles';
 const user = 'joy';
 
 export const FeedPage = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!user) {
-      navigate('/login');
-    }
-  });
-
   return (
     <S.PageContainer>
       <C.FeedHeader />

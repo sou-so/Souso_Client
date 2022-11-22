@@ -16,16 +16,11 @@ export const Input = styled.input`
   ${input}
 `;
 
-export const ButtonWrap = styled.div`
-  width: 100%;
-  text-align: center;
-  margin-top: 25px;
-`;
-
 export const LoginButton = styled.button`
   ${button}
+  margin-top: 25px;
   &.disabled {
-    border: ${({ theme }) => theme.style.border_main};
+    outline: ${({ theme }) => theme.style.border_main};
     background: transparent;
     color: ${({ theme }) => theme.color.black_1};
     font-weight: 500;

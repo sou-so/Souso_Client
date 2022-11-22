@@ -1,30 +1,24 @@
 import React, { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { Navbar } from 'components/Common';
 import { authToken } from 'utils/authToken';
 import styled from 'styled-components';
 
-export const AppLayout = ({ navbar }) => {
+export const AuthLayout = () => {
   const user = authToken.getToken();
   const navigate = useNavigate();
 
+  // TODO -- 페이지 강제이동 시 깜빡임 발생
   useEffect(() => {
-    if (!user) navigate('/login');
+    if (user) navigate('/');
   }, [user, navigate]);
 
   return (
     <AppContainer>
       <Outlet />
-      {navbar && <Navbar />}
     </AppContainer>
   );
 };
 
-const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+export const AppContainer = styled.div`
   height: 100%;
-  & > *:first-child {
-    flex: 1;
-  }
 `;

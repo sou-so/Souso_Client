@@ -12,7 +12,11 @@ export const AppLogo = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  flex: 1;
+  height: 400px;
+  img {
+    width: 75px;
+    margin-bottom: 10px;
+  }
   p {
     letter-spacing: -1px;
     font-weight: 400;
@@ -21,23 +25,18 @@ export const AppLogo = styled.div`
     font-size: ${({ theme }) => theme.font.lg};
     font-weight: 900;
   }
-  img {
-    width: 90px;
-  }
 `;
 
 export const LinkTo = styled.ul`
   width: 100%;
-  margin: 10px 0 65px;
-
+  margin-top: 20px;
   li {
     text-align: center;
     font-size: ${({ theme }) => theme.font.xs};
-    &:last-child {
-      margin-top: 30px;
-    }
   }
-
+  li + li {
+    margin-top: 30px;
+  }
   a {
     position: relative;
     margin-left: 5px;
