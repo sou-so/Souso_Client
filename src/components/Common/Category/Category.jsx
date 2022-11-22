@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useQuery } from 'react-query';
+import { category } from 'utils/api/categoryAPI';
 import { ReactComponent as MoreIcon } from 'assets/icons/arrow_b.svg';
 import { ReactComponent as Temp } from 'assets/icons/temp.svg';
 import { Icon } from 'components/Common';
@@ -17,6 +19,9 @@ const categories = [
 
 export const Category = ({ more }) => {
   const [isClosed, setIsClosed] = useState(more);
+
+  const { data } = useQuery('category', category.getList);
+
   const categoryList = isClosed
     ? categories.slice(0, 8)
     : categories.concat(categories);

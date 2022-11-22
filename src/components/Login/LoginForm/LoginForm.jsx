@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import * as S from './styles';
 
-export const LoginForm = () => {
+export const LoginForm = ({ login }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (email && password) {
+      login({
+        email: email,
+        password: password
+      });
+    }
   };
 
   return (
@@ -30,16 +35,13 @@ export const LoginForm = () => {
           onChange={e => setPassword(e.target.value)}
         />
       </S.InputWrap>
-      <S.ButtonWrap>
-        <Link to="#">
-          <S.LoginButton
-            type="submit"
-            className={email && password ? '' : 'disabled'}
-          >
-            로그인
-          </S.LoginButton>
-        </Link>
-      </S.ButtonWrap>
+
+      <S.LoginButton
+        type="submit"
+        className={email && password ? '' : 'disabled'}
+      >
+        로그인
+      </S.LoginButton>
     </S.FormContainer>
   );
 };
