@@ -16,6 +16,14 @@ export const TextBox = styled.textarea`
   border-radius: 6px;
 `;
 
+export const FieldWrap = styled.fieldset`
+  display: flex;
+  padding: 12px 0 41px;
+  &.hasPhoto {
+    padding-bottom: 21px;
+  }
+`;
+
 export const PhotoInput = styled.input`
   display: none;
 `;
@@ -27,7 +35,6 @@ export const AddPhotoBtn = styled.button`
   justify-content: center;
   width: 71px;
   height: 71px;
-  margin: 12px 0 41px;
   border: 1px solid ${({ theme }) => theme.color.gray_2};
   border-radius: 4px;
   p {
@@ -36,6 +43,22 @@ export const AddPhotoBtn = styled.button`
   }
 `;
 
+export const ImgPreview = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 279px;
+`;
+
+export const ImgWrap = styled.div`
+  padding-left: 8px;
+  img {
+    width: 71px;
+    height: 71px;
+    border-radius: 4px;
+  }
+`;
+
 export const SubmitButton = styled.button`
   ${button}
+  margin-bottom: 34px;
 `;

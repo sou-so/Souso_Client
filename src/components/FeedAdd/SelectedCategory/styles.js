@@ -23,6 +23,8 @@ export const CategoryName = styled.div`
   margin: 13px 0 28px;
   border: 2px solid ${({ theme }) => theme.color.main};
   border-radius: 6px;
+  background-color: #fff;
   font-size: 16px;
   line-height: 28px;
+  cursor: pointer;
 `;

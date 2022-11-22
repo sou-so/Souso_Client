@@ -23,7 +23,7 @@ export const InputWrap = styled.div`
     }
   }
 
-  svg {
+  .icon {
     right: 0;
     position: absolute;
     margin-right: 5px;
@@ -33,7 +33,9 @@ export const InputWrap = styled.div`
 
 export const SearchButton = styled.button`
   ${button}
-  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
   margin-left: 5px;

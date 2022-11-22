@@ -61,6 +61,11 @@ textarea {
   line-height: 1;
   font: inherit;
 }
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
 
 /* scroll style */
 ::-webkit-scrollbar {
