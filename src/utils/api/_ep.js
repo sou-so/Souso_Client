@@ -10,6 +10,7 @@ export const CHECK_NICKNAME_API = nickname =>
 
 // user
 export const LOGIN_API = `${BASE_URL}/users/token`;
+export const LOGOUT_API = `${BASE_URL}/users/logout`;
 
 // category
 export const CATEGORY_API = `${BASE_URL}/categories`;
