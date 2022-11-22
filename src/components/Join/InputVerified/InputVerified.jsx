@@ -12,7 +12,7 @@ export const InputVerified = ({
 
   const sendCode = e => {
     e.preventDefault();
-    setIsSent(true); // 휴대폰 인증 보내기
+    setIsSent(true); // 인증 코드 전송 완료 시
   };
 
   const verified = e => {

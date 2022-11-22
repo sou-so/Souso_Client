@@ -17,6 +17,7 @@ export const Input = ({
         value={values[name]}
         placeholder={placeholder}
         onChange={onChange}
+        className={errors[name] ? 'error' : ''}
       />
       {children}
       {errors[name] && <S.Error>{errors[name]}</S.Error>}
