@@ -24,4 +24,7 @@ export const input = ({ theme }) => css`
     border: none;
     background-color: ${theme.color.gray_1};
   }
+  &.error {
+    border-color: ${theme.color.red};
+  }
 `;
