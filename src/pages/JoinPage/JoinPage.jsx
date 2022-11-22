@@ -29,7 +29,7 @@ export const JoinPage = () => {
           </p>
           <p>동네 이웃과 소통해요</p>
         </S.Description>
-        <JoinForm mutate={mutate} />
+        <JoinForm createAccount={mutate} />
       </section>
     </S.PageContainer>
   );

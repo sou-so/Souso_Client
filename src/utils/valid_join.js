@@ -22,13 +22,18 @@ export const validate = values => {
     errors.phone_number = '공백, 특수문자를 제외한 11자리 번호를 입력해주세요';
   }
 
+  // verified_code
+  if (!values.verified_code) {
+    errors.verified_code = '휴대폰을 인증해주세요.';
+  }
+
   // password
   if (!values.password) {
     errors.password = '비밀번호를 입력해주세요.';
   } else if (values.password.length < 6) {
     errors.password = '6자 이상의 비밀번호를 입력하세요.';
   } else if (
-    !/(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]$/.test(
+    /(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]$/.test(
       values.password
     )
   ) {
