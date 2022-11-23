@@ -1,10 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { ReactComponent as Camera } from 'assets/icons/camera.svg';
 import { Icon } from 'components/Common';
 import * as S from './styles';
 
-export const ContentsBox = () => {
-  const [imgList, setImgList] = useState([]);
+export const ImgAddPreview = ({ imgList, setImgList }) => {
   const ImgRef = useRef();
 
   const handleBtnClick = e => {
@@ -33,9 +32,7 @@ export const ContentsBox = () => {
   };
 
   return (
-    <S.FormWrap>
-      <S.TextBox placeholder="소소한 이야기도 좋아요. 질문이나 이야기를 나눠보세요." />
-
+    <S.FieldWrap className={`${imgList.length > 3 && 'hasPhoto'}`}>
       <S.PhotoInput
         type="file"
         accept="image/*"
@@ -43,24 +40,20 @@ export const ContentsBox = () => {
         ref={ImgRef}
         onChange={onImgUpload}
       />
-      <S.FieldWrap className={`${imgList.length > 3 && 'hasPhoto'}`}>
-        <S.AddPhotoBtn onClick={handleBtnClick}>
-          <Icon Icon={Camera} size={31} />
-          <p>사진추가</p>
-        </S.AddPhotoBtn>
+      <S.AddPhotoBtn onClick={handleBtnClick}>
+        <Icon Icon={Camera} size={31} />
+        <p>사진추가</p>
+      </S.AddPhotoBtn>
 
-        {imgList.length > 0 && (
-          <S.ImgPreview>
-            {imgList.map((url, i) => (
-              <S.ImgWrap key={i} onClick={() => handleDeleteImage(i)}>
-                <img src={url} alt="이미지 미리보기" />
-              </S.ImgWrap>
-            ))}
-          </S.ImgPreview>
-        )}
-      </S.FieldWrap>
-
-      <S.SubmitButton type="submit">게시물 올리기</S.SubmitButton>
-    </S.FormWrap>
+      {imgList.length > 0 && (
+        <S.ImgPreview>
+          {imgList.map((url, i) => (
+            <S.ImgWrap key={i} onClick={() => handleDeleteImage(i)}>
+              <img src={url} alt="이미지 미리보기" />
+            </S.ImgWrap>
+          ))}
+        </S.ImgPreview>
+      )}
+    </S.FieldWrap>
   );
 };

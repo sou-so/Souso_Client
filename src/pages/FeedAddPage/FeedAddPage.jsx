@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 // import { useQuery } from 'react-query';
 // import { category } from 'utils/api/categoryAPI';
-import { Icon, PageHeader, ScrollContainer } from 'components/Common';
-import { ContentsBox, SelectedCategory } from 'components/FeedAdd';
-import { ReactComponent as Temp } from 'assets/icons/temp.svg';
+import { PageHeader, ScrollContainer } from 'components/Common';
+import { FeedForm, SelectedCategory } from 'components/FeedAdd';
 import * as S from './styles';
+import { CategorySelect } from 'components/FeedAdd/CategorySelect/CategorySelect';
 
 export const FeedAddPage = () => {
   const [toggleSelect, setToggleSelect] = useState(true);
@@ -30,43 +30,25 @@ export const FeedAddPage = () => {
   // const { categoryData } = useQuery('category', category.getList);
   // console.log(categoryData);
 
-  const handleSelect = category => {
-    if (category !== currentCategory) {
-      SetCurrentCategory(category);
-    }
-    setToggleSelect(prev => !prev);
-  };
-
   return (
     <S.PageContainer>
       <PageHeader backTo="/" title={'게시글 작성'} />
 
       {toggleSelect && (
-        <S.SelectBanner>
-          <SelectedCategory
-            selecting={toggleSelect}
-            setToggleSelect={setToggleSelect}
-            currentCategory={currentCategory}
-          />
-          <S.CategoryList>
-            {testList &&
-              testList.map((category, i) => (
-                <li key={i} onClick={() => handleSelect(category)}>
-                  <Icon Icon={Temp} />
-                  <p>{category}</p>
-                </li>
-              ))}
-          </S.CategoryList>
-        </S.SelectBanner>
+        <CategorySelect
+          testList={testList}
+          setToggleSelect={setToggleSelect}
+          currentCategory={currentCategory}
+          SetCurrentCategory={SetCurrentCategory}
+        />
       )}
 
       <ScrollContainer>
         <SelectedCategory
-          selecting={toggleSelect}
           setToggleSelect={setToggleSelect}
           currentCategory={currentCategory}
         />
-        <ContentsBox />
+        <FeedForm currentCategory={currentCategory} />
       </ScrollContainer>
     </S.PageContainer>
   );
