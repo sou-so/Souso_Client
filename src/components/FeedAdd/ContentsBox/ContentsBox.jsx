@@ -21,8 +21,8 @@ export const ContentsBox = () => {
       fileUrlList.push(currentImageUrl);
     }
 
-    if (fileUrlList.length > 5) {
-      fileUrlList = fileUrlList.slice(0, 5);
+    if (fileUrlList.length > 10) {
+      fileUrlList = fileUrlList.slice(0, 10);
     }
 
     setImgList(fileUrlList);

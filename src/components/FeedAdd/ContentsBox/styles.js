@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import { button } from 'styles/Shared';
 
 export const FormWrap = styled.form`
-  display: flex;
-  flex-direction: column;
   padding: 0 20px;
 `;
 
@@ -47,6 +45,7 @@ export const ImgPreview = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 279px;
+  overflow-x: scroll;
 `;
 
 export const ImgWrap = styled.div`
