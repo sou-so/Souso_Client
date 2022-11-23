@@ -4,6 +4,25 @@ export const CategoryBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  &.onSelecting {
+    > div {
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background-color: inherit;
+    }
+    > button {
+      cursor: default;
+    }
+  }
+  &.onSelected {
+    > div {
+      background-color: ${({ theme }) => theme.color.main};
+      cursor: pointer;
+    }
+    > button {
+      border: 1px solid ${({ theme }) => theme.color.main};
+      cursor: pointer;
+    }
+  }
 `;
 
 export const CategoryImg = styled.div`
@@ -15,13 +34,6 @@ export const CategoryImg = styled.div`
   margin-top: 50px;
   border-radius: 50%;
   overflow: hidden;
-  &.onSelecting {
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    background-color: inherit;
-  }
-  &.onSelected {
-    background-color: ${({ theme }) => theme.color.main};
-  }
 `;
 
 export const CategoryNameBtn = styled.button`
@@ -31,13 +43,8 @@ export const CategoryNameBtn = styled.button`
   height: 45px;
   padding: 8px 0 9px;
   margin: 13px 0 28px;
-  border: 1px solid ${({ theme }) => theme.color.main};
   border-radius: 6px;
   background-color: #fff;
   font-size: 16px;
   line-height: 28px;
-  cursor: pointer;
-  &.onSelecting {
-    border: none;
-  }
 `;
