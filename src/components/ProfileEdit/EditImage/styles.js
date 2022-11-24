@@ -4,7 +4,7 @@ export const ImageContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  margin: 45px 0;
+  margin: 50px 0;
 `;
 
 export const EditButton = styled.label`

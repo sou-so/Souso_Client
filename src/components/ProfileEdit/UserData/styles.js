@@ -4,15 +4,19 @@ import { input } from 'styles/Shared';
 export const FormContainer = styled.div`
   & > * + * {
     margin-top: 15px;
+  }
+  a {
     display: block;
   }
 `;
 
-export const Name = styled.input`
-  ${input}
-`;
-
 export const Town = styled.div`
   ${input}
-  color: #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .icon svg {
+    width: 20px;
+    height: 20px;
+  }
 `;

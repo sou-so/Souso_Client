@@ -10,7 +10,7 @@ export const ProfileEditPage = () => {
     <S.PageContainer>
       <PageHeader title="프로필 수정" backTo="/mypage" />
       <S.ProfileForm>
-        <EditImage image={imageURL} setImage={setImageURL} />
+        <EditImage imageURL={imageURL} setImageURL={setImageURL} />
         <UserData />
         <S.SubmitButton>프로필 수정하기</S.SubmitButton>
       </S.ProfileForm>
