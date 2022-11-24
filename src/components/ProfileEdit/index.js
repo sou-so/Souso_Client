@@ -1,2 +1,2 @@
 export { EditImage } from './EditImage/EditImage';
-export { UserData } from './UserData/UserData';
+export { ProfileForm } from './ProfileForm/ProfileForm';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAge } from 'utils/dateConverter';
 import * as S from './styles';
 
@@ -6,7 +6,11 @@ export const InputBirthDate = ({ setBirth }) => {
   const [year, setYear] = useState('1999');
   const [month, setMonth] = useState('1');
   const [day, setDay] = useState('1');
-  const age = getAge(`${year}.${month}.${day}`) + 1;
+  const age = getAge(`${year}.${month}.${day}`);
+
+  useEffect(() => {
+    setBirth(`${year}.${month}.${day}`);
+  }, []);
 
   return (
     <S.InputContainer>
@@ -32,7 +36,7 @@ export const InputBirthDate = ({ setBirth }) => {
         {dayList()}
       </S.SelectBox>
       <S.Age>
-        <span>{~~(age / 10)} 학년</span> <span>{age % 10} 반</span>
+        <span>{age[0]} 학년</span> <span>{age[1]} 반</span>
       </S.Age>
     </S.InputContainer>
   );
