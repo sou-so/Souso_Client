@@ -6,13 +6,16 @@ import { ReactComponent as Ic2 } from 'assets/icons/bookmark_star.svg';
 import { ReactComponent as Ic3 } from 'assets/icons/peoples.svg';
 import data from 'data/user';
 import * as S from './styles';
+import { Link } from 'react-router-dom';
 
 export const MyPage = () => {
   return (
     <ScrollContainer>
       <S.PageContainer>
         <S.MyDataSection>
-          <S.EditButton>프로필 편집</S.EditButton>
+          <Link to="edit">
+            <S.EditButton>프로필 편집</S.EditButton>
+          </Link>
           <C.UserData data={data.user} />
           <S.LinkBoxWrap>
             <C.LinkBox

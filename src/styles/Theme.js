@@ -19,7 +19,8 @@ const style = {
   border_main: `1px solid ${color.main}`,
 
   edge_padding: '15px',
-  header_height: '50px'
+  header_height: '50px',
+  inner_height: 'calc(100% - 50px)'
 };
 
 const font = {

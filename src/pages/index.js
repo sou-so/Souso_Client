@@ -17,3 +17,4 @@ export { ChatPage } from './ChatPage/ChatPage';
 export { MyPage } from './MyPage/MyPage';
 export { MyPostPage } from './MyPostPage/MyPostPage';
 export { MyScrapPage } from './MyScrapPage/MyScrapPage';
+export { ProfileEditPage } from './ProfileEditPage/ProfileEditPage';
