@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SelectBanner = styled.div`
+export const SelectingView = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

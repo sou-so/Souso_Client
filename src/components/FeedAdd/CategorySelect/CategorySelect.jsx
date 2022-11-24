@@ -18,7 +18,7 @@ export const CategorySelect = ({
   };
 
   return (
-    <S.SelectBanner>
+    <S.SelectingView>
       <SelectedCategory
         setToggleSelect={setToggleSelect}
         currentCategory={currentCategory}
@@ -33,6 +33,6 @@ export const CategorySelect = ({
             </li>
           ))}
       </S.CategoryList>
-    </S.SelectBanner>
+    </S.SelectingView>
   );
 };
