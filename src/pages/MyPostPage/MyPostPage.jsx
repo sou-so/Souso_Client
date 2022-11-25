@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-import { PageHeader, ScrollContainer } from 'components/Common';
-import {
-  MyComments,
-  MenuTab,
-  SearchButton,
-  MyPosts
-} from 'components/MySubPage';
+import { PageHeader, ScrollContainer, MenuTab } from 'components/Common';
+import { MyComments, SearchButton, MyPosts } from 'components/MySubPage';
 import * as S from './styles';
 
 export const MyPostPage = () => {

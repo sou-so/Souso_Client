@@ -26,7 +26,7 @@ export const MeetupItem = styled.li`
     text-align: center;
   }
 
-  .name {
+  p {
     font-size: 14px;
     font-weight: 500;
   }

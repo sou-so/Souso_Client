@@ -9,9 +9,9 @@ import * as S from './styles';
 export const ProfileForm = () => {
   const [imageURL, setImageURL] = useState('');
   const [nickname, setNickname] = useState('조이');
-  const [town, setTown] = useState('역삼동');
+  const [town, setTown] = useState('전포동');
   const [isUnique, setIsUnique] = useState(false);
-  const [birth, setBirth] = useState('1994. 01. 14');
+  const [birth, setBirth] = useState('1994.01.14');
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -43,7 +43,7 @@ export const ProfileForm = () => {
           </S.Town>
         </Link>
 
-        <InputBirthDate setBirth={setBirth} />
+        <InputBirthDate birth={birth} setBirth={setBirth} />
       </S.UserData>
 
       <S.SubmitButton>프로필 수정하기</S.SubmitButton>

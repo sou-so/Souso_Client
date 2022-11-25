@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { getAge } from 'utils/dateConverter';
 import * as S from './styles';
 
-export const InputBirthDate = ({ setBirth }) => {
-  const [year, setYear] = useState('1999');
-  const [month, setMonth] = useState('1');
-  const [day, setDay] = useState('1');
+export const InputBirthDate = ({ birth, setBirth }) => {
+  const [year, setYear] = useState(birth ? birth.split('.')[0] : '1999');
+  const [month, setMonth] = useState(birth ? birth.split('.')[1] : '1');
+  const [day, setDay] = useState(birth ? birth.split('.')[2] : '1');
   const age = getAge(`${year}.${month}.${day}`);
 
   useEffect(() => {
@@ -14,14 +14,17 @@ export const InputBirthDate = ({ setBirth }) => {
 
   return (
     <S.InputContainer>
-      <S.SelectBox defaultValue="year" onChange={e => setYear(e.target.value)}>
+      <S.SelectBox
+        defaultValue={birth ? birth.split('.')[0] : 'year'}
+        onChange={e => setYear(e.target.value)}
+      >
         <option value="year" disabled>
           출생년도
         </option>
         {yearList()}
       </S.SelectBox>
       <S.SelectBox
-        defaultValue="month"
+        defaultValue={birth ? birth.split('.')[1] : 'month'}
         onChange={e => setMonth(e.target.value)}
       >
         <option value="month" disabled>
@@ -29,7 +32,10 @@ export const InputBirthDate = ({ setBirth }) => {
         </option>
         {monthList()}
       </S.SelectBox>
-      <S.SelectBox defaultValue="day" onChange={e => setDay(e.target.value)}>
+      <S.SelectBox
+        defaultValue={birth ? birth.split('.')[2] : 'day'}
+        onChange={e => setDay(e.target.value)}
+      >
         <option value="day" disabled>
           일
         </option>

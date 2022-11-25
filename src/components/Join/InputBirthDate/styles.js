@@ -16,6 +16,9 @@ export const SelectBox = styled.select`
     margin-left: 10px;
     width: 70px;
   }
+  option:disabled {
+    background-color: #dadada;
+  }
 
   /* box arrow style*/
   -webkit-appearance: none;
