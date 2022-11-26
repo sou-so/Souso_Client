@@ -14,8 +14,8 @@ export const Category = ({ more, onClick }) => {
     <>
       <S.CategoryContainer>
         {!isLoading &&
-          data.category_list.map(({ category_name }, i) => (
-            <li key={i} onClick={onClick} id={category_name}>
+          data.category_list.map(({ category_name, category_id }) => (
+            <li key={category_id} id={category_id} onClick={onClick}>
               <Icon Icon={Temp} />
               <S.Name>{category_name}</S.Name>
             </li>
