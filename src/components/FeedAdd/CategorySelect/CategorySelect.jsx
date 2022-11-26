@@ -5,11 +5,13 @@ import { ReactComponent as Temp } from 'assets/icons/temp.svg';
 import * as S from './styles';
 
 export const CategorySelect = ({
-  testList,
+  data,
   setToggleSelect,
   currentCategory,
   SetCurrentCategory
 }) => {
+  const categoryList = data.data.category_list;
+
   const handleSelect = category => {
     if (category !== currentCategory) {
       SetCurrentCategory(category);
@@ -25,11 +27,11 @@ export const CategorySelect = ({
       />
 
       <S.CategoryList>
-        {testList &&
-          testList.map((category, i) => (
-            <li key={i} onClick={() => handleSelect(category)}>
+        {categoryList &&
+          categoryList.map((data, i) => (
+            <li key={i} onClick={() => handleSelect(data.category_name)}>
               <Icon Icon={Temp} />
-              <p>{category}</p>
+              <p>{data.category_name}</p>
             </li>
           ))}
       </S.CategoryList>

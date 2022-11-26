@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-// import { useQuery } from 'react-query';
-// import { category } from 'utils/api/categoryAPI';
+import { useQuery } from 'react-query';
+import { category } from 'utils/api/categoryAPI';
 import { PageHeader, ScrollContainer } from 'components/Common';
 import { FeedForm, SelectedCategory } from 'components/FeedAdd';
 import * as S from './styles';
@@ -10,25 +10,7 @@ export const FeedAddPage = () => {
   const [toggleSelect, setToggleSelect] = useState(true);
   const [currentCategory, SetCurrentCategory] = useState('카테고리 선택');
 
-  const testList = [
-    '동네질문',
-    '동네소식',
-    '취미생활',
-    '동네맛집',
-    '일상',
-    '분실센터',
-    '해주세요',
-    '사건사고',
-    '메뉴1',
-    '메뉴2',
-    '메뉴3',
-    '메뉴4',
-    '메뉴5',
-    '메뉴6'
-  ];
-
-  // const { categoryData } = useQuery('category', category.getList);
-  // console.log(categoryData);
+  const { data } = useQuery('category', category.getList);
 
   return (
     <S.PageContainer>
@@ -36,7 +18,7 @@ export const FeedAddPage = () => {
 
       {toggleSelect && (
         <CategorySelect
-          testList={testList}
+          data={data}
           setToggleSelect={setToggleSelect}
           currentCategory={currentCategory}
           SetCurrentCategory={SetCurrentCategory}
