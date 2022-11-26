@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { PageHeader, ScrollContainer } from 'components/Common';
-import { MenuTab, SearchButton } from 'components/MySubPage';
+import { PageHeader, ScrollContainer, MenuTab } from 'components/Common';
+import { SearchButton } from 'components/MySubPage';
 import { ThumbTop } from 'components/Post';
 import posts from 'data/posts';
 import * as S from './styles';

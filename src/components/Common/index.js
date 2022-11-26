@@ -6,3 +6,4 @@ export { ScrollContainer } from './ScrollContainer/ScrollContainer';
 export { ProfileImage } from './ProfileImage/ProfileImage';
 export { CategoryTag } from './CategoryTag/CategoryTag';
 export { TextClamp } from './TextClamp/TextClamp';
+export { MenuTab } from './MenuTab/MenuTab';

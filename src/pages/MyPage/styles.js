@@ -36,3 +36,5 @@ export const EditButton = styled.button`
 export const LinkBoxWrap = styled.ul`
   display: flex;
 `;
+
+export const MeetList = styled.ul``;

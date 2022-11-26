@@ -1,10 +1,11 @@
 import React from 'react';
 import { ReactComponent as Locate } from 'assets/icons/location.svg';
 import { Icon, ProfileImage } from 'components/Common';
+import data from 'data/user';
 import * as S from './styles';
 
-export const UserData = ({ data }) => {
-  const { name, location, profile_img, age } = data;
+export const UserData = () => {
+  const { name, location, profile_img, age } = data.user;
 
   return (
     <S.UserDataContainer>
