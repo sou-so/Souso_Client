@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { Link } from 'react-router-dom';
 import { LoginForm } from 'components/Login';
-import { user } from 'utils/api/userAPI';
+import { user } from 'api/queries/user';
 import { authToken } from 'utils/authToken';
 import logoImage from 'assets/images/logo.png';
 import * as S from './styles';

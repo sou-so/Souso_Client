@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { category } from 'utils/api/categoryAPI';
+import { category } from 'api/queries/category';
 import { ReactComponent as MoreIcon } from 'assets/icons/arrow_b.svg';
 import { ReactComponent as Temp } from 'assets/icons/temp.svg';
 import { Icon } from 'components/Common';

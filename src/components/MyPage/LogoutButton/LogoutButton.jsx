@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { authToken } from 'utils/authToken';
-import { user } from 'utils/api/userAPI';
+import { user } from 'api/queries/user';
 import * as S from './styles';
 
 export const LogoutButton = () => {

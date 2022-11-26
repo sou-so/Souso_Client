@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { Input } from 'components/Join';
-import { join } from 'utils/api/joinAPI';
+import { join } from 'api/queries/join';
 
 export const InputDuplicated = ({
   values,

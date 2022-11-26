@@ -1,11 +1,11 @@
-import { api } from './_axios';
-import { LOGIN_API, LOGOUT_API } from './_ep';
+import { api } from 'api';
+import { LOGIN, LOGOUT } from 'api/endpoints';
 import { authToken } from 'utils/authToken';
 
 export const user = {
-  login: data => api.post(LOGIN_API, data),
+  login: data => api.post(LOGIN, data),
   logout: () =>
-    api.delete(LOGOUT_API, {
+    api.delete(LOGOUT, {
       headers: {
         Authorization: `Bearer ${authToken.getToken()}`
       }

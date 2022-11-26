@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { PageHeader } from 'components/Common';
 import { JoinForm } from 'components/Join';
-import { join } from 'utils/api/joinAPI';
+import { join } from 'api/queries/join';
 import { authToken } from 'utils/authToken';
 import * as S from './styles';
 
