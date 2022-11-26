@@ -5,11 +5,19 @@ import 'dayjs/locale/ko';
 dayjs.locale('ko');
 dayjs.extend(relativeTime);
 
+const now = new Date();
+
 // ex) ~일/시간/분 전
 export const fromNow = date => dayjs(date).fromNow();
 
 // ex) 22.11.03
 export const getDate = date => dayjs(date).format('YY. MM. DD');
+
+// ex) 나이 계산
+export const getAge = date => {
+  const age = dayjs(now).diff(date, 'year') + 1;
+  return [~~(age / 10), age % 10];
+};
 
 // ex) 9일(금)
 export const getDay = date => {
@@ -20,3 +28,6 @@ export const getDay = date => {
     </>
   );
 };
+
+// 날짜가 과거면 true, 미래면 false
+export const isPast = date => dayjs(date).diff(now) <= 0;
