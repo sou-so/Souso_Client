@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { user } from 'api/queries/user';
 import banner from 'assets/images/logo.png';
 import * as S from './styles';
 
-export const FeedBanner = ({ user }) => {
+export const FeedBanner = () => {
+  const { data, isLoading } = useQuery(['user'], user.getProfile);
+
   return (
     <S.BannerContainer>
       <p>
-        {user}님의
+        {!isLoading ? data.nickname : 'SOUSO'}님,
         <br />
         소소한 얘기를 소소가
         <br />

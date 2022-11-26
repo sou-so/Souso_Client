@@ -42,7 +42,7 @@ export const InputBirthDate = ({ birth, setBirth }) => {
         {dayList()}
       </S.SelectBox>
       <S.Age>
-        <span>{age[0]} 학년</span> <span>{age[1]} 반</span>
+        <span>{age}</span>
       </S.Age>
     </S.InputContainer>
   );

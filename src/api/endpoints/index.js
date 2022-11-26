@@ -7,6 +7,7 @@ export const CHECK_NICKNAME = nickname =>
 // 코드인증확인 endpoint = '/users/verification-codes?authCode=${authCode}&phoneNumber=${phoneNumber}"'
 
 // user
+export const MYPROFILE = `/users`;
 export const LOGIN = `/users/token`;
 export const LOGOUT = `/users/logout`;
 

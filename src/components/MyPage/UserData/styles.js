@@ -14,11 +14,14 @@ export const UserDataContainer = styled.div`
   }
 `;
 
-export const MyLocation = styled.span`
+export const MyTown = styled.span`
   display: flex;
   margin-bottom: 10px;
   margin-right: 3px;
   font-size: ${({ theme }) => theme.font.sm};
+  .icon {
+    margin-right: 2px;
+  }
 `;
 
 export const Name = styled.p`
