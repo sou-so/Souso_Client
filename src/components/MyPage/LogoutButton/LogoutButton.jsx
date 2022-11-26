@@ -2,12 +2,28 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { authToken } from 'utils/authToken';
-import { user } from 'utils/api/userAPI';
+import { user } from 'api/queries/user';
 import * as S from './styles';
 
 export const LogoutButton = () => {
   const navigate = useNavigate();
-  const { mutate } = useMutation(user.logout, {
+
+  const { mutate: signout } = useMutation(user.signout, {
+    onSuccess: res => {
+      if (window.confirm('탈퇴하시겠습니까?')) {
+        console.log(res);
+        authToken.setToken('');
+        alert('탈퇴 완료 🎉');
+        navigate('/login');
+      }
+    },
+    onError: error => {
+      console.log(error.message);
+      alert('회원탈퇴에 실패했습니다. 다시 시도해주세요.');
+    }
+  });
+
+  const { mutate: logout } = useMutation(user.logout, {
     onSuccess: res => {
       console.log(res);
       authToken.setToken('');
@@ -15,15 +31,15 @@ export const LogoutButton = () => {
       navigate('/login');
     },
     onError: error => {
-      console.log(error.response.data);
+      console.log(error.message);
       alert('로그아웃에 실패했습니다. 다시 시도해주세요.');
     }
   });
 
   return (
     <S.ButtonContainer>
-      <button>탈퇴하기</button>
-      <button onClick={mutate}>로그아웃</button>
+      <button onClick={signout}>탈퇴하기</button>
+      <button onClick={logout}>로그아웃</button>
     </S.ButtonContainer>
   );
 };

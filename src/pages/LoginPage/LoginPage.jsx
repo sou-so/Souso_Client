@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { Link } from 'react-router-dom';
 import { LoginForm } from 'components/Login';
-import { user } from 'utils/api/userAPI';
+import { user } from 'api/queries/user';
 import { authToken } from 'utils/authToken';
 import logoImage from 'assets/images/logo.png';
 import * as S from './styles';
@@ -20,12 +20,12 @@ export const LoginPage = () => {
   const { mutate } = useMutation(user.login, {
     onSuccess: res => {
       console.log(res);
-      authToken.setToken(res.data.access_token);
+      authToken.setToken(res.access_token);
       alert('로그인 완료 🎉');
       navigate('/');
     },
     onError: error => {
-      console.log(error.response.data);
+      console.log(error.message);
       alert('로그인에 실패했습니다. 다시 시도해주세요.');
     }
   });

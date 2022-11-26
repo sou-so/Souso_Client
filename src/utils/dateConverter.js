@@ -13,10 +13,10 @@ export const fromNow = date => dayjs(date).fromNow();
 // ex) 22.11.03
 export const getDate = date => dayjs(date).format('YY. MM. DD');
 
-// ex) 나이 계산
+// ex) n학년 n반
 export const getAge = date => {
   const age = dayjs(now).diff(date, 'year') + 1;
-  return [~~(age / 10), age % 10];
+  return `${~~(age / 10)}학년 ${age % 10}반`;
 };
 
 // ex) 9일(금)

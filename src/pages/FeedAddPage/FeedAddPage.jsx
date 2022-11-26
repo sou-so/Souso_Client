@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { category } from 'utils/api/categoryAPI';
+import { category } from 'api/queries/category';
 import { PageHeader, ScrollContainer } from 'components/Common';
 import { FeedForm, SelectedCategory } from 'components/FeedAdd';
 import * as S from './styles';
@@ -10,7 +10,7 @@ export const FeedAddPage = () => {
   const [toggleSelect, setToggleSelect] = useState(true);
   const [currentCategory, SetCurrentCategory] = useState('카테고리 선택');
 
-  const { data } = useQuery('category', category.getList);
+  const { data } = useQuery(['category'], category.getList);
 
   return (
     <S.PageContainer>

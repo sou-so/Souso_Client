@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { Input } from 'components/Join';
-import { join } from 'utils/api/joinAPI';
+import { join } from 'api/queries/join';
 
 export const InputDuplicated = ({
   values,
@@ -11,8 +11,7 @@ export const InputDuplicated = ({
   setIsUnique
 }) => {
   const { mutate } = useMutation(join.nickname, {
-    onSuccess: res => {
-      console.log(res);
+    onSuccess: () => {
       errors.nickname = '';
       setIsUnique(true); // 중복 확인 완료 시
     },
