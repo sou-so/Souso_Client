@@ -1,5 +1,5 @@
 import { api, apiWithToken } from 'api';
-import { LOGIN, LOGOUT, MYPROFILE } from 'api/endpoints';
+import { LOGIN, LOGOUT, MYPROFILE, SIGNOUT } from 'api/endpoints';
 
 export const user = {
   getProfile: async () => {
@@ -12,6 +12,10 @@ export const user = {
   },
   logout: async () => {
     const res = await apiWithToken.delete(LOGOUT);
+    return res;
+  },
+  signout: async () => {
+    const res = await apiWithToken.delete(SIGNOUT);
     return res;
   }
 };
