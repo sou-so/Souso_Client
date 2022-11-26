@@ -1,13 +1,13 @@
-import { api } from 'api';
+import { api, apiWithToken } from 'api';
 import { LOGIN, LOGOUT } from 'api/endpoints';
-import { authToken } from 'utils/authToken';
 
 export const user = {
-  login: data => api.post(LOGIN, data),
-  logout: () =>
-    api.delete(LOGOUT, {
-      headers: {
-        Authorization: `Bearer ${authToken.getToken()}`
-      }
-    })
+  login: async req => {
+    const res = await api.post(LOGIN, req);
+    return res.data;
+  },
+  logout: async () => {
+    const res = await apiWithToken.delete(LOGOUT);
+    return res;
+  }
 };

@@ -15,7 +15,7 @@ export const LogoutButton = () => {
       navigate('/login');
     },
     onError: error => {
-      console.log(error.response.data);
+      console.log(error.message);
       alert('로그아웃에 실패했습니다. 다시 시도해주세요.');
     }
   });

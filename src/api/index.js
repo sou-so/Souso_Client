@@ -1,20 +1,24 @@
 import axios from 'axios';
-import { authToken } from 'utils/authToken';
+import { interceptors } from './interceptor';
 
-export const api = axios.create({
-  baseURL: 'http://43.201.133.197:8080',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
+const BASE_URL = 'http://43.201.133.197:8080';
+const HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Content-Type': 'application/json; charset=utf-8',
+  withCredentials: true
+};
 
-axios.interceptors.request.use(
-  config => {
-    config.headers.Authorization = `Bearer ${authToken.getToken()}`;
-    config.withCredentials = true;
-    return config;
-  },
-  error => {
-    return Promise.reject(error);
-  }
-);
+export const createAxios = () => {
+  return axios.create({ baseURL: BASE_URL, headers: HEADERS });
+};
+
+export const createAxiosWithToken = () => {
+  const requestHTTP = axios.create({ baseURL: BASE_URL, headers: HEADERS });
+  return interceptors(requestHTTP);
+};
+
+// No token
+export const api = createAxios();
+
+// With token
+export const apiWithToken = createAxiosWithToken();

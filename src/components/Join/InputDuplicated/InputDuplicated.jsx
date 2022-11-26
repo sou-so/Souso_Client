@@ -11,8 +11,7 @@ export const InputDuplicated = ({
   setIsUnique
 }) => {
   const { mutate } = useMutation(join.nickname, {
-    onSuccess: res => {
-      console.log(res);
+    onSuccess: () => {
       errors.nickname = '';
       setIsUnique(true); // 중복 확인 완료 시
     },

@@ -13,12 +13,12 @@ export const JoinPage = () => {
   const { mutate } = useMutation(join.submit, {
     onSuccess: res => {
       console.log(res);
-      authToken.setToken(res.data.access_token);
+      authToken.setToken(res.access_token);
       alert('회원가입 완료 🎉');
       navigate('/');
     },
     onError: error => {
-      console.log(error.response.data);
+      console.log(error.message);
       alert('회원가입에 실패했습니다. 다시 시도해주세요.');
     }
   });
