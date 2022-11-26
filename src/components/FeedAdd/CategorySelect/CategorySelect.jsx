@@ -1,20 +1,17 @@
 import React from 'react';
+import { Category } from 'components/Common';
 import { SelectedCategory } from 'components/FeedAdd';
-import { Icon } from 'components/Common';
-import { ReactComponent as Temp } from 'assets/icons/temp.svg';
 import * as S from './styles';
 
 export const CategorySelect = ({
-  data,
   setToggleSelect,
   currentCategory,
-  SetCurrentCategory
+  setCurrentCategory
 }) => {
-  const categoryList = data.data.category_list;
-
-  const handleSelect = category => {
-    if (category !== currentCategory) {
-      SetCurrentCategory(category);
+  const handleSelect = e => {
+    const clicked = e.target.innerText;
+    if (clicked !== currentCategory) {
+      setCurrentCategory(clicked);
     }
     setToggleSelect(prev => !prev);
   };
@@ -27,13 +24,7 @@ export const CategorySelect = ({
       />
 
       <S.CategoryList>
-        {categoryList &&
-          categoryList.map((data, i) => (
-            <li key={i} onClick={() => handleSelect(data.category_name)}>
-              <Icon Icon={Temp} />
-              <p>{data.category_name}</p>
-            </li>
-          ))}
+        <Category onClick={handleSelect} />
       </S.CategoryList>
     </S.SelectingView>
   );

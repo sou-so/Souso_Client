@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImgAddPreview } from '../ImgAddPreview/ImgAddPreview';
+import { ImgAddPreview } from 'components/FeedAdd';
 import * as S from './styles';
 
 export const FeedForm = ({ currentCategory }) => {

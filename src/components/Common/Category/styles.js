@@ -3,22 +3,25 @@ import styled from 'styled-components';
 export const CategoryContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 15px 40px;
+  grid-gap: 40px 30px;
   flex-wrap: wrap;
   padding: 0 15px;
-
   li {
     text-align: center;
+    position: relative;
     cursor: pointer;
     svg {
       margin: 0 auto;
     }
-    span {
-      font-size: ${({ theme }) => theme.font.sm};
-      margin-top: 4px;
-      display: block;
-    }
   }
+`;
+
+export const Name = styled.p`
+  width: 100%;
+  padding-top: 42px;
+  top: 0;
+  position: absolute;
+  font-size: ${({ theme }) => theme.font.sm};
 `;
 
 export const MoreButton = styled.button`
