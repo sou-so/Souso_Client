@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useMutation } from 'react-query';
 import { PageHeader } from 'components/Common';
-import { FeedForm, CategorySelect } from 'components/FeedAdd';
+import { FeedForm, CategoryModal } from 'components/FeedAdd';
 import { feed } from 'api/queries/feed';
 import * as S from './styles';
 
 export const FeedAddPage = () => {
-  const [toggleSelect, setToggleSelect] = useState(true);
-  // -> const [modal, setModal]
+  // const [toggleSelect, setToggleSelect] = useState(true);
+  const [modal, setModal] = useState(true);
   const [category, setCategory] = useState({ id: '', name: '' });
 
-  // const toggleModal = () => setToggleSelect(prev => !prev);
+  const toggleModal = () => setModal(prev => !prev);
 
   const { mutate } = useMutation(feed.add, {
     onSuccess: res => {
@@ -27,19 +27,15 @@ export const FeedAddPage = () => {
     <S.PageContainer>
       <PageHeader backTo="/" title={'게시글 작성'} />
 
-      {toggleSelect && (
-        <CategorySelect // ->  CategoryModal
-          setToggleSelect={setToggleSelect}
+      {modal && (
+        <CategoryModal
+          toggleModal={toggleModal}
           category={category}
           setCategory={setCategory}
         />
       )}
 
-      <FeedForm
-        mutate={mutate}
-        category={category}
-        setToggleSelect={setToggleSelect}
-      />
+      <FeedForm mutate={mutate} category={category} toggleModal={toggleModal} />
     </S.PageContainer>
   );
 };
