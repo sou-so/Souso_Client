@@ -14,3 +14,8 @@ export const SIGNOUT = `/users/leave`;
 
 // category
 export const CATEGORY = `/categories`;
+
+// feed
+export const ADD_FEED = `/feeds`;
+export const GET_FEED_LIST = (cursorId, sortType) =>
+  `/feeds?cursorId=${cursorId || '0'}&sortType=${sortType || 'LATEST'}`;

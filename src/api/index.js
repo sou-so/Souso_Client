@@ -8,11 +8,11 @@ const HEADERS = {
   withCredentials: true
 };
 
-export const createAxios = () => {
+const createAxios = () => {
   return axios.create({ baseURL: BASE_URL, headers: HEADERS });
 };
 
-export const createAxiosWithToken = () => {
+const createAxiosWithToken = () => {
   const requestHTTP = axios.create({ baseURL: BASE_URL, headers: HEADERS });
   return interceptors(requestHTTP);
 };

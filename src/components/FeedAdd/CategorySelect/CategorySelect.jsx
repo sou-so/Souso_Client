@@ -1,39 +1,25 @@
 import React from 'react';
+import { Category } from 'components/Common';
 import { SelectedCategory } from 'components/FeedAdd';
-import { Icon } from 'components/Common';
-import { ReactComponent as Temp } from 'assets/icons/temp.svg';
 import * as S from './styles';
 
-export const CategorySelect = ({
-  data,
-  setToggleSelect,
-  currentCategory,
-  SetCurrentCategory
-}) => {
-  const categoryList = data.data.category_list;
+export const CategorySelect = ({ setToggleSelect, category, setCategory }) => {
+  const handleSelect = e => {
+    const curretId = e.target.parentElement.id;
+    const currentName = e.target.innerText;
 
-  const handleSelect = category => {
-    if (category !== currentCategory) {
-      SetCurrentCategory(category);
+    if (currentName !== category) {
+      setCategory({ id: curretId, name: currentName });
     }
+
     setToggleSelect(prev => !prev);
   };
 
   return (
     <S.SelectingView>
-      <SelectedCategory
-        setToggleSelect={setToggleSelect}
-        currentCategory={currentCategory}
-      />
-
+      <SelectedCategory setToggleSelect={setToggleSelect} category={category} />
       <S.CategoryList>
-        {categoryList &&
-          categoryList.map((data, i) => (
-            <li key={i} onClick={() => handleSelect(data.category_name)}>
-              <Icon Icon={Temp} />
-              <p>{data.category_name}</p>
-            </li>
-          ))}
+        <Category onClick={handleSelect} />
       </S.CategoryList>
     </S.SelectingView>
   );
