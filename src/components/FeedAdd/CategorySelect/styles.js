@@ -17,26 +17,8 @@ export const SelectingView = styled.div`
 `;
 
 export const CategoryList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-gap: 15px 40px;
-  flex-wrap: wrap;
   height: 50%;
-  padding: 33.5px;
+  padding: 35px 20px 0;
   background-color: #fff;
   border-radius: 10px 10px 0 0;
-  li {
-    display: block;
-    height: 68px;
-    flex: 1;
-    cursor: pointer;
-    svg {
-      margin: 0 auto;
-    }
-    p {
-      margin-top: 4px;
-      text-align: center;
-    }
-  }
 `;

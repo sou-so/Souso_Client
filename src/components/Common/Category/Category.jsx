@@ -6,40 +6,23 @@ import { ReactComponent as Temp } from 'assets/icons/temp.svg';
 import { Icon } from 'components/Common';
 import * as S from './styles';
 
-const categories = [
-  '동네질문',
-  '동네소식',
-  '취미생활',
-  '동네맛집',
-  '일상',
-  '분실센터',
-  '해주세요',
-  '사건사고'
-];
-
-export const Category = ({ more }) => {
+export const Category = ({ more, onClick }) => {
   const [isClosed, setIsClosed] = useState(more);
-
-  const { data } = useQuery('category', category.getList);
-
-  const categoryList = isClosed
-    ? categories.slice(0, 8)
-    : categories.concat(categories);
-
-  const openCategory = () => setIsClosed(false);
+  const { data, isLoading } = useQuery(['category'], category.getList);
 
   return (
     <>
       <S.CategoryContainer>
-        {categoryList.map((category, i) => (
-          <li key={i}>
-            <Icon Icon={Temp} />
-            <span>{category}</span>
-          </li>
-        ))}
+        {!isLoading &&
+          data.category_list.map(({ category_name, category_id }) => (
+            <li key={category_id} id={category_id} onClick={onClick}>
+              <Icon Icon={Temp} />
+              <S.Name>{category_name}</S.Name>
+            </li>
+          ))}
       </S.CategoryContainer>
-      {isClosed && (
-        <S.MoreButton onClick={openCategory}>
+      {isClosed && !isLoading && data.category_list.length > 8 && (
+        <S.MoreButton onClick={() => setIsClosed(false)}>
           더보기 <Icon Icon={MoreIcon} size={14} />
         </S.MoreButton>
       )}

@@ -3,6 +3,8 @@ import { button } from 'styles/Shared';
 
 export const FormWrap = styled.form`
   padding: 0 20px;
+  height: ${({ theme }) => theme.style.inner_height};
+  overflow-y: scroll;
 `;
 
 export const TextBox = styled.textarea`
@@ -14,7 +16,7 @@ export const TextBox = styled.textarea`
   border-radius: 6px;
 `;
 
-export const CategoryInput = styled.input`
+export const Category = styled.div`
   display: none;
 `;
 
