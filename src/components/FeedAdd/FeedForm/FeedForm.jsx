@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ImgAddPreview, SelectedCategory } from 'components/FeedAdd';
 import * as S from './styles';
 
-export const FeedForm = ({ category, mutate, setToggleSelect }) => {
+export const FeedForm = ({ category, mutate, toggleModal }) => {
   const [imgList, setImgList] = useState([]);
 
   const handleSubmit = e => {
@@ -22,7 +22,7 @@ export const FeedForm = ({ category, mutate, setToggleSelect }) => {
 
   return (
     <S.FormWrap onSubmit={handleSubmit}>
-      <SelectedCategory category={category} setToggleSelect={setToggleSelect} />
+      <SelectedCategory category={category} toggleModal={toggleModal} />
       <S.TextBox placeholder="소소한 이야기도 좋아요. 질문이나 이야기를 나눠보세요." />
       <ImgAddPreview imgList={imgList} setImgList={setImgList} />
       <S.SubmitButton type="submit">게시물 올리기</S.SubmitButton>

@@ -6,10 +6,11 @@ export const CategoryBox = styled.div`
   align-items: center;
   &.onSelecting {
     > div {
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      background-color: inherit;
+      border: 1px solid ${({ theme }) => theme.color.gray_2};
+      background-color: #a6a6a6;
     }
     > button {
+      border: 1px solid ${({ theme }) => theme.color.gray_2};
       cursor: default;
     }
   }
