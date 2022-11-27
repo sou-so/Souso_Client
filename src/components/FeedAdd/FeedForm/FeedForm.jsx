@@ -4,6 +4,7 @@ import * as S from './styles';
 
 export const FeedForm = ({ category, mutate, toggleModal }) => {
   const [imgList, setImgList] = useState([]);
+  const [text, setText] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -23,8 +24,15 @@ export const FeedForm = ({ category, mutate, toggleModal }) => {
   return (
     <S.FormWrap onSubmit={handleSubmit}>
       <SelectedCategory category={category} toggleModal={toggleModal} />
-      <S.TextBox placeholder="소소한 이야기도 좋아요. 질문이나 이야기를 나눠보세요." />
+
+      <S.TextBox
+        value={text}
+        onChange={e => setText(e.target.value)}
+        placeholder="소소한 이야기도 좋아요. 질문이나 이야기를 나눠보세요."
+      />
+
       <ImgAddPreview imgList={imgList} setImgList={setImgList} />
+
       <S.SubmitButton type="submit">게시물 올리기</S.SubmitButton>
     </S.FormWrap>
   );

@@ -37,6 +37,7 @@ export const ImgPreview = styled.div`
 export const ImgWrap = styled.div`
   padding-left: 8px;
   img {
+    display: block;
     width: 71px;
     height: 71px;
     border-radius: 4px;
