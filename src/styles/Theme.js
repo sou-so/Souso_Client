@@ -10,7 +10,8 @@ const color = {
 
   gray_1: '#EEE',
   gray_2: '#D9D9D9',
-  gray_3: '#CCC'
+  gray_3: '#CCC',
+  gray_4: '#B3B3B3'
 };
 
 const style = {
