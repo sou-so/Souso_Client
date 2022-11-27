@@ -16,10 +16,9 @@ export const UserInfo = styled.div`
   .name {
     font-size: 16px;
     padding: 0 8px 0 11px;
-    margin-bottom: 2px;
   }
   span {
-    font-size: 11px;
+    font-size: 12px;
     color: ${({ theme }) => theme.color.black_2};
     &.town {
       position: relative;

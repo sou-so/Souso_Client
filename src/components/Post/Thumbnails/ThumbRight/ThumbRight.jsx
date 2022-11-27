@@ -5,19 +5,19 @@ import * as S from './styles';
 
 export const ThumbRight = ({ postData }) => {
   const navigate = useNavigate();
-  const { id, thumbnail } = postData;
+  const { feed_id, image_url } = postData;
 
   return (
-    <S.PostContainer onClick={() => navigate(`/feed/${id}`)}>
+    <S.PostContainer onClick={() => navigate(`/feed/${feed_id}`)}>
       <S.Contents>
-        <PostBody data={postData} />
-        <PostFooterIcon data={postData} />
+        <PostBody postData={postData} />
+        <PostFooterIcon postData={postData} />
       </S.Contents>
 
-      {thumbnail.length > 0 && (
+      {image_url.length > 0 && (
         <S.Thumbnail>
-          <img src={thumbnail[0]} alt="" />
-          {thumbnail.length > 1 && <span>+ {thumbnail.length}</span>}
+          <img src={image_url[0]} alt="" />
+          {image_url.length > 1 && <span>+ {image_url.length}</span>}
         </S.Thumbnail>
       )}
     </S.PostContainer>

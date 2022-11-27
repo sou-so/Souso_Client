@@ -10,8 +10,10 @@ export const feed = {
     });
     return res.data;
   },
-  list: async ({ cursorId, sortType }) => {
-    const res = await apiWithToken.get(GET_FEED_LIST(cursorId, sortType));
+  list: async ({ cursorId, pageId, sortType }) => {
+    const res = await apiWithToken.get(
+      GET_FEED_LIST(cursorId, pageId, sortType)
+    );
     return res.data;
   }
 };
