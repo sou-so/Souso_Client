@@ -4,27 +4,44 @@ import * as S from './styles';
 
 export const FeedForm = ({ category, mutate, toggleModal }) => {
   const [imgList, setImgList] = useState([]);
+  const [text, setText] = useState('');
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+
     const formData = new FormData();
-    formData.append('images', imgList[0]);
-    formData.append(
-      'request',
-      JSON.stringify({
-        category_id: category.id,
-        content: '내용'
-      })
+    const content = new Blob(
+      [
+        JSON.stringify({
+          category_id: category.id,
+          content: text
+        })
+      ],
+      { type: 'application/json' }
     );
-    console.log([...formData]);
-    mutate(formData);
+
+    if (!category.id) alert('카테고리를 선택해주세요');
+    if (!text) alert('내용을 입력해주세요');
+
+    if (category.id && text) {
+      imgList.forEach(img => formData.append('images', img));
+      formData.append('request', content);
+      mutate(formData);
+    }
   };
 
   return (
     <S.FormWrap onSubmit={handleSubmit}>
       <SelectedCategory category={category} toggleModal={toggleModal} />
-      <S.TextBox placeholder="소소한 이야기도 좋아요. 질문이나 이야기를 나눠보세요." />
+
+      <S.TextBox
+        value={text}
+        onChange={e => setText(e.target.value)}
+        placeholder="소소한 이야기도 좋아요. 질문이나 이야기를 나눠보세요."
+      />
+
       <ImgAddPreview imgList={imgList} setImgList={setImgList} />
+
       <S.SubmitButton type="submit">게시물 올리기</S.SubmitButton>
     </S.FormWrap>
   );

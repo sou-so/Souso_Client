@@ -4,18 +4,20 @@ import { PageHeader } from 'components/Common';
 import { FeedForm, CategoryModal } from 'components/FeedAdd';
 import { feed } from 'api/queries/feed';
 import * as S from './styles';
+import { useNavigate } from 'react-router-dom';
 
 export const FeedAddPage = () => {
-  // const [toggleSelect, setToggleSelect] = useState(true);
   const [modal, setModal] = useState(true);
   const [category, setCategory] = useState({ id: '', name: '' });
 
+  const navigate = useNavigate();
   const toggleModal = () => setModal(prev => !prev);
 
   const { mutate } = useMutation(feed.add, {
     onSuccess: res => {
       console.log(res);
       alert('게시글 생성 성공 🎉');
+      navigate(`/feed/${res.feed_id}`);
     },
     onError: error => {
       console.log(error.message);
