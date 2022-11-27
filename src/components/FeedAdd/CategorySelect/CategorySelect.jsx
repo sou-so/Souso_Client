@@ -10,7 +10,7 @@ export const CategorySelect = ({
   currentCategory,
   SetCurrentCategory
 }) => {
-  const categoryList = data.data.category_list;
+  const categoryList = data.category_list;
 
   const handleSelect = category => {
     if (category !== currentCategory) {
