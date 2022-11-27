@@ -20,10 +20,14 @@ export const FeedForm = ({ category, mutate, toggleModal }) => {
       { type: 'application/json' }
     );
 
-    imgList.forEach(img => formData.append('images', img));
-    formData.append('request', content);
+    if (!category.id) alert('카테고리를 선택해주세요');
+    if (!text) alert('내용을 입력해주세요');
 
-    mutate(formData);
+    if (category.id && text) {
+      imgList.forEach(img => formData.append('images', img));
+      formData.append('request', content);
+      mutate(formData);
+    }
   };
 
   return (

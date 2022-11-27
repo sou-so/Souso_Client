@@ -18,8 +18,8 @@ export const MyMeetPage = () => {
       <PageHeader title="소소모임" backTo="/mypage" />
       <SearchButton />
       <ScrollContainer padding>
-        <h2>나의 참여 기록</h2>
         <S.MeetList>
+          <h2>나의 참여 기록</h2>
           {sections.map((section, i) => (
             <MyMeets key={i} section={section} />
           ))}

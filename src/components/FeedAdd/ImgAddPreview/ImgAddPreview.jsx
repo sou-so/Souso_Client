@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react';
+import { Icon, ScrollHorizon } from 'components/Common';
 import { ReactComponent as Camera } from 'assets/icons/camera.svg';
-import { Icon } from 'components/Common';
+import { ReactComponent as Delete } from 'assets/icons/bin.svg';
 import * as S from './styles';
 
 export const ImgAddPreview = ({ imgList, setImgList }) => {
   const [preview, setPreview] = useState([]);
   const ImgRef = useRef();
+  const scrollRef = useRef();
 
   const handleBtnClick = e => {
     e.preventDefault();
@@ -44,18 +46,22 @@ export const ImgAddPreview = ({ imgList, setImgList }) => {
         ref={ImgRef}
         onChange={onImgUpload}
       />
+
       <S.AddPhotoBtn onClick={handleBtnClick}>
         <Icon Icon={Camera} size={31} />
         <p>사진추가</p>
       </S.AddPhotoBtn>
 
-      <S.ImgPreview>
-        {preview.map((url, i) => (
-          <S.ImgWrap key={i} onClick={() => handleDeleteImage(i)}>
-            <img src={url} alt="이미지 미리보기" />
-          </S.ImgWrap>
-        ))}
-      </S.ImgPreview>
+      <ScrollHorizon>
+        <S.ImgPreview ref={scrollRef}>
+          {preview.map((url, i) => (
+            <S.ImgWrap key={i} onClick={() => handleDeleteImage(i)}>
+              <img src={url} alt="이미지 미리보기" />
+              <Icon Icon={Delete} size={31} color="#ccc" />
+            </S.ImgWrap>
+          ))}
+        </S.ImgPreview>
+      </ScrollHorizon>
     </S.FieldWrap>
   );
 };

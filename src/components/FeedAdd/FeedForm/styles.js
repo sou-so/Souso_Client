@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { button } from 'styles/Shared';
 
 export const FormWrap = styled.form`
+  display: flex;
+  flex-direction: column;
   padding: 0 20px;
   height: ${({ theme }) => theme.style.inner_height};
   overflow-y: scroll;
@@ -16,6 +18,10 @@ export const TextBox = styled.textarea`
   border-radius: 6px;
   &:focus {
     outline: none;
+  }
+  &::placeholder {
+    color: ${({ theme }) => theme.color.black_3};
+    font-size: 13px;
   }
 `;
 
