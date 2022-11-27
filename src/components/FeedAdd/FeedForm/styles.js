@@ -14,6 +14,9 @@ export const TextBox = styled.textarea`
   padding: 14px 16px;
   border: 1px solid ${({ theme }) => theme.color.gray_2};
   border-radius: 6px;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Category = styled.div`

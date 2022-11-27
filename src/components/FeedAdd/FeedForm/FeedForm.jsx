@@ -6,18 +6,23 @@ export const FeedForm = ({ category, mutate, toggleModal }) => {
   const [imgList, setImgList] = useState([]);
   const [text, setText] = useState('');
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+
     const formData = new FormData();
-    formData.append('images', imgList[0]);
-    formData.append(
-      'request',
-      JSON.stringify({
-        category_id: category.id,
-        content: '내용'
-      })
+    const content = new Blob(
+      [
+        JSON.stringify({
+          category_id: category.id,
+          content: text
+        })
+      ],
+      { type: 'application/json' }
     );
-    console.log([...formData]);
+
+    imgList.forEach(img => formData.append('images', img));
+    formData.append('request', content);
+
     mutate(formData);
   };
 
