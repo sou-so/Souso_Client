@@ -5,8 +5,7 @@ import * as S from './styles';
 
 export const ThumbBottom = ({ postData }) => {
   const navigate = useNavigate();
-  const { feed_id, image_url } = postData;
-  const comment_count = 5;
+  const { feed_id, image_url, comment_count } = postData;
 
   return (
     <S.PostContainer onClick={() => navigate(`/feed/${feed_id}`)}>
@@ -17,7 +16,7 @@ export const ThumbBottom = ({ postData }) => {
           {image_url.length > 1 && <img src={image_url[1]} alt="" />}
         </S.Thumbnail>
       )}
-      <PostFooterBtn comments={comment_count} />
+      <PostFooterBtn comments={comment_count + ''} />
     </S.PostContainer>
   );
 };

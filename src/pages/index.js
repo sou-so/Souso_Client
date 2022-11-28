@@ -4,6 +4,7 @@ export { TownAuthPage } from './TownAuthPage/TownAuthPage';
 
 // feed tab
 export { FeedPage } from './FeedPage/FeedPage';
+export { FeedListPage } from './FeedListPage/FeedListPage';
 export { FeedViewPage } from './FeedViewPage/FeedViewPage';
 export { FeedAddPage } from './FeedAddPage/FeedAddPage';
 

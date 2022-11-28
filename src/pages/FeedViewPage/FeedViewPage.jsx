@@ -15,7 +15,7 @@ export const FeedViewPage = () => {
       <PageHeader backTo="/" title={data.category} />
       <ScrollContainer>
         <S.ContentSection>
-          <PostBodyUser data={data} view />
+          <PostBodyUser data={data} />
           <ImageSlider data={data} />
           <PostFooterBtn data={data} />
         </S.ContentSection>

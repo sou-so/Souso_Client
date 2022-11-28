@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { category } from 'api/queries/category';
 import { ReactComponent as MoreIcon } from 'assets/icons/arrow_b.svg';
@@ -6,7 +7,7 @@ import { ReactComponent as Temp } from 'assets/icons/temp.svg';
 import { Icon } from 'components/Common';
 import * as S from './styles';
 
-export const Category = ({ more, onClick }) => {
+export const Category = ({ more, linkTo, onClick }) => {
   const [isClosed, setIsClosed] = useState(more);
   const { data, isLoading } = useQuery(['category'], category.getList);
 
@@ -15,10 +16,16 @@ export const Category = ({ more, onClick }) => {
       <S.CategoryContainer>
         {!isLoading &&
           data.category_list.map(({ category_name, category_id }) => (
-            <li key={category_id} id={category_id} onClick={onClick}>
-              <Icon Icon={Temp} />
-              <S.Name>{category_name}</S.Name>
-            </li>
+            <Link
+              key={category_id}
+              to={linkTo ? `feed/list/${category_id}` : '#'}
+              state={{ category_name }}
+            >
+              <li id={category_id} onClick={onClick}>
+                <Icon Icon={Temp} />
+                <S.Name>{category_name}</S.Name>
+              </li>
+            </Link>
           ))}
       </S.CategoryContainer>
       {isClosed && !isLoading && data.category_list.length > 8 && (
