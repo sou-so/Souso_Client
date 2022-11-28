@@ -6,30 +6,31 @@ import { ReactComponent as Comment } from 'assets/icons/comment.svg';
 import { fromNow, getDate } from 'utils/dateConverter';
 import * as S from './styles';
 
-export const PostFooterIcon = ({ data, hasDate }) => {
-  const { comments, likes, scraps, createdAt } = data;
+export const PostFooterIcon = ({ postData, hasDate }) => {
+  const { like_count, bookmark_count, created_at } = postData;
+  const comment_count = 10;
 
   return (
     <S.FooterContainer>
       <S.IconList hasDate>
         <li>
           <Icon Icon={Heart} size={12} />
-          {likes}
+          {like_count}
         </li>
         <li>
           <Icon Icon={Comment} size={13} />
-          {comments}
+          {comment_count}
         </li>
         <li>
           <Icon Icon={Scrap} size={9} />
-          {scraps}
+          {bookmark_count}
         </li>
       </S.IconList>
       {hasDate && (
         <S.Date>
-          {getDate(createdAt) === getDate(new Date())
-            ? fromNow(createdAt)
-            : getDate(createdAt)}
+          {getDate(created_at) === getDate(new Date())
+            ? fromNow(created_at)
+            : getDate(created_at)}
         </S.Date>
       )}
     </S.FooterContainer>

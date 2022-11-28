@@ -1,14 +1,17 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ReactComponent as AlertIcon } from 'assets/icons/alert.svg';
+import { useLocation } from 'react-router-dom';
+import { ReactComponent as Nav1 } from 'assets/icons/nav/nav1.svg';
+import { ReactComponent as Nav2 } from 'assets/icons/nav/nav2.svg';
+import { ReactComponent as Nav3 } from 'assets/icons/nav/nav3.svg';
+import { ReactComponent as Nav4 } from 'assets/icons/nav/nav4.svg';
 import { Icon } from 'components/Common';
 import * as S from './styles';
 
 const navList = [
-  { name: '커뮤니티', linkTo: '/', component: AlertIcon },
-  { name: '소소모임', linkTo: '/meetup', component: AlertIcon },
-  { name: '채팅', linkTo: '/chats', component: AlertIcon },
-  { name: '프로필', linkTo: '/mypage', component: AlertIcon }
+  { name: '소식', linkTo: '/', icon: Nav1 },
+  { name: '모임', linkTo: '/meetup', icon: Nav2 },
+  { name: '채팅', linkTo: '/chats', icon: Nav3 },
+  { name: '프로필', linkTo: '/mypage', icon: Nav4 }
 ];
 
 export const Navbar = () => {
@@ -17,13 +20,16 @@ export const Navbar = () => {
     <S.NavContainer>
       {navList.map((nav, i) => (
         <S.NavItem key={i}>
-          <Link
+          <S.NavLink
             to={nav.linkTo}
-            className={`menu ${nav.linkTo === pathname ? 'active' : ''}`}
+            className={nav.linkTo === pathname ? 'active' : ''}
           >
-            <Icon Icon={nav.component} />
+            <S.Icons>
+              <Icon Icon={nav.icon} size={20} />
+              <Icon Icon={nav.icon} size={20} />
+            </S.Icons>
             <span>{nav.name}</span>
-          </Link>
+          </S.NavLink>
         </S.NavItem>
       ))}
     </S.NavContainer>

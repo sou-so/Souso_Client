@@ -28,7 +28,7 @@ export const PostFooterBtn = ({ comments }) => {
         <S.BtnWrap>
           <button className="comment">
             <Icon Icon={Comment} size={16} />
-            <span>댓글쓰기({comments.count})</span>
+            <span>댓글쓰기({comments})</span>
           </button>
         </S.BtnWrap>
       ) : (
