@@ -1,11 +1,11 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-  <img src="https://oopy.lazyrockets.com/api/rest/cdn/image/b114693b-9d05-4fa1-b8e2-b406b49af357.png" alt="Logo" width="120" >
-  <h1>NUMBLE FRONTEND</h1>
+  <img src="https://user-images.githubusercontent.com/68415905/204304547-05dc3ea6-d249-4208-a2af-3868e6c0fa3b.png" alt="Logo" width="80" >  
+  <h1>소년소녀들의 모임, 소소 SOUSO</h1>
   <p>
-    <a href="https://numb-community.vercel.app/">배포 주소 바로가기</a>
+    <a href="https://souso.netlify.app/">배포 주소 바로가기</a>
     ·
-    <a href="https://www.notion.so/75035d7b26f648719b09d062f94474c3">프로젝트 보고서 바로가기</a>
+    <a href="https://www.notion.so/prose-club/13-75035d7b26f648719b09d062f94474c3">프로젝트 보고서 바로가기</a>
   </p>
 
 [![Contributors][contributors-shield]][contributors-url]
@@ -62,10 +62,10 @@
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/suyeon205">
-        <img src="https://avatars.githubusercontent.com/suyeon205" width="100px;" alt="" /><br />
+      <a href="https://github.com/dkswnkk">
+        <img src="https://avatars.githubusercontent.com/dkswnkk" width="100px;" alt="" /><br />
         <sub>
-          <b>임수연</b><br />
+          <b>안주형</b><br />
           <b>백엔드</b>
         </sub>
       </a>
