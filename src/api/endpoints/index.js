@@ -22,3 +22,5 @@ export const GET_FEED_LIST = (cursorId, pageId, sortType) =>
   `/feeds?cursorId=${cursorId || '0'}&pageId=${pageId || '0'}&sortType=${
     sortType || 'LATEST'
   }`;
+
+export const BOOKMARK = feedId => `/feeds/${feedId}/bookmark`;

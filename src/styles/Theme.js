@@ -11,7 +11,10 @@ const color = {
   gray_1: '#EEE',
   gray_2: '#D9D9D9',
   gray_3: '#CCC',
-  gray_4: '#B3B3B3'
+  gray_4: '#B3B3B3',
+
+  like: '#DF5050',
+  bookmark: '#557FD1'
 };
 
 const style = {

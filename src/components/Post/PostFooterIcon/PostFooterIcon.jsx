@@ -7,8 +7,7 @@ import { fromNow, getDate } from 'utils/dateConverter';
 import * as S from './styles';
 
 export const PostFooterIcon = ({ postData, hasDate }) => {
-  const { like_count, bookmark_count, created_at } = postData;
-  const comment_count = 10;
+  const { like_count, bookmark_count, comment_count, created_at } = postData;
 
   return (
     <S.FooterContainer>

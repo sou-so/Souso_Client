@@ -25,15 +25,27 @@ export const BtnWrap = styled.div`
       line-height: 19.5px;
       padding-left: 4px;
     }
-    &:not(.comment) path {
-      fill: ${({ theme }) => theme.color.black_2};
-    }
-    &.comment path {
+    path {
       stroke: ${({ theme }) => theme.color.black_2};
     }
   }
   & + & {
     margin-left: 11px;
+  }
+`;
+
+export const Bookmark = styled.button`
+  &.bookmarked {
+    path {
+      fill: ${({ theme }) => theme.color.bookmark};
+      stroke: ${({ theme }) => theme.color.bookmark};
+    }
+  }
+`;
+
+export const Comment = styled.button`
+  path {
+    stroke: ${({ theme }) => theme.color.black_2};
   }
 `;
 

@@ -1,37 +1,47 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { ThumbBottom, ThumbRight } from 'components/Post';
 import { feed } from 'api/queries/feed';
 import * as S from './styles';
 
 export const PostList = () => {
-  const [current, setCurrent] = useState('최신글');
-  const { data, isLoading } = useQuery(['feed'], feed.list);
+  const [active, setActive] = useState('최신글');
+  const { data, isLoading, refetch } = useQuery(['feed'], feed.list);
+
+  const { pathname } = useLocation();
+  const isMain = pathname === '/';
 
   return (
     <S.PostListContainer>
-      <S.Tabs>
-        {['인기글', '최신글'].map((name, i) => (
-          <button
-            key={i}
-            id={name}
-            onClick={e => setCurrent(e.target.id)}
-            className={name === current ? 'active' : ''}
-          >
-            {name}
-          </button>
-        ))}
-      </S.Tabs>
+      {isMain && (
+        <S.Tabs>
+          {['인기글', '최신글'].map((name, i) => (
+            <button
+              key={i}
+              id={name}
+              onClick={e => setActive(e.target.id)}
+              className={name === active ? 'active' : ''}
+            >
+              {name}
+            </button>
+          ))}
+        </S.Tabs>
+      )}
       <S.PostLists>
         {/* TODO -- 로딩될 때 Skeleton UI 만들기 */}
         {/* TODO -- 게시글 없을 때 empty 페이지 UI */}
         {!isLoading &&
-          (current === '인기글'
+          (active === '인기글'
             ? data.feed_list.map(post => (
                 <ThumbRight key={post.feed_id} postData={post} />
               ))
             : data.feed_list.map(post => (
-                <ThumbBottom key={post.feed_id} postData={post} />
+                <ThumbBottom
+                  key={post.feed_id}
+                  postData={post}
+                  refetch={refetch}
+                />
               )))}
       </S.PostLists>
     </S.PostListContainer>
