@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useMutation } from 'react-query';
 import { Icon } from 'components/Common';
 import { ReactComponent as Heart } from 'assets/icons/heart.svg';
-import { ReactComponent as Scrap } from 'assets/icons/scrap.svg';
+import { ReactComponent as Bookmark } from 'assets/icons/bookmark.svg';
 import { ReactComponent as Comment } from 'assets/icons/comment.svg';
+import { feed } from 'api/queries/feed';
 import * as S from './styles';
 
-export const PostFooterBtn = ({ comments }) => {
+export const PostFooterBtn = ({ postData, comments, refetch }) => {
+  const { feed_id, is_bookmark, bookmark_count } = postData;
+  const [bookmarked, setBookmarked] = useState(is_bookmark);
+
+  const { mutate: handleBookmark } = useMutation(
+    bookmarked ? feed.removeBookmark : feed.addBookmark,
+    {
+      onSuccess: () => {
+        setBookmarked(prev => !prev);
+        refetch();
+      },
+      onError: error => {
+        console.log(error.message);
+      }
+    }
+  );
+
   return (
     <S.FooterContainer comments={comments}>
       <S.BtnContainer onClick={e => e.stopPropagation()}>
@@ -17,19 +35,22 @@ export const PostFooterBtn = ({ comments }) => {
         </S.BtnWrap>
 
         <S.BtnWrap>
-          <button>
-            <Icon Icon={Scrap} size={12} />
-            <span>보관하기</span>
-          </button>
+          <S.Bookmark
+            onClick={() => handleBookmark(feed_id)}
+            className={bookmarked ? 'bookmarked' : ''}
+          >
+            <Icon Icon={Bookmark} size={12} />
+            <span>보관하기({bookmark_count})</span>
+          </S.Bookmark>
         </S.BtnWrap>
       </S.BtnContainer>
 
       {comments ? (
         <S.BtnWrap>
-          <button className="comment">
+          <S.Comment>
             <Icon Icon={Comment} size={16} />
             <span>댓글쓰기({comments})</span>
-          </button>
+          </S.Comment>
         </S.BtnWrap>
       ) : (
         <S.DetailWrap>

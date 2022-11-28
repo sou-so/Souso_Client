@@ -7,7 +7,7 @@ import * as S from './styles';
 
 export const PostList = () => {
   const [active, setActive] = useState('최신글');
-  const { data, isLoading } = useQuery(['feed'], feed.list);
+  const { data, isLoading, refetch } = useQuery(['feed'], feed.list);
 
   const { pathname } = useLocation();
   const isMain = pathname === '/';
@@ -37,7 +37,11 @@ export const PostList = () => {
                 <ThumbRight key={post.feed_id} postData={post} />
               ))
             : data.feed_list.map(post => (
-                <ThumbBottom key={post.feed_id} postData={post} />
+                <ThumbBottom
+                  key={post.feed_id}
+                  postData={post}
+                  refetch={refetch}
+                />
               )))}
       </S.PostLists>
     </S.PostListContainer>

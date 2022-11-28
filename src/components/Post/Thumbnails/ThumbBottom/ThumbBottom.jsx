@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { PostBodyUser, PostFooterBtn } from 'components/Post';
 import * as S from './styles';
 
-export const ThumbBottom = ({ postData }) => {
+export const ThumbBottom = ({ postData, refetch }) => {
   const navigate = useNavigate();
   const { feed_id, image_url, comment_count } = postData;
 
@@ -16,7 +16,11 @@ export const ThumbBottom = ({ postData }) => {
           {image_url.length > 1 && <img src={image_url[1]} alt="" />}
         </S.Thumbnail>
       )}
-      <PostFooterBtn comments={comment_count + ''} />
+      <PostFooterBtn
+        postData={postData}
+        comments={comment_count + ''}
+        refetch={refetch}
+      />
     </S.PostContainer>
   );
 };
