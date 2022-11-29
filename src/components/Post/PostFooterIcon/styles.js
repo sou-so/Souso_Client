@@ -13,7 +13,7 @@ export const IconList = styled.ul`
     display: flex;
     align-items: center;
     & + li {
-      margin-left: ${({ hasDate }) => (hasDate ? '15px' : '9px')};
+      margin-left: 15px;
     }
     &.liked {
       path {

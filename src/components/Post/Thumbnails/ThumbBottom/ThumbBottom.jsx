@@ -5,7 +5,7 @@ import * as S from './styles';
 
 export const ThumbBottom = ({ postData, refetch }) => {
   const navigate = useNavigate();
-  const { feed_id, image_url, comment_count } = postData;
+  const { feed_id, image_url } = postData;
 
   return (
     <S.PostContainer onClick={() => navigate(`/feed/${feed_id}`)}>
@@ -16,11 +16,7 @@ export const ThumbBottom = ({ postData, refetch }) => {
           {image_url.length > 1 && <img src={image_url[1]} alt="" />}
         </S.Thumbnail>
       )}
-      <PostFooterBtn
-        postData={postData}
-        comments={comment_count + ''}
-        refetch={refetch}
-      />
+      <PostFooterBtn postData={postData} refetch={refetch} hasComment />
     </S.PostContainer>
   );
 };
