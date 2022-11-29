@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 
 export const ContentsContainer = styled.div`
-  .swiper-silde {
-    width: 292px;
-  }
   .swiper-pagination {
     position: relative;
-    padding-top: 9px;
   }
   .swiper-pagination-bullet {
     width: 4px;
@@ -19,8 +15,9 @@ export const ContentsContainer = styled.div`
 `;
 
 export const ThumbnailWrap = styled.div`
-  width: 292px;
-  height: 292px;
+  width: 100%;
+  height: 300px;
+  margin-bottom: 12px;
   img {
     border-radius: 12px;
     width: 100%;

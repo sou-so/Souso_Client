@@ -15,9 +15,10 @@ export const FeedViewPage = () => {
 
   return (
     <S.PageContainer>
-      <PageHeader backTo="/" title={'카테고리'} />
       {!isLoading && (
         <>
+          <PageHeader backTo="/" title={data.category.category_name} />
+
           <ScrollContainer>
             <S.ContentSection>
               <PostBodyUser postData={data} view />

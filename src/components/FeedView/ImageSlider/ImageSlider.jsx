@@ -18,10 +18,9 @@ export const ImageSlider = ({ imgData }) => {
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         pagination={{ clickable: false }}
-        spaceBetween={8}
+        spaceBetween={10}
         slidesPerView={1}
-        width={292}
-        height={292}
+        width={360}
       >
         {imgData.map((url, i) => (
           <SwiperSlide key={i}>
