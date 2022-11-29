@@ -34,6 +34,15 @@ export const BtnWrap = styled.div`
   }
 `;
 
+export const Like = styled.button`
+  &.liked {
+    path {
+      fill: ${({ theme }) => theme.color.like};
+      stroke: ${({ theme }) => theme.color.like};
+    }
+  }
+`;
+
 export const Bookmark = styled.button`
   &.bookmarked {
     path {

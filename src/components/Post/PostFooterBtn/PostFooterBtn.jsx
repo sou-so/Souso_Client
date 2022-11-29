@@ -8,8 +8,10 @@ import { feed } from 'api/queries/feed';
 import * as S from './styles';
 
 export const PostFooterBtn = ({ postData, comments, refetch }) => {
-  const { feed_id, is_bookmark, bookmark_count } = postData;
+  const { feed_id, is_bookmark, bookmark_count, is_like, like_count } =
+    postData;
   const [bookmarked, setBookmarked] = useState(is_bookmark);
+  const [liked, setLiked] = useState(is_like);
 
   const { mutate: handleBookmark } = useMutation(
     bookmarked ? feed.removeBookmark : feed.addBookmark,
@@ -23,21 +25,36 @@ export const PostFooterBtn = ({ postData, comments, refetch }) => {
       }
     }
   );
+  const { mutate: handleLike } = useMutation(
+    liked ? feed.removeLike : feed.addLike,
+    {
+      onSuccess: () => {
+        setLiked(prev => !prev);
+        refetch();
+      },
+      onError: error => {
+        console.log(error.message);
+      }
+    }
+  );
 
   return (
     <S.FooterContainer comments={comments}>
       <S.BtnContainer onClick={e => e.stopPropagation()}>
         <S.BtnWrap>
-          <button>
+          <S.Like
+            onClick={() => handleLike(feed_id)}
+            className={liked && 'liked'}
+          >
             <Icon Icon={Heart} size={17} />
-            <span>공감하기</span>
-          </button>
+            <span>공감하기({like_count})</span>
+          </S.Like>
         </S.BtnWrap>
 
         <S.BtnWrap>
           <S.Bookmark
             onClick={() => handleBookmark(feed_id)}
-            className={bookmarked ? 'bookmarked' : ''}
+            className={bookmarked && 'bookmarked'}
           >
             <Icon Icon={Bookmark} size={12} />
             <span>보관하기({bookmark_count})</span>
