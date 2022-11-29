@@ -2,8 +2,8 @@ import React from 'react';
 import { CommentContents } from '../CommentContents/CommentContents';
 import * as S from './styles';
 
-export const CommentBody = ({ data }) => {
-  const { comments } = data;
+export const CommentBody = ({ postData }) => {
+  const { comments } = postData;
 
   return (
     <>

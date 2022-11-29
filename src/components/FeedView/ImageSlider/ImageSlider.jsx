@@ -12,18 +12,17 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-export const ImageSlider = ({ data }) => {
+export const ImageSlider = ({ imgData }) => {
   return (
     <S.ContentsContainer>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         pagination={{ clickable: false }}
-        spaceBetween={8}
+        spaceBetween={10}
         slidesPerView={1}
-        width={292}
-        height={292}
+        width={360}
       >
-        {data.thumbnail.map((url, i) => (
+        {imgData.map((url, i) => (
           <SwiperSlide key={i}>
             <S.ThumbnailWrap>
               <img src={url} alt="thumbnail" />
