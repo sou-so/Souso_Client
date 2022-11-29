@@ -14,24 +14,22 @@ export const FeedViewPage = () => {
   );
 
   return (
-    <S.PageContainer>
-      {!isLoading && (
-        <>
-          <PageHeader backTo="/" title={data.category.category_name} />
+    !isLoading && (
+      <S.PageContainer>
+        <PageHeader backTo="/" title={data.category.category_name} />
 
-          <ScrollContainer>
-            <S.ContentSection>
-              <PostBodyUser postData={data} view />
-              <ImageSlider imgData={data.image_url} />
-              <PostFooterBtn postData={data} refetch={refetch} />
-            </S.ContentSection>
+        <ScrollContainer>
+          <S.ContentSection>
+            <PostBodyUser postData={data} view />
+            <ImageSlider imgData={data.image_url} />
+            <PostFooterBtn postData={data} refetch={refetch} />
+          </S.ContentSection>
 
-            <S.CommentSection>{/* <CommentBody /> */}</S.CommentSection>
-          </ScrollContainer>
+          <S.CommentSection>{/* <CommentBody /> */}</S.CommentSection>
+        </ScrollContainer>
 
-          {/* <CommentForm /> */}
-        </>
-      )}
-    </S.PageContainer>
+        {/* <CommentForm /> */}
+      </S.PageContainer>
+    )
   );
 };

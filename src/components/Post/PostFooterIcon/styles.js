@@ -15,6 +15,18 @@ export const IconList = styled.ul`
     & + li {
       margin-left: ${({ hasDate }) => (hasDate ? '15px' : '9px')};
     }
+    &.liked {
+      path {
+        fill: ${({ theme }) => theme.color.like};
+        stroke: ${({ theme }) => theme.color.like};
+      }
+    }
+    &.bookmarked {
+      path {
+        fill: ${({ theme }) => theme.color.bookmark};
+        stroke: ${({ theme }) => theme.color.bookmark};
+      }
+    }
   }
   .icon {
     margin-right: 2.5px;
