@@ -34,12 +34,12 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
         {!isLoading &&
           (active === '인기글'
             ? data.pages.map(page =>
-                page.feed_list.map(post => (
+                (page.feed_list || page.category_feed_list).map(post => (
                   <ThumbRight key={post.feed_id} postData={post} />
                 ))
               )
             : data.pages.map(page =>
-                page.feed_list.map(post => (
+                (page.feed_list || page.category_feed_list).map(post => (
                   <ThumbBottom
                     key={post.feed_id}
                     postData={post}
