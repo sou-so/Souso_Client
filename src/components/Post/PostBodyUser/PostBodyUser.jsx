@@ -1,14 +1,18 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { CategoryTag, ProfileImage, TextClamp } from 'components/Common';
 import { getAge } from 'utils/dateConverter';
 import * as S from './styles';
 
-export const PostBodyUser = ({ postData, view }) => {
+export const PostBodyUser = ({ postData }) => {
   const {
     author: { birth, nickname, profile_image_url },
     category: { category_name },
     content
   } = postData;
+
+  const { pathname } = useLocation();
+  const isMain = pathname === '/';
 
   return (
     <S.BodyContainer>
@@ -17,13 +21,17 @@ export const PostBodyUser = ({ postData, view }) => {
         <S.UserInfo>
           <p className="name">{nickname}</p>
           <span className="age">{getAge(birth)}</span>
-          {view && <span className="town">둔촌동</span>}
+          {!isMain && <span className="town">둔촌동</span>}
         </S.UserInfo>
-        {!view && <CategoryTag name={category_name} />}
+        {isMain && <CategoryTag name={category_name} />}
       </S.PostUser>
 
       <S.PostText>
-        {view ? <p>{content}</p> : <TextClamp line={3}>{content}</TextClamp>}
+        {isMain || pathname.includes('list') ? (
+          <TextClamp line={3}>{content}</TextClamp>
+        ) : (
+          <p>{content}</p>
+        )}
       </S.PostText>
     </S.BodyContainer>
   );

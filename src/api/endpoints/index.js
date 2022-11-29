@@ -23,6 +23,7 @@ export const GET_FEED_LIST = (cursorId, pageId, sortType) =>
     sortType || 'LATEST'
   }`;
 export const GET_FEED_DETAIL = feedId => `/feeds/${feedId}`;
+export const BOOKMARK = feedId => `/feeds/${feedId}/bookmark`;
 
 // comments
 export const GET_COMMENTS_LIST = ({ pageId, feedId }) =>

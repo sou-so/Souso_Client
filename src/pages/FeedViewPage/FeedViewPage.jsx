@@ -8,8 +8,8 @@ import { PostBodyUser, PostFooterBtn } from 'components/Post';
 import * as S from './styles';
 
 export const FeedViewPage = () => {
-  const { id } = useParams();
-  const { data, isLoading } = useQuery(['feed-detail', id], id =>
+  const { postId } = useParams();
+  const { data, isLoading } = useQuery(['feed-detail', postId], id =>
     feed.detail(id)
   );
 

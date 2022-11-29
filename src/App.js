@@ -28,7 +28,8 @@ function App() {
 
           {/* Navbar not included */}
           <Route path="/" element={<AppLayout />}>
-            <Route path="feed/:id" element={<P.FeedViewPage />} />
+            <Route path="feed/list/:categoryId" element={<P.FeedListPage />} />
+            <Route path="feed/:postId" element={<P.FeedViewPage />} />
             <Route path="feed/add" element={<P.FeedAddPage />} />
             <Route path="mypage/posts" element={<P.MyPostPage />} />
             <Route path="mypage/scraps" element={<P.MyScrapPage />} />
