@@ -34,3 +34,11 @@ export const PostLists = styled.ul`
     border-top: ${({ theme }) => theme.style.border_light};
   }
 `;
+
+export const Loading = styled.div`
+  margin: 35px 0;
+  text-align: center;
+  img {
+    width: 30px;
+  }
+`;

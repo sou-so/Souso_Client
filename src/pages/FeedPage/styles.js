@@ -16,6 +16,7 @@ export const SectionWrap = styled.section`
 `;
 
 export const CategoryWrap = styled.section`
+  min-height: 200px;
   margin: 40px 15px 50px;
   padding-top: 25px;
   border-top: ${({ theme }) => theme.style.border_light};
