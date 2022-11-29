@@ -9,7 +9,7 @@ import * as S from './styles';
 
 export const FeedViewPage = () => {
   const { postId } = useParams();
-  const { data, isLoading } = useQuery(['feed-detail', postId], id =>
+  const { data, isLoading, refetch } = useQuery(['feed-detail', postId], id =>
     feed.detail(id)
   );
 
@@ -22,7 +22,7 @@ export const FeedViewPage = () => {
             <S.ContentSection>
               <PostBodyUser postData={data} view />
               <ImageSlider imgData={data.image_url} />
-              <PostFooterBtn postData={data} />
+              <PostFooterBtn postData={data} refetch={refetch} />
             </S.ContentSection>
 
             <S.CommentSection>{/* <CommentBody /> */}</S.CommentSection>
