@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const FooterContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: ${({ comments }) => (comments ? '14px' : '8px')} 5px 0;
-  border-top: ${({ comments }) => (comments ? 'none' : '1px solid #eee')};
+  padding: ${({ hasComment }) => (hasComment ? '14px' : '8px')} 5px 0;
+  border-top: ${({ hasComment }) => (hasComment ? 'none' : '1px solid #eee')};
 `;
 
 export const BtnContainer = styled.div`
@@ -31,6 +31,15 @@ export const BtnWrap = styled.div`
   }
   & + & {
     margin-left: 11px;
+  }
+`;
+
+export const Like = styled.button`
+  &.liked {
+    path {
+      fill: ${({ theme }) => theme.color.like};
+      stroke: ${({ theme }) => theme.color.like};
+    }
   }
 `;
 

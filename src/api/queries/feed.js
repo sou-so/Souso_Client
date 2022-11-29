@@ -1,9 +1,10 @@
 import { apiWithToken } from 'api';
 import {
   ADD_FEED,
-  GET_FEED_DETAIL,
   GET_FEED_LIST,
-  BOOKMARK
+  GET_FEED_DETAIL,
+  BOOKMARK,
+  LIKE
 } from 'api/endpoints';
 
 export const feed = {
@@ -32,6 +33,14 @@ export const feed = {
   },
   removeBookmark: async req => {
     const res = await apiWithToken.delete(BOOKMARK(req));
+    return res;
+  },
+  addLike: async req => {
+    const res = await apiWithToken.post(LIKE(req), req);
+    return res.data;
+  },
+  removeLike: async req => {
+    const res = await apiWithToken.delete(LIKE(req));
     return res;
   }
 };
