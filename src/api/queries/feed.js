@@ -1,5 +1,5 @@
 import { apiWithToken } from 'api';
-import { ADD_FEED, GET_FEED_LIST } from 'api/endpoints';
+import { ADD_FEED, GET_FEED_DETAIL, GET_FEED_LIST } from 'api/endpoints';
 
 export const feed = {
   add: async data => {
@@ -14,6 +14,11 @@ export const feed = {
     const res = await apiWithToken.get(
       GET_FEED_LIST(cursorId, pageId, sortType)
     );
+    return res.data;
+  },
+  detail: async ({ queryKey }) => {
+    const feedId = queryKey[1];
+    const res = await apiWithToken.get(GET_FEED_DETAIL(feedId));
     return res.data;
   }
 };

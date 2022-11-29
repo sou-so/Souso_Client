@@ -12,7 +12,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-export const ImageSlider = ({ data }) => {
+export const ImageSlider = ({ imgData }) => {
   return (
     <S.ContentsContainer>
       <Swiper
@@ -23,7 +23,7 @@ export const ImageSlider = ({ data }) => {
         width={292}
         height={292}
       >
-        {data.thumbnail.map((url, i) => (
+        {imgData.map((url, i) => (
           <SwiperSlide key={i}>
             <S.ThumbnailWrap>
               <img src={url} alt="thumbnail" />

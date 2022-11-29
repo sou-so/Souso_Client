@@ -3,13 +3,13 @@ import { Icon, ProfileImage } from 'components/Common';
 import { ReactComponent as Plane } from 'assets/icons/airplane.svg';
 import * as S from './styles';
 
-export const CommentForm = ({ data }) => {
-  const { user } = data;
+export const CommentForm = ({ postData }) => {
+  const { author } = postData;
 
   return (
     <S.InputContainer>
       <S.FormContainer>
-        <ProfileImage size={40} url={user.profile_img} />
+        <ProfileImage size={40} url={author.profile_image_url} />
 
         <S.Input placeholder="댓글을 입력해주세요" />
         <S.SendBtn>
