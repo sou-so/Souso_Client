@@ -3,7 +3,7 @@ import { Icon } from 'components/Common';
 import { ReactComponent as Heart } from 'assets/icons/heart.svg';
 import { ReactComponent as Bookmark } from 'assets/icons/bookmark.svg';
 import { ReactComponent as Comment } from 'assets/icons/comment.svg';
-import { fromNow } from 'utils/dateConverter';
+import { fromNow, getDate } from 'utils/dateConverter';
 import * as S from './styles';
 
 export const PostFooterIcon = ({ postData }) => {
@@ -32,7 +32,11 @@ export const PostFooterIcon = ({ postData }) => {
           {comment_count}
         </li>
       </S.IconList>
-      <S.Date>{fromNow(created_at)}</S.Date>
+      <S.Date>
+        {getDate(created_at) === getDate(new Date())
+          ? fromNow(created_at)
+          : getDate(created_at)}
+      </S.Date>
     </S.FooterContainer>
   );
 };
