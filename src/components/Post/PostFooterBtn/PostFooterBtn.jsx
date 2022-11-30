@@ -54,7 +54,7 @@ export const PostFooterBtn = ({ postData, hasComment, refetch }) => {
         <S.BtnWrap>
           <S.Like
             onClick={() => handleLike(feed_id)}
-            className={liked && 'liked'}
+            className={liked ? 'liked' : ''}
           >
             <Icon Icon={Heart} size={17} />
             <span>공감({like_count})</span>
@@ -64,7 +64,7 @@ export const PostFooterBtn = ({ postData, hasComment, refetch }) => {
         <S.BtnWrap>
           <S.Bookmark
             onClick={() => handleBookmark(feed_id)}
-            className={bookmarked && 'bookmarked'}
+            className={bookmarked ? 'bookmarked' : ''}
           >
             <Icon Icon={Bookmark} size={12} />
             <span>보관({bookmark_count})</span>

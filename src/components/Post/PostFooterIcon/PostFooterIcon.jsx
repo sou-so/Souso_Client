@@ -19,11 +19,11 @@ export const PostFooterIcon = ({ postData }) => {
   return (
     <S.FooterContainer>
       <S.IconList hasDate>
-        <li className={is_like && 'liked'}>
+        <li className={is_like ? 'liked' : ''}>
           <Icon Icon={Heart} size={12} />
           {like_count}
         </li>
-        <li className={is_bookmark && 'bookmarked'}>
+        <li className={is_bookmark ? 'bookmarked' : ''}>
           <Icon Icon={Bookmark} size={9} />
           {bookmark_count}
         </li>

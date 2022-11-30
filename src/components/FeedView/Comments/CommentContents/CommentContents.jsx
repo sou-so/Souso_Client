@@ -1,19 +1,25 @@
 import React from 'react';
 import { Icon, ProfileImage } from 'components/Common';
 import { ReactComponent as Comment } from 'assets/icons/comment.svg';
-import { fromNow } from 'utils/dateConverter';
+import { ReactComponent as Dots } from 'assets/icons/dots.svg';
+import { fromNow, getDate } from 'utils/dateConverter';
 import * as S from './styles';
 
 export const CommentContents = ({ contents }) => {
   const { author, content, created_at } = contents;
-  const time = fromNow(created_at);
 
   return (
     <>
-      <S.CommentUser>
-        <ProfileImage size={40} url={author.profile_image_url} />
-        <p>{author.nickname}</p>
-      </S.CommentUser>
+      <S.CommentHeader>
+        <S.UserInfo>
+          <ProfileImage size={40} url={author.profile_image_url} />
+          <p className="userName">{author.nickname}</p>
+        </S.UserInfo>
+
+        <S.ButtonWrap>
+          <Icon Icon={Dots} />
+        </S.ButtonWrap>
+      </S.CommentHeader>
 
       <S.CommentText>{content}</S.CommentText>
 
@@ -23,7 +29,11 @@ export const CommentContents = ({ contents }) => {
           <span>답글쓰기</span>
         </button>
 
-        <p>{time}분 전</p>
+        <div>
+          {getDate(created_at) === getDate(new Date())
+            ? fromNow(created_at)
+            : getDate(created_at)}
+        </div>
       </S.CommentFooter>
     </>
   );

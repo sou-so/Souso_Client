@@ -23,7 +23,7 @@ export const feed = {
     return res.data;
   },
   detail: async ({ queryKey }) => {
-    const feedId = queryKey[1];
+    const { feedId } = queryKey[1];
     const res = await apiWithToken.get(GET_FEED_DETAIL(feedId));
     return res.data;
   },
