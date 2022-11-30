@@ -29,6 +29,7 @@ export const BOOKMARK = feedId => `/feeds/${feedId}/bookmark`;
 export const LIKE = feedId => `feeds/${feedId}/like`;
 
 // comments
-export const Add_COMMENTS = feedId => `/comments/${feedId}`;
+export const ADD_COMMENTS = feedId => `/comments/${feedId}`;
+export const ADD_REPLY = commentId => `/comments/reply/${commentId}`;
 export const GET_COMMENTS_LIST = (feedId, pageId) =>
   `/comments/${feedId}?pageId=${pageId}`;

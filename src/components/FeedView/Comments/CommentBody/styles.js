@@ -11,7 +11,7 @@ export const OriginComment = styled.div`
   padding-top: 14px;
   border-bottom: 1px solid #d9d9d9;
   &:last-child {
-    padding-bottom: 10px;
+    margin-bottom: 80px;
   }
 `;
 
@@ -26,5 +26,5 @@ export const NoComment = styled.div`
   color: ${({ theme }) => theme.color.gray_4};
   line-height: 22px;
   text-align: center;
-  padding-top: 40px;
+  padding: 50px 0 130px;
 `;

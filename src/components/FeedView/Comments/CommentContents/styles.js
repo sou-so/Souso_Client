@@ -1,16 +1,24 @@
 import styled from 'styled-components';
 
-export const CommentUser = styled.div`
+export const CommentHeader = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-bottom: 9px;
-  p {
+`;
+
+export const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+  p.userName {
     font-size: 13px;
     font-weight: 500;
     line-height: 28px;
     padding-left: 5px;
   }
 `;
+
+export const ButtonWrap = styled.div``;
 
 export const CommentText = styled.div`
   padding: 0 10px;
@@ -34,7 +42,7 @@ export const CommentFooter = styled.div`
       color: ${({ theme }) => theme.color.black_2};
     }
   }
-  p {
+  div {
     font-size: 11px;
     color: ${({ theme }) => theme.color.black_2};
     line-height: 28px;
