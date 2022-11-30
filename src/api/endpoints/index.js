@@ -12,6 +12,7 @@ export const MYPROFILE = `/users`;
 export const LOGIN = `/users/token`;
 export const LOGOUT = `/users/logout`;
 export const SIGNOUT = `/users/leave`;
+export const MYPOSTS = cursorId => `/users/feeds?cursorId=${cursorId}`;
 
 // category
 export const CATEGORY = `/categories`;

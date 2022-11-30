@@ -1,11 +1,14 @@
 import { api, apiWithToken } from 'api';
-import { LOGIN, LOGOUT, MYPROFILE, SIGNOUT } from 'api/endpoints';
+import {
+  LOGIN,
+  LOGOUT,
+  MYBOOKMARKS,
+  MYPOSTS,
+  MYPROFILE,
+  SIGNOUT
+} from 'api/endpoints';
 
 export const user = {
-  getProfile: async () => {
-    const res = await apiWithToken.get(MYPROFILE);
-    return res.data;
-  },
   login: async req => {
     const res = await api.post(LOGIN, req);
     return res.data;
@@ -17,5 +20,13 @@ export const user = {
   signout: async () => {
     const res = await apiWithToken.delete(SIGNOUT);
     return res;
+  },
+  getProfile: async () => {
+    const res = await apiWithToken.get(MYPROFILE);
+    return res.data;
+  },
+  myPosts: async ({ cursorId }) => {
+    const res = await apiWithToken.get(MYPOSTS(cursorId));
+    return res.data;
   }
 };

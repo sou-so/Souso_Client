@@ -2,10 +2,20 @@ import React, { useState } from 'react';
 import { PageHeader, ScrollContainer, MenuTab } from 'components/Common';
 import { MyComments, SearchButton, MyPosts } from 'components/MySubPage';
 import * as S from './styles';
+import { useInfiniteQuery } from 'react-query';
+import { user } from 'api/queries/user';
 
 export const MyPostPage = () => {
   const list = ['게시글', '댓글'];
   const [active, setActive] = useState(list[0]);
+
+  const infiniteResponse = useInfiniteQuery(
+    ['myPosts'],
+    ({ pageParam = 0 }) => user.myPosts({ cursorId: pageParam }),
+    {
+      getNextPageParam: lastPage => lastPage.feed_list.slice(-1)[0].feed_id
+    }
+  );
 
   return (
     <S.PageContainer>
@@ -13,7 +23,11 @@ export const MyPostPage = () => {
       <SearchButton />
       <MenuTab list={list} active={active} setActive={setActive} />
       <ScrollContainer>
-        {active === '게시글' ? <MyPosts /> : <MyComments />}
+        {active === '게시글' ? (
+          <MyPosts infiniteResponse={infiniteResponse} />
+        ) : (
+          <MyComments />
+        )}
       </ScrollContainer>
     </S.PageContainer>
   );
