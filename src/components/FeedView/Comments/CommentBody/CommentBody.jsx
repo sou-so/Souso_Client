@@ -12,10 +12,6 @@ export const CommentBody = ({ postData }) => {
     comments.list
   );
 
-  if (!isLoading) {
-    console.log(data);
-  }
-
   return (
     <>
       <S.CommentCount>댓글 ({comment_count})</S.CommentCount>
