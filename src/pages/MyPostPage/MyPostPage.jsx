@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { useInfiniteQuery } from 'react-query';
 import { PageHeader, ScrollContainer, MenuTab } from 'components/Common';
 import { MyComments, SearchButton, MyPosts } from 'components/MySubPage';
-import * as S from './styles';
-import { useInfiniteQuery } from 'react-query';
 import { user } from 'api/queries/user';
+import * as S from './styles';
 
 export const MyPostPage = () => {
   const list = ['게시글', '댓글'];

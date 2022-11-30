@@ -28,5 +28,9 @@ export const user = {
   myPosts: async ({ cursorId }) => {
     const res = await apiWithToken.get(MYPOSTS(cursorId));
     return res.data;
+  },
+  myBookmarks: async ({ categoryId, pageId }) => {
+    const res = await apiWithToken.get(MYBOOKMARKS(categoryId, pageId));
+    return res.data;
   }
 };

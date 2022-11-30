@@ -4,7 +4,7 @@ export const FooterContainer = styled.div`
   display: flex;
   margin-left: 4px;
   font-size: 12px;
-  opacity: 0.5;
+  color: ${({ theme }) => theme.color.black_3};
 `;
 
 export const IconList = styled.ul`
@@ -30,6 +30,9 @@ export const IconList = styled.ul`
   }
   .icon {
     margin-right: 2.5px;
+    path {
+      stroke: ${({ theme }) => theme.color.black_3};
+    }
   }
 `;
 
