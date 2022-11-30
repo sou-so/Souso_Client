@@ -20,3 +20,11 @@ export const Recomment = styled.div`
   padding: 14px 0 0 15px;
   border-top: 1px solid #d9d9d9;
 `;
+
+export const NoComment = styled.div`
+  font-size: 15px;
+  color: ${({ theme }) => theme.color.gray_4};
+  line-height: 22px;
+  text-align: center;
+  padding-top: 40px;
+`;

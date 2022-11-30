@@ -30,6 +30,12 @@ export const CommentBody = ({ postData }) => {
                   ))}
               </S.OriginComment>
             ))}
+          {data.comment.length === 0 && (
+            <S.NoComment>
+              <p>댓글이 아직 없어요!</p>
+              <p>가장 먼저 댓글을 달아보세요.</p>
+            </S.NoComment>
+          )}
         </S.CommentContainer>
       )}
     </>

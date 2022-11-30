@@ -23,7 +23,7 @@ export const CommentContents = ({ contents }) => {
           <span>답글쓰기</span>
         </button>
 
-        <p>{time}분 전</p>
+        <p>{time}</p>
       </S.CommentFooter>
     </>
   );

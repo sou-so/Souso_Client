@@ -31,7 +31,7 @@ export const FeedViewPage = () => {
           </S.CommentSection>
         </ScrollContainer>
 
-        {/* <CommentForm /> */}
+        <CommentForm />
       </S.PageContainer>
     )
   );
