@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useQuery } from 'react-query';
 import { ThumbBottom, ThumbRight } from 'components/Post';
-import { feed } from 'api/queries/feed';
+import { useObserver } from 'hooks/useObserver';
+import loading from 'assets/images/loading.gif';
 import * as S from './styles';
 
-export const PostList = () => {
-  const [active, setActive] = useState('최신글');
-  const { data, isLoading, refetch } = useQuery(['feed'], feed.list);
-
+export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
+  const { data, isLoading, isFetching, fetchNextPage, refetch } =
+    infiniteResponse;
   const { pathname } = useLocation();
   const isMain = pathname === '/';
+
+  const { ObserverComponent } = useObserver(data, fetchNextPage);
 
   return (
     <S.PostListContainer>
@@ -20,7 +21,7 @@ export const PostList = () => {
             <button
               key={i}
               id={name}
-              onClick={e => setActive(e.target.id)}
+              onClick={handleTabClick}
               className={name === active ? 'active' : ''}
             >
               {name}
@@ -28,22 +29,33 @@ export const PostList = () => {
           ))}
         </S.Tabs>
       )}
+
       <S.PostLists>
-        {/* TODO -- 로딩될 때 Skeleton UI 만들기 */}
-        {/* TODO -- 게시글 없을 때 empty 페이지 UI */}
         {!isLoading &&
           (active === '인기글'
-            ? data.feed_list.map(post => (
-                <ThumbRight key={post.feed_id} postData={post} />
-              ))
-            : data.feed_list.map(post => (
-                <ThumbBottom
-                  key={post.feed_id}
-                  postData={post}
-                  refetch={refetch}
-                />
-              )))}
+            ? data.pages.map(page =>
+                (page.feed_list || page.category_feed_list).map(post => (
+                  <ThumbRight key={post.feed_id} postData={post} />
+                ))
+              )
+            : data.pages.map(page =>
+                (page.feed_list || page.category_feed_list).map(post => (
+                  <ThumbBottom
+                    key={post.feed_id}
+                    postData={post}
+                    refetch={refetch}
+                  />
+                ))
+              ))}
       </S.PostLists>
+
+      {/* 스크롤이 Observer에 도착하면 다음 페이지 fetch */}
+      <ObserverComponent />
+      {isFetching && (
+        <S.Loading onClick={fetchNextPage}>
+          <img src={loading} alt="loading" />
+        </S.Loading>
+      )}
     </S.PostListContainer>
   );
 };

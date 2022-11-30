@@ -7,7 +7,7 @@ import * as S from './styles';
 export const PostBodyUser = ({ postData }) => {
   const {
     author: { birth, nickname, profile_image_url },
-    category: { category_name },
+    category,
     content
   } = postData;
 
@@ -23,7 +23,7 @@ export const PostBodyUser = ({ postData }) => {
           <span className="age">{getAge(birth)}</span>
           {!isMain && <span className="town">둔촌동</span>}
         </S.UserInfo>
-        {isMain && <CategoryTag name={category_name} />}
+        {isMain && category && <CategoryTag name={category.category_name} />}
       </S.PostUser>
 
       <S.PostText>

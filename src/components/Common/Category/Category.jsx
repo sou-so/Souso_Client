@@ -19,7 +19,7 @@ export const Category = ({ more, linkTo, onClick }) => {
             <Link
               key={category_id}
               to={linkTo ? `feed/list/${category_id}` : '#'}
-              state={{ category_name }}
+              state={{ category_name, category_id }}
             >
               <li id={category_id} onClick={onClick}>
                 <Icon Icon={Temp} />
