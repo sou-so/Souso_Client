@@ -1,8 +1,7 @@
 import React from 'react';
 import { useMutation } from 'react-query';
 import { ThumbTop } from 'components/Post';
-import { EditDeleteButton } from 'components/MySubPage';
-import { FetchObserver } from 'components/Common';
+import { EditDeleteButton, FetchObserver } from 'components/Common';
 import { feed } from 'api/queries/feed';
 import * as S from './styles';
 

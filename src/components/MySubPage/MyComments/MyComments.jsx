@@ -1,7 +1,11 @@
 import React from 'react';
 import { ReactComponent as Arrow } from 'assets/icons/arrow_angle.svg';
-import { CategoryTag, Icon, TextClamp } from 'components/Common';
-import { EditDeleteButton } from 'components/MySubPage';
+import {
+  CategoryTag,
+  Icon,
+  TextClamp,
+  EditDeleteButton
+} from 'components/Common';
 import data from 'data/myComments';
 import * as S from './styles';
 

@@ -25,7 +25,10 @@ export const CommentBody = ({ postData }) => {
                 {data.reply.length > 0 &&
                   data.reply.map(data => (
                     <S.Recomment key={data.comment_id}>
-                      <CommentContents contents={data} />
+                      <CommentContents
+                        contents={data}
+                        feedAuthor={author.user_id}
+                      />
                     </S.Recomment>
                   ))}
               </S.OriginComment>

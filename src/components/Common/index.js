@@ -9,3 +9,4 @@ export { CategoryTag } from './CategoryTag/CategoryTag';
 export { TextClamp } from './TextClamp/TextClamp';
 export { MenuTab } from './MenuTab/MenuTab';
 export { FetchObserver } from './FetchObserver/FetchObserver';
+export { EditDeleteButton } from './EditDeleteButton/EditDeleteButton';

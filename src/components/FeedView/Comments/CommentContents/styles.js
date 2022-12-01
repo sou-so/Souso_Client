@@ -31,7 +31,7 @@ export const WriterTag = styled.div`
 export const ButtonWrap = styled.div``;
 
 export const CommentText = styled.div`
-  padding: 0 10px;
+  padding: 0 10px 6px;
   font-size: 15px;
 `;
 
