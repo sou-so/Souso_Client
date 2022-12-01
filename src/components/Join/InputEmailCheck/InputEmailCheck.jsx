@@ -12,11 +12,11 @@ export const InputEmailCheck = ({
 }) => {
   const { mutate } = useMutation(join.email, {
     onSuccess: () => {
-      errors.nickname = '';
+      errors.email = '';
       setIsChecked(true); // 중복 확인 완료 시
     },
     onError: error => {
-      errors.nickname = '이미 가입된 이메일입니다.';
+      errors.email = '이미 가입된 이메일입니다.';
       console.log(error.message); // 중복이면 409 error
     }
   });
@@ -25,6 +25,9 @@ export const InputEmailCheck = ({
 
   const checkJoinedEmail = e => {
     e.preventDefault();
+    const email = values.email;
+    const data = email.split('@');
+    mutate(data);
   };
 
   useEffect(() => {

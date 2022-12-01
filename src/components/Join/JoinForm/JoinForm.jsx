@@ -56,13 +56,6 @@ export const JoinForm = ({ createAccount }) => {
           values={values}
           errors={errors}
         />
-        <Input
-          name="email"
-          placeholder="numble@example.com"
-          onChange={handleChange}
-          values={values}
-          errors={errors}
-        />
       </S.FieldWrap>
 
       <S.FieldWrap
