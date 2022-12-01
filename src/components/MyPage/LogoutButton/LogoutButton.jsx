@@ -14,7 +14,7 @@ export const LogoutButton = () => {
         console.log(res);
         authToken.setToken('');
         alert('탈퇴 완료 🎉');
-        navigate('/');
+        navigate('/login');
       }
     },
     onError: error => {
@@ -28,7 +28,7 @@ export const LogoutButton = () => {
       console.log(res);
       authToken.setToken('');
       alert('로그아웃 완료 🎉');
-      navigate('/');
+      navigate('/login');
     },
     onError: error => {
       console.log(error.message);

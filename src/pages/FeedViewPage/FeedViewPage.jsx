@@ -17,7 +17,7 @@ export const FeedViewPage = () => {
   return (
     !isLoading && (
       <S.PageContainer>
-        <PageHeader backTo="/feed" title={data.category.category_name} />
+        <PageHeader backTo="/" title={data.category.category_name} />
 
         <ScrollContainer>
           <S.ContentSection>

@@ -9,7 +9,7 @@ export const AppLayout = ({ navbar }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) navigate('/');
+    if (!user) navigate('/login');
   }, [user, navigate]);
 
   return (

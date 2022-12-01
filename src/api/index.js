@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { interceptors } from './interceptor';
 
-const BASE_URL = 'http://43.201.133.197:8080';
+// const BASE_URL = 'http://43.201.133.197:8080';
+const BASE_URL = 'https://souso.co.kr/';
+
 const HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json; charset=utf-8',

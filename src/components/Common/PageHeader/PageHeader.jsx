@@ -5,9 +5,11 @@ import * as S from './styles';
 export const PageHeader = ({ title, backTo }) => {
   return (
     <S.PageHeaderContainer>
-      <S.BackIcon to={backTo}>
-        <Icon Icon={BackIcon} size={19} />
-      </S.BackIcon>
+      {backTo && (
+        <S.BackIcon to={backTo}>
+          <Icon Icon={BackIcon} size={19} />
+        </S.BackIcon>
+      )}
       <S.PageTitle>{title}</S.PageTitle>
     </S.PageHeaderContainer>
   );

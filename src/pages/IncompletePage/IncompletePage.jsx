@@ -1,10 +1,15 @@
 import React from 'react';
 import IncompleteLogo from 'assets/images/incomplete_logo.png';
 import * as S from './styles';
+import { PageHeader } from 'components/Common';
+import { useLocation } from 'react-router-dom';
 
 export const IncompletePage = () => {
+  const { pathname } = useLocation();
+
   return (
     <S.PageContainer>
+      <PageHeader title={pathname === '/meetup' ? '소소모임' : '채팅'} />
       <S.ImgWrap>
         <img src={IncompleteLogo} alt="서비스 준비중" />
       </S.ImgWrap>

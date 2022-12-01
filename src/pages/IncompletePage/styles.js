@@ -4,8 +4,7 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin: 0 auto;
-  h2 {
+  & > h2 {
     font-size: 17px;
     font-weight: bold;
     color: ${({ theme }) => theme.color.main};

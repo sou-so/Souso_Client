@@ -27,7 +27,8 @@ export const FeedListPage = () => {
 
   return (
     <S.PageContainer>
-      <PageHeader backTo="/feed" title={state.category_name} />
+      {' '}
+      <PageHeader backTo="/" title={state.category_name} />
       <ScrollContainer>
         <PostList infiniteResponse={infiniteResponse} />
       </ScrollContainer>
