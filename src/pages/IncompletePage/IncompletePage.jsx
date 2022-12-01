@@ -1,5 +1,5 @@
 import React from 'react';
-import IncompleteLogo from 'assets/images/incomplete_logo.png';
+import IncompleteLogo from 'assets/images/logo_incomplete.gif';
 import * as S from './styles';
 import { PageHeader } from 'components/Common';
 import { useLocation } from 'react-router-dom';

@@ -14,10 +14,9 @@ export const PageContainer = styled.div`
 `;
 
 export const ImgWrap = styled.div`
-  margin: 252px auto 15px;
+  margin: 150px auto 15px;
   img {
-    width: 92px;
-    height: 100px;
+    width: 100px;
   }
 `;
 
