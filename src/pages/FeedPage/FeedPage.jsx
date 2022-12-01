@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Category, Icon, ScrollContainer } from 'components/Common';
 import { useInfiniteQuery } from 'react-query';
 import { feed } from 'api/queries/feed';
@@ -61,14 +61,14 @@ export const FeedPage = () => {
         <Icon Icon={Add} color={'#fff'} />
       </S.FeedAddBtn>
 
-      <S.TempLinks>
+      {/* <S.TempLinks>
         <Link to={'/login'}>
           <div>Login</div>
         </Link>
         <Link to={'/join'}>
           <div>Join</div>
         </Link>
-      </S.TempLinks>
+      </S.TempLinks> */}
     </S.PageContainer>
   );
 };

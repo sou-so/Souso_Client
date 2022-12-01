@@ -22,7 +22,7 @@ export const LoginPage = () => {
       console.log(res);
       authToken.setToken(res.access_token);
       alert('로그인 완료 🎉');
-      navigate('/');
+      navigate('/feed');
     },
     onError: error => {
       console.log(error.message);

@@ -14,14 +14,14 @@ function App() {
         <Routes>
           {/* No Token */}
           <Route path="/" element={<AuthLayout />}>
-            <Route path="login" element={<P.LoginPage />} />
+            <Route index element={<P.LoginPage />} />
             <Route path="join" element={<P.JoinPage />} />
             <Route path="welcome" element={<P.WelcomePage />} />
           </Route>
 
           {/* Navbar included */}
           <Route path="/" element={<AppLayout navbar />}>
-            <Route index element={<P.FeedPage />} />
+            <Route path="feed" element={<P.FeedPage />} />
             <Route path="meetup" element={<P.MeetPage />} />
             <Route path="chats" element={<P.ChatPage />} />
             <Route path="mypage" element={<P.MyPage />} />
