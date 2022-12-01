@@ -4,35 +4,35 @@
       "date": "Wed Nov 09 2022 17:20:33 GMT+0900",
       "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png",
       "name": "주말 농구모임",
-      "keywords": ["키워드1", "키워드2"],
+      "keywords": ["키워드1"],
       "isJoined": true
     },
     {
       "date": "Fri Nov 11 2022 17:20:33 GMT+0900",
       "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png",
       "name": "아크릴화 취미반",
-      "keywords": ["키워드1", "키워드2"],
+      "keywords": ["키워드1"],
       "isJoined": false
     },
     {
       "date": "Fri Nov 11 2022 17:20:33 GMT+0900",
       "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png",
       "name": "소소한 독서모임",
-      "keywords": ["키워드1", "키워드2"],
+      "keywords": ["키워드1"],
       "isJoined": true
     },
     {
       "date": "Sun Nov 13 2022 17:20:33 GMT+0900",
       "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png",
       "name": "퇴근하고 맥주마셔요",
-      "keywords": ["키워드1", "키워드2"],
+      "keywords": ["키워드1"],
       "isJoined": true
     },
     {
       "date": "Mon Nov 14 2022 17:20:33 GMT+0900",
       "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png",
       "name": "반려인들의 소소한 이야기",
-      "keywords": ["키워드1", "키워드2"],
+      "keywords": ["키워드1"],
       "isJoined": true
     }
   ]

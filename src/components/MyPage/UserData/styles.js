@@ -5,6 +5,7 @@ export const UserDataContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 20px 0 40px;
+  min-height: 172px;
 
   img {
     width: 80px;

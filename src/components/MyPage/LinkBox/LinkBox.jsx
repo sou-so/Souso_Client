@@ -3,7 +3,7 @@ import { Icon } from 'components/Common';
 import * as S from './styles';
 import { useNavigate } from 'react-router-dom';
 
-export const LinkBox = ({ icon, name, myposts, scraps, meets, linkTo }) => {
+export const LinkBox = ({ icon, name, myposts, bookmarks, meets, linkTo }) => {
   const navigate = useNavigate();
 
   return (
@@ -17,9 +17,9 @@ export const LinkBox = ({ icon, name, myposts, scraps, meets, linkTo }) => {
           {myposts.comment} <span>댓글</span>
         </S.Count>
       )}
-      {scraps && (
+      {bookmarks && (
         <S.Count>
-          {scraps} <span>글</span>
+          {bookmarks} <span>글</span>
         </S.Count>
       )}
       {meets && (
