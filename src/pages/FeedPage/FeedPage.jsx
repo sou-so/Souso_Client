@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 // import { Link } from 'react-router-dom';
-import { Category, Icon, ScrollContainer } from 'components/Common';
+import { Category, ScrollContainer } from 'components/Common';
 import { useInfiniteQuery } from 'react-query';
 import { feed } from 'api/queries/feed';
-import { ReactComponent as Add } from 'assets/icons/pencil_writing.svg';
 import * as C from 'components/Feed';
 import * as S from './styles';
 
@@ -58,9 +57,7 @@ export const FeedPage = () => {
         />
       </ScrollContainer>
 
-      <S.FeedAddBtn to="/feed/add">
-        <Icon Icon={Add} size={20} color="#fff" />
-      </S.FeedAddBtn>
+      <C.FeedAddButton />
 
       {/* <S.TempLinks>
         <Link to={'/login'}>
