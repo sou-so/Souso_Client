@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Category, ScrollContainer } from 'components/Common';
+import { Category, Icon, ScrollContainer } from 'components/Common';
 import { useInfiniteQuery } from 'react-query';
 import { feed } from 'api/queries/feed';
+import { ReactComponent as Add } from 'assets/icons/pencil_writing.svg';
 import * as C from 'components/Feed';
 import * as S from './styles';
 
@@ -55,15 +56,17 @@ export const FeedPage = () => {
           infiniteResponse={infiniteResponse}
         />
       </ScrollContainer>
+
+      <S.FeedAddBtn to={'/feed/add'}>
+        <Icon Icon={Add} color={'#fff'} />
+      </S.FeedAddBtn>
+
       <S.TempLinks>
         <Link to={'/login'}>
           <div>Login</div>
         </Link>
         <Link to={'/join'}>
           <div>Join</div>
-        </Link>
-        <Link to={'/feed/add'}>
-          <div>피드 추가</div>
         </Link>
       </S.TempLinks>
     </S.PageContainer>
