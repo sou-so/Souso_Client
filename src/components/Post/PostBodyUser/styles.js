@@ -14,7 +14,7 @@ export const UserInfo = styled.div`
   display: flex;
   align-items: center;
   .name {
-    font-size: 16px;
+    font-size: 15.5px;
     padding: 0 8px 0 11px;
   }
   span {

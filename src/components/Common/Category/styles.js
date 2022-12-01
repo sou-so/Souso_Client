@@ -32,6 +32,8 @@ export const Name = styled.p`
   top: 0;
   position: absolute;
   font-size: ${({ theme }) => theme.font.sm};
+  word-break: keep-all;
+  margin-left: -1px;
 `;
 
 export const MoreButton = styled.button`

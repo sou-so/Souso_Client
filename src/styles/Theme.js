@@ -30,7 +30,7 @@ const style = {
 const font = {
   xs: '0.8rem',
   sm: '0.92rem',
-  md: '1.2rem',
+  md: '1.15rem',
   lg: '1.5rem'
 };
 

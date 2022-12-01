@@ -13,15 +13,15 @@ export const Thumbnail = styled.div`
   }
 
   &.single img {
-    width: 360px;
-    height: 360px;
+    width: 100%;
+    height: 310px;
   }
 
   &.multi img {
-    width: 50%;
+    width: 49%;
     height: 170px;
     &:first-child {
-      margin-right: 5px;
+      margin-right: 4px;
     }
   }
 `;

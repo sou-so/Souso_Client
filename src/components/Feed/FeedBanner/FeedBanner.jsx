@@ -11,7 +11,7 @@ export const FeedBanner = () => {
   return (
     <S.BannerContainer>
       <p>
-        {!isLoading ? data.nickname : 'SOUSO'}님,
+        <b>{!isLoading ? data.nickname : 'SOUSO'}님,</b>
         <br />
         소소한 얘기를 소소가
         <br />

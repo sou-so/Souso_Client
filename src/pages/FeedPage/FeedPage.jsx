@@ -58,8 +58,8 @@ export const FeedPage = () => {
         />
       </ScrollContainer>
 
-      <S.FeedAddBtn to={'/feed/add'}>
-        <Icon Icon={Add} color={'#fff'} />
+      <S.FeedAddBtn to="/feed/add">
+        <Icon Icon={Add} size={20} color="#fff" />
       </S.FeedAddBtn>
 
       {/* <S.TempLinks>

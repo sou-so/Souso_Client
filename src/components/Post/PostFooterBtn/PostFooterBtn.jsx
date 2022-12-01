@@ -23,6 +23,7 @@ export const PostFooterBtn = ({ postData, hasComment, refetch }) => {
   const [bookmarked, setBookmarked] = useState(is_bookmark);
   const [liked, setLiked] = useState(is_like);
 
+  console.log(created_at);
   const { mutate: handleBookmark } = useMutation(
     bookmarked ? feed.removeBookmark : feed.addBookmark,
     {

@@ -21,6 +21,7 @@ export const PageTitle = styled.h2`
   width: 100%;
   line-height: 1.5;
   text-align: center;
+  font-size: ${({ theme }) => theme.font.md};
   font-weight: 600;
   padding-left: 38px;
   padding-right: 30px;

@@ -5,7 +5,7 @@ export const BannerContainer = styled.div`
   margin-top: 15px;
   margin-left: 5px;
   p {
-    font-size: 24px;
+    font-size: ${({ theme }) => theme.font.lg};
     line-height: 1.3;
     letter-spacing: -1px;
     margin-bottom: 5px;

@@ -16,8 +16,10 @@ export const Tabs = styled.div`
     text-align: center;
     padding: 10px 0;
     font-size: ${({ theme }) => theme.font.md};
-    font-weight: 600;
+    color: ${({ theme }) => theme.color.gray_4};
     &.active {
+      color: ${({ theme }) => theme.color.black_1};
+      font-weight: 600;
       border-bottom: 2px solid ${({ theme }) => theme.color.main};
       margin-bottom: 0;
     }
