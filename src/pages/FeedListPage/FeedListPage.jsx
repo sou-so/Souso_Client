@@ -21,13 +21,13 @@ export const FeedListPage = () => {
     ({ pageParam = 0 }) => category.getFeedListByCategory(params(pageParam)),
     {
       getNextPageParam: lastPage =>
+        lastPage.feed_list.length > 0 &&
         lastPage.category_feed_list.slice(-1)[0].feed_id
     }
   );
 
   return (
     <S.PageContainer>
-      {' '}
       <PageHeader backTo="/" title={state.category_name} />
       <ScrollContainer>
         <PostList infiniteResponse={infiniteResponse} />

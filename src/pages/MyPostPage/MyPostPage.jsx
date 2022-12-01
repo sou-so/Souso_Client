@@ -13,7 +13,8 @@ export const MyPostPage = () => {
     ['myPosts'],
     ({ pageParam = 0 }) => user.myPosts({ cursorId: pageParam }),
     {
-      getNextPageParam: lastPage => lastPage.feed_list.slice(-1)[0].feed_id
+      getNextPageParam: lastPage =>
+        lastPage.feed_list.length > 0 && lastPage.feed_list.slice(-1)[0].feed_id
     }
   );
 

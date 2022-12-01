@@ -6,11 +6,13 @@ import { feed } from 'api/queries/feed';
 import * as S from './styles';
 
 export const MyPosts = ({ infiniteResponse }) => {
-  const { data, isLoading, isFetching, fetchNextPage } = infiniteResponse;
+  const { data, isLoading, isFetching, fetchNextPage, refetch } =
+    infiniteResponse;
 
   const { mutate: remove } = useMutation(feed.remove, {
     onSuccess: res => {
       console.log(res);
+      refetch();
       alert('게시글 삭제 완료 🎉');
     },
     onError: error => {

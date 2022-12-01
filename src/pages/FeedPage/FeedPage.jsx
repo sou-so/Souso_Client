@@ -25,7 +25,8 @@ export const FeedPage = () => {
     {
       getNextPageParam: lastPage =>
         isLatest
-          ? lastPage.feed_list.slice(-1)[0].feed_id
+          ? lastPage.feed_list.length > 0 &&
+            lastPage.feed_list.slice(-1)[0].feed_id
           : lastPage.page_id + 1
     }
   );
