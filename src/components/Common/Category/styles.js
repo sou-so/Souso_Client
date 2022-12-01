@@ -16,6 +16,16 @@ export const CategoryContainer = styled.ul`
   }
 `;
 
+export const IconContainer = styled.div`
+  position: relative;
+  > div:first-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`;
+
 export const Name = styled.p`
   width: 100%;
   padding-top: 42px;

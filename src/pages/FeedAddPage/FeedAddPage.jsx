@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { PageHeader } from 'components/Common';
 import { FeedForm, CategoryModal } from 'components/FeedAdd';
 import { feed } from 'api/queries/feed';
 import * as S from './styles';
-import { useNavigate } from 'react-router-dom';
 
 export const FeedAddPage = () => {
   const [modal, setModal] = useState(true);
