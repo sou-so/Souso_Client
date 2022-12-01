@@ -1,8 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { FetchObserver } from 'components/Common';
 import { ThumbBottom, ThumbRight } from 'components/Post';
-import { useObserver } from 'hooks/useObserver';
-import loading from 'assets/images/loading.gif';
 import * as S from './styles';
 
 export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
@@ -10,8 +9,6 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
     infiniteResponse;
   const { pathname } = useLocation();
   const isMain = pathname === '/';
-
-  const { ObserverComponent } = useObserver(data, fetchNextPage);
 
   return (
     <S.PostListContainer>
@@ -49,13 +46,11 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
               ))}
       </S.PostLists>
 
-      {/* 스크롤이 Observer에 도착하면 다음 페이지 fetch */}
-      <ObserverComponent />
-      {isFetching && (
-        <S.Loading onClick={fetchNextPage}>
-          <img src={loading} alt="loading" />
-        </S.Loading>
-      )}
+      <FetchObserver
+        data={data}
+        fetchNextPage={fetchNextPage}
+        isFetching={isFetching}
+      />
     </S.PostListContainer>
   );
 };

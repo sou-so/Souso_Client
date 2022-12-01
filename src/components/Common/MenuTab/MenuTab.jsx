@@ -2,10 +2,8 @@ import React from 'react';
 import * as S from './styles';
 
 export const MenuTab = ({ list, active, setActive }) => {
-  const isFull = list.length === 2;
-
   return (
-    <S.TabList isFull={isFull}>
+    <S.TabList>
       {list.map((name, i) => (
         <li
           key={i}

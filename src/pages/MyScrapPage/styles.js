@@ -10,5 +10,5 @@ export const PageContainer = styled.div`
 `;
 
 export const ScrapList = styled.div`
-  padding: 0 15px 30px;
+  padding: 5px 15px 30px;
 `;

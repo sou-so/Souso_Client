@@ -5,7 +5,7 @@ import { ReactComponent as Edit } from 'assets/icons/pencil.svg';
 import { ReactComponent as Delete } from 'assets/icons/bin.svg';
 import * as S from './styles';
 
-export const EditDeleteButton = () => {
+export const EditDeleteButton = ({ handleEdit, handleDelete }) => {
   const [toggle, setToggle] = useState(false);
 
   return (
@@ -13,11 +13,11 @@ export const EditDeleteButton = () => {
       <Icon Icon={Dots} size={20} />
       {toggle && (
         <S.Button>
-          <li>
+          <li onClick={handleEdit}>
             <Icon Icon={Edit} size={11} color="#fff" />
             수정하기
           </li>
-          <li>
+          <li onClick={handleDelete}>
             <Icon Icon={Delete} size={12} color="#fff" />
             삭제하기
           </li>
