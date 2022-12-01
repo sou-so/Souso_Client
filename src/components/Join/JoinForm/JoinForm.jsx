@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Input,
   InputDuplicated,
+  InputEmailCheck,
   InputVerified,
   TermsButton
 } from 'components/Join';
@@ -11,6 +12,7 @@ import * as S from './styles';
 
 export const JoinForm = ({ createAccount }) => {
   const [isUnique, setIsUnique] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [isAgreed, setIsAgreed] = useState(false);
   const [errors, setErrors] = useState({});
@@ -47,6 +49,13 @@ export const JoinForm = ({ createAccount }) => {
           values={values}
           errors={errors}
         />
+        <InputEmailCheck
+          isChecked={isChecked}
+          setIsChecked={setIsChecked}
+          onChange={handleChange}
+          values={values}
+          errors={errors}
+        />
         <Input
           name="email"
           placeholder="numble@example.com"
@@ -58,7 +67,7 @@ export const JoinForm = ({ createAccount }) => {
 
       <S.FieldWrap
         className={`stepStyle ${
-          values.name && values.email && isUnique && 'showStep'
+          values.name && values.email && isUnique && isChecked && 'showStep'
         }`}
       >
         <InputVerified
