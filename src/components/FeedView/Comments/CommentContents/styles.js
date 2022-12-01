@@ -5,6 +5,7 @@ export const CommentHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-bottom: 9px;
+  position: relative;
 `;
 
 export const UserInfo = styled.div`
@@ -27,8 +28,6 @@ export const WriterTag = styled.div`
   border-radius: 15px;
   display: inline-block;
 `;
-
-export const ButtonWrap = styled.div``;
 
 export const CommentText = styled.div`
   padding: 0 10px 6px;
