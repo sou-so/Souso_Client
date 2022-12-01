@@ -10,6 +10,10 @@ export const feed = {
     });
     return res.data;
   },
+  remove: async req => {
+    const res = await apiWithToken.delete(EP.FEED_ITEM(req));
+    return res;
+  },
   list: async ({ cursorId, pageId, sortType }) => {
     const res = await apiWithToken.get(
       EP.GET_FEED_LIST(cursorId, pageId, sortType)
@@ -18,7 +22,7 @@ export const feed = {
   },
   detail: async ({ queryKey }) => {
     const { feedId } = queryKey[1];
-    const res = await apiWithToken.get(EP.GET_FEED_DETAIL(feedId));
+    const res = await apiWithToken.get(EP.FEED_ITEM(feedId));
     return res.data;
   },
   addBookmark: async req => {

@@ -1,11 +1,24 @@
 import React from 'react';
+import { useMutation } from 'react-query';
 import { ThumbTop } from 'components/Post';
-import { EditDeleteButton } from '..';
-import * as S from './styles';
+import { EditDeleteButton } from 'components/MySubPage';
 import { FetchObserver } from 'components/Common';
+import { feed } from 'api/queries/feed';
+import * as S from './styles';
 
 export const MyPosts = ({ infiniteResponse }) => {
   const { data, isLoading, isFetching, fetchNextPage } = infiniteResponse;
+
+  const { mutate: remove } = useMutation(feed.remove, {
+    onSuccess: res => {
+      console.log(res);
+      alert('게시글 삭제 완료 🎉');
+    },
+    onError: error => {
+      console.log(error.message);
+      alert('게시글 삭제에 실패했습니다. 다시 시도해주세요.');
+    }
+  });
 
   return (
     <S.ListContainer>
@@ -13,7 +26,7 @@ export const MyPosts = ({ infiniteResponse }) => {
         data.pages.map(page =>
           page.feed_list.map(post => (
             <ThumbTop key={post.feed_id} postData={post}>
-              <EditDeleteButton />
+              <EditDeleteButton handleDelete={() => remove(post.feed_id)} />
             </ThumbTop>
           ))
         )}
