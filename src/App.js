@@ -35,7 +35,7 @@ function App() {
             <Route path="feed/:postId" element={<P.FeedViewPage />} />
             <Route path="feed/add" element={<P.FeedAddPage />} />
             <Route path="mypage/posts" element={<P.MyPostPage />} />
-            <Route path="mypage/scraps" element={<P.MyScrapPage />} />
+            <Route path="mypage/scraps" element={<P.MyBookmarkPage />} />
             <Route path="mypage/meets" element={<P.MyMeetPage />} />
             <Route path="mypage/edit" element={<P.ProfileEditPage />} />
           </Route>

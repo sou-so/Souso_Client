@@ -18,7 +18,7 @@ export { ChatPage } from './ChatPage/ChatPage';
 // mypage tab
 export { MyPage } from './MyPage/MyPage';
 export { MyPostPage } from './MyPostPage/MyPostPage';
-export { MyScrapPage } from './MyScrapPage/MyScrapPage';
+export { MyBookmarkPage } from './MyBookmarkPage/MyBookmarkPage';
 export { MyMeetPage } from './MyMeetPage/MyMeetPage';
 export { ProfileEditPage } from './ProfileEditPage/ProfileEditPage';
 

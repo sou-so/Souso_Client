@@ -15,7 +15,6 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
     ('feed_list' in data.pages[0]
       ? !data.pages[0].feed_list.length
       : !data.pages[0].category_feed_list.length);
-  console.log(data, isEmpty);
 
   if (isEmpty) return <EmptyList message="조회된 게시글이 없어요" />;
 
@@ -35,6 +34,7 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
           ))}
         </S.Tabs>
       )}
+
       <S.PostLists>
         {!isLoading &&
           (active === '인기글'
@@ -53,6 +53,7 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
                 ))
               ))}
       </S.PostLists>
+
       <FetchObserver
         data={data}
         fetchNextPage={fetchNextPage}
