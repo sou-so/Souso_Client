@@ -10,6 +10,10 @@ export const join = {
     const res = await api.head(EP.CHECK_NICKNAME(req));
     return res.data;
   },
+  email: async req => {
+    const res = await api.head(EP.CHECK_EMAIL(req));
+    return res.data;
+  },
   sendCode: async req => {
     const res = await api.post(EP.SEND_CODE, req);
     return res.data;
