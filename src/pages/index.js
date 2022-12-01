@@ -1,6 +1,7 @@
 export { JoinPage } from './JoinPage/JoinPage';
 export { LoginPage } from './LoginPage/LoginPage';
 export { TownAuthPage } from './TownAuthPage/TownAuthPage';
+export { WelcomePage } from './WelcomePage/WelcomePage';
 
 // feed tab
 export { FeedPage } from './FeedPage/FeedPage';

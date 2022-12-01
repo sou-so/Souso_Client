@@ -15,7 +15,7 @@ export const JoinPage = () => {
       console.log(res);
       authToken.setToken(res.access_token);
       alert('회원가입 완료 🎉');
-      navigate('/');
+      navigate('/welcome');
     },
     onError: error => {
       console.log(error.message);

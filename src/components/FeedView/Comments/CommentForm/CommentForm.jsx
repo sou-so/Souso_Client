@@ -10,6 +10,10 @@ export const CommentForm = ({ feedId }) => {
   const { data, isLoading } = useQuery(['user'], user.getProfile);
   const [commentValue, setCommentValue] = useState('');
 
+  const handleChange = e => {
+    setCommentValue(e.target.value);
+  };
+
   const queryClient = useQueryClient();
 
   // 댓글 등록
@@ -22,10 +26,6 @@ export const CommentForm = ({ feedId }) => {
       console.log(error.message);
     }
   });
-
-  const handleChange = e => {
-    setCommentValue(e.target.value);
-  };
 
   const handleSendComment = e => {
     e.preventDefault();

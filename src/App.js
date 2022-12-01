@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<AuthLayout />}>
             <Route path="login" element={<P.LoginPage />} />
             <Route path="join" element={<P.JoinPage />} />
+            <Route path="welcome" element={<P.WelcomePage />} />
           </Route>
 
           {/* Navbar included */}
