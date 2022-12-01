@@ -1,13 +1,15 @@
 import React from 'react';
 import { useMutation } from 'react-query';
 import { ThumbTop } from 'components/Post';
-import { EditDeleteButton, FetchObserver } from 'components/Common';
+import { EditDeleteButton, EmptyList, FetchObserver } from 'components/Common';
 import { feed } from 'api/queries/feed';
 import * as S from './styles';
 
 export const MyPosts = ({ infiniteResponse }) => {
   const { data, isLoading, isFetching, fetchNextPage, refetch } =
     infiniteResponse;
+
+  const isEmpty = !isLoading && !data.pages[0].feed_list.length;
 
   const { mutate: remove } = useMutation(feed.remove, {
     onSuccess: res => {
@@ -20,6 +22,8 @@ export const MyPosts = ({ infiniteResponse }) => {
       alert('게시글 삭제에 실패했습니다. 다시 시도해주세요.');
     }
   });
+
+  if (isEmpty) return <EmptyList message="아직 게시글이 없어요" />;
 
   return (
     <S.ListContainer>

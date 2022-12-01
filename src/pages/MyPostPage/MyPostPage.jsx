@@ -9,7 +9,7 @@ export const MyPostPage = () => {
   const list = ['게시글', '댓글'];
   const [active, setActive] = useState(list[0]);
 
-  const infiniteResponse = useInfiniteQuery(
+  const postInfiniteResponse = useInfiniteQuery(
     ['myPosts'],
     ({ pageParam = 0 }) => user.myPosts({ cursorId: pageParam }),
     {
@@ -18,6 +18,8 @@ export const MyPostPage = () => {
     }
   );
 
+  const commentInfiniteResponse = '';
+
   return (
     <S.PageContainer>
       <PageHeader title="나의 글" backTo="/mypage" />
@@ -25,7 +27,7 @@ export const MyPostPage = () => {
       <MenuTab list={list} active={active} setActive={setActive} />
       <ScrollContainer>
         {active === '게시글' ? (
-          <MyPosts infiniteResponse={infiniteResponse} />
+          <MyPosts infiniteResponse={postInfiniteResponse} />
         ) : (
           <MyComments />
         )}

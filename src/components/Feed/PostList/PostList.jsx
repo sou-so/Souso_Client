@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { FetchObserver } from 'components/Common';
+import { EmptyList, FetchObserver } from 'components/Common';
 import { ThumbBottom, ThumbRight } from 'components/Post';
 import * as S from './styles';
 
@@ -9,6 +9,15 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
     infiniteResponse;
   const { pathname } = useLocation();
   const isMain = pathname === '/';
+
+  const isEmpty =
+    !isLoading &&
+    ('feed_list' in data.pages[0]
+      ? !data.pages[0].feed_list.length
+      : !data.pages[0].category_feed_list.length);
+  console.log(data, isEmpty);
+
+  if (isEmpty) return <EmptyList message="조회된 게시글이 없어요" />;
 
   return (
     <S.PostListContainer>
@@ -26,7 +35,6 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
           ))}
         </S.Tabs>
       )}
-
       <S.PostLists>
         {!isLoading &&
           (active === '인기글'
@@ -45,7 +53,6 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
                 ))
               ))}
       </S.PostLists>
-
       <FetchObserver
         data={data}
         fetchNextPage={fetchNextPage}

@@ -21,7 +21,7 @@ export const FeedListPage = () => {
     ({ pageParam = 0 }) => category.getFeedListByCategory(params(pageParam)),
     {
       getNextPageParam: lastPage =>
-        lastPage.feed_list.length > 0 &&
+        lastPage.category_feed_list.length > 0 &&
         lastPage.category_feed_list.slice(-1)[0].feed_id
     }
   );

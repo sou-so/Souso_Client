@@ -22,7 +22,7 @@ export const PostTitle = styled.p`
 
   span {
     display: inline-block;
-    width: 180px;
+    width: 120px;
     margin-right: -5px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -38,6 +38,7 @@ export const CommentList = styled.ul`
   li {
     display: flex;
     position: relative;
+    width: 100%;
     p {
       margin-right: 40px;
     }

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const PostListContainer = styled.div`
   margin-bottom: 30px;
+  min-height: ${({ theme }) => theme.style.inner_height};
 `;
 
 export const Tabs = styled.div`

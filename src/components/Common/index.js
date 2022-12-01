@@ -10,3 +10,4 @@ export { TextClamp } from './TextClamp/TextClamp';
 export { MenuTab } from './MenuTab/MenuTab';
 export { FetchObserver } from './FetchObserver/FetchObserver';
 export { EditDeleteButton } from './EditDeleteButton/EditDeleteButton';
+export { EmptyList } from './EmptyList/EmptyList';
