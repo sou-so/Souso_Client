@@ -13,9 +13,8 @@ export const SubmitModal = ({ closeModal }) => {
         </S.IconWrap>
         <S.TextWrap>
           <p>
-            예비 앱명+러님의 동네명이
-            <br />
-            <span>서울특별시 송파구 오금동</span>이 맞나요?
+            동네명이
+            <span> 서울특별시 동작구 상도동</span>이 맞나요?
           </p>
           <p>
             계정당 두 지역까지 설정 가능합니다. <br />

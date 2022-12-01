@@ -12,7 +12,7 @@ export const FeedHeader = () => {
       <Link to="mytown">
         <S.Location>
           <Icon Icon={LocateIcon} size={20} />
-          <span>전포동</span>
+          <span>상도동</span>
           <Icon Icon={MoreIcon} size={14} />
         </S.Location>
       </Link>

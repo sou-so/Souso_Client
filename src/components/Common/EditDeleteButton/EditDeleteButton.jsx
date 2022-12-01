@@ -8,8 +8,13 @@ import * as S from './styles';
 export const EditDeleteButton = ({ handleEdit, handleDelete }) => {
   const [toggle, setToggle] = useState(false);
 
+  const handleClick = e => {
+    e.stopPropagation();
+    setToggle(!toggle);
+  };
+
   return (
-    <S.ButtonContainer onClick={() => setToggle(!toggle)}>
+    <S.ButtonContainer onClick={handleClick}>
       <Icon Icon={Dots} size={20} />
       {toggle && (
         <S.Button>

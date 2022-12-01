@@ -8,7 +8,7 @@ dayjs.extend(relativeTime);
 const now = new Date();
 
 // ex) ~일/시간/분 전
-export const fromNow = date => dayjs(date).add(9, 'hour').fromNow();
+export const fromNow = date => dayjs(date).fromNow();
 
 // ex) 22.11.03
 export const getDate = date => dayjs(date).format('YY. MM. DD');

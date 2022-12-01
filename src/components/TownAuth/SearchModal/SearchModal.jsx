@@ -9,7 +9,6 @@ export const SearchModal = ({ openModal }) => {
       <SearchBar />
       <NeighborList />
       <section>
-        👇임시버튼👇
         <button onClick={openModal}>동네인증완료</button>
       </section>
     </S.ModalContainer>

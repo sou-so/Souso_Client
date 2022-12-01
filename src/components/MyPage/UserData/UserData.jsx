@@ -11,7 +11,7 @@ export const UserData = ({ data }) => {
     <S.UserDataContainer>
       <S.MyTown>
         <Icon Icon={Locate} size={13} />
-        전포동
+        상도동
       </S.MyTown>
       <ProfileImage size={80} url={profile_image_url} />
       <S.Name>{nickname}</S.Name>

@@ -12,7 +12,7 @@ export const SearchBar = () => {
         <Icon Icon={SearchIcon} size={34} />
       </S.InputWrap>
       <S.SearchButton>
-        <Icon Icon={GpsIcon} size={32} />
+        <Icon Icon={GpsIcon} size={32} color="#fff" />
       </S.SearchButton>
     </S.SearchBar>
   );

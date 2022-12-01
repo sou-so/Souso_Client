@@ -13,7 +13,6 @@ import * as S from './styles';
 export const MyPage = () => {
   const { data, isLoading } = useQuery(['user'], user.getProfile);
 
-  console.log(data);
   return (
     <ScrollContainer>
       <S.PageContainer>
