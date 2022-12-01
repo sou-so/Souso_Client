@@ -10,12 +10,22 @@ export const CommentHeader = styled.div`
 export const UserInfo = styled.div`
   display: flex;
   align-items: center;
-  p.userName {
+  p {
     font-size: 13px;
     font-weight: 500;
     line-height: 28px;
-    padding-left: 5px;
+    padding: 0 6px;
   }
+`;
+
+export const WriterTag = styled.div`
+  height: 20px;
+  padding: 0 8px;
+  font-size: ${({ theme }) => theme.font.xs};
+  color: ${({ theme }) => theme.color.main};
+  border: ${({ theme }) => theme.style.border_main};
+  border-radius: 15px;
+  display: inline-block;
 `;
 
 export const ButtonWrap = styled.div``;
