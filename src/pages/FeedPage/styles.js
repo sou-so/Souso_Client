@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const PageContainer = styled.div`
@@ -25,6 +26,15 @@ export const CategoryWrap = styled.section`
     text-align: center;
     font-size: ${({ theme }) => theme.font.md};
   }
+`;
+
+export const FeedAddBtn = styled(Link)`
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  padding: 13px;
+  background-color: ${({ theme }) => theme.color.main};
+  border-radius: 50% 50% 0 50%;
 `;
 
 export const TempLinks = styled.div`

@@ -8,7 +8,7 @@ import { Icon } from 'components/Common';
 import * as S from './styles';
 
 const navList = [
-  { name: '소식', linkTo: '/', icon: Nav1 },
+  { name: '소식', linkTo: '/feed', icon: Nav1 },
   { name: '모임', linkTo: '/meetup', icon: Nav2 },
   { name: '채팅', linkTo: '/chats', icon: Nav3 },
   { name: '프로필', linkTo: '/mypage', icon: Nav4 }

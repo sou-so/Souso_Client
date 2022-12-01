@@ -8,7 +8,7 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
   const { data, isLoading, isFetching, fetchNextPage, refetch } =
     infiniteResponse;
   const { pathname } = useLocation();
-  const isMain = pathname === '/';
+  const isMain = pathname === '/feed';
 
   return (
     <S.PostListContainer>

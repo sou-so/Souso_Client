@@ -15,5 +15,9 @@ export const comments = {
     const { feedId, pageId } = queryKey[1];
     const res = await apiWithToken.get(EP.GET_COMMENTS_LIST(feedId, pageId));
     return res.data;
+  },
+  delete: async req => {
+    const res = await apiWithToken.delete(EP.DELETE_COMMENT(req));
+    return res;
   }
 };

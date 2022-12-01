@@ -27,7 +27,7 @@ export const FeedAddPage = () => {
 
   return (
     <S.PageContainer>
-      <PageHeader backTo="/" title={'게시글 작성'} />
+      <PageHeader backTo="/feed" title={'게시글 작성'} />
 
       {modal && (
         <CategoryModal

@@ -1,6 +1,7 @@
 export { JoinPage } from './JoinPage/JoinPage';
 export { LoginPage } from './LoginPage/LoginPage';
 export { TownAuthPage } from './TownAuthPage/TownAuthPage';
+export { WelcomePage } from './WelcomePage/WelcomePage';
 
 // feed tab
 export { FeedPage } from './FeedPage/FeedPage';
@@ -20,3 +21,6 @@ export { MyPostPage } from './MyPostPage/MyPostPage';
 export { MyScrapPage } from './MyScrapPage/MyScrapPage';
 export { MyMeetPage } from './MyMeetPage/MyMeetPage';
 export { ProfileEditPage } from './ProfileEditPage/ProfileEditPage';
+
+// incomplete service
+export { IncompletePage } from './IncompletePage/IncompletePage';
