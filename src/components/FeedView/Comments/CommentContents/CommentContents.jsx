@@ -4,7 +4,7 @@ import { user } from 'api/queries/user';
 import { comments } from 'api/queries/comment';
 import { EditDeleteButton, Icon, ProfileImage } from 'components/Common';
 import { ReactComponent as Comment } from 'assets/icons/comment.svg';
-import { fromNow, getDate } from 'utils/dateConverter';
+import { dateFormat } from 'utils/dateConverter';
 import * as S from './styles';
 
 export const CommentContents = ({ contents, feedAuthor }) => {
@@ -55,11 +55,7 @@ export const CommentContents = ({ contents, feedAuthor }) => {
           <span>답글쓰기</span>
         </button>
 
-        <div>
-          {getDate(created_at) === getDate(new Date())
-            ? fromNow(created_at)
-            : getDate(created_at)}
-        </div>
+        <div>{dateFormat(created_at)}</div>
       </S.CommentFooter>
     </>
   );

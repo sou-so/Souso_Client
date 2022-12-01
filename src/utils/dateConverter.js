@@ -8,10 +8,17 @@ dayjs.extend(relativeTime);
 const now = new Date();
 
 // ex) ~일/시간/분 전
-export const fromNow = date => dayjs(date).fromNow();
+export const fromNow = date => dayjs(date).add(9, 'hour').fromNow();
 
 // ex) 22.11.03
 export const getDate = date => dayjs(date).format('YY. MM. DD');
+
+// 일주일까지는 ~일 전, 그 후는 yy.mm.dd
+export const dateFormat = created_at => {
+  return dayjs(new Date()).diff(created_at, 'day') < 8
+    ? fromNow(created_at)
+    : getDate(created_at);
+};
 
 // ex) n학년 n반
 export const getAge = date => {
