@@ -22,8 +22,10 @@ function App() {
           {/* Navbar included */}
           <Route path="/" element={<AppLayout navbar />}>
             <Route path="feed" element={<P.FeedPage />} />
-            <Route path="meetup" element={<P.MeetPage />} />
-            <Route path="chats" element={<P.ChatPage />} />
+            {/* <Route path="meetup" element={<P.MeetPage />} /> */}
+            <Route path="meetup" element={<P.IncompletePage />} />
+            {/* <Route path="chats" element={<P.ChatPage />} /> */}
+            <Route path="chats" element={<P.IncompletePage />} />
             <Route path="mypage" element={<P.MyPage />} />
           </Route>
 
