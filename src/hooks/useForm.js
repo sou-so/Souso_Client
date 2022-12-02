@@ -11,5 +11,5 @@ export const useForm = initialValues => {
     });
   };
 
-  return { values, handleChange };
+  return { values, handleChange, setValues };
 };

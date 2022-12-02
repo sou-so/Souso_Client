@@ -11,7 +11,7 @@ export const LogoutButton = () => {
 
   const { mutate: signout } = useMutation(user.signout, {
     onSuccess: () => {
-      if (window.confirm('탈퇴하시겠습니까?')) {
+      if (window.confirm('정말 탈퇴하시겠습니까?')) {
         authToken.setToken('');
         toast.success('회원 탈퇴가 정상적으로 처리되었습니다.');
         navigate('/login');

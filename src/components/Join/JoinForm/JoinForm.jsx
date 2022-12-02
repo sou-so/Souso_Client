@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   Input,
+  InputBirthDate,
   InputDuplicated,
   InputEmailCheck,
   InputVerified,
@@ -17,8 +18,9 @@ export const JoinForm = ({ createAccount }) => {
   const [isAgreed, setIsAgreed] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const { values, handleChange } = useForm(defaultValues);
+  const { values, handleChange, setValues } = useForm(defaultValues);
 
+  console.log(values);
   const handleSubmit = async e => {
     e.preventDefault();
     const error = await validate(values);
@@ -73,6 +75,7 @@ export const JoinForm = ({ createAccount }) => {
       </S.FieldWrap>
 
       <S.FieldWrap className={`stepStyle ${isVerified && 'showStep'}`}>
+        <InputBirthDate setValues={setValues} errors={errors} />
         <Input
           name="password"
           placeholder="비밀번호"
@@ -105,7 +108,7 @@ export const JoinForm = ({ createAccount }) => {
 const defaultValues = {
   name: '',
   nickname: '',
-  birth: '19991114',
+  birth: '',
   phone_number: '',
   verified_code: '',
   email: '',

@@ -4,10 +4,14 @@ import { input } from 'styles/Shared';
 export const InputContainer = styled.div`
   display: flex;
   align-items: center;
+  &.error select {
+    border-color: ${({ theme }) => theme.color.red};
+  }
 `;
 
 export const SelectBox = styled.select`
   ${input}
+  color:${({ theme }) => theme.color.black_2};
   cursor: pointer;
   &:first-child {
     width: 100px;
@@ -43,7 +47,7 @@ export const SelectBox = styled.select`
 
 export const Age = styled.p`
   margin: 0 auto;
-  font-size: 13px;
+  font-size: 12px;
   color: ${({ theme }) => theme.color.black_3};
 
   span:last-child {
