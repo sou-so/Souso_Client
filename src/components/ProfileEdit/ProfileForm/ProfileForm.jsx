@@ -6,7 +6,7 @@ import { InputBirthDate, InputDuplicated } from 'components/Join';
 import { ReactComponent as Gps } from 'assets/icons/gps.svg';
 import * as S from './styles';
 
-export const ProfileForm = ({ data }) => {
+export const ProfileForm = ({ data, mutate }) => {
   const { nickname: oldNickname, birth: oldBirth, profile_image_url } = data;
 
   const [imgURL, setImgURL] = useState(profile_image_url);
@@ -18,12 +18,13 @@ export const ProfileForm = ({ data }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    /** userdata {
-      imageURL: imageURL, 
+    const userData = {
+      profile_image_url: imgURL,
       nickname: nickname,
       birth: birth
-    }
-    */
+    };
+
+    mutate(userData);
   };
 
   return (
