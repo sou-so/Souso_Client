@@ -4,29 +4,31 @@ import { Error } from '../Input/styles';
 import * as S from './styles';
 
 export const InputBirthDate = ({ birth, setBirth, setValues, errors }) => {
-  const [year, setYear] = useState(birth ? birth.slice(0, 4) : '');
-  const [month, setMonth] = useState(birth ? birth.slice(4, 6) : '');
-  const [day, setDay] = useState(birth ? birth.slice(-2) : '');
-  const age = getAge(`${year}.${month}.${day}`);
-
   const addZero = target => (target < 10 ? '0' + target : target);
+  const removeZero = target => Number(target) + '';
+
+  const [year, setYear] = useState(birth && birth.slice(0, 4));
+  const [month, setMonth] = useState(birth && removeZero(birth.slice(4, 6)));
+  const [day, setDay] = useState(birth && removeZero(birth.slice(-2)));
+  const age = getAge(`${year}.${month}.${day}`);
 
   useEffect(() => {
     const bday = `${year}${month}${day}`;
 
     setBirth && setBirth(bday);
-    setValues(prev => ({
-      ...prev,
-      birth: bday
-    }));
+    setValues &&
+      setValues(prev => ({
+        ...prev,
+        birth: bday
+      }));
   }, [year, month, day, setBirth, setValues]);
 
   return (
     <>
-      <S.InputContainer className={errors['birth'] ? 'error' : ''}>
+      <S.InputContainer className={errors && errors['birth'] ? 'error' : ''}>
         <S.SelectBox
           name="year"
-          defaultValue={birth ? birth.slice(0, 4) : 'year'}
+          defaultValue={birth ? year : 'year'}
           onChange={e => setYear(e.target.value)}
         >
           <option value="year" disabled>
@@ -36,7 +38,7 @@ export const InputBirthDate = ({ birth, setBirth, setValues, errors }) => {
         </S.SelectBox>
         <S.SelectBox
           name="month"
-          defaultValue={birth ? birth.slice(4, 6) : 'month'}
+          defaultValue={birth ? month : 'month'}
           onChange={e => setMonth(addZero(e.target.value))}
         >
           <option value="month" disabled>
@@ -46,7 +48,7 @@ export const InputBirthDate = ({ birth, setBirth, setValues, errors }) => {
         </S.SelectBox>
         <S.SelectBox
           name="day"
-          defaultValue={birth ? birth.slice(-2) : 'day'}
+          defaultValue={birth ? day : 'day'}
           onChange={e => setDay(addZero(e.target.value))}
         >
           <option value="day" disabled>
@@ -58,7 +60,7 @@ export const InputBirthDate = ({ birth, setBirth, setValues, errors }) => {
           <span>{age}</span>
         </S.Age>
       </S.InputContainer>
-      {errors['birth'] && <Error>{errors['birth']}</Error>}
+      {errors && errors['birth'] && <Error>{errors['birth']}</Error>}
     </>
   );
 };

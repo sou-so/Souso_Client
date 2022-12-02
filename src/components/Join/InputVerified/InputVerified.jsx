@@ -34,7 +34,7 @@ export const InputVerified = ({
   const { mutate: verifying } = useMutation(join.verifyCode, {
     onSuccess: () => {
       errors.verified_code = '';
-      toast.success('휴대폰 인증 성공 🎉');
+      // toast.success('휴대폰 인증 성공 🎉');
       setIsVerified(true);
     },
     onError: error => {
