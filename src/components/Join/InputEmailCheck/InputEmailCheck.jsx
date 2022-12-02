@@ -21,8 +21,6 @@ export const InputEmailCheck = ({
     }
   });
 
-  console.log(values);
-
   const checkJoinedEmail = e => {
     e.preventDefault();
     const email = values.email;

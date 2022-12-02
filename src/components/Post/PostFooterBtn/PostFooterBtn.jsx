@@ -82,7 +82,7 @@ export const PostFooterBtn = ({ postData, hasComment, refetch }) => {
       ) : (
         <S.DetailWrap>
           <span>{fromNow(created_at)}</span>
-          <span>{view_count}</span>
+          <span>조회 {view_count}</span>
         </S.DetailWrap>
       )}
     </S.FooterContainer>
