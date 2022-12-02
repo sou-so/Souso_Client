@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
 import { authToken } from 'utils/authToken';
 import { user } from 'api/queries/user';
 import * as S from './styles';
@@ -9,30 +10,28 @@ export const LogoutButton = () => {
   const navigate = useNavigate();
 
   const { mutate: signout } = useMutation(user.signout, {
-    onSuccess: res => {
+    onSuccess: () => {
       if (window.confirm('탈퇴하시겠습니까?')) {
-        console.log(res);
         authToken.setToken('');
-        alert('탈퇴 완료 🎉');
+        toast.success('회원 탈퇴가 정상적으로 처리되었습니다.');
         navigate('/login');
       }
     },
     onError: error => {
       console.log(error.message);
-      alert('회원탈퇴에 실패했습니다. 다시 시도해주세요.');
+      toast.error('회원탈퇴에 실패했습니다. 다시 시도해주세요.');
     }
   });
 
   const { mutate: logout } = useMutation(user.logout, {
-    onSuccess: res => {
-      console.log(res);
+    onSuccess: () => {
       authToken.setToken('');
-      alert('로그아웃 완료 🎉');
+      toast.success('로그아웃 완료 🎉');
       navigate('/login');
     },
     onError: error => {
       console.log(error.message);
-      alert('로그아웃에 실패했습니다. 다시 시도해주세요.');
+      toast.error('로그아웃에 실패했습니다. 다시 시도해주세요.');
     }
   });
 

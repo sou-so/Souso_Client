@@ -6,6 +6,9 @@ import GlobalStyles from 'styles/GlobalStyles';
 import theme from 'styles/Theme';
 import * as P from 'pages';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -42,6 +45,14 @@ function App() {
           <Route path="mytown" element={<P.TownAuthPage />} />
         </Routes>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        limit={2}
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+        // hideProgressBar={true}
+      />
     </ThemeProvider>
   );
 }
