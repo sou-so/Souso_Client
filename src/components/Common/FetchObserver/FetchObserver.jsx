@@ -15,8 +15,9 @@ export const FetchObserver = ({ data, fetchNextPage, isFetching }) => {
 };
 
 const Container = styled.div`
-  margin: 35px 0;
+  margin: 30px 0;
   text-align: center;
+  height: 1px;
   img {
     width: 30px;
   }

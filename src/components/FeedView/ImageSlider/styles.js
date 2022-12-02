@@ -22,5 +22,6 @@ export const ThumbnailWrap = styled.div`
     border-radius: 12px;
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 `;
