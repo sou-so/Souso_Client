@@ -27,12 +27,14 @@ export const MeetupItem = styled.li`
   }
 
   p {
+    flex: 1;
     font-size: 14px;
     font-weight: 500;
   }
 `;
 
 export const Keywords = styled.div`
+  margin: 0 4px;
   font-size: ${({ theme }) => theme.font.xs};
   color: ${({ theme }) => theme.color.black_3};
   span + span {

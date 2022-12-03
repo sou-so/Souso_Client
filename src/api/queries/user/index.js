@@ -18,6 +18,10 @@ export const user = {
     const res = await apiWithToken.get(EP.MYPROFILE);
     return res.data;
   },
+  editProfile: async req => {
+    const res = await apiWithToken.patch(EP.MYPROFILE, req);
+    return res.data;
+  },
   myPosts: async ({ cursorId }) => {
     const res = await apiWithToken.get(EP.MYPOSTS(cursorId));
     return res.data;

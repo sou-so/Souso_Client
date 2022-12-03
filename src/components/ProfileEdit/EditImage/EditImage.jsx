@@ -3,16 +3,16 @@ import { Icon, ProfileImage } from 'components/Common';
 import { ReactComponent as Camera } from 'assets/icons/camera.svg';
 import * as S from './styles';
 
-export const EditImage = ({ imageURL, setImageURL }) => {
+export const EditImage = ({ imgURL, setImgURL }) => {
   const editImageURL = e => {
     const file = e.target.files[0];
     const url = URL.createObjectURL(file);
-    setImageURL(url);
+    setImgURL(url);
   };
 
   return (
     <S.ImageContainer>
-      <ProfileImage size={120} url={imageURL} />
+      <ProfileImage size={120} url={imgURL} />
       <S.EditButton htmlFor="edit">
         <Icon Icon={Camera} size={18} color="#fff" />
       </S.EditButton>

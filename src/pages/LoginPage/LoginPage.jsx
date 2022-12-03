@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { LoginForm } from 'components/Login';
 import { user } from 'api/queries/user';
 import { authToken } from 'utils/authToken';
@@ -21,12 +22,12 @@ export const LoginPage = () => {
     onSuccess: res => {
       console.log(res);
       authToken.setToken(res.access_token);
-      alert('로그인 완료 🎉');
+      toast.success('로그인 성공 🎉');
       navigate('/');
     },
     onError: error => {
       console.log(error.message);
-      alert('로그인에 실패했습니다. 다시 시도해주세요.');
+      toast.error('로그인에 실패했습니다. 다시 시도해주세요.');
     }
   });
 

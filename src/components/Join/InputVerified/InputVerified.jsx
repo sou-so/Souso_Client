@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Input } from 'components/Join';
+import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
+import { Input } from 'components/Join';
 import { join } from 'api/queries/join';
 
 export const InputVerified = ({
@@ -16,7 +17,7 @@ export const InputVerified = ({
   const { mutate: checkingCode } = useMutation(join.sendCode, {
     onSuccess: res => {
       console.log(res);
-      alert('메세지가 발송되었습니다 ✉');
+      toast.success('메세지가 발송되었습니다 ✉');
       setIsSent(true);
     },
     onError: error => {
@@ -33,7 +34,7 @@ export const InputVerified = ({
   const { mutate: verifying } = useMutation(join.verifyCode, {
     onSuccess: () => {
       errors.verified_code = '';
-      alert('휴대폰 인증 성공 🎉');
+      // toast.success('휴대폰 인증 성공 🎉');
       setIsVerified(true);
     },
     onError: error => {

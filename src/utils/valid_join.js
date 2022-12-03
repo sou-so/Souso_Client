@@ -55,5 +55,10 @@ export const validate = values => {
     errors.email = '유효한 이메일주소를 입력하세요.';
   }
 
+  // birth
+  if (values.birth.length !== 8) {
+    errors.birth = '올바른 생년월일을 선택해주세요.';
+  }
+
   return errors;
 };

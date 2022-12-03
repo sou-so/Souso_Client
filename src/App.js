@@ -6,6 +6,9 @@ import GlobalStyles from 'styles/GlobalStyles';
 import theme from 'styles/Theme';
 import * as P from 'pages';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -16,7 +19,6 @@ function App() {
           <Route path="/" element={<AuthLayout />}>
             <Route path="login" element={<P.LoginPage />} />
             <Route path="join" element={<P.JoinPage />} />
-            <Route path="welcome" element={<P.WelcomePage />} />
           </Route>
 
           {/* Navbar included */}
@@ -40,8 +42,17 @@ function App() {
             <Route path="mypage/edit" element={<P.ProfileEditPage />} />
           </Route>
           <Route path="mytown" element={<P.TownAuthPage />} />
+          <Route path="welcome" element={<P.WelcomePage />} />
         </Routes>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        limit={2}
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+        // hideProgressBar={true}
+      />
     </ThemeProvider>
   );
 }

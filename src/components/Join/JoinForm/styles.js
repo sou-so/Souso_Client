@@ -23,6 +23,9 @@ export const FormContainer = styled.form`
 export const FieldWrap = styled.fieldset`
   border: none;
   margin-bottom: 30px;
+  & > * + * {
+    margin-top: 10px;
+  }
 `;
 
 export const Submit = styled.div`

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
 import { ThumbTop } from 'components/Post';
 import { EditDeleteButton, EmptyList, FetchObserver } from 'components/Common';
 import { feed } from 'api/queries/feed';
@@ -15,11 +16,11 @@ export const MyPosts = ({ infiniteResponse }) => {
     onSuccess: res => {
       console.log(res);
       refetch();
-      alert('게시글 삭제 완료 🎉');
+      toast.success('게시글 삭제 완료 🎉');
     },
     onError: error => {
       console.log(error.message);
-      alert('게시글 삭제에 실패했습니다. 다시 시도해주세요.');
+      toast.error('게시글 삭제에 실패했습니다. 다시 시도해주세요.');
     }
   });
 
@@ -31,7 +32,10 @@ export const MyPosts = ({ infiniteResponse }) => {
         data.pages.map(page =>
           page.feed_list.map(post => (
             <ThumbTop key={post.feed_id} postData={post}>
-              <EditDeleteButton handleDelete={() => remove(post.feed_id)} />
+              <EditDeleteButton
+                handleEdit={() => toast.warning('서비스 준비 중 입니다.')}
+                handleDelete={() => remove(post.feed_id)}
+              />
             </ThumbTop>
           ))
         )}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useMutation, useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import { user } from 'api/queries/user';
 import { comments } from 'api/queries/comment';
 import { EditDeleteButton, Icon, ProfileImage } from 'components/Common';
@@ -15,17 +16,17 @@ export const CommentContents = ({ contents, feedAuthor }) => {
   const { mutate: deleteComment } = useMutation(comments.delete, {
     onSuccess: res => {
       console.log(res);
-      alert('댓글이 성공적으로 삭제되었습니다.');
+      toast.success('댓글이 성공적으로 삭제되었습니다.');
     },
     onError: error => {
       console.log(error.message);
-      alert('댓글 삭제에 실패했습니다. 다시 시도해주세요.');
+      toast.error('댓글 삭제에 실패했습니다. 다시 시도해주세요.');
     }
   });
 
   // 댓글 수정
   const editComment = () => {
-    alert('아직 미구현된 기능입니다. 😓');
+    toast.warning('서비스 준비 중 입니다.');
   };
 
   return (

@@ -14,7 +14,7 @@ export const SubmitModal = ({ closeModal }) => {
         <S.TextWrap>
           <p>
             동네명이
-            <span> 서울특별시 동작구 상도동</span>이 맞나요?
+            <span> 부산광역시 부산진구 전포동</span>이 맞나요?
           </p>
           <p>
             계정당 두 지역까지 설정 가능합니다. <br />

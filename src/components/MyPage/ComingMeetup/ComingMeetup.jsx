@@ -10,7 +10,7 @@ export const ComingMeetup = ({ meet }) => {
     <S.MeetupItem>
       <span className="day">{getDay(date)}</span>
       <img src={img} alt="" />
-      <TextClamp width={85}>{name}</TextClamp>
+      <TextClamp width={160}>{name}</TextClamp>
       <S.Keywords>
         {keywords.slice(0, 2).map((keyword, i) => (
           <span key={i}>#{keyword}</span>

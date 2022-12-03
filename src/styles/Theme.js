@@ -1,6 +1,7 @@
 const color = {
   main: '#FFA31A',
   red: '#D55555',
+  sky: '#48b0d0',
 
   black_1: '#343434',
   black_2: '#6f6f6f',

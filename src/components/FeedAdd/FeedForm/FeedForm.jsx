@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ImgAddPreview, SelectedCategory } from 'components/FeedAdd';
+import { toast } from 'react-toastify';
 import * as S from './styles';
 
 export const FeedForm = ({ category, mutate, toggleModal }) => {
@@ -20,8 +21,8 @@ export const FeedForm = ({ category, mutate, toggleModal }) => {
       { type: 'application/json' }
     );
 
-    if (!category.id) alert('카테고리를 선택해주세요');
-    if (!text) alert('내용을 입력해주세요');
+    if (!category.id) toast.warning('카테고리를 선택해주세요');
+    if (!text) toast.warning('내용을 입력해주세요');
 
     if (category.id && text) {
       imgList.forEach(img => formData.append('images', img));

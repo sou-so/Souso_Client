@@ -6,27 +6,30 @@ import { InputBirthDate, InputDuplicated } from 'components/Join';
 import { ReactComponent as Gps } from 'assets/icons/gps.svg';
 import * as S from './styles';
 
-export const ProfileForm = () => {
-  const [imageURL, setImageURL] = useState('');
-  const [nickname, setNickname] = useState('조이');
-  const [town, setTown] = useState('전포동');
+export const ProfileForm = ({ data, mutate }) => {
+  const { nickname: oldNickname, birth: oldBirth, profile_image_url } = data;
+
+  const [imgURL, setImgURL] = useState(profile_image_url);
+  const [nickname, setNickname] = useState(oldNickname);
+  const [town, setTown] = useState('상도동');
+  const [birth, setBirth] = useState(oldBirth);
   const [isUnique, setIsUnique] = useState(false);
-  const [birth, setBirth] = useState('1994.01.14');
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    /** userdata {
-      imageURL: imageURL, 
+    const userData = {
+      profile_image_url: imgURL,
       nickname: nickname,
       birth: birth
-    }
-    */
+    };
+
+    mutate(userData);
   };
 
   return (
     <S.FormContainer onSubmit={handleSubmit}>
-      <EditImage imageURL={imageURL} setImageURL={setImageURL} />
+      <EditImage imgURL={imgURL} setImgURL={setImgURL} />
 
       <S.UserData>
         <InputDuplicated
@@ -37,7 +40,7 @@ export const ProfileForm = () => {
           setIsUnique={setIsUnique}
         />
 
-        <Link to="/mytown">
+        <Link to="#">
           <S.Town>
             {town} <Icon Icon={Gps} />
           </S.Town>

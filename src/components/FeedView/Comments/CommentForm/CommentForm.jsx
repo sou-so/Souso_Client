@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { toast } from 'react-toastify';
 import { user } from 'api/queries/user';
 import { comments } from 'api/queries/comment';
 import { Icon, ProfileImage } from 'components/Common';
@@ -33,7 +34,7 @@ export const CommentForm = ({ feedId }) => {
       sendComment([{ feedId: feedId }, { content: commentValue }]);
       setCommentValue('');
     } else {
-      alert('🙇‍♀️ 내용을 입력해주세요.');
+      toast.warning('🙇‍♀️ 내용을 입력해주세요.');
     }
   };
 

@@ -1,50 +1,67 @@
 import React, { useEffect, useState } from 'react';
 import { getAge } from 'utils/dateConverter';
+import { Error } from '../Input/styles';
 import * as S from './styles';
 
-export const InputBirthDate = ({ birth, setBirth }) => {
-  const [year, setYear] = useState(birth ? birth.split('.')[0] : '1999');
-  const [month, setMonth] = useState(birth ? birth.split('.')[1] : '1');
-  const [day, setDay] = useState(birth ? birth.split('.')[2] : '1');
+export const InputBirthDate = ({ birth, setBirth, setValues, errors }) => {
+  const addZero = target => (target < 10 ? '0' + target : target);
+  const removeZero = target => Number(target) + '';
+
+  const [year, setYear] = useState(birth && birth.slice(0, 4));
+  const [month, setMonth] = useState(birth && birth.slice(4, 6));
+  const [day, setDay] = useState(birth && birth.slice(-2));
   const age = getAge(`${year}.${month}.${day}`);
 
   useEffect(() => {
-    setBirth(`${year}.${month}.${day}`);
-  }, []);
+    const bday = `${year}${month}${day}`;
+
+    setBirth && setBirth(bday);
+    setValues &&
+      setValues(prev => ({
+        ...prev,
+        birth: bday
+      }));
+  }, [year, month, day, setBirth, setValues]);
 
   return (
-    <S.InputContainer>
-      <S.SelectBox
-        defaultValue={birth ? birth.split('.')[0] : 'year'}
-        onChange={e => setYear(e.target.value)}
-      >
-        <option value="year" disabled>
-          출생년도
-        </option>
-        {yearList()}
-      </S.SelectBox>
-      <S.SelectBox
-        defaultValue={birth ? birth.split('.')[1] : 'month'}
-        onChange={e => setMonth(e.target.value)}
-      >
-        <option value="month" disabled>
-          월
-        </option>
-        {monthList()}
-      </S.SelectBox>
-      <S.SelectBox
-        defaultValue={birth ? birth.split('.')[2] : 'day'}
-        onChange={e => setDay(e.target.value)}
-      >
-        <option value="day" disabled>
-          일
-        </option>
-        {dayList()}
-      </S.SelectBox>
-      <S.Age>
-        <span>{age}</span>
-      </S.Age>
-    </S.InputContainer>
+    <>
+      <S.InputContainer className={errors && errors['birth'] ? 'error' : ''}>
+        <S.SelectBox
+          name="year"
+          defaultValue={birth ? year : 'year'}
+          onChange={e => setYear(e.target.value)}
+        >
+          <option value="year" disabled>
+            출생년도
+          </option>
+          {yearList()}
+        </S.SelectBox>
+        <S.SelectBox
+          name="month"
+          defaultValue={birth ? removeZero(month) : 'month'}
+          onChange={e => setMonth(addZero(e.target.value))}
+        >
+          <option value="month" disabled>
+            월
+          </option>
+          {monthList()}
+        </S.SelectBox>
+        <S.SelectBox
+          name="day"
+          defaultValue={birth ? removeZero(day) : 'day'}
+          onChange={e => setDay(addZero(e.target.value))}
+        >
+          <option value="day" disabled>
+            일
+          </option>
+          {dayList()}
+        </S.SelectBox>
+        <S.Age>
+          <span>{age}</span>
+        </S.Age>
+      </S.InputContainer>
+      {errors && errors['birth'] && <Error>{errors['birth']}</Error>}
+    </>
   );
 };
 
