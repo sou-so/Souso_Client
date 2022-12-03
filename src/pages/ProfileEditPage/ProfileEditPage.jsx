@@ -1,11 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from 'react-query';
 import { user } from 'api/queries/user';
 import { PageHeader } from 'components/Common';
 import { ProfileForm } from 'components/ProfileEdit';
 import { toast } from 'react-toastify';
 import * as S from './styles';
-import { useNavigate } from 'react-router-dom';
 
 export const ProfileEditPage = () => {
   const { data, isLoading } = useQuery(['user'], user.getProfile);

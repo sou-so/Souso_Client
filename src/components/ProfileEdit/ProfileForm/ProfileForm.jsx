@@ -4,12 +4,14 @@ import { EditImage } from 'components/ProfileEdit';
 import { Icon } from 'components/Common';
 import { InputBirthDate, InputDuplicated } from 'components/Join';
 import { ReactComponent as Gps } from 'assets/icons/gps.svg';
+import { toast } from 'react-toastify';
 import * as S from './styles';
 
 export const ProfileForm = ({ data, mutate }) => {
   const { nickname: oldNickname, birth: oldBirth, profile_image_url } = data;
 
   const [imgURL, setImgURL] = useState(profile_image_url);
+  const [imgData, setImgData] = useState({});
   const [nickname, setNickname] = useState(oldNickname);
   const [town, setTown] = useState('상도동');
   const [birth, setBirth] = useState(oldBirth);
@@ -18,18 +20,37 @@ export const ProfileForm = ({ data, mutate }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const userData = {
-      profile_image_url: imgURL,
-      nickname: nickname,
-      birth: birth
-    };
+    const editedData = new FormData();
+    const userData = new Blob(
+      [
+        JSON.stringify({
+          birth: oldBirth,
+          nickname: oldNickname
+        })
+      ],
+      { type: 'application/json' }
+    );
 
-    mutate(userData);
+    if (
+      nickname === oldNickname &&
+      birth === oldBirth &&
+      imgURL === profile_image_url
+    ) {
+      toast.warning('수정된 정보가 없습니다.');
+    } else {
+      editedData.append('image', imgData);
+      editedData.append('request', userData);
+      mutate(editedData);
+    }
   };
 
   return (
     <S.FormContainer onSubmit={handleSubmit}>
-      <EditImage imgURL={imgURL} setImgURL={setImgURL} />
+      <EditImage
+        imgURL={imgURL}
+        setImgURL={setImgURL}
+        setImgData={setImgData}
+      />
 
       <S.UserData>
         <InputDuplicated
