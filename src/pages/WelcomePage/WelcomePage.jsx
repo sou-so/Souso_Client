@@ -12,7 +12,7 @@ export const WelcomePage = () => {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    localStorage.setItem('souso_token', '');
+    sessionStorage.setItem('souso_token', '');
     navigate('/login');
   };
 

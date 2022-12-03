@@ -4,12 +4,12 @@ class AuthToken {
   }
 
   getToken() {
-    return localStorage.getItem('souso_token');
+    return sessionStorage.getItem('souso_token');
     // return this._token;
   }
 
   setToken(newToken) {
-    localStorage.setItem('souso_token', newToken);
+    sessionStorage.setItem('souso_token', newToken);
     this._token = newToken;
   }
 }
