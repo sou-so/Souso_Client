@@ -20,7 +20,6 @@ export const JoinForm = ({ createAccount }) => {
 
   const { values, handleChange, setValues } = useForm(defaultValues);
 
-  console.log(values);
   const handleSubmit = async e => {
     e.preventDefault();
     const error = await validate(values);

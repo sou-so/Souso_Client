@@ -19,7 +19,6 @@ function App() {
           <Route path="/" element={<AuthLayout />}>
             <Route path="login" element={<P.LoginPage />} />
             <Route path="join" element={<P.JoinPage />} />
-            <Route path="welcome" element={<P.WelcomePage />} />
           </Route>
 
           {/* Navbar included */}
@@ -43,11 +42,12 @@ function App() {
             <Route path="mypage/edit" element={<P.ProfileEditPage />} />
           </Route>
           <Route path="mytown" element={<P.TownAuthPage />} />
+          <Route path="welcome" element={<P.WelcomePage />} />
         </Routes>
       </div>
       <ToastContainer
         position="top-center"
-        autoClose={1500}
+        autoClose={1000}
         limit={2}
         pauseOnHover={false}
         pauseOnFocusLoss={false}

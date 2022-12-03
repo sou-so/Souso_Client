@@ -8,8 +8,8 @@ export const InputBirthDate = ({ birth, setBirth, setValues, errors }) => {
   const removeZero = target => Number(target) + '';
 
   const [year, setYear] = useState(birth && birth.slice(0, 4));
-  const [month, setMonth] = useState(birth && removeZero(birth.slice(4, 6)));
-  const [day, setDay] = useState(birth && removeZero(birth.slice(-2)));
+  const [month, setMonth] = useState(birth && birth.slice(4, 6));
+  const [day, setDay] = useState(birth && birth.slice(-2));
   const age = getAge(`${year}.${month}.${day}`);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const InputBirthDate = ({ birth, setBirth, setValues, errors }) => {
         </S.SelectBox>
         <S.SelectBox
           name="month"
-          defaultValue={birth ? month : 'month'}
+          defaultValue={birth ? removeZero(month) : 'month'}
           onChange={e => setMonth(addZero(e.target.value))}
         >
           <option value="month" disabled>
@@ -48,7 +48,7 @@ export const InputBirthDate = ({ birth, setBirth, setValues, errors }) => {
         </S.SelectBox>
         <S.SelectBox
           name="day"
-          defaultValue={birth ? day : 'day'}
+          defaultValue={birth ? removeZero(day) : 'day'}
           onChange={e => setDay(addZero(e.target.value))}
         >
           <option value="day" disabled>

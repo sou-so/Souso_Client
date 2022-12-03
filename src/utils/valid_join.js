@@ -56,7 +56,7 @@ export const validate = values => {
   }
 
   // birth
-  if (!values.birth.length !== 8) {
+  if (values.birth.length !== 8) {
     errors.birth = '올바른 생년월일을 선택해주세요.';
   }
 

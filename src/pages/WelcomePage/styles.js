@@ -6,10 +6,10 @@ export const PageContainer = styled.div`
 `;
 
 export const WelcomeBanner = styled.div`
-  padding: 60px 0 62px 30px;
+  padding: 55px 30px;
   cursor: default;
   div:first-child {
-    font-size: 26px;
+    font-size: 24px;
     span {
       font-weight: bold;
       color: ${({ theme }) => theme.color.main};
@@ -21,27 +21,29 @@ export const WelcomeBanner = styled.div`
   }
 `;
 
-export const ImgWrap = styled.div``;
+export const ImgWrap = styled.div`
+  img {
+    width: 93%;
+    margin: 0 auto;
+    display: block;
+  }
+`;
 
 export const LinkBtn = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 65px 30px 0 0;
+  margin: 55px 30px 0 auto;
+  cursor: pointer;
   span {
-    font-size: 18px;
+    font-size: 16px;
   }
-  a {
-    width: 34px;
-    height: 34px;
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
     margin-left: 6px;
     border-radius: 6px;
     background-color: ${({ theme }) => theme.color.main};
-    div {
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
   }
 `;
