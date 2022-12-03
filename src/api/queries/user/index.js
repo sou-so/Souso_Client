@@ -19,7 +19,11 @@ export const user = {
     return res.data;
   },
   editProfile: async req => {
-    const res = await apiWithToken.patch(EP.MYPROFILE, req);
+    const res = await apiWithToken.patch(EP.MYPROFILE, req, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
     return res.data;
   },
   myPosts: async ({ cursorId }) => {
