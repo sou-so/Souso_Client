@@ -19,7 +19,6 @@ export const InputVerified = ({
   const { mutate: checkingCode } = useMutation(join.sendCode, {
     onSuccess: res => {
       console.log(res);
-      errors.phone_number = '인증번호는 3분마다 재발송 가능합니다.';
       toast.success('메세지가 발송되었습니다 ✉');
       setIsSent(true);
       setWaiting(true);
@@ -75,6 +74,9 @@ export const InputVerified = ({
           </button>
         ) : (
           <Timer setWaiting={setWaiting} />
+        )}
+        {waiting && (
+          <p className="codeDesc">인증번호는 3분마다 재발송 가능합니다.</p>
         )}
       </Input>
 

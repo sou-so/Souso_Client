@@ -26,7 +26,7 @@ export const Timer = ({ setWaiting }) => {
   }, [leftTime, setWaiting]);
 
   return (
-    <div>
+    <div className="timer">
       {minutes}:{seconds}
     </div>
   );
