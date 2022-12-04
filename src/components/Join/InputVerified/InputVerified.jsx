@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import { Input } from 'components/Join';
 import { join } from 'api/queries/join';
+import { Timer } from './Timer';
 
 export const InputVerified = ({
   values,
@@ -12,6 +13,7 @@ export const InputVerified = ({
   setIsVerified
 }) => {
   const [isSent, setIsSent] = useState(false);
+  const [waiting, setWaiting] = useState(false);
 
   // 인증번호 발송
   const { mutate: checkingCode } = useMutation(join.sendCode, {
@@ -19,9 +21,11 @@ export const InputVerified = ({
       console.log(res);
       toast.success('메세지가 발송되었습니다 ✉');
       setIsSent(true);
+      setWaiting(true);
     },
     onError: error => {
       console.log(error.message);
+      errors.phone_number = '이미 가입된 전화번호입니다.';
     }
   });
 
@@ -33,8 +37,10 @@ export const InputVerified = ({
   // 인증번호 확인
   const { mutate: verifying } = useMutation(join.verifyCode, {
     onSuccess: () => {
+      errors.phone_number = '';
       errors.verified_code = '';
       // toast.success('휴대폰 인증 성공 🎉');
+      setWaiting(false);
       setIsVerified(true);
     },
     onError: error => {
@@ -50,7 +56,8 @@ export const InputVerified = ({
 
   useEffect(() => {
     setIsSent(false);
-  }, [setIsSent, values.phone_number]);
+    setWaiting(false);
+  }, [setIsSent, setWaiting, values.phone_number]);
 
   return (
     <>
@@ -61,9 +68,16 @@ export const InputVerified = ({
         values={values}
         errors={errors}
       >
-        <button onClick={codeSending}>
-          {isSent ? '인증번호 재발송' : '인증번호 발송'}
-        </button>
+        {!waiting ? (
+          <button onClick={codeSending}>
+            {isSent ? '인증번호 재발송' : '인증번호 발송'}
+          </button>
+        ) : (
+          <Timer setWaiting={setWaiting} />
+        )}
+        {waiting && (
+          <p className="codeDesc">인증번호는 3분마다 재발송 가능합니다.</p>
+        )}
       </Input>
 
       <Input

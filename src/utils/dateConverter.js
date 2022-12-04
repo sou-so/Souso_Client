@@ -23,7 +23,9 @@ export const dateFormat = created_at => {
 // ex) n학년 n반
 export const getAge = date => {
   const age = dayjs(now).diff(date, 'year') + 1;
-  return `${~~(age / 10) || 'n'}학년 ${age % 10 || 'n'}반`;
+  return age
+    ? `${String(~~(age / 10))}학년 ${String(age % 10)}반`
+    : '- 학년 - 반';
 };
 
 // ex) 9일(금)

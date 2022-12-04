@@ -6,7 +6,8 @@ export const InputContainer = styled.div`
   & + & {
     margin-top: 10px;
   }
-  button {
+  button,
+  div {
     font-size: 10px;
     padding: 3px;
     position: absolute;
@@ -16,6 +17,13 @@ export const InputContainer = styled.div`
     &.done {
       color: ${({ theme }) => theme.color.red};
     }
+  }
+  .timer {
+    font-size: 12px;
+  }
+  .codeDesc {
+    padding: 3px 0 0 6px;
+    font-size: 12px;
   }
 `;
 

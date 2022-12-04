@@ -68,7 +68,7 @@ export const InputBirthDate = ({ birth, setBirth, setValues, errors }) => {
 const yearList = () => {
   const thisYear = new Date().getFullYear();
   const years = [];
-  for (let i = 1999; i > thisYear - 70; i--) {
+  for (let i = thisYear; i > thisYear - 70; i--) {
     years.push(
       <option key={i} value={i}>
         {i}

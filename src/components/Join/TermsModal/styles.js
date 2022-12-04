@@ -28,16 +28,20 @@ export const TermsView = styled.div`
   h2 {
     font-weight: bold;
     font-size: 16px;
-    padding: 15px;
+    padding: 20px;
   }
-  div {
-    padding: 0px 20px;
-    width: 250px;
-    overflow-y: auto;
-  }
-  P {
-    padding: 15px;
+  button {
+    padding: 20px;
     font-weight: bold;
     cursor: pointer;
+  }
+`;
+
+export const TermsContainer = styled.div`
+  padding: 0px 20px;
+  width: 300px;
+  height: 360px;
+  div {
+    height: 100%;
   }
 `;
