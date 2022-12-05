@@ -12,7 +12,7 @@ export const MyPosts = ({ infiniteResponse }) => {
 
   const isEmpty = !isLoading && !data.pages[0].feed_list.length;
 
-  const { mutate: remove } = useMutation(feed.remove, {
+  const { mutate: removeMutate } = useMutation(feed.remove, {
     onSuccess: res => {
       console.log(res);
       refetch();
@@ -34,7 +34,7 @@ export const MyPosts = ({ infiniteResponse }) => {
             <ThumbTop key={post.feed_id} postData={post}>
               <EditDeleteButton
                 handleEdit={() => toast.warning('서비스 준비 중 입니다.')}
-                handleDelete={() => remove(post.feed_id)}
+                handleDelete={() => removeMutate(post.feed_id)}
               />
             </ThumbTop>
           ))

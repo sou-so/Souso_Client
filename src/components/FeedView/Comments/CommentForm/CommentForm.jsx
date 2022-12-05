@@ -18,7 +18,7 @@ export const CommentForm = ({ feedId }) => {
   const queryClient = useQueryClient();
 
   // 댓글 등록
-  const { mutate: sendComment } = useMutation(comments.add, {
+  const { mutate: sendCommentMutate } = useMutation(comments.add, {
     onSuccess: () => {
       console.log('댓글 등록 완료');
       queryClient.invalidateQueries('comments');
@@ -31,7 +31,7 @@ export const CommentForm = ({ feedId }) => {
   const handleSendComment = e => {
     e.preventDefault();
     if (commentValue) {
-      sendComment([{ feedId: feedId }, { content: commentValue }]);
+      sendCommentMutate([{ feedId: feedId }, { content: commentValue }]);
       setCommentValue('');
     } else {
       toast.warning('🙇‍♀️ 내용을 입력해주세요.');

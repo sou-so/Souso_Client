@@ -23,7 +23,7 @@ export const PostFooterBtn = ({ postData, hasComment, refetch }) => {
   const [bookmarked, setBookmarked] = useState(is_bookmark);
   const [liked, setLiked] = useState(is_like);
 
-  const { mutate: handleBookmark } = useMutation(
+  const { mutate: bookmarkMutate } = useMutation(
     bookmarked ? feed.removeBookmark : feed.addBookmark,
     {
       onSuccess: () => {
@@ -35,7 +35,7 @@ export const PostFooterBtn = ({ postData, hasComment, refetch }) => {
       }
     }
   );
-  const { mutate: handleLike } = useMutation(
+  const { mutate: likeMutate } = useMutation(
     liked ? feed.removeLike : feed.addLike,
     {
       onSuccess: () => {
@@ -53,7 +53,7 @@ export const PostFooterBtn = ({ postData, hasComment, refetch }) => {
       <S.BtnContainer onClick={e => e.stopPropagation()}>
         <S.BtnWrap>
           <S.Like
-            onClick={() => handleLike(feed_id)}
+            onClick={() => likeMutate(feed_id)}
             className={liked ? 'liked' : ''}
           >
             <Icon Icon={Heart} size={17} />
@@ -63,7 +63,7 @@ export const PostFooterBtn = ({ postData, hasComment, refetch }) => {
 
         <S.BtnWrap>
           <S.Bookmark
-            onClick={() => handleBookmark(feed_id)}
+            onClick={() => bookmarkMutate(feed_id)}
             className={bookmarked ? 'bookmarked' : ''}
           >
             <Icon Icon={Bookmark} size={12} />

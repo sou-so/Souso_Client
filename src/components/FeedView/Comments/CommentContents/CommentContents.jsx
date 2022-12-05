@@ -15,7 +15,7 @@ export const CommentContents = ({ contents, feedAuthor }) => {
   const queryClient = useQueryClient();
 
   // 댓글 삭제
-  const { mutate: deleteComment } = useMutation(comments.delete, {
+  const { mutate: deleteCommentMutate } = useMutation(comments.delete, {
     onSuccess: res => {
       console.log(res);
       toast.success('댓글이 성공적으로 삭제되었습니다.');
@@ -45,7 +45,7 @@ export const CommentContents = ({ contents, feedAuthor }) => {
 
         {!isLoading && data.user_id === author.user_id && (
           <EditDeleteButton
-            handleDelete={() => deleteComment(comment_id)}
+            handleDelete={() => deleteCommentMutate(comment_id)}
             handleEdit={editComment}
           />
         )}

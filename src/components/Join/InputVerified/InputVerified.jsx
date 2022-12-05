@@ -18,7 +18,7 @@ export const InputVerified = ({
   const [_, setRender] = useState(null);
 
   // 인증번호 발송
-  const { mutate: checkingCode } = useMutation(join.sendCode, {
+  const { mutate: sendCodeMutate } = useMutation(join.sendCode, {
     onSuccess: () => {
       errors.phone_number = '';
       toast.success('메세지가 발송되었습니다 ✉');
@@ -34,21 +34,21 @@ export const InputVerified = ({
     }
   });
 
-  const codeSending = async e => {
+  const sendCode = async e => {
     e.preventDefault();
     const errorMessage = await validate(values);
 
     errors.phone_number = errorMessage.phone_number || '';
 
     if (!errors.phone_number) {
-      checkingCode({ phone_number: values.phone_number });
+      sendCodeMutate({ phone_number: values.phone_number });
     }
 
     setRender(values);
   };
 
   // 인증번호 확인
-  const { mutate: verifying } = useMutation(join.verifyCode, {
+  const { mutate: verifyCodeMutate } = useMutation(join.verifyCode, {
     onSuccess: () => {
       errors.verified_code = '';
       // toast.success('휴대폰 인증 성공 🎉');
@@ -62,9 +62,9 @@ export const InputVerified = ({
     }
   });
 
-  const verification = e => {
+  const verifyCode = e => {
     e.preventDefault();
-    verifying(values);
+    verifyCodeMutate(values);
   };
 
   useEffect(() => {
@@ -82,7 +82,7 @@ export const InputVerified = ({
         errors={errors}
       >
         {!waiting ? (
-          <button onClick={codeSending}>
+          <button onClick={sendCode}>
             {isSent ? '인증번호 재발송' : '인증번호 발송'}
           </button>
         ) : (
@@ -100,7 +100,7 @@ export const InputVerified = ({
         values={values}
         errors={errors}
       >
-        <button onClick={verification} className={isVerified ? 'done' : ''}>
+        <button onClick={verifyCode} className={isVerified ? 'done' : ''}>
           {isVerified ? '인증 완료' : '인증 확인'}
         </button>
       </Input>
