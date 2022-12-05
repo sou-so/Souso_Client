@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 import { user } from 'api/queries/user';
 import { comments } from 'api/queries/comment';
@@ -12,11 +12,14 @@ export const CommentContents = ({ contents, feedAuthor }) => {
   const { data, isLoading } = useQuery(['user'], user.getProfile);
   const { author, content, created_at, comment_id } = contents;
 
+  const queryClient = useQueryClient();
+
   // 댓글 삭제
   const { mutate: deleteComment } = useMutation(comments.delete, {
     onSuccess: res => {
       console.log(res);
       toast.success('댓글이 성공적으로 삭제되었습니다.');
+      queryClient.invalidateQueries('comments');
     },
     onError: error => {
       console.log(error.message);

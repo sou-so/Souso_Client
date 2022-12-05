@@ -19,6 +19,7 @@ export const InputVerified = ({
   const { mutate: checkingCode } = useMutation(join.sendCode, {
     onSuccess: res => {
       console.log(res);
+      errors.phone_number = '';
       toast.success('메세지가 발송되었습니다 ✉');
       setIsSent(true);
       setWaiting(true);
@@ -37,7 +38,6 @@ export const InputVerified = ({
   // 인증번호 확인
   const { mutate: verifying } = useMutation(join.verifyCode, {
     onSuccess: () => {
-      errors.phone_number = '';
       errors.verified_code = '';
       // toast.success('휴대폰 인증 성공 🎉');
       setWaiting(false);
