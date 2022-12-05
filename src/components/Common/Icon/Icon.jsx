@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const Icon = ({ Icon, size, color, stroke }) => {
+export const Icon = ({ Icon, size, color, stroke, onClick }) => {
   return (
-    <IconBlock className="icon" color={color}>
+    <IconBlock className="icon" color={color} onClick={onClick}>
       <Icon style={{ width: size + 'px', fill: color, stroke: stroke }} />
     </IconBlock>
   );
