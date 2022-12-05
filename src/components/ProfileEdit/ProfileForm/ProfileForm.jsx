@@ -9,13 +9,19 @@ import * as S from './styles';
 
 export const ProfileForm = ({ data, mutate }) => {
   const { nickname: oldNickname, birth: oldBirth, profile_image_url } = data;
+  const DefaultCheck =
+    profile_image_url ===
+    'https://souso-bucket.s3.ap-northeast-2.amazonaws.com/defaultProfileImage.svg';
 
   const [imgURL, setImgURL] = useState(profile_image_url);
   const [imgData, setImgData] = useState({});
+  const [imgDefault, setImgDefault] = useState(DefaultCheck);
   const [nickname, setNickname] = useState(oldNickname);
   const [town, setTown] = useState('상도동');
   const [birth, setBirth] = useState(oldBirth);
   const [isUnique, setIsUnique] = useState(false);
+
+  console.log(DefaultCheck);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -24,8 +30,9 @@ export const ProfileForm = ({ data, mutate }) => {
     const userData = new Blob(
       [
         JSON.stringify({
-          birth: oldBirth,
-          nickname: oldNickname
+          birth: birth,
+          is_default_profile: imgDefault,
+          nickname: nickname
         })
       ],
       { type: 'application/json' }
@@ -37,7 +44,13 @@ export const ProfileForm = ({ data, mutate }) => {
       imgURL === profile_image_url
     ) {
       toast.warning('수정된 정보가 없습니다.');
-    } else {
+    } else if (
+      (nickname !== oldNickname || birth !== oldBirth) &&
+      imgURL === profile_image_url
+    ) {
+      editedData.append('request', userData);
+      mutate(editedData);
+    } else if (imgURL !== profile_image_url) {
       editedData.append('image', imgData);
       editedData.append('request', userData);
       mutate(editedData);
@@ -50,6 +63,7 @@ export const ProfileForm = ({ data, mutate }) => {
         imgURL={imgURL}
         setImgURL={setImgURL}
         setImgData={setImgData}
+        setImgDefault={setImgDefault}
       />
 
       <S.UserData>
