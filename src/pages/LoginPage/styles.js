@@ -12,7 +12,7 @@ export const AppLogo = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 400px;
+  height: 50%;
   img {
     width: 75px;
     margin-bottom: 10px;

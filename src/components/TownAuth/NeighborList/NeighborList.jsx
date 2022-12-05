@@ -13,7 +13,6 @@ export const NeighborList = () => {
         <li>서울특별시 동작구 상도2동</li>
         <li>서울특별시 동작구 상도3동</li>
         <li>서울특별시 동작구 상도4동</li>
-        <li>서울특별시 동작구 흑석동</li>
       </S.NeighborList>
     </S.ListContainer>
   );

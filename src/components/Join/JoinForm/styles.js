@@ -8,6 +8,7 @@ export const FormContainer = styled.form`
   margin-bottom: 30px;
   .stepStyle {
     opacity: 0;
+    height: 0;
     z-index: -1;
     position: relative;
     top: -20px;
@@ -17,6 +18,7 @@ export const FormContainer = styled.form`
     opacity: 1;
     z-index: 1;
     top: 0;
+    height: auto;
   }
 `;
 
