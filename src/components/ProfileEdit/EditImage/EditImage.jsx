@@ -3,12 +3,13 @@ import { Icon, ProfileImage } from 'components/Common';
 import { ReactComponent as Camera } from 'assets/icons/camera.svg';
 import * as S from './styles';
 
-export const EditImage = ({ imgURL, setImgURL, setImgData }) => {
+export const EditImage = ({ imgURL, setImgURL, setImgData, setImgDefault }) => {
   const editImageURL = e => {
     const file = e.target.files[0];
     const url = URL.createObjectURL(file);
     setImgURL(url);
     setImgData(file);
+    setImgDefault(false);
   };
 
   return (
