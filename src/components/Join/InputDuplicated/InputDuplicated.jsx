@@ -16,8 +16,11 @@ export const InputDuplicated = ({
       setIsUnique(true); // 중복 확인 완료 시
     },
     onError: error => {
-      errors.nickname = '이미 사용 중인 닉네임입니다.';
-      console.log(error.message); // 중복이면 409 error
+      if (error.response.status === 409) {
+        errors.nickname = '이미 사용 중인 닉네임입니다.';
+      } else if (error.response.status === 400) {
+        errors.nickname = '닉네임을 입력하세요.';
+      }
     }
   });
 
