@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { EditImage } from 'components/ProfileEdit';
+import { EditImage, ImgResetBtn } from 'components/ProfileEdit';
 import { Icon } from 'components/Common';
 import { InputBirthDate, InputDuplicated } from 'components/Join';
 import { ReactComponent as Gps } from 'assets/icons/gps.svg';
@@ -20,8 +20,6 @@ export const ProfileForm = ({ data, mutate }) => {
   const [town, setTown] = useState('상도동');
   const [birth, setBirth] = useState(oldBirth);
   const [isUnique, setIsUnique] = useState(false);
-
-  console.log(DefaultCheck);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -45,7 +43,7 @@ export const ProfileForm = ({ data, mutate }) => {
     ) {
       toast.warning('수정된 정보가 없습니다.');
     } else if (
-      (nickname !== oldNickname || birth !== oldBirth) &&
+      ((nickname !== oldNickname && isUnique) || birth !== oldBirth) &&
       imgURL === profile_image_url
     ) {
       editedData.append('request', userData);
@@ -54,6 +52,8 @@ export const ProfileForm = ({ data, mutate }) => {
       editedData.append('image', imgData);
       editedData.append('request', userData);
       mutate(editedData);
+    } else {
+      toast.warning('닉네임 중복체크를 해주세요.');
     }
   };
 
@@ -61,6 +61,11 @@ export const ProfileForm = ({ data, mutate }) => {
     <S.FormContainer onSubmit={handleSubmit}>
       <EditImage
         imgURL={imgURL}
+        setImgURL={setImgURL}
+        setImgData={setImgData}
+        setImgDefault={setImgDefault}
+      />
+      <ImgResetBtn
         setImgURL={setImgURL}
         setImgData={setImgData}
         setImgDefault={setImgDefault}
