@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 
-export const ListContainer = styled.div``;
+export const ListContainer = styled.div`
+  position: relative;
+  > button {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    font-size: 13px;
+    opacity: 0.8;
+    color: ${({ theme }) => theme.color.main};
+  }
+`;
 
 export const ListTitle = styled.h3`
   display: flex;
@@ -20,6 +30,7 @@ export const ListTitle = styled.h3`
 export const NeighborList = styled.ul`
   margin-top: 12px;
   li {
+    cursor: pointer;
     & + li {
       margin-top: 12px;
     }

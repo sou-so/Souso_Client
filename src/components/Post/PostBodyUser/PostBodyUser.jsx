@@ -12,6 +12,7 @@ export const PostBodyUser = ({ postData }) => {
   } = postData;
 
   const { pathname } = useLocation();
+  const town = localStorage.getItem('souso_town');
   const isMain = pathname === '/';
 
   return (
@@ -21,7 +22,7 @@ export const PostBodyUser = ({ postData }) => {
         <S.UserInfo>
           <p className="name">{nickname}</p>
           <span className="age">{getAge(birth)}</span>
-          {!isMain && <span className="town">상도동</span>}
+          {!isMain && <span className="town">{town || '상도동'}</span>}
         </S.UserInfo>
         {isMain && category && <CategoryTag name={category.category_name} />}
       </S.PostUser>

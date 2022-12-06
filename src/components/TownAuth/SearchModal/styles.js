@@ -4,7 +4,7 @@ export const ModalContainer = styled.div`
   width: 100%;
   height: 100%;
   background: #fff;
-  top: 45%;
+  top: 55%;
   border-radius: 12px 12px 0px 0px;
   padding: 0 ${({ theme }) => theme.style.edge_padding};
 
@@ -24,13 +24,10 @@ export const ModalContainer = styled.div`
     position: absolute;
     cursor: pointer;
   }
-
-  > button {
-    position: absolute;
-    right: 25px;
-    bottom: 50%;
-    font-weight: 600;
-    opacity: 0.8;
-    color: ${({ theme }) => theme.color.main};
+  p {
+    font-size: 13px;
+    color: #bbb;
+    text-align: center;
+    margin-top: 30px;
   }
 `;

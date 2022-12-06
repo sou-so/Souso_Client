@@ -1,18 +1,22 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
+import { townState } from 'recoil/atom';
 import * as S from './styles';
 
-export const NeighborList = () => {
+export const NeighborList = ({ openModal }) => {
+  const address = useRecoilValue(townState);
+
   return (
     <S.ListContainer>
       <S.ListTitle>
-        근처동네 <span>(반경 6km)</span>
+        근처동네
+        {/* <span>(반경 6km)</span> */}
       </S.ListTitle>
+      <button onClick={openModal}>동네인증하기</button>
       <S.NeighborList>
-        <li>서울특별시 동작구 상도동</li>
-        <li>서울특별시 동작구 상도1동</li>
-        <li>서울특별시 동작구 상도2동</li>
-        <li>서울특별시 동작구 상도3동</li>
-        <li>서울특별시 동작구 상도4동</li>
+        <li onClick={openModal}>
+          {address[0]} {address[1]} {address[2]}
+        </li>
       </S.NeighborList>
     </S.ListContainer>
   );

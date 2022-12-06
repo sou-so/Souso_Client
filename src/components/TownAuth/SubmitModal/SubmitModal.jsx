@@ -1,10 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Icon } from 'components/Common';
 import { ReactComponent as HomeIcon } from 'assets/icons/home.svg';
+
+import { useRecoilValue } from 'recoil';
+import { townState } from 'recoil/atom';
 import * as S from './styles';
-import { Link } from 'react-router-dom';
 
 export const SubmitModal = ({ closeModal }) => {
+  const address = useRecoilValue(townState);
+
   return (
     <S.Overlay onClick={closeModal}>
       <S.ModalContainer onClick={e => e.stopPropagation()}>
@@ -14,7 +19,10 @@ export const SubmitModal = ({ closeModal }) => {
         <S.TextWrap>
           <p>
             동네명이
-            <span> 서울특별시 동작구 상도동</span>이 맞나요?
+            <span>
+              {address[0]} {address[1]} {address[2]}
+            </span>
+            이 맞나요?
           </p>
           <p>
             계정당 두 지역까지 설정 가능합니다. <br />

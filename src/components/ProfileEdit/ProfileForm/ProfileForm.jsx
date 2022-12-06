@@ -13,11 +13,12 @@ export const ProfileForm = ({ data, mutate }) => {
     profile_image_url ===
     'https://souso-bucket.s3.ap-northeast-2.amazonaws.com/defaultProfileImage.svg';
 
+  const myTown = localStorage.getItem('souso_town');
   const [imgURL, setImgURL] = useState(profile_image_url);
   const [imgData, setImgData] = useState({});
   const [imgDefault, setImgDefault] = useState(DefaultCheck);
   const [nickname, setNickname] = useState(oldNickname);
-  const [town, setTown] = useState('상도동');
+  const [town, setTown] = useState(myTown || '상도동');
   const [birth, setBirth] = useState(oldBirth);
   const [isUnique, setIsUnique] = useState(false);
 

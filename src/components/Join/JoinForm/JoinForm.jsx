@@ -19,6 +19,8 @@ export const JoinForm = ({ createAccount }) => {
   const [isAgreed, setIsAgreed] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const town = localStorage.getItem('souso_town');
+
   const { values, handleChange, setValues } = useForm(defaultValues);
 
   const handleSubmit = async e => {
@@ -26,9 +28,8 @@ export const JoinForm = ({ createAccount }) => {
     const error = await validate(values);
     const hasInvaild = Object.keys(error).length;
 
-    // TODO -- 이미 존재하는 이메일일 때 error 처리
     if (!hasInvaild) {
-      createAccount(values);
+      createAccount({ ...values, town: town });
     } else {
       setErrors(error);
     }
@@ -107,6 +108,7 @@ const defaultValues = {
   name: '',
   nickname: '',
   birth: '',
+  town: '',
   phone_number: '',
   verified_code: '',
   email: '',

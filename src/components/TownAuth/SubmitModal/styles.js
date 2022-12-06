@@ -44,6 +44,7 @@ export const TextWrap = styled.div`
     span {
       color: ${({ theme }) => theme.color.main};
       font-weight: bold;
+      margin-left: 4px;
     }
   }
   p:nth-of-type(2) {

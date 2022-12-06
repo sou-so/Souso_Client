@@ -66,6 +66,7 @@ export const TownAuthPage = () => {
 
   useEffect(() => {
     setCurrentTown(address);
+    localStorage.setItem('souso_town', address[2]);
   }, [setCurrentTown, address]);
 
   return (
