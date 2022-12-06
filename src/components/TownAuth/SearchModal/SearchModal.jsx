@@ -6,8 +6,11 @@ export const SearchModal = ({ openModal }) => {
   return (
     <S.ModalContainer>
       <SearchBar />
-      <NeighborList />
-      <button onClick={openModal}>동네인증완료</button>
+      <NeighborList openModal={openModal} />
+      <p>
+        등록을 원하는 동네를 지도에서 선택한 후, <br />
+        동네인증하기 버튼을 눌러주세요.
+      </p>
     </S.ModalContainer>
   );
 };
