@@ -25,6 +25,10 @@ export const InputContainer = styled.div`
     padding: 3px 0 0 6px;
     font-size: 12px;
   }
+  .icon {
+    padding: 0;
+    opacity: 0.8;
+  }
 `;
 
 export const Input = styled.input`

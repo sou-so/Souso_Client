@@ -1,6 +1,14 @@
 export const validate = values => {
   let errors = {};
 
+  const phoneNumberRegex = /^[0-9]{11}$/i.test(values.phone_number);
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/.test(
+    values.password
+  );
+  const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+    values.email
+  );
+
   // name
   if (!values.name) {
     errors.name = '이름을 입력하세요.';
@@ -18,8 +26,8 @@ export const validate = values => {
   // phone_number
   if (!values.phone_number) {
     errors.phone_number = '휴대폰번호를 입력하세요.';
-  } else if (values.phone_number.length !== 11) {
-    errors.phone_number = '공백, 특수문자를 제외한 11자리 번호를 입력해주세요';
+  } else if (!phoneNumberRegex) {
+    errors.phone_number = '공백, 문자를 제외한 11자리 번호를 입력해주세요';
   }
 
   // verified_code
@@ -30,15 +38,8 @@ export const validate = values => {
   // password
   if (!values.password) {
     errors.password = '비밀번호를 입력해주세요.';
-  } else if (values.password.length < 6) {
-    errors.password = '6자 이상의 비밀번호를 입력하세요.';
-  } else if (
-    /(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]$/.test(
-      values.password
-    )
-  ) {
-    errors.password =
-      '비밀번호는 대문자, 소문자, 숫자, 특수문자가 포함되어야 합니다.';
+  } else if (!passwordRegex) {
+    errors.password = '8~20자리의 영어+숫자 조합의 비밀번호를 입력하세요.';
   }
 
   // confirm password
@@ -51,8 +52,8 @@ export const validate = values => {
   // email
   if (!values.email) {
     errors.email = '이메일을 입력하세요.';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = '유효한 이메일주소를 입력하세요.';
+  } else if (!emailRegex) {
+    errors.email = '올바른 이메일주소를 입력하세요.';
   }
 
   // birth

@@ -16,8 +16,8 @@ html, body, #root {
 }
 #root > .container{
   width: 100%;
+  height: 100%;
   max-width: 390px;
-  height: 100vh;
   margin: 0 auto;
   background: #fff;
   position: relative;

@@ -4,6 +4,7 @@ import {
   InputBirthDate,
   InputDuplicated,
   InputEmailCheck,
+  InputPassword,
   InputVerified,
   TermsButton
 } from 'components/Join';
@@ -75,16 +76,14 @@ export const JoinForm = ({ createAccount }) => {
 
       <S.FieldWrap className={`stepStyle ${isVerified && 'showStep'}`}>
         <InputBirthDate setValues={setValues} errors={errors} />
-        <Input
+        <InputPassword
           name="password"
-          placeholder="비밀번호"
           onChange={handleChange}
           values={values}
           errors={errors}
         />
-        <Input
+        <InputPassword
           name="password2"
-          placeholder="비밀번호 확인"
           onChange={handleChange}
           values={values}
           errors={errors}

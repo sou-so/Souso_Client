@@ -2,6 +2,7 @@ import React from 'react';
 import * as S from './styles';
 
 export const Input = ({
+  type,
   name,
   values,
   placeholder,
@@ -12,7 +13,7 @@ export const Input = ({
   return (
     <S.InputContainer>
       <S.Input
-        type={name.includes('password') ? 'password' : 'text'}
+        type={type || 'text'}
         name={name}
         value={values[name]}
         placeholder={placeholder}

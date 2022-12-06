@@ -8,8 +8,8 @@ export const CategoryTab = ({ active, setActive, refetch }) => {
   const { data, isLoading } = useQuery(['category'], category.getList);
   const [categories, setCategories] = useState([]);
 
-  const handleTabClick = e => {
-    setActive(+e.target.id);
+  const handleTabClick = async e => {
+    await setActive(+e.target.id);
     refetch();
   };
 

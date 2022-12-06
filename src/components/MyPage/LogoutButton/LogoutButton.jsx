@@ -9,7 +9,7 @@ import * as S from './styles';
 export const LogoutButton = () => {
   const navigate = useNavigate();
 
-  const { mutate: signout } = useMutation(user.signout, {
+  const { mutate: signoutMutate } = useMutation(user.signout, {
     onSuccess: () => {
       if (window.confirm('정말 탈퇴하시겠습니까?')) {
         authToken.setToken('');
@@ -23,7 +23,7 @@ export const LogoutButton = () => {
     }
   });
 
-  const { mutate: logout } = useMutation(user.logout, {
+  const { mutate: logoutMutate } = useMutation(user.logout, {
     onSuccess: () => {
       authToken.setToken('');
       toast.success('로그아웃 완료 🎉');
@@ -37,8 +37,8 @@ export const LogoutButton = () => {
 
   return (
     <S.ButtonContainer>
-      <button onClick={signout}>탈퇴하기</button>
-      <button onClick={logout}>로그아웃</button>
+      <button onClick={signoutMutate}>탈퇴하기</button>
+      <button onClick={logoutMutate}>로그아웃</button>
     </S.ButtonContainer>
   );
 };

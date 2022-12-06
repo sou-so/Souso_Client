@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { Input } from 'components/Join';
 import { join } from 'api/queries/join';
+import { validate } from 'utils/valid_join';
 
 export const InputEmailCheck = ({
   values,
@@ -10,22 +11,30 @@ export const InputEmailCheck = ({
   isChecked,
   setIsChecked
 }) => {
+  const [, setRender] = useState(null);
+
   const { mutate } = useMutation(join.email, {
     onSuccess: () => {
       errors.email = '';
       setIsChecked(true); // 중복 확인 완료 시
     },
     onError: error => {
-      errors.email = '이미 가입된 이메일입니다.';
-      console.log(error.message); // 중복이면 409 error
+      if (error.response.status === 409) {
+        errors.email = '이미 가입된 이메일입니다.';
+      }
     }
   });
 
-  const checkJoinedEmail = e => {
+  const checkJoinedEmail = async e => {
     e.preventDefault();
-    const email = values.email;
-    const data = email.split('@');
-    mutate(data);
+    const email = values.email.replace('@', '%40');
+    const errorMessage = await validate(values);
+
+    errors.email = errorMessage.email || '';
+
+    if (!errors.email) mutate(email);
+
+    setRender(values);
   };
 
   useEffect(() => {
@@ -35,7 +44,7 @@ export const InputEmailCheck = ({
   return (
     <Input
       name="email"
-      placeholder="numble@example.com"
+      placeholder="souso@example.com"
       onChange={onChange}
       values={values}
       errors={errors}

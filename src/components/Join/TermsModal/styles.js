@@ -15,10 +15,11 @@ export const TermsView = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 88%;
 
   background-color: #fff;
-  border: 1px solid #000;
-  border-radius: 20px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px rgb(0 0 0 / 12%);
 
   display: flex;
   flex-direction: column;
@@ -38,9 +39,11 @@ export const TermsView = styled.div`
 `;
 
 export const TermsContainer = styled.div`
-  padding: 0px 20px;
-  width: 300px;
+  padding: 0px 8px;
+  width: 100%;
   height: 360px;
+  font-size: 13px;
+  color: #555;
   div {
     height: 100%;
   }

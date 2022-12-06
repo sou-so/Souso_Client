@@ -9,12 +9,6 @@ import { authToken } from 'utils/authToken';
 import logoImage from 'assets/images/logo.png';
 import * as S from './styles';
 
-/*
-TEST
- "email": "soso@gmail.com",
- "password": "Ab12345!"
- */
-
 export const LoginPage = () => {
   const navigate = useNavigate();
 
