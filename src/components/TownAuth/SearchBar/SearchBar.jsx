@@ -5,7 +5,7 @@ import { Icon } from 'components/Common';
 import { toast } from 'react-toastify';
 import * as S from './styles';
 
-export const SearchBar = () => {
+export const SearchBar = ({ moveToCurrent }) => {
   return (
     <S.SearchBar>
       <S.InputWrap>
@@ -16,7 +16,7 @@ export const SearchBar = () => {
           onClick={() => toast.warning('서비스 준비 중 입니다.')}
         />
       </S.InputWrap>
-      <S.SearchButton onClick={() => toast.warning('서비스 준비 중 입니다.')}>
+      <S.SearchButton onClick={moveToCurrent}>
         <Icon Icon={GpsIcon} size={32} color="#fff" />
       </S.SearchButton>
     </S.SearchBar>

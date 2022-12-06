@@ -15,15 +15,26 @@ export const TownAuthPage = () => {
 
   const setCurrentTown = useSetRecoilState(townState);
 
+  const { kakao } = window; // head에 작성한 Kakao API 불러오기
   const mapRef = useRef();
 
   const toggleModal = () => setOpenModal(prev => !prev);
 
+  // 선택한 위치의 위도경도를 가져옵니다
   const getPickedGeo = (_, mouseEvent) => {
     setPickedGeo({
       lat: mouseEvent.latLng.getLat(),
       lng: mouseEvent.latLng.getLng()
     });
+  };
+
+  // 현재위치로 지도를 이동시킵니다.
+  const moveToCurrent = () => {
+    const center = new kakao.maps.LatLng(currentGeo.lat, currentGeo.lng);
+    if (mapRef.current) {
+      mapRef.current.panTo(center);
+      setPickedGeo(currentGeo);
+    }
   };
 
   useEffect(() => {
@@ -43,7 +54,6 @@ export const TownAuthPage = () => {
   }, []);
 
   useEffect(() => {
-    const { kakao } = window; // head에 작성한 Kakao API 불러오기
     const geocoder = new kakao.maps.services.Geocoder();
 
     // 좌표로 상세 주소 정보를 요청합니다
@@ -51,7 +61,7 @@ export const TownAuthPage = () => {
       geocoder.coord2Address(coords.lng, coords.lat, callback);
     };
 
-    // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보 표시
+    // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시합니다
     getAddressFromGeo(pickedGeo, function (result, status) {
       if (status === kakao.maps.services.Status.OK) {
         setAddress([
@@ -62,9 +72,10 @@ export const TownAuthPage = () => {
         console.log(result[0].address.address_name);
       }
     });
-  }, [pickedGeo, setAddress]);
+  }, [kakao, pickedGeo, setAddress]);
 
   useEffect(() => {
+    // 동네값 저장
     setCurrentTown(address);
     localStorage.setItem('souso_town', address[2]);
   }, [setCurrentTown, address]);
@@ -80,19 +91,8 @@ export const TownAuthPage = () => {
           ref={mapRef}
         >
           <MapMarker position={pickedGeo} />
-          {/* <button
-            onClick={() => {
-              const map = mapRef.current;
-              console.log(
-                map.getBounds(),
-                map.getBounds().getSouthWest(),
-                map.getBounds().getNorthEast()
-              );
-            }}
-          >
-          </button> */}
         </Map>
-        <SearchModal openModal={toggleModal} />
+        <SearchModal openModal={toggleModal} moveToCurrent={moveToCurrent} />
       </S.PageContainer>
       {openModal && <SubmitModal closeModal={toggleModal} />}
     </>
