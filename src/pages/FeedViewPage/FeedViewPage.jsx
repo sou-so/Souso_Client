@@ -17,7 +17,6 @@ export const FeedViewPage = () => {
   const [isReplying, setIsReplying] = useState(false);
   const [replyId, setReplyId] = useState('');
   const [replyNickname, setReplyNickname] = useState('');
-  console.log(replyId);
 
   return (
     !isLoading && (
@@ -44,18 +43,21 @@ export const FeedViewPage = () => {
         <S.FormContainer>
           <S.ReplyDesc className={`${isReplying ? 'reply' : ''}`}>
             {isReplying && (
-              <span>{replyNickname}님에게 답글을 작성 중입니다.</span>
+              <>
+                <p>
+                  <span>💬 {replyNickname}</span>님에게 답글을 작성 중입니다.
+                </p>
+
+                <button type="button" onClick={() => setIsReplying(false)}>
+                  취소
+                </button>
+              </>
             )}
           </S.ReplyDesc>
           {!isReplying ? (
             <C.CommentForm feedId={postId} />
           ) : (
-            <C.ReplyForm
-              isReplying={isReplying}
-              setIsReplying={setIsReplying}
-              replyId={replyId}
-              replyNickname={replyNickname}
-            />
+            <C.ReplyForm setIsReplying={setIsReplying} replyId={replyId} />
           )}
         </S.FormContainer>
       </S.PageContainer>

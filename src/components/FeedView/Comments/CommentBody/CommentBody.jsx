@@ -37,11 +37,9 @@ export const CommentBody = ({
                   data.reply.map(data => (
                     <S.Recomment key={data.comment_id}>
                       <CommentContents
+                        reply
                         contents={data}
                         feedAuthor={author.user_id}
-                        setIsReplying={setIsReplying}
-                        setReplyId={setReplyId}
-                        setReplyNickname={setReplyNickname}
                       />
                     </S.Recomment>
                   ))}

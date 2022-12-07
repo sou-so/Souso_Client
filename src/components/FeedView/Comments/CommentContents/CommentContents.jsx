@@ -13,7 +13,8 @@ export const CommentContents = ({
   feedAuthor,
   setIsReplying,
   setReplyId,
-  setReplyNickname
+  setReplyNickname,
+  reply
 }) => {
   const { data, isLoading } = useQuery(['user'], user.getProfile);
   const { author, content, created_at, comment_id } = contents;
@@ -58,6 +59,7 @@ export const CommentContents = ({
     }
   });
 
+  // 답글버튼 클릭시 정보전달
   const handleReplying = e => {
     e.preventDefault();
     setIsReplying(true);
@@ -95,13 +97,15 @@ export const CommentContents = ({
         )}
       </S.CommentText>
 
-      <S.CommentFooter>
-        <button>
-          <Icon Icon={Comment} size={17} />
-          <span onClick={handleReplying} id={comment_id}>
-            답글쓰기
-          </span>
-        </button>
+      <S.CommentFooter className={reply ? 'onlyDate' : ''}>
+        {!reply && (
+          <button>
+            <Icon Icon={Comment} size={17} />
+            <span onClick={handleReplying} id={comment_id}>
+              답글쓰기
+            </span>
+          </button>
+        )}
 
         <div>{dateFormat(created_at)}</div>
       </S.CommentFooter>

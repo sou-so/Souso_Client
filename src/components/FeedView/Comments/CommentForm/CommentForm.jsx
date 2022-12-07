@@ -34,7 +34,7 @@ export const CommentForm = ({ feedId }) => {
       sendCommentMutate([{ feedId: feedId }, { content: commentValue }]);
       setCommentValue('');
     } else {
-      toast.warning('🙇‍♀️ 내용을 입력해주세요.');
+      toast.warning('내용을 입력해주세요. 🙇‍♀️');
     }
   };
 

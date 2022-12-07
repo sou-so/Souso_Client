@@ -25,12 +25,19 @@ export const FormContainer = styled.div`
 `;
 
 export const ReplyDesc = styled.div`
-  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px 0 8px;
+  font-size: 13px;
   font-weight: bold;
   opacity: 0;
   transition: 1s all;
   &.reply {
     padding: 2px 0 10px;
     opacity: 1;
+  }
+  p > span {
+    font-size: 15px;
+    color: #48b0d0;
   }
 `;
