@@ -6,14 +6,15 @@ import * as S from './styles';
 
 export const PostBodyUser = ({ postData }) => {
   const {
-    author: { birth, nickname, profile_image_url },
+    author: { birth, nickname, profile_image_url, location },
     category,
     content
   } = postData;
 
   const { pathname } = useLocation();
-  const town = localStorage.getItem('souso_town');
   const isMain = pathname === '/';
+
+  const town = location && location.split(' ')[2];
 
   return (
     <S.BodyContainer>

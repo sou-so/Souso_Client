@@ -22,6 +22,7 @@ export const TabButton = styled.button`
   text-align: center;
   color: #c5c5c5;
   background: #f0f0f0;
+  outline: none;
 
   &.active {
     width: 57%;

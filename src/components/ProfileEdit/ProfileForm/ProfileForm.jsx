@@ -1,25 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { EditImage, ImgResetBtn } from 'components/ProfileEdit';
+
+import { useRecoilValue } from 'recoil';
+import { addressState } from 'atoms/address';
+
 import { Icon } from 'components/Common';
+import { EditImage, ImgResetBtn } from 'components/ProfileEdit';
 import { InputBirthDate, InputDuplicated } from 'components/Join';
-import { ReactComponent as Gps } from 'assets/icons/gps.svg';
+
 import { toast } from 'react-toastify';
+import { ReactComponent as Gps } from 'assets/icons/gps.svg';
 import * as S from './styles';
 
 export const ProfileForm = ({ data, mutate }) => {
-  const { nickname: oldNickname, birth: oldBirth, profile_image_url } = data;
+  const {
+    nickname: old_nickname,
+    birth: old_birth,
+    profile_image_url,
+    location
+  } = data;
+
   const DefaultCheck =
     profile_image_url ===
     'https://souso-bucket.s3.ap-northeast-2.amazonaws.com/defaultProfileImage.svg';
 
-  const myTown = localStorage.getItem('souso_town');
+  const address = useRecoilValue(addressState);
+  const old_town = location && location.split(' ')[2];
+
   const [imgURL, setImgURL] = useState(profile_image_url);
   const [imgData, setImgData] = useState({});
   const [imgDefault, setImgDefault] = useState(DefaultCheck);
-  const [nickname, setNickname] = useState(oldNickname);
-  const [town, setTown] = useState(myTown || '상도동');
-  const [birth, setBirth] = useState(oldBirth);
+  const [nickname, setNickname] = useState(old_nickname);
+  const [town, setTown] = useState(old_town || '상도동');
+  const [birth, setBirth] = useState(old_birth);
   const [isUnique, setIsUnique] = useState(false);
 
   const handleSubmit = e => {
@@ -31,32 +44,33 @@ export const ProfileForm = ({ data, mutate }) => {
         JSON.stringify({
           birth: birth,
           is_default_profile: imgDefault,
-          nickname: nickname
+          nickname: nickname,
+          location: address.join(' ') || location
         })
       ],
       { type: 'application/json' }
     );
 
+    imgURL !== profile_image_url && editedData.append('image', imgData);
+    editedData.append('request', userData);
+
     if (
-      nickname === oldNickname &&
-      birth === oldBirth &&
-      imgURL === profile_image_url
+      nickname === old_nickname &&
+      birth === old_birth &&
+      imgURL === profile_image_url &&
+      (!address.length || address[2] === old_town)
     ) {
       toast.warning('수정된 정보가 없습니다.');
-    } else if (
-      ((nickname !== oldNickname && isUnique) || birth !== oldBirth) &&
-      imgURL === profile_image_url
-    ) {
-      editedData.append('request', userData);
-      mutate(editedData);
-    } else if (imgURL !== profile_image_url) {
-      editedData.append('image', imgData);
-      editedData.append('request', userData);
-      mutate(editedData);
-    } else {
+    } else if (nickname !== old_nickname && !isUnique) {
       toast.warning('닉네임 중복체크를 해주세요.');
+    } else {
+      mutate(editedData);
     }
   };
+
+  useEffect(() => {
+    if (address.length) setTown(address[2]);
+  }, [address]);
 
   return (
     <S.FormContainer onSubmit={handleSubmit}>
@@ -81,7 +95,7 @@ export const ProfileForm = ({ data, mutate }) => {
           setIsUnique={setIsUnique}
         />
 
-        <Link to="#">
+        <Link to="/mytown" state={{ from: 'profile' }}>
           <S.Town>
             {town} <Icon Icon={Gps} />
           </S.Town>
