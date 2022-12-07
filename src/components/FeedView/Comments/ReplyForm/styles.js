@@ -9,6 +9,7 @@ export const CommentInput = styled.input`
   margin: 4.5px 6px;
   padding: 4.5px 2px;
   flex: 1;
+  width: 50%;
 `;
 
 export const SendBtn = styled.button`

@@ -14,6 +14,7 @@ export const EditingForm = styled.form`
 
 export const EditInput = styled.input`
   flex: 1;
+  width: 70%;
   padding: 4px 6px;
   border: 1px solid #eaeaea;
   border-radius: 4px;
