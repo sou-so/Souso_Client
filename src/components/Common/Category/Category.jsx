@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { category } from 'api/queries/category';
 import { ReactComponent as MoreIcon } from 'assets/icons/arrow_b.svg';
-import { ReactComponent as Temp } from 'assets/icons/temp.svg';
 import { Icon } from 'components/Common';
 import { svgs } from './svgs';
 import * as S from './styles';
@@ -23,10 +22,7 @@ export const Category = ({ more, linkTo, onClick }) => {
               state={{ category_name, category_id }}
             >
               <li id={category_id} onClick={onClick}>
-                <S.IconContainer>
-                  <Icon Icon={svgs[category_id - 1]} stroke="#fff" size={30} />
-                  <Icon Icon={Temp} />
-                </S.IconContainer>
+                <Icon Icon={svgs[category_id - 1]} stroke="#fff" size={25} />
                 <S.Name>{category_name}</S.Name>
               </li>
             </Link>

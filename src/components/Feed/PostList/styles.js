@@ -8,21 +8,39 @@ export const PostListContainer = styled.div`
 export const Tabs = styled.div`
   display: flex;
   margin-bottom: 10px;
-  button {
-    width: 50%;
-    border: 1px solid #f0f0f0;
-    margin-bottom: 1px;
-    border-radius: 12px 12px 0 0;
-    text-align: center;
-    padding: 10px 0;
-    font-size: ${({ theme }) => theme.font.md};
-    color: ${({ theme }) => theme.color.gray_4};
-    &.active {
-      color: ${({ theme }) => theme.color.black_1};
-      font-weight: 600;
-      border-bottom: 2px solid ${({ theme }) => theme.color.main};
-      margin-bottom: 0;
-    }
+`;
+
+export const TabButton = styled.button`
+  position: relative;
+  bottom: 0;
+  width: 50%;
+  margin-top: auto;
+  padding: 10px 0;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px 12px 0 0;
+  font-size: ${({ theme }) => theme.font.md};
+  text-align: center;
+  color: #c5c5c5;
+  background: #f0f0f0;
+
+  &.active {
+    width: 57%;
+    padding: 12px 0;
+    font-weight: 600;
+    box-shadow: 0 -2px 3px rgb(0 0 0 / 5%);
+    border-bottom: none;
+    color: #3a3a3a;
+    background: #fff;
+  }
+
+  &:first-child.active {
+    margin-right: -20px;
+    z-index: 100;
+  }
+
+  &:last-child.active {
+    margin-left: -20px;
+    z-index: 100;
   }
 `;
 

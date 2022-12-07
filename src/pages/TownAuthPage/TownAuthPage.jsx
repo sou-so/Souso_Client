@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
+
 import { useSetRecoilState } from 'recoil';
-import { townState } from 'recoil/atom';
+import { townState } from 'atoms/town';
+
 import { PageHeader } from 'components/Common';
 import { SearchModal, SubmitModal } from 'components/TownAuth';
-
 import * as S from './styles';
 
 export const TownAuthPage = () => {

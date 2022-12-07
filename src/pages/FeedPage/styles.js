@@ -16,10 +16,11 @@ export const SectionWrap = styled.section`
 `;
 
 export const CategoryWrap = styled.section`
-  min-height: 200px;
-  margin: 20px 15px 50px;
-  padding-top: 25px;
+  min-height: 250px;
+  margin-top: 20px;
+  padding: 25px 15px 60px;
   border-top: ${({ theme }) => theme.style.border_light};
+  /* background: #ffa31a; */
   h3 {
     margin-bottom: 25px;
     text-align: center;

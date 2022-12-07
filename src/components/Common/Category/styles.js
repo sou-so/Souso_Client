@@ -10,19 +10,16 @@ export const CategoryContainer = styled.ul`
     text-align: center;
     position: relative;
     cursor: pointer;
-    svg {
+    * {
       margin: 0 auto;
     }
   }
-`;
-
-export const IconContainer = styled.div`
-  position: relative;
-  > div:first-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .icon {
+    display: flex;
+    background-color: ${({ theme }) => theme.color.main};
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
   }
 `;
 

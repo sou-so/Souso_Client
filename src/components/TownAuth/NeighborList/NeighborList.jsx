@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { townState } from 'recoil/atom';
+import { townState } from 'atoms/town';
+
 import * as S from './styles';
 
 export const NeighborList = ({ openModal }) => {

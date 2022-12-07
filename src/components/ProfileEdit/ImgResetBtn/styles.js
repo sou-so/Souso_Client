@@ -5,9 +5,10 @@ export const ButtonWrap = styled.div`
 `;
 
 export const ResetBtn = styled.button`
-  padding: 5px 8px;
+  padding: 4px 8px;
   font-size: 12px;
-  color: #fff;
+  color: #a3a3a3;
   border-radius: 6px;
-  background-color: #6c696d;
+  background-color: #eaeaea;
+  box-shadow: 0px 1px 2px rgb(0 0 0 / 20%);
 `;

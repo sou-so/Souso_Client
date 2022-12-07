@@ -7,6 +7,7 @@ export const NavContainer = styled.ul`
   justify-content: space-around;
   border-radius: 12px 12px 0 0;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.12);
+  z-index: 9999;
 `;
 
 export const NavItem = styled.li`
