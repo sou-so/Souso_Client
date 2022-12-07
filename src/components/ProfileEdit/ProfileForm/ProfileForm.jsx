@@ -14,24 +14,25 @@ import * as S from './styles';
 
 export const ProfileForm = ({ data, mutate }) => {
   const {
-    nickname: oldNickname,
-    birth: oldBirth,
+    nickname: old_nickname,
+    birth: old_birth,
     profile_image_url,
     location
   } = data;
+
   const DefaultCheck =
     profile_image_url ===
     'https://souso-bucket.s3.ap-northeast-2.amazonaws.com/defaultProfileImage.svg';
 
   const address = useRecoilValue(addressState);
-  const oldTown = location && location.split(' ')[2];
+  const old_town = location && location.split(' ')[2];
 
   const [imgURL, setImgURL] = useState(profile_image_url);
   const [imgData, setImgData] = useState({});
   const [imgDefault, setImgDefault] = useState(DefaultCheck);
-  const [nickname, setNickname] = useState(oldNickname);
-  const [town, setTown] = useState(oldTown);
-  const [birth, setBirth] = useState(oldBirth);
+  const [nickname, setNickname] = useState(old_nickname);
+  const [town, setTown] = useState(old_town || '상도동');
+  const [birth, setBirth] = useState(old_birth);
   const [isUnique, setIsUnique] = useState(false);
 
   const handleSubmit = e => {
@@ -44,40 +45,31 @@ export const ProfileForm = ({ data, mutate }) => {
           birth: birth,
           is_default_profile: imgDefault,
           nickname: nickname,
-          location: address.join(' ')
+          location: address.join(' ') || location
         })
       ],
       { type: 'application/json' }
     );
 
-    editedData.append('image', imgData);
+    imgURL !== profile_image_url && editedData.append('image', imgData);
     editedData.append('request', userData);
-    mutate(editedData);
 
-    //   if (
-    //     nickname === oldNickname &&
-    //     birth === oldBirth &&
-    //     imgURL === profile_image_url &&
-    //     !address.length
-    //   ) {
-    //     toast.warning('수정된 정보가 없습니다.');
-    //   } else if (
-    //     ((nickname !== oldNickname && isUnique) || birth !== oldBirth) &&
-    //     imgURL === profile_image_url
-    //   ) {
-    //     editedData.append('request', userData);
-    //     mutate(editedData);
-    //   } else if (imgURL !== profile_image_url) {
-    //     editedData.append('image', imgData);
-    //     editedData.append('request', userData);
-    //     mutate(editedData);
-    //   } else {
-    // toast.warning('닉네임 중복체크를 해주세요.');
-    //   }
+    if (
+      nickname === old_nickname &&
+      birth === old_birth &&
+      imgURL === profile_image_url &&
+      (!address.length || address[2] === old_town)
+    ) {
+      toast.warning('수정된 정보가 없습니다.');
+    } else if (nickname !== old_nickname && !isUnique) {
+      toast.warning('닉네임 중복체크를 해주세요.');
+    } else {
+      mutate(editedData);
+    }
   };
 
   useEffect(() => {
-    setTown(address[2]);
+    if (address.length) setTown(address[2]);
   }, [address]);
 
   return (
@@ -105,7 +97,7 @@ export const ProfileForm = ({ data, mutate }) => {
 
         <Link to="/mytown" state={{ from: 'profile' }}>
           <S.Town>
-            {town || '상도동'} <Icon Icon={Gps} />
+            {town} <Icon Icon={Gps} />
           </S.Town>
         </Link>
 
