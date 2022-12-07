@@ -9,8 +9,9 @@ import { Icon } from 'components/Common';
 
 import * as S from './styles';
 
-export const FeedHeader = () => {
-  const town = localStorage.getItem('souso_town');
+export const FeedHeader = ({ data }) => {
+  const { location } = data;
+  const town = location && location.split(' ')[2];
 
   return (
     <S.FeedHeaderContainer>

@@ -1,24 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { EditImage, ImgResetBtn } from 'components/ProfileEdit';
+
+import { useRecoilValue } from 'recoil';
+import { addressState } from 'atoms/address';
+
 import { Icon } from 'components/Common';
+import { EditImage, ImgResetBtn } from 'components/ProfileEdit';
 import { InputBirthDate, InputDuplicated } from 'components/Join';
-import { ReactComponent as Gps } from 'assets/icons/gps.svg';
+
 import { toast } from 'react-toastify';
+import { ReactComponent as Gps } from 'assets/icons/gps.svg';
 import * as S from './styles';
 
 export const ProfileForm = ({ data, mutate }) => {
-  const { nickname: oldNickname, birth: oldBirth, profile_image_url } = data;
+  const {
+    nickname: oldNickname,
+    birth: oldBirth,
+    profile_image_url,
+    location
+  } = data;
   const DefaultCheck =
     profile_image_url ===
     'https://souso-bucket.s3.ap-northeast-2.amazonaws.com/defaultProfileImage.svg';
 
-  const myTown = localStorage.getItem('souso_town');
+  const address = useRecoilValue(addressState);
+  const oldTown = location && location.split(' ')[2];
+
   const [imgURL, setImgURL] = useState(profile_image_url);
   const [imgData, setImgData] = useState({});
   const [imgDefault, setImgDefault] = useState(DefaultCheck);
   const [nickname, setNickname] = useState(oldNickname);
-  const [town, setTown] = useState(myTown || '상도동');
+  const [town, setTown] = useState(oldTown);
   const [birth, setBirth] = useState(oldBirth);
   const [isUnique, setIsUnique] = useState(false);
 
@@ -31,32 +43,42 @@ export const ProfileForm = ({ data, mutate }) => {
         JSON.stringify({
           birth: birth,
           is_default_profile: imgDefault,
-          nickname: nickname
+          nickname: nickname,
+          location: address.join(' ')
         })
       ],
       { type: 'application/json' }
     );
 
-    if (
-      nickname === oldNickname &&
-      birth === oldBirth &&
-      imgURL === profile_image_url
-    ) {
-      toast.warning('수정된 정보가 없습니다.');
-    } else if (
-      ((nickname !== oldNickname && isUnique) || birth !== oldBirth) &&
-      imgURL === profile_image_url
-    ) {
-      editedData.append('request', userData);
-      mutate(editedData);
-    } else if (imgURL !== profile_image_url) {
-      editedData.append('image', imgData);
-      editedData.append('request', userData);
-      mutate(editedData);
-    } else {
-      toast.warning('닉네임 중복체크를 해주세요.');
-    }
+    editedData.append('image', imgData);
+    editedData.append('request', userData);
+    mutate(editedData);
+
+    //   if (
+    //     nickname === oldNickname &&
+    //     birth === oldBirth &&
+    //     imgURL === profile_image_url &&
+    //     !address.length
+    //   ) {
+    //     toast.warning('수정된 정보가 없습니다.');
+    //   } else if (
+    //     ((nickname !== oldNickname && isUnique) || birth !== oldBirth) &&
+    //     imgURL === profile_image_url
+    //   ) {
+    //     editedData.append('request', userData);
+    //     mutate(editedData);
+    //   } else if (imgURL !== profile_image_url) {
+    //     editedData.append('image', imgData);
+    //     editedData.append('request', userData);
+    //     mutate(editedData);
+    //   } else {
+    // toast.warning('닉네임 중복체크를 해주세요.');
+    //   }
   };
+
+  useEffect(() => {
+    setTown(address[2]);
+  }, [address]);
 
   return (
     <S.FormContainer onSubmit={handleSubmit}>
@@ -83,7 +105,7 @@ export const ProfileForm = ({ data, mutate }) => {
 
         <Link to="/mytown" state={{ from: 'profile' }}>
           <S.Town>
-            {town} <Icon Icon={Gps} />
+            {town || '상도동'} <Icon Icon={Gps} />
           </S.Town>
         </Link>
 

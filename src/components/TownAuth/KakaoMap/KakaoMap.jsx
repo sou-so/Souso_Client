@@ -12,7 +12,7 @@ export const KakaoMap = ({ openModal }) => {
   const [pickedGeo, setPickedGeo] = useState(currentGeo);
   const [address, setAddress] = useState([]);
 
-  const setLocation = useSetRecoilState(addressState);
+  const setSaveAddress = useSetRecoilState(addressState);
 
   const { kakao } = window; // head에 작성한 Kakao API 불러오기
   const mapRef = useRef();
@@ -71,9 +71,8 @@ export const KakaoMap = ({ openModal }) => {
   }, [kakao, pickedGeo, setAddress]);
 
   useEffect(() => {
-    setLocation(address); // 동네값 저장
-    localStorage.setItem('souso_town', address[2]);
-  }, [setLocation, address]);
+    setSaveAddress(address); // 동네값 저장
+  }, [setSaveAddress, address]);
 
   return (
     <S.MapContainer>
