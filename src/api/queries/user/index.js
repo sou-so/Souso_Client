@@ -26,6 +26,10 @@ export const user = {
     });
     return res.data;
   },
+  editTown: async req => {
+    const res = await apiWithToken.patch(EP.EDIT_TOWN, req);
+    return res.data;
+  },
   myPosts: async ({ cursorId }) => {
     const res = await apiWithToken.get(EP.MYPOSTS(cursorId));
     return res.data;

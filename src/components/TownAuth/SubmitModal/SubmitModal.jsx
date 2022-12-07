@@ -1,17 +1,39 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+import { useMutation, useQueryClient } from 'react-query';
+import { user } from 'api/queries/user';
+
 import { useRecoilValue } from 'recoil';
 import { addressState } from 'atoms/address';
 
 import { Icon } from 'components/Common';
 import { ReactComponent as HomeIcon } from 'assets/icons/home.svg';
+import { toast } from 'react-toastify';
 import * as S from './styles';
 
 export const SubmitModal = ({ closeModal }) => {
+  const { state } = useLocation();
   const address = useRecoilValue(addressState);
 
-  const { state } = useLocation();
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation(user.editTown, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('user');
+    },
+    onError: error => {
+      console.log(error.message);
+      toast.error('동네 수정에 실패했습니다. 다시 시도해주세요.');
+    }
+  });
+
+  const handleSubmit = () => {
+    if (state.from === 'main') {
+      mutate({ location: address.join(' ') });
+    }
+    closeModal();
+  };
 
   const linkTo = () => {
     if (state) {
@@ -49,7 +71,7 @@ export const SubmitModal = ({ closeModal }) => {
           <p>(ex. 거주하는 동네, 직장이 있는 동네)</p>
         </S.TextWrap>
         <Link to={linkTo()}>
-          <S.SubmitButton onClick={closeModal}>확인</S.SubmitButton>
+          <S.SubmitButton onClick={handleSubmit}>확인</S.SubmitButton>
         </Link>
       </S.ModalContainer>
     </S.Overlay>
