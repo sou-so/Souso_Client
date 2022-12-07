@@ -9,4 +9,5 @@ export const FeedAddBtn = styled(Link)`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: ${({ theme }) => theme.color.main};
   border-radius: 50% 50% 0 50%;
+  z-index: 9999;
 `;

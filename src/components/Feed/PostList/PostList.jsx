@@ -23,14 +23,14 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
       {isMain && (
         <S.Tabs>
           {['인기글', '최신글'].map((name, i) => (
-            <button
+            <S.TabButton
               key={i}
               id={name}
               onClick={handleTabClick}
               className={name === active ? 'active' : ''}
             >
               {name}
-            </button>
+            </S.TabButton>
           ))}
         </S.Tabs>
       )}
