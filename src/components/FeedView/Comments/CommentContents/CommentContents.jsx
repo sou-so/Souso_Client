@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 import { user } from 'api/queries/user';
@@ -11,6 +11,9 @@ import * as S from './styles';
 export const CommentContents = ({ contents, feedAuthor }) => {
   const { data, isLoading } = useQuery(['user'], user.getProfile);
   const { author, content, created_at, comment_id } = contents;
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [editValue, setEditValue] = useState(content);
 
   const queryClient = useQueryClient();
 
@@ -27,8 +30,8 @@ export const CommentContents = ({ contents, feedAuthor }) => {
     }
   });
 
-  // 댓글 수정
-  const editComment = () => {
+  // 답글 달기
+  const Reply = () => {
     toast.warning('서비스 준비 중 입니다.');
   };
 
@@ -46,17 +49,26 @@ export const CommentContents = ({ contents, feedAuthor }) => {
         {!isLoading && data.user_id === author.user_id && (
           <EditDeleteButton
             handleDelete={() => deleteCommentMutate(comment_id)}
-            handleEdit={editComment}
+            handleEdit={() => setIsEditing(prev => !prev)}
           />
         )}
       </S.CommentHeader>
 
-      <S.CommentText>{content}</S.CommentText>
+      <S.CommentText>
+        {isEditing ? (
+          <S.EditingForm>
+            <S.EditInput value={editValue} />
+            <button>완료</button>
+          </S.EditingForm>
+        ) : (
+          <S.TextBox>{content}</S.TextBox>
+        )}
+      </S.CommentText>
 
       <S.CommentFooter>
         <button>
           <Icon Icon={Comment} size={17} />
-          <span>답글쓰기</span>
+          <span onClick={Reply}>답글쓰기</span>
         </button>
 
         <div>{dateFormat(created_at)}</div>

@@ -34,6 +34,27 @@ export const CommentText = styled.div`
   font-size: 15px;
 `;
 
+export const TextBox = styled.span``;
+
+export const EditingForm = styled.form`
+  display: flex;
+  button {
+    padding: 4px 6px;
+    margin-left: 4px;
+    font-size: 13px;
+    line-height: 19.5px;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+  }
+`;
+
+export const EditInput = styled.input`
+  flex: 1;
+  padding: 4px 6px;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+`;
+
 export const CommentFooter = styled.div`
   display: flex;
   justify-content: space-between;
