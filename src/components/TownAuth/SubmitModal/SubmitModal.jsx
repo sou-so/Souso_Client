@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Icon } from 'components/Common';
-import { ReactComponent as HomeIcon } from 'assets/icons/home.svg';
 
 import { useRecoilValue } from 'recoil';
-import { townState } from 'recoil/atom';
+import { townState } from 'atoms/town';
+
+import { Icon } from 'components/Common';
+import { ReactComponent as HomeIcon } from 'assets/icons/home.svg';
 import * as S from './styles';
 
 export const SubmitModal = ({ closeModal }) => {
