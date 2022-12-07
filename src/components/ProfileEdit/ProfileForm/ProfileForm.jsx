@@ -81,7 +81,7 @@ export const ProfileForm = ({ data, mutate }) => {
           setIsUnique={setIsUnique}
         />
 
-        <Link to="#">
+        <Link to="/mytown" state={{ from: 'profile' }}>
           <S.Town>
             {town} <Icon Icon={Gps} />
           </S.Town>

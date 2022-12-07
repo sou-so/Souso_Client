@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 import { useSetRecoilState } from 'recoil';
-import { townState } from 'atoms/town';
+import { addressState } from 'atoms/address';
 
 import { SearchSection } from 'components/TownAuth';
 import * as S from './styles';
@@ -12,7 +12,7 @@ export const KakaoMap = ({ openModal }) => {
   const [pickedGeo, setPickedGeo] = useState(currentGeo);
   const [address, setAddress] = useState([]);
 
-  const setCurrentTown = useSetRecoilState(townState);
+  const setLocation = useSetRecoilState(addressState);
 
   const { kakao } = window; // head에 작성한 Kakao API 불러오기
   const mapRef = useRef();
@@ -66,16 +66,14 @@ export const KakaoMap = ({ openModal }) => {
           result[0].address.region_2depth_name,
           result[0].address.region_3depth_name
         ]);
-        console.log(result[0].address.address_name);
       }
     });
   }, [kakao, pickedGeo, setAddress]);
 
   useEffect(() => {
-    // 동네값 저장
-    setCurrentTown(address);
+    setLocation(address); // 동네값 저장
     localStorage.setItem('souso_town', address[2]);
-  }, [setCurrentTown, address]);
+  }, [setLocation, address]);
 
   return (
     <S.MapContainer>

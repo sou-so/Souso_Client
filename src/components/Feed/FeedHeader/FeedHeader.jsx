@@ -14,7 +14,7 @@ export const FeedHeader = () => {
 
   return (
     <S.FeedHeaderContainer>
-      <Link to="mytown">
+      <Link to="mytown" state={{ from: 'main' }}>
         <S.Location>
           <Icon Icon={LocateIcon} size={20} />
           <span>{town || '상도동'}</span>

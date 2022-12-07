@@ -42,7 +42,9 @@ export const LoginPage = () => {
         </li>
         <li>
           계정이 없으신가요?
-          <Link to="/mytown">가입하기</Link>
+          <Link to="/mytown" state={{ from: 'login' }}>
+            가입하기
+          </Link>
         </li>
       </S.LinkTo>
     </S.PageContainer>

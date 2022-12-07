@@ -1,15 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { useRecoilValue } from 'recoil';
-import { townState } from 'atoms/town';
+import { addressState } from 'atoms/address';
 
 import { Icon } from 'components/Common';
 import { ReactComponent as HomeIcon } from 'assets/icons/home.svg';
 import * as S from './styles';
 
 export const SubmitModal = ({ closeModal }) => {
-  const address = useRecoilValue(townState);
+  const address = useRecoilValue(addressState);
+
+  const { state } = useLocation();
+
+  const linkTo = () => {
+    if (state) {
+      switch (state.from) {
+        case 'profile':
+          return '/mypage/edit';
+        case 'login':
+          return '/join';
+        case 'main':
+          return '/';
+        default:
+          throw new Error('Invalid link');
+      }
+    }
+  };
 
   return (
     <S.Overlay onClick={closeModal}>
@@ -31,7 +48,7 @@ export const SubmitModal = ({ closeModal }) => {
           </p>
           <p>(ex. 거주하는 동네, 직장이 있는 동네)</p>
         </S.TextWrap>
-        <Link to="/join">
+        <Link to={linkTo()}>
           <S.SubmitButton onClick={closeModal}>확인</S.SubmitButton>
         </Link>
       </S.ModalContainer>

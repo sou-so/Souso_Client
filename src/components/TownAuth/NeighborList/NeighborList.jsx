@@ -1,11 +1,11 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { townState } from 'atoms/town';
+import { addressState } from 'atoms/address';
 
 import * as S from './styles';
 
 export const NeighborList = ({ openModal }) => {
-  const address = useRecoilValue(townState);
+  const address = useRecoilValue(addressState);
 
   return (
     <S.ListContainer>
