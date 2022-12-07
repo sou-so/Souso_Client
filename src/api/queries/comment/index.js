@@ -3,7 +3,6 @@ import * as EP from './endpoint';
 
 export const comments = {
   add: async req => {
-    console.log(req);
     const res = await apiWithToken.post(EP.ADD_COMMENT(req[0].feedId), req[1]);
     return res.data;
   },
@@ -17,7 +16,10 @@ export const comments = {
     return res.data;
   },
   edit: async req => {
-    const res = await apiWithToken.patch(EP.EDIT_COMMENT(req), req);
+    const res = await apiWithToken.patch(
+      EP.EDIT_COMMENT(req[0].commentId),
+      req[1]
+    );
     return res.data;
   },
   delete: async req => {

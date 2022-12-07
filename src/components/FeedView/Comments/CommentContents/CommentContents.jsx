@@ -17,6 +17,28 @@ export const CommentContents = ({ contents, feedAuthor }) => {
 
   const queryClient = useQueryClient();
 
+  // 댓글 수정
+  const { mutate: editCommentMutate } = useMutation(comments.edit, {
+    onSuccess: () => {
+      toast.success('댓글이 수정되었습니다!');
+      queryClient.invalidateQueries('comments');
+    },
+    onError: error => {
+      console.log(error.message);
+      toast.error('댓글 수정에 실패했습니다. 다시 시도해주세요.');
+    }
+  });
+
+  const handleChange = e => {
+    setEditValue(e.target.value);
+  };
+
+  const handleEditComment = e => {
+    e.preventDefault();
+    editCommentMutate([{ commentId: comment_id }, { content: editValue }]);
+    setIsEditing(prev => !prev);
+  };
+
   // 댓글 삭제
   const { mutate: deleteCommentMutate } = useMutation(comments.delete, {
     onSuccess: res => {
@@ -56,9 +78,9 @@ export const CommentContents = ({ contents, feedAuthor }) => {
 
       <S.CommentText>
         {isEditing ? (
-          <S.EditingForm>
-            <S.EditInput value={editValue} />
-            <button>완료</button>
+          <S.EditingForm onSubmit={handleEditComment}>
+            <S.EditInput value={editValue} onChange={handleChange} />
+            <button onClick={handleEditComment}>완료</button>
           </S.EditingForm>
         ) : (
           <S.TextBox>{content}</S.TextBox>
