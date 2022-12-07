@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import {
-  Input,
-  InputBirthDate,
-  InputDuplicated,
-  InputEmailCheck,
-  InputPassword,
-  InputVerified,
-  TermsButton
-} from 'components/Join';
 import { useForm } from 'hooks/useForm';
 import { validate } from 'utils/valid_join';
+
+import { useRecoilValue } from 'recoil';
+import { addressState } from 'atoms/address';
+
+import * as C from 'components/Join';
 import * as S from './styles';
 
 export const JoinForm = ({ createAccount }) => {
@@ -19,7 +15,7 @@ export const JoinForm = ({ createAccount }) => {
   const [isAgreed, setIsAgreed] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const town = localStorage.getItem('souso_town');
+  const address = useRecoilValue(addressState);
 
   const { values, handleChange, setValues } = useForm(defaultValues);
 
@@ -29,7 +25,7 @@ export const JoinForm = ({ createAccount }) => {
     const hasInvaild = Object.keys(error).length;
 
     if (!hasInvaild) {
-      createAccount({ ...values, town: town });
+      createAccount({ ...values, location: address.join(' ') });
     } else {
       setErrors(error);
     }
@@ -38,21 +34,21 @@ export const JoinForm = ({ createAccount }) => {
   return (
     <S.FormContainer onSubmit={handleSubmit}>
       <S.FieldWrap>
-        <Input
+        <C.Input
           name="name"
           placeholder="이름"
           onChange={handleChange}
           values={values}
           errors={errors}
         />
-        <InputDuplicated
+        <C.InputDuplicated
           isUnique={isUnique}
           setIsUnique={setIsUnique}
           onChange={handleChange}
           values={values}
           errors={errors}
         />
-        <InputEmailCheck
+        <C.InputEmailCheck
           isChecked={isChecked}
           setIsChecked={setIsChecked}
           onChange={handleChange}
@@ -66,7 +62,7 @@ export const JoinForm = ({ createAccount }) => {
           values.name && values.email && isUnique && isChecked && 'showStep'
         }`}
       >
-        <InputVerified
+        <C.InputVerified
           isVerified={isVerified}
           setIsVerified={setIsVerified}
           onChange={handleChange}
@@ -76,14 +72,14 @@ export const JoinForm = ({ createAccount }) => {
       </S.FieldWrap>
 
       <S.FieldWrap className={`stepStyle ${isVerified && 'showStep'}`}>
-        <InputBirthDate setValues={setValues} errors={errors} />
-        <InputPassword
+        <C.InputBirthDate setValues={setValues} errors={errors} />
+        <C.InputPassword
           name="password"
           onChange={handleChange}
           values={values}
           errors={errors}
         />
-        <InputPassword
+        <C.InputPassword
           name="password2"
           onChange={handleChange}
           values={values}
@@ -91,7 +87,7 @@ export const JoinForm = ({ createAccount }) => {
         />
       </S.FieldWrap>
       <S.Submit>
-        <TermsButton isAgreed={isAgreed} setIsAgreed={setIsAgreed} />
+        <C.TermsButton isAgreed={isAgreed} setIsAgreed={setIsAgreed} />
         <S.JoinButton
           type="submit"
           disabled={!isAgreed || !values.password2}
@@ -108,7 +104,7 @@ const defaultValues = {
   name: '',
   nickname: '',
   birth: '',
-  town: '',
+  location: '',
   phone_number: '',
   verified_code: '',
   email: '',

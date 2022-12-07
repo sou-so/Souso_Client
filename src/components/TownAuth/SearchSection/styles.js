@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const ModalContainer = styled.div`
+export const SectionContainer = styled.div`
   width: 100%;
   height: 100%;
   background: #fff;
-  top: 55%;
+  top: 58%;
   border-radius: 12px 12px 0px 0px;
   padding: 0 ${({ theme }) => theme.style.edge_padding};
 

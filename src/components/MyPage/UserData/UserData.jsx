@@ -5,8 +5,8 @@ import { getAge } from 'utils/dateConverter';
 import * as S from './styles';
 
 export const UserData = ({ data }) => {
-  const { nickname, birth, profile_image_url } = data;
-  const town = localStorage.getItem('souso_town');
+  const { nickname, birth, profile_image_url, location } = data;
+  const town = location && location.split(' ')[2];
 
   return (
     <S.UserDataContainer>

@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-import { Category, ScrollContainer } from 'components/Common';
-import { useInfiniteQuery } from 'react-query';
+
+import { useQuery, useInfiniteQuery } from 'react-query';
+import { user } from 'api/queries/user';
 import { feed } from 'api/queries/feed';
+
+import { Category, ScrollContainer } from 'components/Common';
 import * as C from 'components/Feed';
 import * as S from './styles';
 
 export const FeedPage = () => {
   const [active, setActive] = useState('최신글');
   const isLatest = active === '최신글';
+
+  const { data, isLoading } = useQuery(['user'], user.getProfile);
 
   const params = pageParam => {
     return {
@@ -37,10 +41,10 @@ export const FeedPage = () => {
 
   return (
     <S.PageContainer>
-      <C.FeedHeader />
+      <C.FeedHeader data={!isLoading && data} />
       <ScrollContainer>
         <S.SectionWrap>
-          <C.FeedBanner />
+          <C.FeedBanner data={!isLoading && data} />
           <C.SearchBar />
           <C.HashTags />
         </S.SectionWrap>

@@ -1,15 +1,54 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
+import { useMutation, useQueryClient } from 'react-query';
+import { user } from 'api/queries/user';
 
 import { useRecoilValue } from 'recoil';
-import { townState } from 'atoms/town';
+import { addressState } from 'atoms/address';
 
 import { Icon } from 'components/Common';
 import { ReactComponent as HomeIcon } from 'assets/icons/home.svg';
+import { toast } from 'react-toastify';
 import * as S from './styles';
 
 export const SubmitModal = ({ closeModal }) => {
-  const address = useRecoilValue(townState);
+  const { state } = useLocation();
+  const address = useRecoilValue(addressState);
+
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation(user.editTown, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('user');
+    },
+    onError: error => {
+      console.log(error.message);
+      toast.error('동네 수정에 실패했습니다. 다시 시도해주세요.');
+    }
+  });
+
+  const handleSubmit = () => {
+    if (state.from === 'main') {
+      mutate({ location: address.join(' ') });
+    }
+    closeModal();
+  };
+
+  const linkTo = () => {
+    if (state) {
+      switch (state.from) {
+        case 'profile':
+          return '/mypage/edit';
+        case 'login':
+          return '/join';
+        case 'main':
+          return '/';
+        default:
+          throw new Error('Invalid link');
+      }
+    }
+  };
 
   return (
     <S.Overlay onClick={closeModal}>
@@ -31,8 +70,8 @@ export const SubmitModal = ({ closeModal }) => {
           </p>
           <p>(ex. 거주하는 동네, 직장이 있는 동네)</p>
         </S.TextWrap>
-        <Link to="/join">
-          <S.SubmitButton onClick={closeModal}>확인</S.SubmitButton>
+        <Link to={linkTo()}>
+          <S.SubmitButton onClick={handleSubmit}>확인</S.SubmitButton>
         </Link>
       </S.ModalContainer>
     </S.Overlay>
