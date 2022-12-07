@@ -39,14 +39,14 @@ export const CommentForm = ({ feedId }) => {
   };
 
   return (
-    <S.InputContainer>
-      <S.FormContainer>
+    <>
+      <S.CommentSendForm>
         <ProfileImage
           size={40}
           url={!isLoading ? data.profile_image_url : null}
         />
 
-        <S.Input
+        <S.CommentInput
           value={commentValue}
           onChange={handleChange}
           placeholder="댓글을 입력해주세요"
@@ -54,9 +54,9 @@ export const CommentForm = ({ feedId }) => {
         <S.SendBtn onClick={handleSendComment}>
           <Icon Icon={Plane} size={22} color={'#f4f4f4'} />
         </S.SendBtn>
-      </S.FormContainer>
+      </S.CommentSendForm>
 
       <S.DragBar />
-    </S.InputContainer>
+    </>
   );
 };

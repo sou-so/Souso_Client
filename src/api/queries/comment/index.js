@@ -7,7 +7,7 @@ export const comments = {
     return res.data;
   },
   reply: async req => {
-    const res = await apiWithToken.post(EP.ADD_REPLY(req), req);
+    const res = await apiWithToken.post(EP.ADD_REPLY(req[0].commentId), req[1]);
     return res.data;
   },
   list: async ({ queryKey }) => {

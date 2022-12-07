@@ -8,7 +8,13 @@ import { ReactComponent as Comment } from 'assets/icons/comment.svg';
 import { dateFormat } from 'utils/dateConverter';
 import * as S from './styles';
 
-export const CommentContents = ({ contents, feedAuthor }) => {
+export const CommentContents = ({
+  contents,
+  feedAuthor,
+  setIsReplying,
+  setReplyId,
+  setReplyNickname
+}) => {
   const { data, isLoading } = useQuery(['user'], user.getProfile);
   const { author, content, created_at, comment_id } = contents;
 
@@ -52,9 +58,11 @@ export const CommentContents = ({ contents, feedAuthor }) => {
     }
   });
 
-  // 답글 달기
-  const Reply = () => {
-    toast.warning('서비스 준비 중 입니다.');
+  const handleReplying = e => {
+    e.preventDefault();
+    setIsReplying(true);
+    setReplyId(comment_id);
+    setReplyNickname(author.nickname);
   };
 
   return (
@@ -90,7 +98,9 @@ export const CommentContents = ({ contents, feedAuthor }) => {
       <S.CommentFooter>
         <button>
           <Icon Icon={Comment} size={17} />
-          <span onClick={Reply}>답글쓰기</span>
+          <span onClick={handleReplying} id={comment_id}>
+            답글쓰기
+          </span>
         </button>
 
         <div>{dateFormat(created_at)}</div>
