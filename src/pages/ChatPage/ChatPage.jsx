@@ -1,9 +1,12 @@
 import React from 'react';
+import { InComplete } from 'components/Common';
+import * as S from './styles';
 
 export const ChatPage = () => {
   return (
-    <div>
-      <p>채팅</p>
-    </div>
+    <S.PageContainer>
+      <header>채팅</header>
+      <InComplete />
+    </S.PageContainer>
   );
 };

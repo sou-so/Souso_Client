@@ -10,4 +10,8 @@ export const FeedAddBtn = styled(Link)`
   background-color: ${({ theme }) => theme.color.main};
   border-radius: 50% 50% 0 50%;
   z-index: 9999;
+
+  svg * {
+    fill: #fff;
+  }
 `;

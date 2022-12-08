@@ -2,19 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import { useQuery } from 'react-query';
+import { user } from 'api/queries/user';
+
 import { ReactComponent as AlertIcon } from 'assets/icons/alert.svg';
 import { ReactComponent as MoreIcon } from 'assets/icons/arrow_b.svg';
 import { ReactComponent as LocateIcon } from 'assets/icons/location.svg';
 import { Icon } from 'components/Common';
-
 import * as S from './styles';
 
-export const FeedHeader = ({ data }) => {
-  const { location } = data;
-  const town = location && location.split(' ')[2];
+export const MainHeader = () => {
+  const { data, isLoading } = useQuery(['user'], user.getProfile);
+  const town = !isLoading && data.location.split(' ')[2];
 
   return (
-    <S.FeedHeaderContainer>
+    <S.HeaderContainer>
       <Link to="mytown" state={{ from: 'main' }}>
         <S.Location>
           <Icon Icon={LocateIcon} size={20} />
@@ -28,6 +30,6 @@ export const FeedHeader = ({ data }) => {
       >
         <Icon Icon={AlertIcon} />
       </S.Alert>
-    </S.FeedHeaderContainer>
+    </S.HeaderContainer>
   );
 };

@@ -4,14 +4,9 @@ export const PageContainer = styled.div`
   position: relative;
 `;
 
-export const Banner = styled.div`
-  p {
-    font-size: ${({ theme }) => theme.font.lg};
-  }
-`;
-
 export const SectionWrap = styled.section`
   padding: 0 ${({ theme }) => theme.style.edge_padding};
+  margin-bottom: 40px;
 `;
 
 export const CategoryWrap = styled.section`
@@ -24,23 +19,5 @@ export const CategoryWrap = styled.section`
     margin-bottom: 25px;
     text-align: center;
     font-size: ${({ theme }) => theme.font.md};
-  }
-`;
-
-export const TempLinks = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 0;
-  bottom: 0;
-  width: 100%;
-  background: #f5f5f5;
-  opacity: 0.7;
-  z-index: 100;
-  position: absolute;
-  a {
-    margin-left: 10px;
-    font-size: 12px;
-    color: #555;
   }
 `;

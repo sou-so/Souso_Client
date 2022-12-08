@@ -21,6 +21,3 @@ export { MyPostPage } from './MyPostPage/MyPostPage';
 export { MyBookmarkPage } from './MyBookmarkPage/MyBookmarkPage';
 export { MyMeetPage } from './MyMeetPage/MyMeetPage';
 export { ProfileEditPage } from './ProfileEditPage/ProfileEditPage';
-
-// incomplete service
-export { IncompletePage } from './IncompletePage/IncompletePage';
