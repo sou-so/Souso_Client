@@ -52,7 +52,7 @@ export const PostLists = styled.ul`
     cursor: pointer;
   }
 
-  li + li {
+  & > li + li {
     border-top: ${({ theme }) => theme.style.border_light};
   }
 `;

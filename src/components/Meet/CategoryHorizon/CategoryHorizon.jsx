@@ -7,7 +7,7 @@ import * as S from './styles';
 
 export const CategoryHorizon = ({ linkTo }) => {
   const list = ['전체 분야', '운동', '공예', '공연', '독서', '영화'];
-  console.log(list.concat(list.slice(-2)));
+
   return (
     <ScrollHorizon>
       <S.CategoryContainer>

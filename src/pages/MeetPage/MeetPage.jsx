@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollContainer } from 'components/Common';
+import { InComplete, ScrollContainer } from 'components/Common';
 import { CategoryHorizon } from 'components/Meet';
 import * as C from 'components/CommonMain';
 import * as S from './styles';
@@ -15,10 +15,11 @@ export const MeetPage = () => {
           <C.HashTags />
         </S.SectionWrap>
 
-        <S.CategoryWrap>
+        <InComplete />
+        {/* <S.CategoryWrap>
           <h3>어떤 분야에 관심 있으세요?</h3>
           <CategoryHorizon />
-        </S.CategoryWrap>
+        </S.CategoryWrap> */}
       </ScrollContainer>
     </S.PageContainer>
   );

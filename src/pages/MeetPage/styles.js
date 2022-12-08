@@ -6,6 +6,7 @@ export const PageContainer = styled.div`
 
 export const SectionWrap = styled.section`
   padding: 0 ${({ theme }) => theme.style.edge_padding};
+  margin-bottom: 40px;
 `;
 
 export const CategoryWrap = styled.section`
