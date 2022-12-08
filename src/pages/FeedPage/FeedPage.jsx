@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 
-import { useQuery, useInfiniteQuery } from 'react-query';
-import { user } from 'api/queries/user';
+import { useInfiniteQuery } from 'react-query';
 import { feed } from 'api/queries/feed';
 
 import { Category, ScrollContainer } from 'components/Common';
-import * as C from 'components/Feed';
+import { FeedAddButton, PostList } from 'components/Feed';
+import * as C from 'components/CommonMain';
 import * as S from './styles';
 
 export const FeedPage = () => {
   const [active, setActive] = useState('최신글');
   const isLatest = active === '최신글';
-
-  const { data, isLoading } = useQuery(['user'], user.getProfile);
 
   const params = pageParam => {
     return {
@@ -41,11 +39,11 @@ export const FeedPage = () => {
 
   return (
     <S.PageContainer>
-      <C.FeedHeader data={!isLoading && data} />
+      <C.MainHeader />
       <ScrollContainer>
         <S.SectionWrap>
-          <C.FeedBanner data={!isLoading && data} />
-          <C.SearchBar />
+          <C.MainBanner text={['소소한 얘기를 소소가', '기다리고 있어요.']} />
+          <C.SearchBar placeholder="동네의 궁금한 점을 검색하세요." />
           <C.HashTags />
         </S.SectionWrap>
 
@@ -54,23 +52,14 @@ export const FeedPage = () => {
           <Category more linkTo />
         </S.CategoryWrap>
 
-        <C.PostList
+        <PostList
           active={active}
           handleTabClick={handleTabClick}
           infiniteResponse={infiniteResponse}
         />
       </ScrollContainer>
 
-      <C.FeedAddButton />
-
-      {/* <S.TempLinks>
-        <Link to={'/login'}>
-          <div>Login</div>
-        </Link>
-        <Link to={'/join'}>
-          <div>Join</div>
-        </Link>
-      </S.TempLinks> */}
+      <FeedAddButton />
     </S.PageContainer>
   );
 };
