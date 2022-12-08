@@ -16,6 +16,7 @@ export const MeetPage = () => {
         </S.SectionWrap>
 
         <InComplete />
+        <C.AddButton />
         {/* <S.CategoryWrap>
           <h3>어떤 분야에 관심 있으세요?</h3>
           <CategoryHorizon />

@@ -2,7 +2,8 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useInfiniteQuery } from 'react-query';
 import { PageHeader, ScrollContainer } from 'components/Common';
-import { FeedAddButton, PostList } from 'components/Feed';
+import { AddButton } from 'components/CommonMain';
+import { PostList } from 'components/Feed';
 import { category } from 'api/queries/category';
 import * as S from './styles';
 
@@ -32,7 +33,7 @@ export const FeedListPage = () => {
       <ScrollContainer>
         <PostList infiniteResponse={infiniteResponse} />
       </ScrollContainer>
-      <FeedAddButton />
+      <AddButton />
     </S.PageContainer>
   );
 };

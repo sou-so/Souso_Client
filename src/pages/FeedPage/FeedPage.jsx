@@ -4,7 +4,7 @@ import { useInfiniteQuery } from 'react-query';
 import { feed } from 'api/queries/feed';
 
 import { Category, ScrollContainer } from 'components/Common';
-import { FeedAddButton, PostList } from 'components/Feed';
+import { PostList } from 'components/Feed';
 import * as C from 'components/CommonMain';
 import * as S from './styles';
 
@@ -59,7 +59,7 @@ export const FeedPage = () => {
         />
       </ScrollContainer>
 
-      <FeedAddButton />
+      <C.AddButton />
     </S.PageContainer>
   );
 };
