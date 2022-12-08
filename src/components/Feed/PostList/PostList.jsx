@@ -1,6 +1,11 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { EmptyList, FetchObserver } from 'components/Common';
+import {
+  EmptyList,
+  FetchObserver,
+  SkeletonThBottom,
+  SkeletonThRight
+} from 'components/Common';
 import { ThumbBottom, ThumbRight } from 'components/Post';
 import * as S from './styles';
 
@@ -35,24 +40,36 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
         </S.Tabs>
       )}
 
-      <S.PostLists>
-        {!isLoading &&
-          (active === '인기글'
-            ? data.pages.map(page =>
-                (page.feed_list || page.category_feed_list).map(post => (
-                  <ThumbRight key={post.feed_id} postData={post} />
-                ))
-              )
-            : data.pages.map(page =>
-                (page.feed_list || page.category_feed_list).map(post => (
-                  <ThumbBottom
-                    key={post.feed_id}
-                    postData={post}
-                    refetch={refetch}
-                  />
-                ))
-              ))}
-      </S.PostLists>
+      {active === '인기글' &&
+        (isFetching ? (
+          <SkeletonThRight />
+        ) : (
+          <S.PostLists>
+            {data.pages.map(page =>
+              (page.feed_list || page.category_feed_list).map(post => (
+                <ThumbRight key={post.feed_id} postData={post} />
+              ))
+            )}
+          </S.PostLists>
+        ))}
+
+      {/* 메인 최신글 & 카테고리별 피드 목록 */}
+      {active !== '인기글' &&
+        (isFetching ? (
+          <SkeletonThBottom />
+        ) : (
+          <S.PostLists>
+            {data.pages.map(page =>
+              (page.feed_list || page.category_feed_list).map(post => (
+                <ThumbBottom
+                  key={post.feed_id}
+                  postData={post}
+                  refetch={refetch}
+                />
+              ))
+            )}
+          </S.PostLists>
+        ))}
 
       <FetchObserver
         data={data}

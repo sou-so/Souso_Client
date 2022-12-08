@@ -15,3 +15,5 @@ export { InComplete } from './InComplete/InComplete';
 
 export { Skeleton } from './Skeleton/Skeleton';
 export { SkeletonCategory } from './Skeleton/SkeletonCategory';
+export { SkeletonThBottom } from './Skeleton/SkeletonThBottom.jsx';
+export { SkeletonThRight } from './Skeleton/SkeletonThRight.jsx';

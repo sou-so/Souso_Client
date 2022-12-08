@@ -1,27 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Skeleton = ({ type, height, width, size }) => {
-  return (
-    <SkeletonItem className={type} height={height} width={width} size={size}>
+export const Skeleton = ({ type, height, width, size, line }) => {
+  return [...Array(line)].map((_, i) => (
+    <SkeletonItem
+      key={i}
+      className={type}
+      height={height}
+      width={width}
+      size={size}
+    >
       <HighLight />
     </SkeletonItem>
-  );
+  ));
 };
 
 const SkeletonItem = styled.div`
   width: ${({ width }) => (width ? width + 'px' : '100%')};
-  height: ${({ height }) => (height ? height + 'px' : '100%')};
-  background: #e1e1e1;
+  height: ${({ height }) => (height ? height + 'px' : 'auto')};
+  background: #eee;
   margin-bottom: 7px;
   border-radius: 3px;
-  opacity: 0.7;
   overflow: hidden;
   position: relative;
   cursor: pointer;
 
   &.title {
-    height: 22px;
+    height: 20px;
   }
 
   &.text {
@@ -41,26 +46,26 @@ const HighLight = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  animation: loading 2.5s infinite;
+  animation: loading 1s infinite;
 
   &::before {
     content: '';
     width: 50%;
     height: 100%;
-    background-color: #eaeaea;
+    background-color: #f3f3f3;
     box-shadow: 0 0 30px 30px rgba(255, 255, 255, 0.05);
     position: absolute;
   }
 
   @keyframes loading {
     0% {
-      transform: translateX(-150%);
+      transform: translateX(-50%);
     }
     50% {
-      transform: translateX(-60%);
+      transform: translateX(100%);
     }
     100% {
-      transform: translate(150%);
+      transform: translate(200%);
     }
   }
 `;

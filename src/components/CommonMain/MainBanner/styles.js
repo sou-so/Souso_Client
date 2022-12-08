@@ -8,6 +8,10 @@ export const BannerContainer = styled.div`
     font-size: ${({ theme }) => theme.font.sm};
     color: ${({ theme }) => theme.color.main};
   }
+  .title {
+    position: absolute;
+    top: 4px;
+  }
 `;
 
 export const BannerText = styled.p`
@@ -15,6 +19,10 @@ export const BannerText = styled.p`
   line-height: 1.3;
   letter-spacing: -1px;
   margin-bottom: 5px;
+  span {
+    display: inline-block;
+    width: 63px;
+  }
 `;
 
 export const BannerImage = styled.img`

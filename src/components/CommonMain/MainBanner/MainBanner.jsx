@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { user } from 'api/queries/user';
 
+import { Skeleton } from 'components/Common';
 import feed_banner from 'assets/images/logo.png';
 import meet_banner from 'assets/images/banner_meet.png';
 import * as S from './styles';
@@ -15,8 +16,9 @@ export const MainBanner = ({ text }) => {
 
   return (
     <S.BannerContainer>
+      {isLoading && <Skeleton type="title" width={60} />}
       <S.BannerText>
-        <b>{(!isLoading && data.nickname) || '_____'}님,</b>
+        <b>{!isLoading ? data.nickname : <span />}님,</b>
         <br />
         {text[0]}
         <br />

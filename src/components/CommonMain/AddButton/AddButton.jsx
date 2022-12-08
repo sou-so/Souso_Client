@@ -7,11 +7,11 @@ import * as S from './styles';
 
 export const AddButton = () => {
   const { pathname } = useLocation();
-  const isFeed = pathname === '/';
+  const isMeet = pathname.includes('meet');
 
   return (
-    <S.FeedAddBtn to={isFeed ? '/feed/add' : '/meetup'}>
-      <Icon Icon={isFeed ? AddFeed : AddMeet} size={20} />
+    <S.FeedAddBtn to={isMeet ? '/meetup' : '/feed/add'}>
+      <Icon Icon={isMeet ? AddMeet : AddFeed} size={20} />
     </S.FeedAddBtn>
   );
 };
