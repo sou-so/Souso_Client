@@ -7,20 +7,20 @@ import { Icon, ProfileImage } from 'components/Common';
 import { ReactComponent as Plane } from 'assets/icons/airplane.svg';
 import * as S from './styles';
 
-export const CommentForm = ({ feedId }) => {
+export const ReplyForm = ({ setIsReplying, replyId }) => {
   const { data, isLoading } = useQuery(['user'], user.getProfile);
-  const [commentValue, setCommentValue] = useState('');
+  const [replyValue, setReplyValue] = useState('');
 
-  const handleChange = e => {
-    setCommentValue(e.target.value);
+  const handleReplyChange = e => {
+    setReplyValue(e.target.value);
   };
 
   const queryClient = useQueryClient();
 
-  // 댓글 등록
-  const { mutate: sendCommentMutate } = useMutation(comments.add, {
+  // 답글 등록
+  const { mutate: replyMutate } = useMutation(comments.reply, {
     onSuccess: () => {
-      console.log('댓글 등록 완료');
+      console.log('답글 달기 성공');
       queryClient.invalidateQueries('comments');
     },
     onError: error => {
@@ -28,11 +28,12 @@ export const CommentForm = ({ feedId }) => {
     }
   });
 
-  const handleSendComment = e => {
+  const handleSendReply = e => {
     e.preventDefault();
-    if (commentValue) {
-      sendCommentMutate([{ feedId: feedId }, { content: commentValue }]);
-      setCommentValue('');
+    if (replyValue) {
+      replyMutate([{ commentId: replyId }, { content: replyValue }]);
+      setReplyValue('');
+      setIsReplying(false);
     } else {
       toast.warning('내용을 입력해주세요. 🙇‍♀️');
     }
@@ -47,11 +48,11 @@ export const CommentForm = ({ feedId }) => {
         />
 
         <S.CommentInput
-          value={commentValue}
-          onChange={handleChange}
-          placeholder="댓글을 입력해주세요"
+          value={replyValue}
+          onChange={handleReplyChange}
+          placeholder="답글을 입력해주세요"
         />
-        <S.SendBtn onClick={handleSendComment}>
+        <S.SendBtn onClick={handleSendReply}>
           <Icon Icon={Plane} size={22} color={'#f4f4f4'} />
         </S.SendBtn>
       </S.CommentSendForm>

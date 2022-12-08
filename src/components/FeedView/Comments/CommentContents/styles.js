@@ -34,10 +34,19 @@ export const CommentText = styled.div`
   font-size: 15px;
 `;
 
+export const TextBox = styled.p`
+  width: 100%;
+  word-break: break-all;
+`;
+
 export const CommentFooter = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 2px 10px 18px 12px;
+  padding: 2px 10px 15px 12px;
+  &.onlyDate {
+    justify-content: flex-end;
+    padding-bottom: 10px;
+  }
   button {
     display: flex;
     align-items: center;

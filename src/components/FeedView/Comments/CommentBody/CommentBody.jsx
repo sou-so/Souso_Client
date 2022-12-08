@@ -4,7 +4,12 @@ import { comments } from 'api/queries/comment';
 import { CommentContents } from '../CommentContents/CommentContents';
 import * as S from './styles';
 
-export const CommentBody = ({ postData }) => {
+export const CommentBody = ({
+  postData,
+  setIsReplying,
+  setReplyId,
+  setReplyNickname
+}) => {
   const { feed_id, comment_count, author } = postData;
   const pageId = 0;
   const { data, isLoading } = useQuery(
@@ -20,12 +25,19 @@ export const CommentBody = ({ postData }) => {
           {data.comment.length > 0 &&
             data.comment.map(data => (
               <S.OriginComment key={data.comment_id}>
-                <CommentContents contents={data} feedAuthor={author.user_id} />
+                <CommentContents
+                  contents={data}
+                  feedAuthor={author.user_id}
+                  setIsReplying={setIsReplying}
+                  setReplyId={setReplyId}
+                  setReplyNickname={setReplyNickname}
+                />
 
                 {data.reply.length > 0 &&
                   data.reply.map(data => (
                     <S.Recomment key={data.comment_id}>
                       <CommentContents
+                        reply
                         contents={data}
                         feedAuthor={author.user_id}
                       />

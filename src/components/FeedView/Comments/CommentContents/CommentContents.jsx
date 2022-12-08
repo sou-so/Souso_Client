@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 import { user } from 'api/queries/user';
 import { comments } from 'api/queries/comment';
 import { EditDeleteButton, Icon, ProfileImage } from 'components/Common';
+import { EditForm } from '../EditForm/EditForm';
 import { ReactComponent as Comment } from 'assets/icons/comment.svg';
 import { dateFormat } from 'utils/dateConverter';
 import * as S from './styles';
 
-export const CommentContents = ({ contents, feedAuthor }) => {
+export const CommentContents = ({
+  contents,
+  feedAuthor,
+  setIsReplying,
+  setReplyId,
+  setReplyNickname,
+  reply
+}) => {
   const { data, isLoading } = useQuery(['user'], user.getProfile);
   const { author, content, created_at, comment_id } = contents;
+
+  const [isEditing, setIsEditing] = useState(false);
 
   const queryClient = useQueryClient();
 
@@ -27,9 +37,12 @@ export const CommentContents = ({ contents, feedAuthor }) => {
     }
   });
 
-  // 댓글 수정
-  const editComment = () => {
-    toast.warning('서비스 준비 중 입니다.');
+  // 답글버튼 클릭시 정보전달
+  const handleReplying = e => {
+    e.preventDefault();
+    setIsReplying(true);
+    setReplyId(comment_id);
+    setReplyNickname(author.nickname);
   };
 
   return (
@@ -46,18 +59,32 @@ export const CommentContents = ({ contents, feedAuthor }) => {
         {!isLoading && data.user_id === author.user_id && (
           <EditDeleteButton
             handleDelete={() => deleteCommentMutate(comment_id)}
-            handleEdit={editComment}
+            handleEdit={() => setIsEditing(prev => !prev)}
           />
         )}
       </S.CommentHeader>
 
-      <S.CommentText>{content}</S.CommentText>
+      <S.CommentText>
+        {isEditing ? (
+          <EditForm
+            content={content}
+            commentId={comment_id}
+            setIsEditing={setIsEditing}
+          />
+        ) : (
+          <S.TextBox>{content}</S.TextBox>
+        )}
+      </S.CommentText>
 
-      <S.CommentFooter>
-        <button>
-          <Icon Icon={Comment} size={17} />
-          <span>답글쓰기</span>
-        </button>
+      <S.CommentFooter className={reply ? 'onlyDate' : ''}>
+        {!reply && (
+          <button>
+            <Icon Icon={Comment} size={17} />
+            <span onClick={handleReplying} id={comment_id}>
+              답글쓰기
+            </span>
+          </button>
+        )}
 
         <div>{dateFormat(created_at)}</div>
       </S.CommentFooter>
