@@ -20,11 +20,11 @@ export const CommentForm = ({ feedId }) => {
   // 댓글 등록
   const { mutate: sendCommentMutate } = useMutation(comments.add, {
     onSuccess: () => {
-      console.log('댓글 등록 완료');
       queryClient.invalidateQueries('comments');
     },
     onError: error => {
       console.log(error.message);
+      toast.error('댓글 등록에 실패했습니다. 다시 시도해주세요.');
     }
   });
 
@@ -52,7 +52,7 @@ export const CommentForm = ({ feedId }) => {
           placeholder="댓글을 입력해주세요"
         />
         <S.SendBtn onClick={handleSendComment}>
-          <Icon Icon={Plane} size={22} color={'#f4f4f4'} />
+          <Icon Icon={Plane} size={20} color={'#f4f4f4'} />
         </S.SendBtn>
       </S.CommentSendForm>
 

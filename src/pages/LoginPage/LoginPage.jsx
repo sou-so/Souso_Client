@@ -14,7 +14,6 @@ export const LoginPage = () => {
 
   const { mutate } = useMutation(user.login, {
     onSuccess: res => {
-      console.log(res);
       authToken.setToken(res.access_token);
       toast.success('로그인 성공 🎉');
       navigate('/');

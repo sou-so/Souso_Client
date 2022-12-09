@@ -13,8 +13,7 @@ export const MyPosts = ({ infiniteResponse }) => {
   const isEmpty = !isLoading && !data.pages[0].feed_list.length;
 
   const { mutate: removeMutate } = useMutation(feed.remove, {
-    onSuccess: res => {
-      console.log(res);
+    onSuccess: () => {
       refetch();
       toast.success('게시글 삭제 완료 🎉');
     },

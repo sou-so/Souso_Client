@@ -20,11 +20,11 @@ export const ReplyForm = ({ setIsReplying, replyId }) => {
   // 답글 등록
   const { mutate: replyMutate } = useMutation(comments.reply, {
     onSuccess: () => {
-      console.log('답글 달기 성공');
       queryClient.invalidateQueries('comments');
     },
     onError: error => {
       console.log(error.message);
+      toast.error('답글 등록에 실패했습니다. 다시 시도해주세요.');
     }
   });
 
@@ -53,7 +53,7 @@ export const ReplyForm = ({ setIsReplying, replyId }) => {
           placeholder="답글을 입력해주세요"
         />
         <S.SendBtn onClick={handleSendReply}>
-          <Icon Icon={Plane} size={22} color={'#f4f4f4'} />
+          <Icon Icon={Plane} size={20} color={'#f4f4f4'} />
         </S.SendBtn>
       </S.CommentSendForm>
 

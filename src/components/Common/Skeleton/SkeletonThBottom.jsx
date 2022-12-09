@@ -8,8 +8,8 @@ export const SkeletonThBottom = () => {
       {[...Array(5)].map((_, i) => (
         <div key={i} className="item">
           <div className="flex">
-            <Skeleton type="circle" size={30} />
-            <Skeleton type="title" width={80} />
+            <Skeleton type="circle" size={40} />
+            <Skeleton type="title" width={100} />
           </div>
           <Skeleton type="text" line={2} />
           <Skeleton height={200} />
@@ -22,7 +22,7 @@ export const SkeletonThBottom = () => {
 const Container = styled.div`
   margin: 0 15px;
   .item {
-    padding: 20px 0;
+    padding: 15px 0;
   }
   .flex {
     display: flex;
