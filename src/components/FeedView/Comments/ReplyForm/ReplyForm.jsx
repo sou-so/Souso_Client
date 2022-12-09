@@ -20,11 +20,11 @@ export const ReplyForm = ({ setIsReplying, replyId }) => {
   // 답글 등록
   const { mutate: replyMutate } = useMutation(comments.reply, {
     onSuccess: () => {
-      console.log('답글 달기 성공');
       queryClient.invalidateQueries('comments');
     },
     onError: error => {
       console.log(error.message);
+      toast.error('답글 등록에 실패했습니다. 다시 시도해주세요.');
     }
   });
 

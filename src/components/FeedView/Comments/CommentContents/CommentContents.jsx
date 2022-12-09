@@ -26,8 +26,7 @@ export const CommentContents = ({
 
   // 댓글 삭제
   const { mutate: deleteCommentMutate } = useMutation(comments.delete, {
-    onSuccess: res => {
-      console.log(res);
+    onSuccess: () => {
       toast.success('댓글이 성공적으로 삭제되었습니다.');
       queryClient.invalidateQueries('comments');
     },

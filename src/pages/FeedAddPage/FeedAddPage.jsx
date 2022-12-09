@@ -16,7 +16,6 @@ export const FeedAddPage = () => {
 
   const { mutate } = useMutation(feed.add, {
     onSuccess: res => {
-      console.log(res);
       toast.success('게시글 생성 성공 🎉');
       navigate(`/feed/${res.feed_id}`);
     },

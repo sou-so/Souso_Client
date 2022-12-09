@@ -13,8 +13,7 @@ export const ProfileEditPage = () => {
   const navigate = useNavigate();
 
   const { mutate } = useMutation(user.editProfile, {
-    onSuccess: res => {
-      console.log(res);
+    onSuccess: () => {
       toast.success('내 정보 수정 성공 🎉');
       navigate(`/mypage`);
     },
