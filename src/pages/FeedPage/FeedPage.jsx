@@ -32,11 +32,6 @@ export const FeedPage = () => {
     }
   );
 
-  const handleTabClick = async e => {
-    await setActive(e.target.id);
-    infiniteResponse.refetch();
-  };
-
   return (
     <S.PageContainer>
       <C.MainHeader />
@@ -54,7 +49,7 @@ export const FeedPage = () => {
 
         <PostList
           active={active}
-          handleTabClick={handleTabClick}
+          setActive={setActive}
           infiniteResponse={infiniteResponse}
         />
       </ScrollContainer>

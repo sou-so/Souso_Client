@@ -35,6 +35,7 @@ export const PostFooterBtn = ({ postData, hasComment, refetch }) => {
       }
     }
   );
+
   const { mutate: likeMutate } = useMutation(
     liked ? feed.removeLike : feed.addLike,
     {

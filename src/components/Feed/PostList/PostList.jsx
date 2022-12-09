@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
   EmptyList,
@@ -9,9 +9,12 @@ import {
 import { ThumbBottom, ThumbRight } from 'components/Post';
 import * as S from './styles';
 
-export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
+export const PostList = ({ infiniteResponse, active, setActive }) => {
+  const [isTabLoading, setIsTabLoading] = useState(true);
+
   const { data, isLoading, isFetching, fetchNextPage, refetch } =
     infiniteResponse;
+
   const { pathname } = useLocation();
   const isMain = pathname === '/';
 
@@ -20,6 +23,17 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
     ('feed_list' in data.pages[0]
       ? !data.pages[0].feed_list.length
       : !data.pages[0].category_feed_list.length);
+
+  const handleTabClick = async e => {
+    await setIsTabLoading(true);
+    await setActive(e.target.id);
+    await infiniteResponse.refetch();
+    setIsTabLoading(false);
+  };
+
+  useEffect(() => {
+    setIsTabLoading(isLoading);
+  }, [isLoading]);
 
   if (isEmpty) return <EmptyList message="조회된 게시글이 없어요" />;
 
@@ -41,7 +55,7 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
       )}
 
       {active === '인기글' &&
-        (isFetching ? (
+        (isTabLoading ? (
           <SkeletonThRight />
         ) : (
           <S.PostLists>
@@ -55,7 +69,7 @@ export const PostList = ({ infiniteResponse, active, handleTabClick }) => {
 
       {/* 메인 최신글 & 카테고리별 피드 목록 */}
       {active !== '인기글' &&
-        (isFetching ? (
+        (isTabLoading ? (
           <SkeletonThBottom />
         ) : (
           <S.PostLists>
