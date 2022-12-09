@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const CommentSendForm = styled.form`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const CommentInput = styled.input`
@@ -10,14 +11,15 @@ export const CommentInput = styled.input`
   padding: 4.5px 2px;
   flex: 1;
   width: 50%;
+  outline: none;
 `;
 
 export const SendBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 4px;
   background-color: ${({ theme }) => theme.color.main};
 `;

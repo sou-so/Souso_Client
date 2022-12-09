@@ -53,7 +53,7 @@ export const ReplyForm = ({ setIsReplying, replyId }) => {
           placeholder="답글을 입력해주세요"
         />
         <S.SendBtn onClick={handleSendReply}>
-          <Icon Icon={Plane} size={22} color={'#f4f4f4'} />
+          <Icon Icon={Plane} size={20} color={'#f4f4f4'} />
         </S.SendBtn>
       </S.CommentSendForm>
 

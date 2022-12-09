@@ -52,7 +52,7 @@ export const CommentForm = ({ feedId }) => {
           placeholder="댓글을 입력해주세요"
         />
         <S.SendBtn onClick={handleSendComment}>
-          <Icon Icon={Plane} size={22} color={'#f4f4f4'} />
+          <Icon Icon={Plane} size={20} color={'#f4f4f4'} />
         </S.SendBtn>
       </S.CommentSendForm>
 

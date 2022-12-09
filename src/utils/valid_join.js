@@ -19,15 +19,15 @@ export const validate = values => {
   // nickname
   if (!values.nickname) {
     errors.nickname = '닉네임을 입력하세요.';
-  } else if (values.nickname.length > 20) {
-    errors.nickname = '20자 이하의 닉네임을 입력하세요.';
+  } else if (values.nickname.length > 5 || values.nickname.length < 2) {
+    errors.nickname = '2글자 이상 5글자 이하의 닉네임을 입력하세요.';
   }
 
   // phone_number
   if (!values.phone_number) {
     errors.phone_number = '휴대폰번호를 입력하세요.';
   } else if (!phoneNumberRegex) {
-    errors.phone_number = '공백, 문자를 제외한 11자리 번호를 입력해주세요';
+    errors.phone_number = '공백, 문자를 제외한 11자리 번호를 입력하세요.';
   }
 
   // verified_code
@@ -37,14 +37,14 @@ export const validate = values => {
 
   // password
   if (!values.password) {
-    errors.password = '비밀번호를 입력해주세요.';
+    errors.password = '비밀번호를 입력하세요.';
   } else if (!passwordRegex) {
     errors.password = '8~20자리의 영어+숫자 조합의 비밀번호를 입력하세요.';
   }
 
   // confirm password
   if (!values.password2) {
-    errors.password2 = '비밀번호를 한번 더 입력해주세요.';
+    errors.password2 = '비밀번호를 한번 더 입력하세요.';
   } else if (values.password2 !== values.password) {
     errors.password2 = '비밀번호가 일치하지 않습니다.';
   }
