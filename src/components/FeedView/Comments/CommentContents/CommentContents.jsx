@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 import { user } from 'api/queries/user';
 import { comments } from 'api/queries/comment';
-import { EditDeleteButton, Icon, ProfileImage } from 'components/Common';
+import { EditDeleteButton, Icon, UserHeader } from 'components/Common';
 import { EditForm } from '../EditForm/EditForm';
 import { ReactComponent as Comment } from 'assets/icons/comment.svg';
 import { dateFormat } from 'utils/dateConverter';
@@ -47,14 +47,7 @@ export const CommentContents = ({
   return (
     <>
       <S.CommentHeader>
-        <S.UserInfo>
-          <ProfileImage size={40} url={author.profile_image_url} />
-          <p>{author.nickname}</p>
-          {!isLoading && feedAuthor === author.user_id && (
-            <S.WriterTag>글 작성자</S.WriterTag>
-          )}
-        </S.UserInfo>
-
+        <UserHeader data={contents} feedAuthor={feedAuthor} />
         {!isLoading && data.user_id === author.user_id && (
           <EditDeleteButton
             handleDelete={() => deleteCommentMutate(comment_id)}

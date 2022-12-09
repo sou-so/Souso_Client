@@ -6,27 +6,16 @@ export const CommentHeader = styled.div`
   justify-content: space-between;
   padding-bottom: 9px;
   position: relative;
-`;
-
-export const UserInfo = styled.div`
-  display: flex;
-  align-items: center;
-  p {
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 28px;
-    padding: 0 6px;
+  .icon {
+    margin-right: 5px;
   }
-`;
-
-export const WriterTag = styled.div`
-  height: 20px;
-  padding: 0 8px;
-  font-size: ${({ theme }) => theme.font.xs};
-  color: ${({ theme }) => theme.color.main};
-  border: ${({ theme }) => theme.style.border_main};
-  border-radius: 15px;
-  display: inline-block;
+  .name {
+    font-size: 14px;
+    padding: 0 5px 0 8px;
+  }
+  span {
+    letter-spacing: -0.5px;
+  }
 `;
 
 export const CommentText = styled.div`

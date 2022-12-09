@@ -12,6 +12,7 @@ export { FetchObserver } from './FetchObserver/FetchObserver';
 export { EditDeleteButton } from './EditDeleteButton/EditDeleteButton';
 export { EmptyList } from './EmptyList/EmptyList';
 export { InComplete } from './InComplete/InComplete';
+export { UserHeader } from './UserHeader/UserHeader';
 
 export { Skeleton } from './Skeleton/Skeleton';
 export { SkeletonCategory } from './Skeleton/SkeletonCategory';
