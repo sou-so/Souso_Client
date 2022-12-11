@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CommentHeader = styled.div`
+export const HeaderWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;

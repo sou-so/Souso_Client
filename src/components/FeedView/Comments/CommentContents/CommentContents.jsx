@@ -3,10 +3,10 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 import { user } from 'api/queries/user';
 import { comments } from 'api/queries/comment';
-import { EditDeleteButton, Icon, UserHeader } from 'components/Common';
-import { EditForm } from '../EditForm/EditForm';
+import { EditDeleteButton, Icon } from 'components/Common';
 import { ReactComponent as Comment } from 'assets/icons/comment.svg';
 import { dateFormat } from 'utils/dateConverter';
+import * as C from 'components/FeedView';
 import * as S from './styles';
 
 export const CommentContents = ({
@@ -46,19 +46,19 @@ export const CommentContents = ({
 
   return (
     <>
-      <S.CommentHeader>
-        <UserHeader data={contents} feedAuthor={feedAuthor} />
+      <S.HeaderWrap>
+        <C.CommentHeader data={contents} feedAuthor={feedAuthor} />
         {!isLoading && data.user_id === author.user_id && (
           <EditDeleteButton
             handleDelete={() => deleteCommentMutate(comment_id)}
             handleEdit={() => setIsEditing(prev => !prev)}
           />
         )}
-      </S.CommentHeader>
+      </S.HeaderWrap>
 
       <S.CommentText>
         {isEditing ? (
-          <EditForm
+          <C.EditForm
             content={content}
             commentId={comment_id}
             setIsEditing={setIsEditing}
