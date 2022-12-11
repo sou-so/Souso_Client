@@ -1,11 +1,6 @@
 import React from 'react';
 import { ReactComponent as Arrow } from 'assets/icons/arrow_angle.svg';
-import {
-  CategoryTag,
-  Icon,
-  TextClamp,
-  EditDeleteButton
-} from 'components/Common';
+import { LabelTag, Icon, TextClamp, EditDeleteButton } from 'components/Common';
 import data from 'data/myComments';
 import * as S from './styles';
 
@@ -14,7 +9,7 @@ export const MyComments = () => {
     <S.ListContainer>
       {data.mycomments.map(({ category, post, comments }, i) => (
         <S.CommentBox key={i}>
-          <CategoryTag name={category} />
+          <LabelTag name={category} />
           <S.PostTitle>
             [<span>{post}</span>]에서 작성한 댓글
           </S.PostTitle>

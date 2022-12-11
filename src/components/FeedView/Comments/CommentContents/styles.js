@@ -4,22 +4,26 @@ export const HeaderWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 9px;
+  padding-bottom: 15px;
   position: relative;
-  .icon {
-    margin-right: 5px;
-  }
-  .name {
-    font-size: 14px;
-    padding: 0 5px 0 8px;
+  .btnWrap {
+    right: 5px;
+    top: 22px;
   }
   span {
     letter-spacing: -0.5px;
   }
 `;
 
+export const DateWrap = styled.div`
+  font-size: 11px;
+  color: ${({ theme }) => theme.color.black_2};
+  line-height: 28px;
+  margin-bottom: auto;
+`;
+
 export const CommentText = styled.div`
-  padding: 0 10px 6px;
+  padding: 0 10px 15px;
   font-size: 15px;
 `;
 
@@ -29,13 +33,7 @@ export const TextBox = styled.p`
 `;
 
 export const CommentFooter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 2px 10px 15px 12px;
-  &.onlyDate {
-    justify-content: flex-end;
-    padding-bottom: 10px;
-  }
+  padding: 0px 12px 10px;
   button {
     display: flex;
     align-items: center;
@@ -48,10 +46,5 @@ export const CommentFooter = styled.div`
       padding-left: 4.5px;
       color: ${({ theme }) => theme.color.black_2};
     }
-  }
-  div {
-    font-size: 11px;
-    color: ${({ theme }) => theme.color.black_2};
-    line-height: 28px;
   }
 `;

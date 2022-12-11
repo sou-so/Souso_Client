@@ -14,7 +14,7 @@ export const EditDeleteButton = ({ handleEdit, handleDelete }) => {
   };
 
   return (
-    <S.ButtonContainer onClick={handleClick}>
+    <S.ButtonContainer onClick={handleClick} className="btnWrap">
       <Icon Icon={Dots} size={20} />
       {toggle && (
         <S.Button>

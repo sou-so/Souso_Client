@@ -5,7 +5,7 @@ export { Category } from './Category/Category';
 export { ScrollContainer } from './ScrollContainer/ScrollContainer';
 export { ScrollHorizon } from './ScrollHorizon/ScrollHorizon';
 export { ProfileImage } from './ProfileImage/ProfileImage';
-export { CategoryTag } from './CategoryTag/CategoryTag';
+export { LabelTag } from './LabelTag/LabelTag';
 export { TextClamp } from './TextClamp/TextClamp';
 export { MenuTab } from './MenuTab/MenuTab';
 export { FetchObserver } from './FetchObserver/FetchObserver';

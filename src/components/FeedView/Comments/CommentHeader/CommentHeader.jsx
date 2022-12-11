@@ -1,12 +1,12 @@
 import React from 'react';
-import { CategoryTag, ProfileImage } from 'components/Common';
+import { LabelTag, ProfileImage } from 'components/Common';
 import { getAge } from 'utils/dateConverter';
 import * as S from './styles';
 
-export const CommentHeader = ({ data, feedAuthor }) => {
+export const CommentHeader = ({ contents, feedAuthor }) => {
   const {
     author: { birth, nickname, profile_image_url, location, user_id }
-  } = data;
+  } = contents;
 
   const myFeed = feedAuthor === user_id && '글 작성자';
 
@@ -16,11 +16,15 @@ export const CommentHeader = ({ data, feedAuthor }) => {
     <S.HeaderContainer>
       <ProfileImage size={40} url={profile_image_url} />
       <S.UserInfo>
-        <p className="name">{nickname}</p>
-        <span className="age">{getAge(birth)}</span>
-        <span className="town">{town || '상도동'}</span>
+        <S.InfoBlock>
+          <p className="name">{nickname}</p>
+          {myFeed && <LabelTag name={myFeed} />}
+        </S.InfoBlock>
+        <S.InfoBlock>
+          <span className="age">{getAge(birth)}</span>
+          <span className="town">{town || '상도동'}</span>
+        </S.InfoBlock>
       </S.UserInfo>
-      {myFeed && <CategoryTag name={myFeed} />}
     </S.HeaderContainer>
   );
 };

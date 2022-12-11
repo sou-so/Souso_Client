@@ -47,13 +47,14 @@ export const CommentContents = ({
   return (
     <>
       <S.HeaderWrap>
-        <C.CommentHeader data={contents} feedAuthor={feedAuthor} />
+        <C.CommentHeader contents={contents} feedAuthor={feedAuthor} />
         {!isLoading && data.user_id === author.user_id && (
           <EditDeleteButton
             handleDelete={() => deleteCommentMutate(comment_id)}
             handleEdit={() => setIsEditing(prev => !prev)}
           />
         )}
+        <S.DateWrap>{dateFormat(created_at)}</S.DateWrap>
       </S.HeaderWrap>
 
       <S.CommentText>
@@ -68,7 +69,7 @@ export const CommentContents = ({
         )}
       </S.CommentText>
 
-      <S.CommentFooter className={reply ? 'onlyDate' : ''}>
+      <S.CommentFooter>
         {!reply && (
           <button>
             <Icon Icon={Comment} size={17} />
@@ -77,8 +78,6 @@ export const CommentContents = ({
             </span>
           </button>
         )}
-
-        <div>{dateFormat(created_at)}</div>
       </S.CommentFooter>
     </>
   );

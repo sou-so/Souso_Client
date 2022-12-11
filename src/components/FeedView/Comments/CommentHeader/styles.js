@@ -3,20 +3,15 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
-  span {
-    margin-left: auto;
-  }
 `;
 
 export const UserInfo = styled.div`
-  display: flex;
-  align-items: center;
-  line-height: 1;
   .name {
     font-size: 15.5px;
-    padding: 0 8px 0 11px;
+    padding-right: 6px;
   }
-  span {
+  .age,
+  .town {
     font-size: 12px;
     color: ${({ theme }) => theme.color.black_2};
   }
@@ -34,4 +29,10 @@ export const UserInfo = styled.div`
     background: #bcbcbc;
     position: absolute;
   }
+`;
+
+export const InfoBlock = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 11px;
 `;

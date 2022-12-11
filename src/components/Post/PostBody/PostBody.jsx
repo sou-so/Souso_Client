@@ -1,5 +1,5 @@
 import React from 'react';
-import { CategoryTag, TextClamp } from 'components/Common';
+import { LabelTag, TextClamp } from 'components/Common';
 import * as S from './styles';
 
 export const PostBody = ({ postData }) => {
@@ -10,7 +10,7 @@ export const PostBody = ({ postData }) => {
 
   return (
     <S.BodyContainer>
-      <CategoryTag name={category_name} />
+      <LabelTag name={category_name} />
       <TextClamp line={3}>{content}</TextClamp>
     </S.BodyContainer>
   );

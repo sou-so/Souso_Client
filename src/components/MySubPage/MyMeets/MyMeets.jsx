@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CategoryTag, TextClamp } from 'components/Common';
+import { LabelTag, TextClamp } from 'components/Common';
 import { getDay, isPast } from 'utils/dateConverter';
 import * as S from './styles';
 
@@ -15,7 +15,7 @@ export const MyMeets = ({ section }) => {
           <span>{getDay(date)}</span>
           <S.MeetTitle>
             <TextClamp width={!isPast(date) ? 265 : 0}>{name}</TextClamp>
-            {!isPast(date) && <CategoryTag name="참여예정" />}
+            {!isPast(date) && <LabelTag name="참여예정" />}
           </S.MeetTitle>
           <Link to="#">자세히 보기</Link>
         </S.MeetItem>

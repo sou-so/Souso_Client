@@ -10,7 +10,7 @@ export const PostBodyUser = ({ postData }) => {
 
   return (
     <S.BodyContainer>
-      <UserHeader data={postData} />
+      <UserHeader postData={postData} />
       <S.PostText>
         {isMain || pathname.includes('list') ? (
           <TextClamp line={3}>{content}</TextClamp>
