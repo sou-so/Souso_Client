@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+
 import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { toast } from 'react-toastify';
 import { user } from 'api/queries/user';
 import { comments } from 'api/queries/comment';
+
+import { toast } from 'react-toastify';
 import { Icon, ProfileImage } from 'components/Common';
 import { ReactComponent as Plane } from 'assets/icons/airplane.svg';
 import * as S from './styles';
@@ -39,6 +41,14 @@ export const CommentForm = ({ feedId }) => {
     }
   };
 
+  const handleEnter = e => {
+    if (e.keyCode === 13) {
+      if (!e.shiftKey) {
+        handleSendComment(e);
+      }
+    }
+  };
+
   return (
     <>
       <S.CommentSendForm>
@@ -50,6 +60,7 @@ export const CommentForm = ({ feedId }) => {
         <S.CommentInput
           value={commentValue}
           onChange={handleChange}
+          onKeyDown={handleEnter}
           placeholder="댓글을 입력해주세요"
         />
         <S.SendBtn onClick={handleSendComment}>

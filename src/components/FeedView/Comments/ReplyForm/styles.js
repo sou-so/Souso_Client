@@ -6,11 +6,13 @@ export const CommentSendForm = styled.form`
   align-items: center;
 `;
 
-export const CommentInput = styled.input`
+export const CommentInput = styled.textarea`
+  resize: none;
   margin: 4.5px 6px;
   padding: 4.5px 2px;
   flex: 1;
   width: 50%;
+  height: 40px;
   outline: none;
 `;
 
