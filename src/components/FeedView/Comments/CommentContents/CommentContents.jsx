@@ -3,10 +3,10 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 import { user } from 'api/queries/user';
 import { comments } from 'api/queries/comment';
-import { EditDeleteButton, Icon, UserHeader } from 'components/Common';
-import { EditForm } from '../EditForm/EditForm';
+import { EditDeleteButton, Icon } from 'components/Common';
 import { ReactComponent as Comment } from 'assets/icons/comment.svg';
 import { dateFormat } from 'utils/dateConverter';
+import * as C from 'components/FeedView';
 import * as S from './styles';
 
 export const CommentContents = ({
@@ -29,6 +29,7 @@ export const CommentContents = ({
     onSuccess: () => {
       toast.success('댓글이 성공적으로 삭제되었습니다.');
       queryClient.invalidateQueries('comments');
+      queryClient.invalidateQueries('feed-detail');
     },
     onError: error => {
       console.log(error.message);
@@ -46,19 +47,20 @@ export const CommentContents = ({
 
   return (
     <>
-      <S.CommentHeader>
-        <UserHeader data={contents} feedAuthor={feedAuthor} />
+      <S.HeaderWrap>
+        <C.CommentHeader contents={contents} feedAuthor={feedAuthor} />
         {!isLoading && data.user_id === author.user_id && (
           <EditDeleteButton
             handleDelete={() => deleteCommentMutate(comment_id)}
             handleEdit={() => setIsEditing(prev => !prev)}
           />
         )}
-      </S.CommentHeader>
+        <S.DateWrap>{dateFormat(created_at)}</S.DateWrap>
+      </S.HeaderWrap>
 
       <S.CommentText>
         {isEditing ? (
-          <EditForm
+          <C.EditForm
             content={content}
             commentId={comment_id}
             setIsEditing={setIsEditing}
@@ -68,7 +70,7 @@ export const CommentContents = ({
         )}
       </S.CommentText>
 
-      <S.CommentFooter className={reply ? 'onlyDate' : ''}>
+      <S.CommentFooter>
         {!reply && (
           <button>
             <Icon Icon={Comment} size={17} />
@@ -77,8 +79,6 @@ export const CommentContents = ({
             </span>
           </button>
         )}
-
-        <div>{dateFormat(created_at)}</div>
       </S.CommentFooter>
     </>
   );

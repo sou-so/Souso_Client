@@ -12,9 +12,11 @@ export const EditingForm = styled.form`
   }
 `;
 
-export const EditInput = styled.input`
+export const EditInput = styled.textarea`
+  resize: none;
   flex: 1;
   width: 70%;
+  height: 40px;
   padding: 4px 6px;
   border: 1px solid #eaeaea;
   border-radius: 4px;

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+
 import { useMutation, useQueryClient } from 'react-query';
 import { comments } from 'api/queries/comment';
+
 import { toast } from 'react-toastify';
 import * as S from './styles';
 
@@ -27,13 +29,29 @@ export const EditForm = ({ content, commentId, setIsEditing }) => {
 
   const handleEditComment = e => {
     e.preventDefault();
-    editCommentMutate([{ commentId: commentId }, { content: editValue }]);
-    setIsEditing(prev => !prev);
+    if (editValue !== '') {
+      editCommentMutate([{ commentId: commentId }, { content: editValue }]);
+      setIsEditing(prev => !prev);
+    } else {
+      toast.warning('수정할 내용을 입력해주세요.');
+    }
+  };
+
+  const handleEnter = e => {
+    if (e.keyCode === 13) {
+      if (!e.shiftKey) {
+        handleEditComment(e);
+      }
+    }
   };
 
   return (
     <S.EditingForm onSubmit={handleEditComment}>
-      <S.EditInput value={editValue} onChange={handleChange} />
+      <S.EditInput
+        value={editValue}
+        onChange={handleChange}
+        onKeyDown={handleEnter}
+      />
       <button onClick={handleEditComment}>완료</button>
     </S.EditingForm>
   );

@@ -25,7 +25,7 @@ export const FeedViewPage = () => {
 
         <ScrollContainer>
           <S.ContentSection>
-            <PostBodyUser postData={data} view />
+            <PostBodyUser postData={data} />
             <C.ImageSlider imgData={data.image_url} />
             <PostFooterBtn postData={data} refetch={refetch} />
           </S.ContentSection>

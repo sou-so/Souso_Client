@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CategoryTag = ({ name }) => {
+export const LabelTag = ({ name }) => {
   return <Tag>{name}</Tag>;
 };
 

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+
 import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { toast } from 'react-toastify';
 import { user } from 'api/queries/user';
 import { comments } from 'api/queries/comment';
+
+import { toast } from 'react-toastify';
 import { Icon, ProfileImage } from 'components/Common';
 import { ReactComponent as Plane } from 'assets/icons/airplane.svg';
 import * as S from './styles';
@@ -21,6 +23,7 @@ export const ReplyForm = ({ setIsReplying, replyId }) => {
   const { mutate: replyMutate } = useMutation(comments.reply, {
     onSuccess: () => {
       queryClient.invalidateQueries('comments');
+      queryClient.invalidateQueries('feed-detail');
     },
     onError: error => {
       console.log(error.message);
@@ -39,9 +42,17 @@ export const ReplyForm = ({ setIsReplying, replyId }) => {
     }
   };
 
+  const handleEnter = e => {
+    if (e.keyCode === 13) {
+      if (!e.shiftKey) {
+        handleSendReply(e);
+      }
+    }
+  };
+
   return (
     <>
-      <S.CommentSendForm>
+      <S.CommentSendForm onSubmit={handleSendReply}>
         <ProfileImage
           size={40}
           url={!isLoading ? data.profile_image_url : null}
@@ -50,9 +61,10 @@ export const ReplyForm = ({ setIsReplying, replyId }) => {
         <S.CommentInput
           value={replyValue}
           onChange={handleReplyChange}
+          onKeyDown={handleEnter}
           placeholder="답글을 입력해주세요"
-        />
-        <S.SendBtn onClick={handleSendReply}>
+        ></S.CommentInput>
+        <S.SendBtn>
           <Icon Icon={Plane} size={20} color={'#f4f4f4'} />
         </S.SendBtn>
       </S.CommentSendForm>
