@@ -29,6 +29,7 @@ export const CommentContents = ({
     onSuccess: () => {
       toast.success('댓글이 성공적으로 삭제되었습니다.');
       queryClient.invalidateQueries('comments');
+      queryClient.invalidateQueries('feed-detail');
     },
     onError: error => {
       console.log(error.message);

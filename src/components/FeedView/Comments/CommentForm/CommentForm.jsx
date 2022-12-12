@@ -21,6 +21,7 @@ export const CommentForm = ({ feedId }) => {
   const { mutate: sendCommentMutate } = useMutation(comments.add, {
     onSuccess: () => {
       queryClient.invalidateQueries('comments');
+      queryClient.invalidateQueries('feed-detail');
     },
     onError: error => {
       console.log(error.message);

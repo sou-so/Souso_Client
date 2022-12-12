@@ -27,8 +27,12 @@ export const EditForm = ({ content, commentId, setIsEditing }) => {
 
   const handleEditComment = e => {
     e.preventDefault();
-    editCommentMutate([{ commentId: commentId }, { content: editValue }]);
-    setIsEditing(prev => !prev);
+    if (editValue !== '') {
+      editCommentMutate([{ commentId: commentId }, { content: editValue }]);
+      setIsEditing(prev => !prev);
+    } else {
+      toast.warning('수정할 내용을 입력해주세요.');
+    }
   };
 
   return (

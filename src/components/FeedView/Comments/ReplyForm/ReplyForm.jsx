@@ -21,6 +21,7 @@ export const ReplyForm = ({ setIsReplying, replyId }) => {
   const { mutate: replyMutate } = useMutation(comments.reply, {
     onSuccess: () => {
       queryClient.invalidateQueries('comments');
+      queryClient.invalidateQueries('feed-detail');
     },
     onError: error => {
       console.log(error.message);
