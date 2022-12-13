@@ -1,20 +1,5 @@
 import styled from 'styled-components';
 
-export const HeaderWrap = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 15px;
-  position: relative;
-  .btnWrap {
-    right: 5px;
-    top: 22px;
-  }
-  span {
-    letter-spacing: -0.5px;
-  }
-`;
-
 export const DateWrap = styled.div`
   font-size: 11px;
   color: ${({ theme }) => theme.color.black_2};
