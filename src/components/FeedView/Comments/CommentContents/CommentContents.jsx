@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { Icon } from 'components/Common';
 import { ReactComponent as Comment } from 'assets/icons/comment.svg';
 import * as C from 'components/FeedView';

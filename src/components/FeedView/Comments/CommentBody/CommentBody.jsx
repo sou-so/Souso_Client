@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { useQuery } from 'react-query';
 import { comments } from 'api/queries/comment';
+
 import { CommentContents } from '../CommentContents/CommentContents';
 import * as S from './styles';
 

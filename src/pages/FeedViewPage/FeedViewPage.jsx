@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { useQuery } from 'react-query';
 import { feed } from 'api/queries/feed';
+
 import { PageHeader, ScrollContainer } from 'components/Common';
 import { PostBodyUser, PostFooterBtn } from 'components/Post';
 import * as C from 'components/FeedView';
@@ -54,11 +56,12 @@ export const FeedViewPage = () => {
               </>
             )}
           </S.ReplyDesc>
-          {!isReplying ? (
-            <C.CommentForm feedId={postId} />
-          ) : (
-            <C.ReplyForm setIsReplying={setIsReplying} replyId={replyId} />
-          )}
+          <C.CommentForm
+            feedId={postId}
+            replyId={replyId}
+            isReplying={isReplying}
+            setIsReplying={setIsReplying}
+          />
         </S.FormContainer>
       </S.PageContainer>
     )
