@@ -9,7 +9,7 @@ import { Icon, ProfileImage } from 'components/Common';
 import { ReactComponent as Plane } from 'assets/icons/airplane.svg';
 import * as S from './styles';
 
-export const CommentForm = ({ feedId }) => {
+export const CommentForm = ({ feedId, replyId, isReplying, setIsReplying }) => {
   const { data, isLoading } = useQuery(['user'], user.getProfile);
   const [commentValue, setCommentValue] = useState('');
 
@@ -20,22 +20,29 @@ export const CommentForm = ({ feedId }) => {
   const queryClient = useQueryClient();
 
   // 댓글 등록
-  const { mutate: sendCommentMutate } = useMutation(comments.add, {
-    onSuccess: () => {
-      queryClient.invalidateQueries('comments');
-      queryClient.invalidateQueries('feed-detail');
-    },
-    onError: error => {
-      console.log(error.message);
-      toast.error('댓글 등록에 실패했습니다. 다시 시도해주세요.');
+  const { mutate: sendCommentMutate } = useMutation(
+    !isReplying ? comments.add : comments.reply,
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('comments');
+        queryClient.invalidateQueries('feed-detail');
+      },
+      onError: error => {
+        console.log(error.message);
+        toast.error('댓글 등록에 실패했습니다. 다시 시도해주세요.');
+      }
     }
-  });
+  );
 
   const handleSendComment = e => {
     e.preventDefault();
-    if (commentValue) {
+    if (!isReplying && commentValue) {
       sendCommentMutate([{ feedId: feedId }, { content: commentValue }]);
       setCommentValue('');
+    } else if (isReplying && commentValue) {
+      sendCommentMutate([{ commentId: replyId }, { content: commentValue }]);
+      setCommentValue('');
+      setIsReplying(false);
     } else {
       toast.warning('내용을 입력해주세요. 🙇‍♀️');
     }
@@ -51,7 +58,7 @@ export const CommentForm = ({ feedId }) => {
 
   return (
     <>
-      <S.CommentSendForm>
+      <S.CommentSendForm onSubmit={handleSendComment}>
         <ProfileImage
           size={40}
           url={!isLoading ? data.profile_image_url : null}
@@ -61,9 +68,11 @@ export const CommentForm = ({ feedId }) => {
           value={commentValue}
           onChange={handleChange}
           onKeyDown={handleEnter}
-          placeholder="댓글을 입력해주세요"
+          placeholder={
+            !isReplying ? '댓글을 입력해주세요' : '답글을 입력해주세요'
+          }
         />
-        <S.SendBtn onClick={handleSendComment}>
+        <S.SendBtn>
           <Icon Icon={Plane} size={20} color={'#f4f4f4'} />
         </S.SendBtn>
       </S.CommentSendForm>

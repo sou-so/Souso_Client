@@ -1,16 +1,40 @@
 import React from 'react';
-import { LabelTag, ProfileImage } from 'components/Common';
-import { getAge } from 'utils/dateConverter';
+
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { user } from 'api/queries/user';
+import { comments } from 'api/queries/comment';
+
+import { toast } from 'react-toastify';
+import { EditDeleteButton, LabelTag, ProfileImage } from 'components/Common';
+import { dateFormat, getAge } from 'utils/dateConverter';
 import * as S from './styles';
 
-export const CommentHeader = ({ contents, feedAuthor }) => {
+export const CommentHeader = ({ contents, feedAuthor, setIsEditing }) => {
+  const { data, isLoading } = useQuery(['user'], user.getProfile);
   const {
-    author: { birth, nickname, profile_image_url, location, user_id }
+    author: { birth, nickname, profile_image_url, location, user_id },
+    created_at,
+    comment_id
   } = contents;
 
-  const myFeed = feedAuthor === user_id && '글 작성자';
-
+  const isFeedAuthor = feedAuthor === user_id;
+  const isMyComment = data.user_id === user_id;
   const town = location && location.split(' ')[2];
+
+  const queryClient = useQueryClient();
+
+  // 댓글 삭제
+  const { mutate: deleteCommentMutate } = useMutation(comments.delete, {
+    onSuccess: () => {
+      toast.success('댓글이 성공적으로 삭제되었습니다.');
+      queryClient.invalidateQueries('comments');
+      queryClient.invalidateQueries('feed-detail');
+    },
+    onError: error => {
+      console.log(error.message);
+      toast.error('댓글 삭제에 실패했습니다. 다시 시도해주세요.');
+    }
+  });
 
   return (
     <S.HeaderContainer>
@@ -18,13 +42,21 @@ export const CommentHeader = ({ contents, feedAuthor }) => {
       <S.UserInfo>
         <S.InfoBlock>
           <p className="name">{nickname}</p>
-          {myFeed && <LabelTag name={myFeed} />}
+          {isFeedAuthor && <LabelTag name="글 작성자" />}
         </S.InfoBlock>
         <S.InfoBlock>
           <span className="age">{getAge(birth)}</span>
           <span className="town">{town || '상도동'}</span>
         </S.InfoBlock>
       </S.UserInfo>
+
+      {!isLoading && isMyComment && (
+        <EditDeleteButton
+          handleDelete={() => deleteCommentMutate(comment_id)}
+          handleEdit={() => setIsEditing(prev => !prev)}
+        />
+      )}
+      <S.DateWrap>{dateFormat(created_at)}</S.DateWrap>
     </S.HeaderContainer>
   );
 };
