@@ -17,7 +17,8 @@ export const CommentHeader = ({ contents, feedAuthor, setIsEditing }) => {
     comment_id
   } = contents;
 
-  const myFeed = feedAuthor === user_id && '글 작성자';
+  const isFeedAuthor = feedAuthor === user_id;
+  const isMyComment = data.user_id === user_id;
   const town = location && location.split(' ')[2];
 
   const queryClient = useQueryClient();
@@ -41,7 +42,7 @@ export const CommentHeader = ({ contents, feedAuthor, setIsEditing }) => {
       <S.UserInfo>
         <S.InfoBlock>
           <p className="name">{nickname}</p>
-          {myFeed && <LabelTag name={myFeed} />}
+          {isFeedAuthor && <LabelTag name="글 작성자" />}
         </S.InfoBlock>
         <S.InfoBlock>
           <span className="age">{getAge(birth)}</span>
@@ -49,7 +50,7 @@ export const CommentHeader = ({ contents, feedAuthor, setIsEditing }) => {
         </S.InfoBlock>
       </S.UserInfo>
 
-      {!isLoading && data.user_id === user_id && (
+      {!isLoading && isMyComment && (
         <EditDeleteButton
           handleDelete={() => deleteCommentMutate(comment_id)}
           handleEdit={() => setIsEditing(prev => !prev)}
