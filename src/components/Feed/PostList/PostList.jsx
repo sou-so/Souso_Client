@@ -11,31 +11,30 @@ import * as S from './styles';
 
 export const PostList = ({ infiniteResponse, active, setActive }) => {
   const [isTabLoading, setIsTabLoading] = useState(true);
-
-  const { data, isLoading, isFetching, fetchNextPage, refetch } =
-    infiniteResponse;
+  // const { data, isLoading, isFetching, fetchNextPage, refetch } =
+  //   infiniteResponse;
 
   const { pathname } = useLocation();
   const isMain = pathname === '/';
 
-  const isEmpty =
-    !isLoading &&
-    ('feed_list' in data.pages[0]
-      ? !data.pages[0].feed_list.length
-      : !data.pages[0].category_feed_list.length);
+  // const isEmpty =
+  //   !isLoading &&
+  //   ('feed_list' in data.pages[0]
+  //     ? !data.pages[0].feed_list.length
+  //     : !data.pages[0].category_feed_list.length);
 
   const handleTabClick = async e => {
     await setIsTabLoading(true);
     await setActive(e.target.id);
-    await infiniteResponse.refetch();
+    // await infiniteResponse.refetch();
     setIsTabLoading(false);
   };
 
-  useEffect(() => {
-    setIsTabLoading(isLoading);
-  }, [isLoading]);
+  // useEffect(() => {
+  //   setIsTabLoading(isLoading);
+  // }, [isLoading]);
 
-  if (isEmpty) return <EmptyList message="조회된 게시글이 없어요" />;
+  // if (isEmpty) return <EmptyList message="조회된 게시글이 없어요" />
 
   return (
     <S.PostListContainer>
@@ -54,7 +53,8 @@ export const PostList = ({ infiniteResponse, active, setActive }) => {
         </S.Tabs>
       )}
 
-      {active === '인기글' &&
+      {active === '인기글' ? <SkeletonThRight /> : <SkeletonThBottom />}
+      {/* {active === '인기글' &&
         (isTabLoading ? (
           <SkeletonThRight />
         ) : (
@@ -67,7 +67,7 @@ export const PostList = ({ infiniteResponse, active, setActive }) => {
           </S.PostLists>
         ))}
 
-      {/* 메인 최신글 & 카테고리별 피드 목록 */}
+      메인 최신글 & 카테고리별 피드 목록 
       {active !== '인기글' &&
         (isTabLoading ? (
           <SkeletonThBottom />
@@ -89,7 +89,7 @@ export const PostList = ({ infiniteResponse, active, setActive }) => {
         data={data}
         fetchNextPage={fetchNextPage}
         isFetching={isFetching}
-      />
+      />  */}
     </S.PostListContainer>
   );
 };

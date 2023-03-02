@@ -10,15 +10,16 @@ import meet_banner from 'assets/images/banner_meet.png';
 import * as S from './styles';
 
 export const MainBanner = ({ text }) => {
-  const { data, isLoading } = useQuery(['user'], user.getProfile);
+  // const { data, isLoading } = useQuery(['user'], user.getProfile);
   const { pathname } = useLocation();
   const isFeed = pathname === '/';
 
   return (
     <S.BannerContainer>
-      {isLoading && <Skeleton type="title" width={60} />}
+      {/* {isLoading && <Skeleton type="title" width={60} />} */}
       <S.BannerText>
-        <b>{!isLoading ? data.nickname : <span />}님,</b>
+        <b>guest님,</b>
+        {/* <b>{!isLoading ? data.nickname : <span />}님,</b> */}
         <br />
         {text[0]}
         <br />

@@ -12,15 +12,16 @@ import { Icon } from 'components/Common';
 import * as S from './styles';
 
 export const MainHeader = () => {
-  const { data, isLoading } = useQuery(['user'], user.getProfile);
-  const town = !isLoading && data.location.split(' ')[2];
+  // const { data, isLoading } = useQuery(['user'], user.getProfile);
+  // const town = !isLoading && data?.location.split(' ')[2];
 
   return (
     <S.HeaderContainer>
       <Link to="mytown" state={{ from: 'main' }}>
         <S.Location>
           <Icon Icon={LocateIcon} size={20} />
-          <span>{town || '상도동'}</span>
+          <span>상도동</span>
+          {/* <span>{town || '상도동'}</span> */}
           <Icon Icon={MoreIcon} size={14} />
         </S.Location>
       </Link>

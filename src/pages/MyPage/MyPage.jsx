@@ -11,31 +11,32 @@ import * as C from 'components/MyPage';
 import * as S from './styles';
 
 export const MyPage = () => {
-  const { data, isLoading } = useQuery(['user'], user.getProfile);
+  // const { data, isLoading } = useQuery(['user'], user.getProfile);
 
   return (
     <ScrollContainer>
       <S.PageContainer>
         <S.MyDataSection>
-          <Link to="edit">
+          {/* <Link to="edit"> */}
+          <Link to="#">
             <S.EditButton>프로필 편집</S.EditButton>
           </Link>
-          <C.UserData data={!isLoading && data} />
+          <C.UserData />
           <S.LinkBoxWrap>
             <C.LinkBox
               name="나의 글"
               icon={Ic1}
-              myposts={{
-                post: !isLoading && data.feed_count,
-                comment: !isLoading && data.comment_count
-              }}
+              // myposts={{
+              //   post: !isLoading && data.feed_count,
+              //   comment: !isLoading && data.comment_count
+              // }}
               linkTo="posts"
             />
             <C.LinkBox
               name="보관함"
               linkTo="scraps"
               icon={Ic2}
-              bookmarks={!isLoading && data.bookmark_count}
+              // bookmarks={!isLoading && data.bookmark_count}
             />
             <C.LinkBox name="소소모임" linkTo="meets" icon={Ic3} meets={7} />
           </S.LinkBoxWrap>

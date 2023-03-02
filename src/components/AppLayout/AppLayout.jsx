@@ -8,9 +8,9 @@ export const AppLayout = ({ navbar }) => {
   const user = authToken.getToken();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user) navigate('/login');
-  }, [user, navigate]);
+  // useEffect(() => {
+  //   if (!user) navigate('/login');
+  // }, [user, navigate]);
 
   return (
     <AppContainer>

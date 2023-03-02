@@ -20,17 +20,17 @@ export const FeedPage = () => {
     };
   };
 
-  const infiniteResponse = useInfiniteQuery(
-    ['feed'],
-    ({ pageParam = 0 }) => feed.list(params(pageParam)),
-    {
-      getNextPageParam: lastPage =>
-        isLatest
-          ? lastPage.feed_list.length > 0 &&
-            lastPage.feed_list.slice(-1)[0].feed_id
-          : lastPage.page_id + 1
-    }
-  );
+  // const infiniteResponse = useInfiniteQuery(
+  //   ['feed'],
+  //   ({ pageParam = 0 }) => feed.list(params(pageParam)),
+  //   {
+  //     getNextPageParam: lastPage =>
+  //       isLatest
+  //         ? lastPage.feed_list.length > 0 &&
+  //           lastPage.feed_list.slice(-1)[0].feed_id
+  //         : lastPage.page_id + 1
+  //   }
+  // );
 
   return (
     <S.PageContainer>
@@ -50,7 +50,7 @@ export const FeedPage = () => {
         <PostList
           active={active}
           setActive={setActive}
-          infiniteResponse={infiniteResponse}
+          // infiniteResponse={infiniteResponse}
         />
       </ScrollContainer>
 

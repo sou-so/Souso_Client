@@ -29,13 +29,16 @@ export const AppLogo = styled.div`
 
 export const LinkTo = styled.ul`
   width: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
   li {
-    text-align: center;
     font-size: ${({ theme }) => theme.font.xs};
   }
   li + li {
-    margin-top: 30px;
+    margin-top: 8px;
+  }
+  li:last-child {
+    float: right;
+    margin-top: -14px;
   }
   a {
     position: relative;
