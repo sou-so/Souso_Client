@@ -3,9 +3,9 @@
   <img src="https://user-images.githubusercontent.com/68415905/204304547-05dc3ea6-d249-4208-a2af-3868e6c0fa3b.png" alt="Logo" width="80" >  
   <h1>소년소녀들의 모임, 소소 SOUSO</h1>
   <p>
-    <a href="https://souso.netlify.app/">배포 주소 바로가기</a>
+    <a href="https://souso.netlify.app/login">배포 주소 바로가기</a>
     ·
-    <a href="https://www.notion.so/prose-club/13-75035d7b26f648719b09d062f94474c3">프로젝트 보고서 바로가기</a>
+    <a href="https://www.youtube.com/watch?v=ejWNeENjKZM&t=76s">🎥 시연 영상 보러가기</a>
   </p>
 
 [![Contributors][contributors-shield]][contributors-url]
@@ -85,10 +85,29 @@
 <br/>
 
 ## 기술 스택
+- Frontend
+  - React 18, Javascript
+  - Axios, React-Query
+  - styled-components
 
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">&nbsp;&nbsp;
+- Backend
+  - Java 11, Spring Boot, JPA, QueryDSL
+  - MySQL, Redis
+  - AWS, Docker, CI/CD, Nginx+Cerbot/SSL, Sonar Cloud
 
 <br/>
 
-## 프로젝트 구현 사항
+## 시연 영상
+
+https://www.youtube.com/watch?v=ejWNeENjKZM&t=76s
+
+<br/>
+
+## 기획서
+
+![image](https://user-images.githubusercontent.com/68415905/206088768-136122de-2d80-47a9-86bb-8f192078bab0.jpg)
+
+<br>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
